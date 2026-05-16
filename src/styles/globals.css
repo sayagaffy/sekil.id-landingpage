@@ -20,14 +20,26 @@
     --chart-4: 43 96% 56%;
     --chart-5: 27 87% 67%;
 
-    /* Primary navy from Sekil.id deck */
-    --color-primary-50: 210 100% 96%;
-    --color-primary-500: 217 71% 22%;
-    --color-primary-950: 222 47% 11%;
+    /* Primary navy scale — brand #0E2A56 at 700 */
+    --color-primary-50:  217 71% 97%;
+    --color-primary-100: 217 71% 92%;
+    --color-primary-200: 217 71% 80%;
+    --color-primary-300: 217 71% 66%;
+    --color-primary-400: 217 71% 50%;
+    --color-primary-500: 217 71% 38%;
+    --color-primary-600: 217 71% 30%;
+    --color-primary-700: 217 71% 22%;
+    --color-primary-800: 217 71% 16%;
+    --color-primary-900: 217 71% 11%;
+    --color-primary-950: 222 47% 8%;
     --primary: 217 71% 22%;
     --primary-foreground: 0 0% 100%;
 
-    /* Accent yellow */
+    /* Accent yellow scale — brand #FFD93D at 400 */
+    --color-accent-50:  47 100% 97%;
+    --color-accent-100: 47 100% 90%;
+    --color-accent-400: 47 100% 62%;
+    --color-accent-500: 44 96% 55%;
     --accent: 47 100% 62%;
     --accent-foreground: 222 47% 11%;
 
