@@ -10,6 +10,9 @@ const CONTENT_ROOTS = [
   'content/jurusan',
 ];
 
+const INCLUDE_DRAFTS = process.argv.includes('--include-drafts');
+if (INCLUDE_DRAFTS) CONTENT_ROOTS.push('content/_drafts');
+
 const FORBIDDEN_PATTERNS = [
   /\b(diagnosis|kelainan|gangguan kepribadian)\b/i,
   /\b(100%|pasti sukses|dijamin sukses|tidak akan pernah gagal)\b/i,
@@ -49,6 +52,14 @@ function walkFiles(dir: string): string[] {
   return files;
 }
 
+function isYmylContent(filepath: string, content: string): boolean {
+  const isYmylPath = /\/(kepribadian|karier|jurusan|panduan)\//i.test(filepath);
+  const hasYmylKeywords = /\b(kepribadian|psikologi|asesmen|burnout|mental|karier|jurusan)\b/i.test(
+    content,
+  );
+  return isYmylPath || hasYmylKeywords;
+}
+
 function validateFile(filepath: string): void {
   const raw = readFileSync(filepath, 'utf-8');
   const { data: frontmatter, content } = matter(raw);
@@ -86,14 +97,36 @@ function validateFile(filepath: string): void {
     }
   }
 
-  const isYMYL = /\b(kepribadian|psikologi|asesmen|burnout|mental)\b/i.test(content);
-  if (isYMYL) {
+  if (isYmylContent(filepath, content)) {
     const hasDisclaimer = REQUIRED_DISCLAIMER_PATTERNS.some((p) => p.test(content));
     if (!hasDisclaimer) {
       errors.push({
         file: filepath,
-        message: 'YMYL content missing required disclaimer',
+        message: 'YMYL content missing required disclaimer (bukan diagnosis / bukan pengganti konsultasi profesional / hasil ini bersifat deskriptif)',
         severity: 'error',
+      });
+    }
+
+    // YMYL content must have reviewedBy for non-draft content
+    const isDraft = filepath.includes('/_drafts/');
+    if (!isDraft && !frontmatter.reviewedBy) {
+      errors.push({
+        file: filepath,
+        message: 'YMYL content missing required reviewedBy frontmatter field',
+        severity: 'error',
+      });
+    }
+
+    // Check for DisclaimerBlock component or inline disclaimer text
+    const hasDisclaimerBlock =
+      /<DisclaimerBlock/.test(content) ||
+      /bukan diagnosis klinis/.test(content) ||
+      /bersifat indikatif/.test(content);
+    if (!hasDisclaimerBlock) {
+      errors.push({
+        file: filepath,
+        message: 'YMYL content missing <DisclaimerBlock /> or inline disclaimer text',
+        severity: 'warning',
       });
     }
   }
@@ -101,7 +134,9 @@ function validateFile(filepath: string): void {
 
 function main(): void {
   const allFiles = CONTENT_ROOTS.flatMap(walkFiles);
-  console.log(`Validating ${allFiles.length} content files...`);
+  console.log(
+    `Validating ${allFiles.length} content files${INCLUDE_DRAFTS ? ' (including drafts)' : ''}...`,
+  );
   allFiles.forEach(validateFile);
 
   const errCount = errors.filter((e) => e.severity === 'error').length;

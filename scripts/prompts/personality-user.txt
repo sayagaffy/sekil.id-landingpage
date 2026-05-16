@@ -1,0 +1,21 @@
+Tulis artikel MDX komprehensif tentang kepribadian **{{CODE}} — {{NAME}}** ({{TYPE}}).
+
+**Data Referensi:**
+- Tipe: {{TYPE}}
+- Kode: {{CODE}}
+- Nama: {{NAME}}
+- Tagline: {{TAGLINE}}
+- Deskripsi dasar: {{DESCRIPTION_SEED}}
+- Ciri utama: {{CORE_TRAITS}}
+- Kekuatan: {{STRENGTHS}}
+- Tantangan: {{CHALLENGES}}
+- Karier terkait: {{RELATED_CAREERS}}
+- Jurusan terkait: {{RELATED_MAJORS}}
+
+**Target keyword:** {{PRIMARY_KEYWORD}}
+**Target panjang:** 1.200–2.000 kata konten (di luar frontmatter)
+**Tanggal:** {{TODAY}}
+
+Gunakan data referensi di atas sebagai *seed* — kembangkan setiap poin menjadi paragraf atau section yang informatif dan engaging. Jangan hanya mengulang data mentah — eksplorasi konteks, contoh nyata, dan implikasi praktis.
+
+Ingat: WAJIB sertakan disclaimer YMYL dan TIDAK boleh menggunakan kata-kata terlarang (diagnosis, kelainan, 100%, dll).

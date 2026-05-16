@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://sekil.id',
@@ -17,22 +20,35 @@ module.exports = {
     ],
     additionalSitemaps: ['https://sekil.id/sitemap-programmatic.xml'],
   },
-  transform: async (config, path) => {
+  transform: async (config, urlPath) => {
+    // Exclude programmatic pages that don't have published MDX content
+    // (those pages serve noindex placeholder templates)
+    const PROGRAMMATIC_PREFIXES = ['/kepribadian/', '/karier/', '/jurusan/'];
+    const isProgrammatic = PROGRAMMATIC_PREFIXES.some((prefix) => urlPath.startsWith(prefix));
+
+    if (isProgrammatic) {
+      const parts = urlPath.split('/').filter(Boolean);
+      if (parts.length === 2) {
+        const [type, slug] = parts;
+        const mdxPath = path.join(process.cwd(), 'content', type, `${slug}.mdx`);
+        if (!fs.existsSync(mdxPath)) {
+          // No published MDX — exclude from sitemap (page is noindex placeholder)
+          return null;
+        }
+      }
+    }
+
     let priority = 0.7;
-    if (path === '/') priority = 1.0;
-    else if (['/produk', '/solusi', '/harga', '/metodologi'].includes(path))
+    if (urlPath === '/') priority = 1.0;
+    else if (['/produk', '/solusi', '/harga', '/metodologi'].includes(urlPath))
       priority = 0.8;
-    else if (path.startsWith('/blog/') || path.startsWith('/panduan/'))
+    else if (urlPath.startsWith('/blog/') || urlPath.startsWith('/panduan/'))
       priority = 0.7;
-    else if (
-      path.startsWith('/kepribadian/') ||
-      path.startsWith('/karier/') ||
-      path.startsWith('/jurusan/')
-    )
+    else if (isProgrammatic)
       priority = 0.5;
 
     return {
-      loc: path,
+      loc: urlPath,
       changefreq: config.changefreq,
       priority,
       lastmod: new Date().toISOString(),

@@ -12,7 +12,14 @@
     "format": "prettier --write .",
     "postbuild": "next-sitemap",
     "content:generate": "tsx scripts/generate-programmatic.ts",
+    "content:generate:sample:personality": "tsx scripts/generate-programmatic.ts --type personality --slug intj",
+    "content:generate:sample:career": "tsx scripts/generate-programmatic.ts --type career --slug data-scientist",
+    "content:generate:sample:major": "tsx scripts/generate-programmatic.ts --type major --slug teknik-informatika",
+    "content:generate:all:personality": "tsx scripts/generate-programmatic.ts --type personality --all",
+    "content:generate:all:career": "tsx scripts/generate-programmatic.ts --type career --all",
+    "content:generate:all:major": "tsx scripts/generate-programmatic.ts --type major --all",
     "content:validate": "tsx scripts/validate-content.ts",
+    "content:validate:drafts": "tsx scripts/validate-content.ts --include-drafts",
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
     "db:seed": "tsx scripts/seed-db.ts"
@@ -51,6 +58,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
     "@types/react": "^18",

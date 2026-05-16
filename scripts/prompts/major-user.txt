@@ -1,0 +1,26 @@
+Tulis artikel MDX komprehensif tentang jurusan **{{NAME}} ({{SHORT_NAME}})** di Indonesia.
+
+**Data Referensi:**
+- Nama jurusan: {{NAME}}
+- Singkatan: {{SHORT_NAME}}
+- Fakultas: {{FACULTY}}
+- Deskripsi dasar: {{DESCRIPTION_SEED}}
+- Durasi kuliah: {{DURATION}}
+- Holland Code yang cocok: {{HOLLAND_CODES}}
+- Jalur karier: {{CAREER_PATHS}}
+- Universitas terbaik: {{TOP_UNIVERSITIES}}
+- Tipe kepribadian yang cocok: {{RELATED_PERSONALITIES}}
+
+**Target keyword:** {{PRIMARY_KEYWORD}}
+**Target panjang:** 1.200–2.000 kata konten
+**Tanggal:** {{TODAY}}
+
+Tulis artikel yang membantu siswa SMA memutuskan apakah jurusan ini cocok untuk mereka. Sertakan:
+- Gambaran konkret seperti apa kehidupan mahasiswa {{SHORT_NAME}} sehari-hari
+- Mata kuliah yang paling menantang dan paling menarik
+- Perbedaan antara universitas negeri dan swasta untuk jurusan ini
+- Kenapa Holland Code {{HOLLAND_CODES}} cocok dengan profil mahasiswa yang sukses di jurusan ini
+- Misconception umum tentang jurusan ini yang perlu diluruskan
+- Saran untuk siswa SMA yang ingin mempersiapkan diri masuk jurusan ini
+
+Gunakan universitas yang disebutkan dalam data, jangan mengarang nama universitas lain.
