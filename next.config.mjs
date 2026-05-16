@@ -4,6 +4,7 @@ import createMDX from '@next/mdx';
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   experimental: { mdxRs: false },
+  transpilePackages: ['@keystatic/core', '@keystatic/next'],
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [],

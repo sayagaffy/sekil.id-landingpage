@@ -1,81 +1,87 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { ChevronRight } from 'lucide-react';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { Container } from '@/components/layout/Container';
-import { JsonLd } from '@/components/seo/JsonLd';
-import { AuthorBio } from '@/components/blog/AuthorBio';
-import { RelatedPosts } from '@/components/blog/RelatedPosts';
-import { mdxComponents } from '@/components/mdx/components';
-import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
-import { SITE_URL, SITE_NAME } from '@/lib/seo/site-schema';
-import { getPostBySlug, getAllPostSlugs, getRelatedPosts } from '@/lib/mdx/index';
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
+import { ChevronRight } from 'lucide-react'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { Container } from '@/components/layout/Container'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { AuthorBio } from '@/components/blog/AuthorBio'
+import { RelatedPosts } from '@/components/blog/RelatedPosts'
+import { mdxComponents } from '@/components/mdx/components'
+import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema'
+import { SITE_URL, SITE_NAME } from '@/lib/seo/site-schema'
+import { getPostBySlug, getAllPostSlugs, getRelatedPosts } from '@/lib/mdx/index'
 
 interface Props {
-  params: { slug: string };
+  params: { slug: string }
 }
 
 export function generateStaticParams() {
-  return getAllPostSlugs().map((slug) => ({ slug }));
+  return getAllPostSlugs().map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const result = getPostBySlug(params.slug);
-  if (!result) return {};
-  const { meta } = result;
+  const result = getPostBySlug(params.slug)
+  if (!result) return {}
+  const { meta } = result
+  const title = meta.seo?.metaTitle ?? `${meta.title} | Sekil.id Blog`
+  const description = meta.seo?.metaDescription ?? meta.description
+  const canonical = meta.seo?.canonical ?? `${SITE_URL}/blog/${meta.slug}`
+  const robotsDirective = meta.seo?.robots ?? 'index, follow'
+  const [robotsIndex, robotsFollow] = robotsDirective.split(',').map((s) => s.trim())
   return {
-    title: `${meta.title} | Sekil.id Blog`,
-    description: meta.description,
-    alternates: { canonical: `https://sekil.id/blog/${meta.slug}` },
+    title,
+    description,
+    robots: { index: robotsIndex !== 'noindex', follow: robotsFollow !== 'nofollow' },
+    alternates: { canonical },
     openGraph: {
-      title: `${meta.title} | Sekil.id Blog`,
-      description: meta.description,
-      url: `https://sekil.id/blog/${meta.slug}`,
+      title,
+      description,
+      url: `${SITE_URL}/blog/${meta.slug}`,
       type: 'article',
       publishedTime: meta.publishedAt,
       modifiedTime: meta.modifiedAt,
       authors: [meta.author],
       ...(meta.coverImage ? { images: [meta.coverImage] } : {}),
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${meta.title} | Sekil.id Blog`,
-      description: meta.description,
-    },
-  };
+    twitter: { card: 'summary_large_image', title, description },
+  }
 }
 
 function extractHeadings(content: string): { id: string; text: string }[] {
-  const headingRegex = /^## (.+)$/gm;
-  const headings: { id: string; text: string }[] = [];
-  let match;
+  const headingRegex = /^## (.+)$/gm
+  const headings: { id: string; text: string }[] = []
+  let match
   while ((match = headingRegex.exec(content)) !== null) {
-    const text = match[1];
+    const text = match[1]
     const id = text
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, '')
-      .replace(/\s+/g, '-');
-    headings.push({ id, text });
+      .replace(/\s+/g, '-')
+    headings.push({ id, text })
   }
-  return headings;
+  return headings
 }
 
 export default function BlogPostPage({ params }: Props) {
-  const result = getPostBySlug(params.slug);
-  if (!result) notFound();
+  const result = getPostBySlug(params.slug)
+  if (!result) notFound()
 
-  const { meta, content } = result;
-  const related = getRelatedPosts(meta.slug, meta.category, 3);
-  const headings = extractHeadings(content);
+  const { meta, content } = result
+  const related = getRelatedPosts(meta.slug, meta.category, 3)
+  const headings = extractHeadings(content)
+  const faq = meta.aeo?.faq ?? []
+  const citations = (meta.aeo?.citations ?? []).filter((c) => c.text)
+  const keyTakeaways = meta.geo?.keyTakeaways ?? []
+  const tldr = meta.geo?.tldr
 
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
     { name: 'Blog', url: '/blog' },
     { name: meta.category, url: '/blog' },
     { name: meta.title, url: `/blog/${meta.slug}` },
-  ]);
+  ])
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -101,18 +107,40 @@ export default function BlogPostPage({ params }: Props) {
     ...(meta.coverImage ? { image: meta.coverImage } : {}),
     ...(meta.reviewedBy
       ? {
-          reviewedBy: { '@type': 'Person', name: meta.reviewedBy },
+          reviewedBy: {
+            '@type': 'Person',
+            name: meta.reviewedBy,
+            ...(meta.reviewedByCredential ? { jobTitle: meta.reviewedByCredential } : {}),
+          },
         }
       : {}),
-  };
+    ...(meta.aeo?.quotableSummary ? { abstract: meta.aeo.quotableSummary } : {}),
+  }
+
+  const faqSchema =
+    faq.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faq.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
+        }
+      : null
 
   return (
     <>
       <JsonLd data={breadcrumb} />
       <JsonLd data={articleSchema} />
+      {faqSchema && <JsonLd data={faqSchema} />}
 
       <main id="main-content">
-        {/* Breadcrumb */}
+        {/* 1 — Breadcrumb */}
         <div className="border-b-2 border-ink bg-paper">
           <Container>
             <nav aria-label="Breadcrumb" className="py-3">
@@ -122,15 +150,19 @@ export default function BlogPostPage({ params }: Props) {
                     Beranda
                   </Link>
                 </li>
-                <li aria-hidden="true"><ChevronRight className="h-3 w-3" /></li>
+                <li aria-hidden="true">
+                  <ChevronRight className="h-3 w-3" />
+                </li>
                 <li>
                   <Link href="/blog" className="transition-colors hover:text-blue-500">
                     Blog
                   </Link>
                 </li>
-                <li aria-hidden="true"><ChevronRight className="h-3 w-3" /></li>
+                <li aria-hidden="true">
+                  <ChevronRight className="h-3 w-3" />
+                </li>
                 <li>
-                  <span className="text-ink line-clamp-1" aria-current="page">
+                  <span className="line-clamp-1 text-ink" aria-current="page">
                     {meta.title}
                   </span>
                 </li>
@@ -139,7 +171,7 @@ export default function BlogPostPage({ params }: Props) {
           </Container>
         </div>
 
-        {/* Article hero */}
+        {/* 2 — Hero */}
         <header className="border-b-2 border-ink bg-paper">
           {meta.coverImage && (
             <div className="relative aspect-[21/9] w-full border-b-2 border-ink">
@@ -194,7 +226,42 @@ export default function BlogPostPage({ params }: Props) {
           </Container>
         </header>
 
-        {/* Article body + TOC */}
+        {/* 3 — TL;DR */}
+        {tldr && (
+          <div className="border-b-2 border-ink bg-blue-500/5">
+            <Container>
+              <div className="py-6">
+                <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-blue-600">
+                  TL;DR
+                </p>
+                <p className="max-w-3xl text-base leading-relaxed text-ink">{tldr}</p>
+              </div>
+            </Container>
+          </div>
+        )}
+
+        {/* 4 — Key takeaways */}
+        {keyTakeaways.length > 0 && (
+          <div className="border-b-2 border-ink bg-paper">
+            <Container>
+              <div className="py-6">
+                <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ink">
+                  Yang akan kamu pelajari
+                </p>
+                <ul className="grid gap-2 sm:grid-cols-2">
+                  {keyTakeaways.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-ash-700">
+                      <span className="mt-1.5 h-2 w-2 shrink-0 border-2 border-blue-500 bg-blue-500/20" aria-hidden />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Container>
+          </div>
+        )}
+
+        {/* 5 — TOC sidebar + article body */}
         <div className="border-b-2 border-ink bg-white py-12">
           <Container>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[240px_1fr]">
@@ -213,7 +280,7 @@ export default function BlogPostPage({ params }: Props) {
                         <li key={id}>
                           <a
                             href={`#${id}`}
-                            className="block text-sm leading-tight text-ash-700 hover:text-blue-500 transition-colors"
+                            className="block text-sm leading-tight text-ash-700 transition-colors hover:text-blue-500"
                           >
                             {text}
                           </a>
@@ -225,29 +292,91 @@ export default function BlogPostPage({ params }: Props) {
               )}
 
               {/* MDX content */}
-              <article
-                className="prose-none min-w-0 max-w-prose"
-                aria-label={meta.title}
-              >
+              <article className="prose-none min-w-0 max-w-prose" aria-label={meta.title}>
                 <MDXRemote source={content} components={mdxComponents} />
               </article>
             </div>
           </Container>
         </div>
 
-        {/* Author bio + related */}
+        {/* 6 — FAQ section */}
+        {faq.length > 0 && (
+          <section className="border-b-2 border-ink bg-paper py-12" aria-labelledby="faq-heading">
+            <Container>
+              <div className="max-w-3xl">
+                <h2
+                  id="faq-heading"
+                  className="mb-6 font-display text-2xl font-bold text-ink"
+                >
+                  Pertanyaan Umum
+                </h2>
+                <div className="space-y-4">
+                  {faq.map((item, i) => (
+                    <div key={i} className="border-2 border-ink p-5">
+                      <h3 className="font-display text-base font-bold text-ink">
+                        {item.question}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ash-700">{item.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Container>
+          </section>
+        )}
+
+        {/* 7 — References / citations */}
+        {citations.length > 0 && (
+          <section className="border-b-2 border-ink bg-paper/60 py-8">
+            <Container>
+              <div className="max-w-3xl">
+                <h2 className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ash-700">
+                  Referensi
+                </h2>
+                <ol className="space-y-1 pl-4">
+                  {citations.map((c, i) => (
+                    <li key={i} className="text-sm text-ash-700">
+                      {c.url ? (
+                        <a
+                          href={c.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-2 hover:text-blue-500"
+                        >
+                          {c.text}
+                        </a>
+                      ) : (
+                        c.text
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </Container>
+          </section>
+        )}
+
+        {/* 8+9 — Author bio + reviewer bio */}
         <div className="border-b-2 border-ink bg-paper py-12">
           <Container>
             <div className="max-w-3xl">
               <AuthorBio meta={meta} />
-              <div className="mt-12">
-                <RelatedPosts posts={related} />
-              </div>
             </div>
           </Container>
         </div>
 
-        {/* Newsletter CTA */}
+        {/* 10 — Related posts */}
+        {related.length > 0 && (
+          <div className="border-b-2 border-ink bg-paper py-12">
+            <Container>
+              <div className="max-w-3xl">
+                <RelatedPosts posts={related} />
+              </div>
+            </Container>
+          </div>
+        )}
+
+        {/* 11 — CTA */}
         <section className="bg-blue-500 py-14">
           <Container>
             <div className="mx-auto max-w-2xl text-center">
@@ -267,5 +396,5 @@ export default function BlogPostPage({ params }: Props) {
         </section>
       </main>
     </>
-  );
+  )
 }

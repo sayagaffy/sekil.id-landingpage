@@ -1,7 +1,12 @@
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArticleImage } from './ArticleImage';
 import { Callout } from './Callout';
+import { Citation } from './Citation';
+import { ComparisonTable } from './ComparisonTable';
+import { DisclaimerBlock } from './DisclaimerBlock';
+import { PullQuote } from './PullQuote';
 
 export const mdxComponents: MDXComponents = {
   h1: ({ children }) => (
@@ -120,5 +125,10 @@ export const mdxComponents: MDXComponents = {
   td: ({ children }) => (
     <td className="border-b border-ash-300 px-4 py-2 text-ash-700">{children}</td>
   ),
+  ArticleImage,
   Callout,
+  Citation,
+  ComparisonTable,
+  DisclaimerBlock,
+  PullQuote,
 };
