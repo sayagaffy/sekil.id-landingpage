@@ -1,60 +1,65 @@
 import Link from 'next/link';
-import { Container } from '@/components/layout/Container';
-import { Separator } from '@/components/ui/separator';
+import Image from 'next/image';
 
 const FOOTER_COLS = [
   {
     title: 'Produk',
     links: [
-      { href: '/produk/career-interest', label: 'Career Interest' },
       { href: '/produk/psyai', label: 'PsyAI' },
       { href: '/produk/path-finder-ai', label: 'Path Finder AI' },
+      { href: '/produk/goal-align-ai', label: 'Goal Align AI' },
+      { href: '/produk/career-interest', label: 'Career Interest' },
       { href: '/produk/leadership-styles-test', label: 'Leadership Styles' },
-      { href: '/produk/emotional-intelligence-test', label: 'EQ Test' },
     ],
   },
   {
-    title: 'Solusi & Resources',
+    title: 'Untuk',
     links: [
-      { href: '/solusi/sekolah', label: 'Untuk Sekolah' },
-      { href: '/solusi/perguruan-tinggi', label: 'Untuk Kampus' },
-      { href: '/solusi/perusahaan', label: 'Untuk Perusahaan' },
+      { href: '/solusi/sekolah', label: 'Siswa & Pelajar' },
+      { href: '/solusi/perguruan-tinggi', label: 'Mahasiswa' },
+      { href: '/solusi/perusahaan', label: 'Profesional' },
+      { href: '/solusi/sekolah', label: 'Sekolah & SMA' },
+      { href: '/solusi/perguruan-tinggi', label: 'Universitas' },
+    ],
+  },
+  {
+    title: 'Sekil.id',
+    links: [
       { href: '/metodologi', label: 'Metodologi' },
       { href: '/blog', label: 'Blog' },
-      { href: '/panduan', label: 'Panduan' },
-    ],
-  },
-  {
-    title: 'Legal & Sosial',
-    links: [
+      { href: '/kontak', label: 'Kontak' },
       { href: '/privacy', label: 'Kebijakan Privasi' },
       { href: '/terms', label: 'Syarat & Ketentuan' },
-      { href: '/kontak', label: 'Kontak' },
-      { href: '/demo', label: 'Jadwalkan Demo' },
     ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t bg-muted/30">
-      <Container>
+    <footer className="mt-0 border-t-2 border-ink bg-navy-900 text-paper">
+      <div className="mx-auto max-w-[1280px] px-8">
+        {/* Top grid */}
         <div className="grid gap-12 py-16 md:grid-cols-4">
           {/* Brand column */}
-          <div className="flex flex-col gap-4">
-            <Link href="/" className="font-display text-xl font-bold text-primary">
-              Sekil.id
+          <div className="flex flex-col gap-5">
+            <Link href="/">
+              <Image
+                src="/logo-light.png"
+                alt="Sekil.id"
+                width={120}
+                height={32}
+                className="h-8 w-auto"
+              />
             </Link>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI.
-              Didukung B One Corp.
+            <p className="text-sm leading-relaxed text-sky-200">
+              Platform pengembangan diri & penilaian karier berbasis AI. Didukung B One Corp.
             </p>
-            <address className="not-italic text-xs text-muted-foreground">
+            <address className="not-italic font-mono text-xs uppercase tracking-widest text-ash-500">
               PT Dart Prihaditama Studio
               <br />
-              Bandung, Jawa Barat, Indonesia
+              Bandung, Indonesia
               <br />
-              <a href="mailto:hello@sekil.id" className="hover:text-foreground">
+              <a href="mailto:hello@sekil.id" className="hover:text-peach-300">
                 hello@sekil.id
               </a>
             </address>
@@ -63,13 +68,15 @@ export function Footer() {
           {/* Link columns */}
           {FOOTER_COLS.map((col) => (
             <div key={col.title} className="flex flex-col gap-4">
-              <h3 className="text-sm font-semibold">{col.title}</h3>
+              <h3 className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-peach-300">
+                {col.title}
+              </h3>
               <ul className="flex flex-col gap-2">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="font-display text-sm text-paper transition-colors hover:text-peach-300"
                     >
                       {link.label}
                     </Link>
@@ -80,22 +87,18 @@ export function Footer() {
           ))}
         </div>
 
-        <Separator />
-
-        <div className="flex flex-col items-center justify-between gap-4 py-6 text-xs text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} PT Dart Prihaditama Studio. Hak cipta dilindungi.</p>
-          <p>
-            Dibuat dengan ❤ di Bandung &middot;{' '}
-            <Link href="/privacy" className="hover:text-foreground">
-              Privasi
-            </Link>{' '}
-            &middot;{' '}
-            <Link href="/terms" className="hover:text-foreground">
-              Ketentuan
-            </Link>
+        {/* Bottom bar */}
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/20 py-6 sm:flex-row">
+          <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-ash-500">
+            &copy; {new Date().getFullYear()} PT Dart Prihaditama Studio
           </p>
+          <div className="flex gap-6 font-mono text-[11px] uppercase tracking-[0.1em] text-ash-500">
+            <Link href="/privacy" className="hover:text-paper">Privasi</Link>
+            <Link href="/terms" className="hover:text-paper">Ketentuan</Link>
+            <Link href="/kontak" className="hover:text-paper">Kontak</Link>
+          </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }

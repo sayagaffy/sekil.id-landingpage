@@ -16,8 +16,8 @@ export default function TerimakasihPage() {
       <Container>
         <div className="mx-auto max-w-lg text-center">
           <div className="mb-6 flex justify-center">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-accent-400/20">
-              <CheckCircle className="h-10 w-10 text-accent-500" />
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-peach-200">
+              <CheckCircle className="h-10 w-10 text-peach-600" />
             </div>
           </div>
 
@@ -52,7 +52,7 @@ export default function TerimakasihPage() {
           </div>
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="bg-accent-400 text-primary hover:bg-accent-500 font-semibold">
+            <Button asChild size="lg" className="bg-blue-500 text-white hover:bg-blue-600 font-semibold">
               <Link href="/">Kembali ke Beranda</Link>
             </Button>
             <Button asChild variant="outline" size="lg">

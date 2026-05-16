@@ -256,8 +256,9 @@ export function DemoForm() {
 
       <Button
         type="submit"
+        variant="brand"
         size="lg"
-        className="w-full bg-accent-400 text-primary hover:bg-accent-500 font-semibold"
+        className="w-full"
         disabled={submitting}
       >
         {submitting ? 'Mengirim...' : 'Jadwalkan Demo Gratis →'}

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Container } from '@/components/layout/Container';
 
 interface CTAStripProps {
   heading?: string;
@@ -10,38 +9,33 @@ interface CTAStripProps {
 }
 
 export function CTAStrip({
-  heading = 'Mulai Asesmen Sekarang',
-  subtext = 'Gratis untuk sekolah & kampus. Jadwalkan demo dengan tim kami.',
-  primaryCta = { label: 'Jadwalkan Demo Gratis', href: '/demo' },
-  secondaryCta = { label: 'Lihat Produk', href: '/produk' },
+  heading = 'Siap mulai asesmen?',
+  subtext = 'Ribuan peserta dari sekolah, kampus, dan perusahaan sudah menggunakan Sekil.id.',
+  primaryCta = { label: 'Jadwalkan demo gratis →', href: '/demo' },
+  secondaryCta = { label: 'Lihat produk', href: '/produk' },
 }: CTAStripProps) {
   return (
-    <section className="bg-primary py-16 text-white">
-      <Container>
-        <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
+    <section className="border-b-2 border-ink bg-navy-900 py-20">
+      <div className="mx-auto max-w-[1280px] px-8">
+        <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div>
-            <h2 className="font-display text-2xl font-bold sm:text-3xl">{heading}</h2>
-            <p className="mt-2 text-primary-100/80">{subtext}</p>
+            <h2 className="font-display text-[clamp(28px,3.5vw,48px)] font-bold leading-[0.96] tracking-[-0.03em] text-paper">
+              {heading}
+            </h2>
+            <p className="mt-3 max-w-[48ch] text-[15px] leading-relaxed text-sky-200">
+              {subtext}
+            </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              size="lg"
-              asChild
-              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
-            >
+          <div className="flex flex-wrap items-center gap-4 shrink-0">
+            <Button variant="peach" size="lg" asChild>
               <Link href={primaryCta.href}>{primaryCta.label}</Link>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="border-white/30 text-white hover:bg-white/10"
-            >
+            <Button variant="outline" size="lg" asChild className="border-paper text-paper hover:bg-paper hover:text-ink">
               <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
             </Button>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

@@ -1,26 +1,48 @@
 import type { LucideIcon } from 'lucide-react';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 interface FeatureCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
+  variant?: 'default' | 'peach' | 'navy';
   className?: string;
 }
 
-export function FeatureCard({ icon: Icon, title, description, className }: FeatureCardProps) {
+export function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+  variant = 'default',
+  className,
+}: FeatureCardProps) {
+  const isNavy = variant === 'navy';
+  const isPeach = variant === 'peach';
+
   return (
-    <Card className={cn('border-border/60 transition-shadow hover:shadow-md', className)}>
-      <CardHeader className="pb-2">
-        <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-          <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
-        </div>
-        <h3 className="font-semibold text-foreground">{title}</h3>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
-      </CardContent>
-    </Card>
+    <div
+      className={cn(
+        'flex flex-col border-2 border-ink shadow-md transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg',
+        isNavy ? 'bg-navy-900' : isPeach ? 'bg-peach-300' : 'bg-white',
+        className
+      )}
+    >
+      {/* Card header strip */}
+      <div
+        className={cn(
+          'border-b-2 border-ink px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em]',
+          isNavy ? 'bg-blue-500 text-white' : 'bg-ink text-white'
+        )}
+      >
+        <Icon size={14} strokeWidth={2} className="inline mr-2 align-middle" aria-hidden="true" />
+        {title}
+      </div>
+      {/* Card body */}
+      <div className="flex-1 p-6">
+        <p className={cn('text-sm leading-relaxed', isNavy ? 'text-sky-200' : 'text-ash-700')}>
+          {description}
+        </p>
+      </div>
+    </div>
   );
 }

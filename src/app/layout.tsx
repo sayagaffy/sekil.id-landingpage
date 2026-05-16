@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
 import '@/styles/globals.css';
 import { Header } from '@/components/layout/Header';
@@ -9,7 +9,21 @@ import { CookieConsent } from '@/components/legal/CookieConsent';
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-sans',
+  variable: '--font-body',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700'],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+  weight: ['400', '500', '700'],
 });
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -47,7 +61,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className={inter.variable}>
+    <html
+      lang="id"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="min-h-screen bg-background font-sans antialiased">
         <a
           href="#main-content"

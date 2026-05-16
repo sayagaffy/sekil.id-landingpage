@@ -14,51 +14,16 @@ const config: Config = {
     },
     extend: {
       colors: {
-        primary: {
-          50:  'hsl(var(--color-primary-50))',
-          100: 'hsl(var(--color-primary-100))',
-          200: 'hsl(var(--color-primary-200))',
-          300: 'hsl(var(--color-primary-300))',
-          400: 'hsl(var(--color-primary-400))',
-          500: 'hsl(var(--color-primary-500))',
-          600: 'hsl(var(--color-primary-600))',
-          700: 'hsl(var(--color-primary-700))',
-          800: 'hsl(var(--color-primary-800))',
-          900: 'hsl(var(--color-primary-900))',
-          950: 'hsl(var(--color-primary-950))',
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        accent: {
-          50:  'hsl(var(--color-accent-50))',
-          100: 'hsl(var(--color-accent-100))',
-          400: 'hsl(var(--color-accent-400))',
-          500: 'hsl(var(--color-accent-500))',
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
+        /* shadcn semantic tokens */
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
+        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -69,15 +34,76 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+
+        /* Raw design tokens — directly usable as Tailwind utilities */
+        ink:   'var(--ink)',    /* #0a1230 */
+        paper: 'var(--paper)', /* #f6f6f1 */
+
+        navy: {
+          950: '#050a1a',
+          900: '#0a1230',
+          800: '#111a44',
+          700: '#18225a',
+          600: '#1f2c70',
+        },
+        blue: {
+          700: '#1647d6',
+          600: '#1f5cf5',
+          500: '#2966ff',
+          400: '#5a8cff',
+          300: '#8fb0ff',
+          200: '#c9dafe',
+          100: '#e2ecff',
+          50:  '#f0f5ff',
+        },
+        peach: {
+          600: '#ff7a5c',
+          500: '#ff9b80',
+          400: '#ffbfa8',
+          300: '#ffd6c5',
+          200: '#ffe4d6',
+        },
+        ash: {
+          900: '#1a1f2e',
+          700: '#4a5168',
+          500: '#8a91a3',
+          300: '#c9ccd6',
+          200: '#e3e5ec',
+          100: '#f0f1f4',
+        },
+        sky: {
+          200: '#c9dafe',
+          100: '#e2ecff',
+          50:  '#f0f5ff',
+        },
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
+        sans:    ['var(--font-body)',    'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        mono:    ['var(--font-mono)',    'ui-monospace', 'monospace'],
       },
+      /* Sharp edges — 0px everywhere, 9999px for pills only */
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        none:    '0px',
+        sm:      '0px',
+        DEFAULT: '0px',
+        md:      '0px',
+        lg:      '0px',
+        xl:      '0px',
+        '2xl':   '0px',
+        '3xl':   '0px',
+        full:    '9999px',
+      },
+      /* Hard offset shadows — zero blur, Swiss brutalist signature */
+      boxShadow: {
+        sm:      '4px 4px 0 0 var(--ink)',
+        DEFAULT: '6px 6px 0 0 var(--ink)',
+        md:      '6px 6px 0 0 var(--ink)',
+        lg:      '10px 10px 0 0 var(--ink)',
+        brand:   '6px 6px 0 0 var(--blue-500)',
+        peach:   '6px 6px 0 0 var(--peach-500)',
+        none:    'none',
+        inner:   'none',
       },
       keyframes: {
         'accordion-down': {
@@ -90,8 +116,14 @@ const config: Config = {
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-down': 'accordion-down 0.18s cubic-bezier(0.7,0,0.3,1)',
+        'accordion-up':   'accordion-up 0.18s cubic-bezier(0.7,0,0.3,1)',
+      },
+      transitionDuration: {
+        '120': '120ms',
+      },
+      transitionTimingFunction: {
+        snap: 'cubic-bezier(0.7, 0, 0.3, 1)',
       },
     },
   },
