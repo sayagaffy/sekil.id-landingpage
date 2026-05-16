@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ==================================================================
+       RAW PALETTE — Sekil.id Design System · Brutalist Swiss
+       ================================================================== */
+
+    /* Navy — backgrounds, brand surface, dark sections */
+    --navy-950: #050a1a;
+    --navy-900: #0a1230;
+    --navy-800: #111a44;
+    --navy-700: #18225a;
+    --navy-600: #1f2c70;
+
+    /* Electric Blue — primary brand */
+    --blue-700: #1647d6;
+    --blue-600: #1f5cf5;
+    --blue-500: #2966ff;
+    --blue-400: #5a8cff;
+    --blue-300: #8fb0ff;
+
+    /* Sky / Soft Blue — secondary surfaces */
+    --sky-200: #c9dafe;
+    --sky-100: #e2ecff;
+    --sky-50:  #f0f5ff;
+
+    /* Peach — accent, callouts, featured surfaces */
+    --peach-600: #ff7a5c;
+    --peach-500: #ff9b80;
+    --peach-400: #ffbfa8;
+    --peach-300: #ffd6c5;
+    --peach-200: #ffe4d6;
+
+    /* Neutrals */
+    --paper:   #f6f6f1;
+    --ink:     #0a1230;
+    --ash-900: #1a1f2e;
+    --ash-700: #4a5168;
+    --ash-500: #8a91a3;
+    --ash-300: #c9ccd6;
+    --ash-200: #e3e5ec;
+    --ash-100: #f0f1f4;
+    --white:   #ffffff;
+
+    /* ==================================================================
+       SEMANTIC
+       ================================================================== */
+    --bg:         var(--paper);
+    --bg-inverse: var(--navy-900);
+    --fg1:        var(--ink);
+    --fg2:        var(--ash-700);
+    --fg3:        var(--ash-500);
+    --fg-inverse: var(--white);
+    --line:       var(--ink);
+    --line-soft:  var(--ash-300);
+
+    /* ==================================================================
+       SHADOWS — hard offset, zero blur (Swiss/brutalist signature)
+       ================================================================== */
+    --shadow-sm:    4px 4px 0 0 var(--ink);
+    --shadow-md:    6px 6px 0 0 var(--ink);
+    --shadow-lg:    10px 10px 0 0 var(--ink);
+    --shadow-brand: 6px 6px 0 0 var(--blue-500);
+    --shadow-peach: 6px 6px 0 0 var(--peach-500);
+
+    /* ==================================================================
+       FONTS
+       ================================================================== */
+    --font-display: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body:    "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    /* ==================================================================
+       SHADCN COMPATIBILITY — HSL channel values
+       ================================================================== */
+    --background:          60 17% 96%;        /* paper #f6f6f1 */
+    --foreground:          227 66% 11%;       /* ink #0a1230 */
+    --card:                0 0% 100%;
+    --card-foreground:     227 66% 11%;
+    --popover:             0 0% 100%;
+    --popover-foreground:  227 66% 11%;
+    --primary:             223 100% 58%;      /* blue-500 #2966ff */
+    --primary-foreground:  0 0% 100%;
+    --secondary:           219 100% 94%;      /* sky-100 #e2ecff */
+    --secondary-foreground: 227 66% 11%;
+    --muted:               225 13% 95%;       /* ash-100 #f0f1f4 */
+    --muted-foreground:    226 17% 35%;       /* ash-700 #4a5168 */
+    --accent:              18 100% 89%;       /* peach-300 #ffd6c5 */
+    --accent-foreground:   227 66% 11%;
+    --destructive:         0 73% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --border:              227 66% 11%;       /* ink — brutalist 2px borders */
+    --input:               227 66% 11%;
+    --ring:                223 100% 58%;      /* blue-500 */
+    --radius:              0rem;              /* SHARP CORNERS — no radius */
+
+    /* Charts */
+    --chart-1: 223 100% 58%;
+    --chart-2: 18 100% 89%;
+    --chart-3: 226 17% 35%;
+    --chart-4: 219 100% 94%;
+    --chart-5: 227 66% 11%;
+  }
+
+  .dark {
+    --background:          227 66% 11%;
+    --foreground:          60 17% 96%;
+    --card:                227 60% 15%;
+    --card-foreground:     60 17% 96%;
+    --popover:             227 60% 15%;
+    --popover-foreground:  60 17% 96%;
+    --primary:             223 100% 58%;
+    --primary-foreground:  0 0% 100%;
+    --secondary:           227 38% 20%;
+    --secondary-foreground: 60 17% 96%;
+    --muted:               227 38% 20%;
+    --muted-foreground:    221 96% 89%;
+    --accent:              18 100% 89%;
+    --accent-foreground:   227 66% 11%;
+    --destructive:         0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border:              227 38% 28%;
+    --input:               227 38% 28%;
+    --ring:                223 100% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* ==============================================================
+   SWISS GRID BACKGROUND
+   ============================================================== */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(10, 18, 48, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 18, 48, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Legacy alias */
+.bg-dot-pattern { @apply grid-bg; }
+
+/* ==============================================================
+   EYEBROW / LABEL — mono uppercase utility
+   ============================================================== */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-500);
+}
+.eyebrow-ink   { color: var(--ink); }
+.eyebrow-paper { color: var(--paper); opacity: 0.85; }
+.eyebrow-peach { color: var(--peach-600); }

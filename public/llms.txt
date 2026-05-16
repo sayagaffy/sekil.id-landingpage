@@ -1,0 +1,28 @@
+# Sekil.id
+
+> Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI.
+> Joint venture Sekil.id × B One Corp untuk pendidikan & korporasi di Indonesia.
+
+## Produk Utama
+- [Career Interest](https://sekil.id/produk/career-interest): Tes minat karier Holland Code, 15 menit, Rp 150.000/peserta
+- [PsyAI](https://sekil.id/produk/psyai): Tes kepribadian terintegrasi MBTI + Holland, Rp 195.000
+- [Path Finder AI](https://sekil.id/produk/path-finder-ai): Rekomendasi jurusan kuliah, Rp 150.000
+- [Leadership Styles Test](https://sekil.id/produk/leadership-styles-test): Asesmen gaya kepemimpinan Papi Kostick, Rp 150.000
+- [Emotional Intelligence Test](https://sekil.id/produk/emotional-intelligence-test): Tes EQ, Rp 175.000
+
+## Metodologi
+- Holland Code (RIASEC) — minat karier
+- MBTI-style typing — dimensi kepribadian
+- Papi Kostick — gaya kerja
+
+Validasi akademik oleh Fakultas Psikologi UNJANI.
+
+## Audience
+- Sekolah Menengah Atas (SMA/SMK)
+- Perguruan Tinggi (PT)
+- Perusahaan & Korporasi
+- Yayasan pendidikan multi-unit
+
+## Kontak
+Email: hello@sekil.id
+Website: https://sekil.id

@@ -1,0 +1,137 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "generatedAt": "2026-05-16",
+    "source": "Brand context from specs/04_Claude_Design_Handoff_Prompts.md + specs/05_Repo_Setup_Guide.md",
+    "note": "Claude Design URL (https://api.anthropic.com/v1/design/h/u571ScDgMTw_oa-rxcCbmw) returned 404. Tokens derived from spec brand context: primary navy #0E2A56 (HSL 217 71% 22%), accent yellow #FFD93D (HSL 47 100% 62%). Update from Claude Design export when available."
+  },
+  "colors": {
+    "primary": {
+      "50":  { "hsl": "217 71% 97%", "hex": "#F0F4FB", "label": "Primary 50 — near white navy tint" },
+      "100": { "hsl": "217 71% 92%", "hex": "#D6E2F5", "label": "Primary 100" },
+      "200": { "hsl": "217 71% 80%", "hex": "#9DBCE8", "label": "Primary 200" },
+      "300": { "hsl": "217 71% 66%", "hex": "#5D8FD4", "label": "Primary 300" },
+      "400": { "hsl": "217 71% 50%", "hex": "#2B65BF", "label": "Primary 400" },
+      "500": { "hsl": "217 71% 38%", "hex": "#204D91", "label": "Primary 500 — mid navy" },
+      "600": { "hsl": "217 71% 30%", "hex": "#193C72", "label": "Primary 600" },
+      "700": { "hsl": "217 71% 22%", "hex": "#0E2A56", "label": "Primary 700 — brand navy (base)" },
+      "800": { "hsl": "217 71% 16%", "hex": "#0A1F3D", "label": "Primary 800" },
+      "900": { "hsl": "217 71% 11%", "hex": "#071528", "label": "Primary 900" },
+      "950": { "hsl": "222 47% 8%",  "hex": "#060D1A", "label": "Primary 950 — near black" }
+    },
+    "accent": {
+      "50":  { "hsl": "47 100% 97%", "hex": "#FFFCE8", "label": "Accent 50 — near white yellow" },
+      "100": { "hsl": "47 100% 90%", "hex": "#FFF4B3", "label": "Accent 100" },
+      "200": { "hsl": "47 100% 80%", "hex": "#FFE97A", "label": "Accent 200" },
+      "300": { "hsl": "47 100% 70%", "hex": "#FFE047", "label": "Accent 300" },
+      "400": { "hsl": "47 100% 62%", "hex": "#FFD93D", "label": "Accent 400 — brand yellow (base)" },
+      "500": { "hsl": "44 96% 55%",  "hex": "#F5C515", "label": "Accent 500 — golden" },
+      "600": { "hsl": "40 90% 45%",  "hex": "#D4960E", "label": "Accent 600" },
+      "700": { "hsl": "36 82% 35%",  "hex": "#A3700A", "label": "Accent 700" },
+      "800": { "hsl": "32 74% 24%",  "hex": "#6E4907", "label": "Accent 800" },
+      "900": { "hsl": "28 66% 15%",  "hex": "#3E2804", "label": "Accent 900" },
+      "950": { "hsl": "24 60% 8%",   "hex": "#1F1202", "label": "Accent 950" }
+    },
+    "neutral": {
+      "50":  { "hsl": "210 20% 98%", "hex": "#F8F9FA", "label": "Neutral 50 — off-white" },
+      "100": { "hsl": "214 32% 91%", "hex": "#E2E8F0", "label": "Neutral 100 — border" },
+      "200": { "hsl": "213 27% 84%", "hex": "#CBD5E1", "label": "Neutral 200" },
+      "300": { "hsl": "212 20% 69%", "hex": "#94A3B8", "label": "Neutral 300" },
+      "400": { "hsl": "215 16% 57%", "hex": "#78869A", "label": "Neutral 400" },
+      "500": { "hsl": "215 16% 47%", "hex": "#64748B", "label": "Neutral 500 — muted text" },
+      "600": { "hsl": "215 19% 35%", "hex": "#475569", "label": "Neutral 600" },
+      "700": { "hsl": "215 25% 27%", "hex": "#334155", "label": "Neutral 700" },
+      "800": { "hsl": "217 33% 17%", "hex": "#1E293B", "label": "Neutral 800 — dark bg" },
+      "900": { "hsl": "222 47% 11%", "hex": "#0F172A", "label": "Neutral 900 — foreground" },
+      "950": { "hsl": "224 71% 4%",  "hex": "#020617", "label": "Neutral 950 — near black" }
+    },
+    "semantic": {
+      "background":       { "light": "0 0% 100%",    "dark": "222 47% 11%",  "note": "Page background" },
+      "foreground":       { "light": "222 47% 11%",   "dark": "0 0% 100%",   "note": "Primary text" },
+      "card":             { "light": "0 0% 100%",    "dark": "222 47% 14%",  "note": "Card background" },
+      "cardForeground":   { "light": "222 47% 11%",   "dark": "0 0% 100%",   "note": "Card text" },
+      "primary":          { "light": "217 71% 22%",   "dark": "217 71% 55%", "note": "Primary brand" },
+      "primaryForeground":{ "light": "0 0% 100%",    "dark": "0 0% 100%",   "note": "Text on primary" },
+      "accent":           { "light": "47 100% 62%",   "dark": "47 100% 62%", "note": "Accent yellow" },
+      "accentForeground": { "light": "222 47% 11%",   "dark": "222 47% 11%", "note": "Text on accent" },
+      "muted":            { "light": "210 40% 96%",   "dark": "217 33% 17%", "note": "Muted background" },
+      "mutedForeground":  { "light": "215 16% 47%",   "dark": "215 20% 65%", "note": "Muted text" },
+      "border":           { "light": "214 32% 91%",   "dark": "217 33% 17%", "note": "Border color" },
+      "destructive":      { "light": "0 84% 60%",    "dark": "0 63% 31%",   "note": "Error/danger" }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans":    { "value": "'Inter', system-ui, sans-serif",   "cssVar": "--font-sans" },
+      "display": { "value": "'Inter', system-ui, sans-serif",   "cssVar": "--font-display", "note": "Same as sans but use font-weight 700–800 for display headings" },
+      "mono":    { "value": "ui-monospace, 'Cascadia Code', monospace" }
+    },
+    "fontSize": {
+      "xs":   { "value": "0.75rem",  "px": "12px", "lineHeight": "1rem" },
+      "sm":   { "value": "0.875rem", "px": "14px", "lineHeight": "1.25rem" },
+      "base": { "value": "1rem",     "px": "16px", "lineHeight": "1.5rem" },
+      "lg":   { "value": "1.125rem", "px": "18px", "lineHeight": "1.75rem" },
+      "xl":   { "value": "1.25rem",  "px": "20px", "lineHeight": "1.75rem" },
+      "2xl":  { "value": "1.5rem",   "px": "24px", "lineHeight": "2rem" },
+      "3xl":  { "value": "1.875rem", "px": "30px", "lineHeight": "2.25rem" },
+      "4xl":  { "value": "2.25rem",  "px": "36px", "lineHeight": "2.5rem" },
+      "5xl":  { "value": "3rem",     "px": "48px", "lineHeight": "1.15" },
+      "6xl":  { "value": "3.75rem",  "px": "60px", "lineHeight": "1.1" },
+      "7xl":  { "value": "4.5rem",   "px": "72px", "lineHeight": "1" }
+    },
+    "fontWeight": {
+      "normal":   400,
+      "medium":   500,
+      "semibold": 600,
+      "bold":     700,
+      "extrabold":800
+    },
+    "letterSpacing": {
+      "tight":  "-0.025em",
+      "normal": "0em",
+      "wide":   "0.025em",
+      "wider":  "0.05em"
+    }
+  },
+  "spacing": {
+    "0":   "0px",    "1":  "0.25rem", "2":  "0.5rem",  "3":  "0.75rem",
+    "4":   "1rem",   "5":  "1.25rem", "6":  "1.5rem",  "8":  "2rem",
+    "10":  "2.5rem", "12": "3rem",    "16": "4rem",    "20": "5rem",
+    "24":  "6rem",   "32": "8rem",    "40": "10rem",   "48": "12rem",
+    "64":  "16rem",  "80": "20rem",   "96": "24rem"
+  },
+  "borderRadius": {
+    "none": "0px",
+    "sm":   "0.25rem",
+    "DEFAULT": "0.5rem",
+    "md":   "0.375rem",
+    "lg":   "0.5rem",
+    "xl":   "0.75rem",
+    "2xl":  "1rem",
+    "3xl":  "1.5rem",
+    "full": "9999px"
+  },
+  "shadow": {
+    "sm":  "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+    "DEFAULT": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    "md":  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    "lg":  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+    "xl":  "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+    "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+    "navy": "0 4px 24px 0 rgb(14 42 86 / 0.15)"
+  },
+  "animation": {
+    "duration": {
+      "fast":    "150ms",
+      "normal":  "200ms",
+      "slow":    "300ms",
+      "slower":  "500ms"
+    },
+    "easing": {
+      "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "in":      "cubic-bezier(0.4, 0, 1, 1)",
+      "out":     "cubic-bezier(0, 0, 0.2, 1)",
+      "spring":  "cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    }
+  }
+}
