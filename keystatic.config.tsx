@@ -1,5 +1,5 @@
 import { config, collection, singleton, fields } from '@keystatic/core'
-import { block } from '@keystatic/core/content-components'
+import { block, wrapper } from '@keystatic/core/content-components'
 
 // ---------------------------------------------------------------------------
 // Shared SEO / AEO / GEO fields — spread into each content collection schema
@@ -164,7 +164,7 @@ const articleMdxComponents = {
     },
   }),
 
-  Callout: block({
+  Callout: wrapper({
     label: 'Callout',
     schema: {
       type: fields.select({
@@ -178,7 +178,6 @@ const articleMdxComponents = {
         defaultValue: 'info',
       }),
       title: fields.text({ label: 'Title', validation: { isRequired: false } }),
-      body: fields.text({ label: 'Body', multiline: true, validation: { isRequired: true } }),
     },
   }),
 
