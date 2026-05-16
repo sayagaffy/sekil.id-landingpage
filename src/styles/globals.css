@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --chart-1: 217 71% 22%;
+    --chart-2: 47 100% 62%;
+    --chart-3: 197 37% 44%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 27 87% 67%;
+
+    /* Primary navy from Sekil.id deck */
+    --color-primary-50: 210 100% 96%;
+    --color-primary-500: 217 71% 22%;
+    --color-primary-950: 222 47% 11%;
+    --primary: 217 71% 22%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Accent yellow */
+    --accent: 47 100% 62%;
+    --accent-foreground: 222 47% 11%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 71% 22%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --radius: 0.5rem;
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-display: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+    --card: 222 47% 14%;
+    --card-foreground: 0 0% 100%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 217 71% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 47 100% 62%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 71% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+/* Dot pattern utility — branded from Sekil.id deck */
+.bg-dot-pattern {
+  background-image: radial-gradient(
+    circle,
+    hsl(var(--foreground) / 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
