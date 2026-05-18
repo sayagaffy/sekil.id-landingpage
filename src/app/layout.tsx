@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     'Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI. AI-powered, hasil dalam 10 menit. Dipakai sekolah, kampus, dan perusahaan di Indonesia.',
   keywords: ['asesmen psikologi', 'pemetaan karier', 'tes minat karier', 'MBTI Indonesia'],
   authors: [{ name: 'Sekil.id', url: SITE_URL }],
+  alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',
     locale: 'id_ID',
