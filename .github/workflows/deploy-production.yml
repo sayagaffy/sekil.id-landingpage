@@ -1,0 +1,148 @@
+# deploy-production.yml — Build image, push to GHCR, deploy to VM-B
+#
+# Required GitHub Secrets (Settings → Secrets → Actions):
+#   SSH_HOST        — private IP or hostname of VM-B
+#   SSH_USER        — SSH username on VM-B
+#   SSH_KEY         — SSH private key (no passphrase) with access to VM-B
+#   RESEND_API_KEY  — Resend production API key (not inlined at build, runtime env)
+#   TURNSTILE_SECRET_KEY — Cloudflare Turnstile secret (runtime env)
+#   POSTGRES_PASSWORD    — production DB password (runtime env)
+#
+# Required GitHub Variables (Settings → Variables → Actions — public, non-secret):
+#   NEXT_PUBLIC_SITE_URL
+#   NEXT_PUBLIC_APP_URL
+#   NEXT_PUBLIC_GA_MEASUREMENT_ID
+#   NEXT_PUBLIC_TURNSTILE_SITE_KEY
+#
+# Note: NEXT_PUBLIC_* vars are inlined at build time (Next.js requirement).
+# Runtime secrets (RESEND_API_KEY, POSTGRES_PASSWORD, etc.) are read from
+# .env.production on VM-B — they are NOT passed as build args.
+
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "**.md"
+      - ".github/ISSUE_TEMPLATE/**"
+  workflow_dispatch:
+    inputs:
+      skip_deploy:
+        description: "Skip SSH deploy step (build + push only)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: pt-dart-prihaditama-studio/sekil-landingpage
+
+jobs:
+  build:
+    name: Build & Push Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    outputs:
+      image_tag: ${{ steps.meta.outputs.version }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=sha-,format=short
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || 'https://sekil.id' }}
+            NEXT_PUBLIC_APP_URL=${{ vars.NEXT_PUBLIC_APP_URL || 'https://app.sekil.id' }}
+            NEXT_PUBLIC_GA_MEASUREMENT_ID=${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+            NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+
+  deploy:
+    name: Deploy to VM-B
+    runs-on: ubuntu-latest
+    needs: build
+    # WHY: skip_deploy allows testing build+push without touching the server.
+    # Also skips if SSH secrets are not yet configured (VM-B not provisioned).
+    if: >
+      !inputs.skip_deploy &&
+      secrets.SSH_HOST != '' &&
+      github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            set -euo pipefail
+            cd /opt/sekil-landingpage
+
+            echo "Pulling latest code..."
+            git pull origin main
+
+            echo "Pulling new image from GHCR..."
+            docker compose -f docker-compose.production.yml --env-file .env.production pull landingpage
+
+            echo "Restarting landingpage container..."
+            docker compose -f docker-compose.production.yml --env-file .env.production up -d --no-deps landingpage
+
+            echo "Running pending migrations..."
+            docker compose -f docker-compose.production.yml --env-file .env.production run --rm migrate
+
+            echo "Waiting for health check..."
+            sleep 10
+            curl -sf http://localhost:3000/api/health || (echo "Health check failed" && exit 1)
+
+            echo "Deploy complete."
+
+  smoke-test:
+    name: Smoke Test (external)
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: needs.deploy.result == 'success'
+
+    steps:
+      - name: Check public health endpoint
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://sekil.id/api/health)
+          if [ "$STATUS" != "200" ]; then
+            echo "Smoke test failed: https://sekil.id/api/health returned $STATUS"
+            exit 1
+          fi
+          echo "Smoke test passed: https://sekil.id/api/health returned 200"
