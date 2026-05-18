@@ -40,12 +40,12 @@ Self-hosted deployment ke **home server** dengan **Cloudflare Tunnel**. Target d
           backup ──(cron @daily)──> ./backups/
 ```
 
-**Kenapa tidak ada Caddy:**
+**Kenapa tidak ada reverse proxy:**
 
 - TLS dihandle Cloudflare edge
 - Security headers di-set via `next.config.mjs` (type-safe, code-reviewed)
 - Single app per tunnel — tidak perlu reverse proxy router
-- Caddy bisa ditambahkan nanti jika butuh multi-app di satu VM-B
+- Reverse proxy bisa ditambahkan nanti jika butuh multi-app routing di satu VM-B
 
 **Public attack surface**: hanya Cloudflare Tunnel. VM-B tidak perlu port forward. Home IP tidak terekspose.
 
