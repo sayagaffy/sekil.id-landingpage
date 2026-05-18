@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { APP_URL } from '@/lib/env';
+import { buildAppUrl } from '@/lib/env';
 
 const NAV_LINKS = [
   { href: '/produk', label: 'Produk' },
@@ -50,7 +50,7 @@ export function Header() {
         {/* Desktop CTAs */}
         <div className="hidden items-center gap-3 md:flex">
           <Button variant="ghost" size="sm" asChild>
-            <a href={`${APP_URL}/login`} rel="noopener">Masuk</a>
+            <a href={buildAppUrl('/login', 'header-masuk')} rel="noopener">Masuk</a>
           </Button>
           <Button variant="brand" size="sm" asChild>
             <Link href="/demo">Mulai asesmen &rarr;</Link>
@@ -84,7 +84,7 @@ export function Header() {
               <div className="flex flex-col gap-3 border-t-2 border-ink p-6">
                 <Button variant="outline" asChild>
                   <a
-                    href={`${APP_URL}/login`}
+                    href={buildAppUrl('/login', 'header-masuk-mobile')}
                     rel="noopener"
                     onClick={() => setMobileOpen(false)}
                   >
