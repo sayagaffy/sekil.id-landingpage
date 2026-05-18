@@ -133,6 +133,33 @@ services:
     networks: [sekil-landing-net]
     logging: *default-logging
 
+  rclone-sync:
+    # WHY: syncs ./backups/ to Backblaze B2 daily so lead data survives home server loss.
+    # rclone/rclone is the official rclone Docker image.
+    image: rclone/rclone:latest
+    environment:
+      RCLONE_CONFIG_B2_TYPE: b2
+      RCLONE_CONFIG_B2_ACCOUNT: ${B2_APPLICATION_KEY_ID}
+      RCLONE_CONFIG_B2_KEY: ${B2_APPLICATION_KEY}
+    volumes:
+      - ./backups:/backups:ro
+    command: >
+      sync /backups/daily
+      b2:${B2_BUCKET_NAME}/daily
+      --transfers=4
+      --b2-hard-delete
+      --log-level=INFO
+    depends_on:
+      - backup
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 64M
+    restart: unless-stopped
+    networks: [sekil-landing-net]
+    logging: *default-logging
+
 networks:
   sekil-landing-net:
     driver: bridge
