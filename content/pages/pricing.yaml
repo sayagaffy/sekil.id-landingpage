@@ -1,0 +1,49 @@
+hero:
+  eyebrow: HARGA TRANSPARAN · DISKON VOLUME
+  heading: Harga yang sesuai dengan skala Anda
+  subheading: Mulai dari Rp 150.000 per peserta untuk individu. Dapatkan diskon hingga
+    50% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.
+  pillars:
+    - label: Harga mulai dari
+      value: Rp 150.000
+      sub: per peserta
+    - label: Diskon volume
+      value: Hingga 50%
+      sub: untuk 50.000+ seat
+    - label: Bundle hemat
+      value: "–7% hingga –17%"
+      sub: paket multi-produk
+faq:
+  - q: Bagaimana sistem pembayaran untuk institusi?
+    a: Institusi dapat melakukan pembelian seat secara bulk via transfer bank (BCA,
+      Mandiri, BNI) atau kartu kredit. Setelah pembayaran dikonfirmasi, seat akan
+      aktif dan link tes dapat didistribusikan ke peserta. Untuk pembelian 500+ seat,
+      tersedia opsi invoice dan pembayaran Net-30.
+  - q: Apakah seat yang dibeli ada masa berlakunya?
+    a: Ya. Seat berlaku selama 12 bulan sejak tanggal pembelian. Seat yang belum digunakan
+      tidak dapat di-refund setelah masa berlaku berakhir. Kami merekomendasikan membeli
+      sesuai kebutuhan aktual dan melakukan top-up jika diperlukan.
+  - q: Apakah diskon volume berlaku per produk atau per total peserta?
+    a: Diskon berlaku per-asesmen per-seat. Jika Anda membeli 1.000 seat untuk Career
+      Interest dan 500 seat untuk PsyAI, masing-masing mendapatkan diskon berdasarkan
+      jumlah seat produk tersebut.
+  - q: Apakah ada uji coba gratis untuk institusi?
+    a: Kami menyediakan demo produk dan penjelasan metodologi untuk pengambil keputusan
+      institusi — bukan akses tes gratis untuk peserta. Untuk pilot program dengan
+      50 seat atau lebih, hubungi tim kami untuk mendiskusikan kemungkinan harga pilot.
+  - q: Bagaimana jika saya ingin produk yang berbeda untuk kelompok peserta yang berbeda?
+    a: Tidak ada masalah. Anda bisa membeli seat untuk beberapa produk secara bersamaan
+      atau terpisah. Setiap pembelian produk dihitung diskon volumenya secara independen.
+atcDashboard:
+  price: Rp 30 juta
+  priceUnit: /tahun
+  features:
+    - Pantau status asesmen seluruh karyawan dalam satu dashboard
+    - Analisis distribusi profil kepribadian dan EQ per departemen
+    - Ekspor data ke HRIS (CSV, JSON, Webhook)
+    - Laporan agregat untuk kebutuhan audit dan talent review
+    - Dedicated account manager dan SLA 99.5% uptime
+    - Integrasi SSO dan LDAP/Active Directory
+ctaHeading: Butuh penawaran khusus untuk institusi Anda?
+ctaSubheading: Tim sales Sekil.id siap membantu menyusun proposal yang sesuai dengan
+  anggaran dan kebutuhan program Anda. Respons dalam 1 hari kerja.
