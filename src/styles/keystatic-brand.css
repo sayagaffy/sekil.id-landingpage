@@ -1,0 +1,131 @@
+/* ==========================================================================
+   SEKIL.ID BRAND THEME — Keystatic / @keystar/ui CSS overrides
+   Uses html.kui-scheme--* selectors (specificity 0,1,1) to beat the
+   @keystar/ui injectGlobal rules (specificity 0,1,0) regardless of order.
+
+   Palette reference (from design tokens):
+     Navy-950 #050a1a · Navy-900 #0a1230 · Navy-800 #111a44
+     Navy-700 #18225a · Navy-600 #1f2c70
+     Blue-500 #2966ff · Blue-400 #5a8cff · Blue-300 #8fb0ff
+     Peach-600 #ff7a5c · Peach-500 #ff9b80 · Peach-400 #ffbfa8
+     Paper #f6f6f1 · Ink #0a1230 · Ash-300 #c9ccd6 · Ash-500 #8a91a3
+   ========================================================================== */
+
+/* ── DARK SCHEME (navy palette) ──────────────────────────────────────────── */
+html.kui-scheme--dark,
+html.kui-scheme--auto {
+  /* Surface / background scale  (slate1 = darkest canvas → slate11 = text) */
+  --kui-color-scale-slate1:  #050a1a;
+  --kui-color-scale-slate2:  #0a1230;
+  --kui-color-scale-slate3:  #111a44;
+  --kui-color-scale-slate4:  #18225a;
+  --kui-color-scale-slate5:  #1f2c70;
+  --kui-color-scale-slate6:  #2d3d84;
+  --kui-color-scale-slate7:  #3d5096;
+  --kui-color-scale-slate8:  #5a6aaa;
+  --kui-color-scale-slate9:  #8a91b8;
+  --kui-color-scale-slate10: #b9bed8;
+  --kui-color-scale-slate11: #e8ecf8;
+
+  /* Accent scale → Sekil electric blue (blue-500 = #2966ff) */
+  --kui-color-scale-indigo1:  #080e25;
+  --kui-color-scale-indigo2:  #0a1230;
+  --kui-color-scale-indigo3:  #0d1538;
+  --kui-color-scale-indigo4:  #111a44;
+  --kui-color-scale-indigo5:  #18225a;
+  --kui-color-scale-indigo6:  #1a2868;
+  --kui-color-scale-indigo7:  #1647d6;
+  --kui-color-scale-indigo8:  #1f5cf5;
+  --kui-color-scale-indigo9:  #2966ff;
+  --kui-color-scale-indigo10: #5a8cff;
+  --kui-color-scale-indigo11: #8fb0ff;
+
+  /* Highlight → Sekil peach */
+  --kui-color-scale-pink1:  #1a0a08;
+  --kui-color-scale-pink2:  #280f0b;
+  --kui-color-scale-pink3:  #3c150f;
+  --kui-color-scale-pink4:  #501a12;
+  --kui-color-scale-pink5:  #672018;
+  --kui-color-scale-pink6:  #7c2c20;
+  --kui-color-scale-pink7:  #9c3a28;
+  --kui-color-scale-pink8:  #cc5030;
+  --kui-color-scale-pink9:  #ff9b80;
+  --kui-color-scale-pink10: #ffbfa8;
+  --kui-color-scale-pink11: #ff7a5c;
+}
+
+/* Also covers auto-mode on dark-preference OS */
+@media (prefers-color-scheme: dark) {
+  html.kui-scheme--auto {
+    --kui-color-scale-slate1:  #050a1a;
+    --kui-color-scale-slate2:  #0a1230;
+    --kui-color-scale-slate3:  #111a44;
+    --kui-color-scale-slate4:  #18225a;
+    --kui-color-scale-slate5:  #1f2c70;
+    --kui-color-scale-slate6:  #2d3d84;
+    --kui-color-scale-slate7:  #3d5096;
+    --kui-color-scale-slate8:  #5a6aaa;
+    --kui-color-scale-slate9:  #8a91b8;
+    --kui-color-scale-slate10: #b9bed8;
+    --kui-color-scale-slate11: #e8ecf8;
+    --kui-color-scale-indigo1:  #080e25;
+    --kui-color-scale-indigo2:  #0a1230;
+    --kui-color-scale-indigo3:  #0d1538;
+    --kui-color-scale-indigo4:  #111a44;
+    --kui-color-scale-indigo5:  #18225a;
+    --kui-color-scale-indigo6:  #1a2868;
+    --kui-color-scale-indigo7:  #1647d6;
+    --kui-color-scale-indigo8:  #1f5cf5;
+    --kui-color-scale-indigo9:  #2966ff;
+    --kui-color-scale-indigo10: #5a8cff;
+    --kui-color-scale-indigo11: #8fb0ff;
+    --kui-color-scale-pink9:  #ff9b80;
+    --kui-color-scale-pink10: #ffbfa8;
+    --kui-color-scale-pink11: #ff7a5c;
+  }
+}
+
+/* ── LIGHT SCHEME (paper / ink palette) ──────────────────────────────────── */
+html.kui-scheme--light {
+  --kui-color-scale-slate11: #0a1230;
+  --kui-color-scale-slate10: #1a1f2e;
+  --kui-color-scale-slate9:  #4a5168;
+  --kui-color-scale-slate8:  #6a7188;
+  --kui-color-scale-slate7:  #9a9fb5;
+  --kui-color-scale-slate6:  #c9ccd6;
+  --kui-color-scale-slate5:  #dde0ea;
+  --kui-color-scale-slate4:  #e9eaf0;
+  --kui-color-scale-slate3:  #f0f1f4;
+  --kui-color-scale-slate2:  #f6f6f1;
+  --kui-color-scale-slate1:  #ffffff;
+  --kui-color-scale-indigo11: #1647d6;
+  --kui-color-scale-indigo10: #1f5cf5;
+  --kui-color-scale-indigo9:  #2966ff;
+  --kui-color-scale-indigo8:  #5a8cff;
+  --kui-color-scale-indigo7:  #8fb0ff;
+  --kui-color-scale-indigo6:  #c9dafe;
+  --kui-color-scale-indigo5:  #dce8ff;
+  --kui-color-scale-indigo4:  #e8f0ff;
+  --kui-color-scale-indigo3:  #f0f5ff;
+  --kui-color-scale-indigo2:  #f6f9ff;
+  --kui-color-scale-indigo1:  #fafcff;
+  --kui-color-scale-pink11: #ff6040;
+  --kui-color-scale-pink10: #ff7a5c;
+  --kui-color-scale-pink9:  #ff9b80;
+  --kui-color-scale-pink8:  #ffbfa8;
+  --kui-color-scale-pink7:  #ffd6c5;
+  --kui-color-scale-pink6:  #ffe4d6;
+  --kui-color-scale-pink5:  #ffede5;
+  --kui-color-scale-pink4:  #fff3ee;
+  --kui-color-scale-pink3:  #fff7f3;
+  --kui-color-scale-pink2:  #fffaf8;
+  --kui-color-scale-pink1:  #fffcfb;
+}
+
+/* ── TYPOGRAPHY — Space Grotesk as primary face ──────────────────────────── */
+html.kui-theme {
+  --kui-typography-font-family-base:
+    var(--font-display, "Space Grotesk"),
+    var(--font-body, "Inter"),
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
