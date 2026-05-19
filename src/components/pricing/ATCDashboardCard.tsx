@@ -1,15 +1,12 @@
 import Link from 'next/link';
+import type { PricingAtcDashboard } from '@/lib/cms/pricing-reader';
 
-const ATC_FEATURES = [
-  'Pantau status asesmen seluruh karyawan dalam satu dashboard',
-  'Analisis distribusi profil kepribadian dan EQ per departemen',
-  'Ekspor data ke HRIS (CSV, JSON, Webhook)',
-  'Laporan agregat untuk kebutuhan audit dan talent review',
-  'Dedicated account manager dan SLA 99.5% uptime',
-  'Integrasi SSO dan LDAP/Active Directory',
-];
+interface ATCDashboardCardProps {
+  /** ATC data from CMS */
+  data: PricingAtcDashboard;
+}
 
-export function ATCDashboardCard() {
+export function ATCDashboardCard({ data }: ATCDashboardCardProps) {
   return (
     <div className="border-2 border-ink">
       <div className="border-b-2 border-ink bg-navy-900 p-6">
@@ -22,15 +19,15 @@ export function ATCDashboardCard() {
             <p className="mt-1 text-sm text-sky-200">Assessment Tracking Center</p>
           </div>
           <div className="text-right">
-            <p className="font-display text-2xl font-bold text-paper">Rp 30 juta</p>
-            <p className="font-mono text-[11px] text-sky-200">/tahun</p>
+            <p className="font-display text-2xl font-bold text-paper">{data.price}</p>
+            <p className="font-mono text-[11px] text-sky-200">{data.priceUnit}</p>
           </div>
         </div>
       </div>
 
       <div className="p-6">
         <ul className="space-y-3">
-          {ATC_FEATURES.map((feature) => (
+          {data.features.map((feature) => (
             <li key={feature} className="flex items-start gap-3">
               <span
                 className="mt-0.5 h-4 w-4 shrink-0 border-2 border-ink bg-blue-500"

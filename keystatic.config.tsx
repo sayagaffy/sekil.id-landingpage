@@ -208,6 +208,7 @@ export default config({
       Content: ['blogPosts', 'panduan'],
       'Programmatic SEO': ['personalityTypes', 'careers', 'majors'],
       People: ['authors'],
+      Halaman: ['pricingPage'],
       Settings: ['siteSettings', 'navigation'],
     },
   },
@@ -492,6 +493,67 @@ export default config({
           },
           { label: 'Social Links' },
         ),
+      },
+    }),
+
+    // -------------------------------------------------------------------------
+    // Pricing Page — /harga (editable hero, FAQ, ATC, CTA)
+    // -------------------------------------------------------------------------
+    pricingPage: singleton({
+      label: 'Pricing Page (/harga)',
+      path: 'content/pages/pricing',
+      schema: {
+        hero: fields.object(
+          {
+            eyebrow: fields.text({ label: 'Eyebrow label' }),
+            heading: fields.text({ label: 'Heading', validation: { isRequired: true } }),
+            subheading: fields.text({ label: 'Subheading', multiline: true }),
+            pillars: fields.array(
+              fields.object(
+                {
+                  label: fields.text({ label: 'Label', validation: { isRequired: true } }),
+                  value: fields.text({ label: 'Value', validation: { isRequired: true } }),
+                  sub: fields.text({ label: 'Sub-label' }),
+                },
+                { label: 'Pillar stat' },
+              ),
+              {
+                label: 'Key stats (max 3)',
+                itemLabel: (props) => props.fields.value.value || 'Stat',
+              },
+            ),
+          },
+          { label: 'Hero section' },
+        ),
+
+        faq: fields.array(
+          fields.object(
+            {
+              q: fields.text({ label: 'Question', validation: { isRequired: true } }),
+              a: fields.text({ label: 'Answer', multiline: true, validation: { isRequired: true } }),
+            },
+            { label: 'FAQ item' },
+          ),
+          {
+            label: 'Pricing FAQ',
+            itemLabel: (props) => props.fields.q.value || 'FAQ item',
+          },
+        ),
+
+        atcDashboard: fields.object(
+          {
+            price: fields.text({ label: 'Price (e.g. "Rp 30 juta")', validation: { isRequired: true } }),
+            priceUnit: fields.text({ label: 'Price unit (e.g. "/tahun")' }),
+            features: fields.array(fields.text({ label: 'Feature' }), {
+              label: 'Feature list',
+              itemLabel: (props) => props.value || 'Feature',
+            }),
+          },
+          { label: 'ATC Dashboard add-on' },
+        ),
+
+        ctaHeading: fields.text({ label: 'Bottom CTA heading' }),
+        ctaSubheading: fields.text({ label: 'Bottom CTA subheading', multiline: true }),
       },
     }),
 
