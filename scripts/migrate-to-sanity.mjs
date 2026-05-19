@@ -707,6 +707,101 @@ async function seedProducts() {
   console.log('   ✓ 5 product documents seeded')
 }
 
+// ── Seed: Home Page singleton ─────────────────────────────────────────────
+
+async function seedHomePage() {
+  const doc = {
+    _id: 'homePage',
+    _type: 'homePage',
+
+    // Hero
+    heroEyebrow: 'SEKIL.ID · ASESMEN AI',
+    heroHeading: 'Pahami diri Anda.',
+    heroHeadingAccent: 'Tanpa tebakan.',
+    heroSubheading:
+      'Sekil.id memetakan minat, kekuatan, dan potensi Anda dengan tiga AI khusus — PsyAI, Path Finder AI, dan Goal Align AI. Hasil yang bisa Anda jelaskan ke orang tua, ke wali kelas, ke diri sendiri.',
+    heroCTAPrimary: { label: 'Mulai asesmen →', href: '/demo' },
+    heroCTASecondary: { label: 'Lihat metodologi', href: '/metodologi' },
+    heroMeta: [
+      { _key: blockKey('meta'), val: '+62,000', label: 'SISWA' },
+      { _key: blockKey('meta'), val: '340', label: 'SEKOLAH' },
+      { _key: blockKey('meta'), val: '18', label: 'PROVINSI' },
+      { _key: blockKey('meta'), val: 'v2.1', label: 'PSYAI' },
+    ],
+
+    // Products
+    productsEyebrow: 'TIGA AI · SATU PERJALANAN',
+    productsHeading: 'Setiap orang punya jalurnya sendiri.',
+    products: [
+      {
+        _key: blockKey('prod'),
+        _type: 'productCard',
+        tag: 'PSYAI',
+        iconName: 'brain',
+        title: 'Asesmen psikologi adaptif.',
+        body: '18 dimensi kepribadian, minat, dan kekuatan. Dipetakan oleh AI dalam 12 menit.',
+        meta: ['12 MIN', '18 DIMENSI', 'EVIDENCE-LED'],
+        variant: 'default',
+        href: '/produk/psyai',
+      },
+      {
+        _key: blockKey('prod'),
+        _type: 'productCard',
+        tag: 'PATH FINDER AI',
+        iconName: 'compass',
+        title: 'Temukan jalur jurusan & profesi.',
+        body: '248 jurusan dan 1,400+ profesi dipetakan ke profil minat & kekuatan Anda.',
+        meta: ['248 JURUSAN', '1,400+ PROFESI'],
+        variant: 'peach',
+        href: '/produk/path-finder-ai',
+      },
+      {
+        _key: blockKey('prod'),
+        _type: 'productCard',
+        tag: 'GOAL ALIGN AI',
+        iconName: 'target',
+        title: 'Selaraskan tujuan personal & karier.',
+        body: 'Untuk profesional dan institusi yang ingin memantau perkembangan tim.',
+        meta: ['BETA · v0.4'],
+        variant: 'navy',
+        href: '/produk/goal-align-ai',
+      },
+    ],
+
+    // Stats
+    statsEyebrow: 'DALAM ANGKA · 2026',
+    statsHeading: 'Hasil yang dapat dijelaskan.\nBukan tebakan.',
+    stats: [
+      { _key: blockKey('stat'), _type: 'stat', label: 'Siswa terverifikasi', value: '62,400', unit: '+', featured: false },
+      { _key: blockKey('stat'), _type: 'stat', label: 'Sekolah mitra', value: '340', unit: '', featured: false },
+      { _key: blockKey('stat'), _type: 'stat', label: 'Akurasi PsyAI', value: '94', unit: '%', featured: true },
+      { _key: blockKey('stat'), _type: 'stat', label: 'Durasi rata-rata', value: '11', unit: ' min', featured: false },
+    ],
+
+    // CTA
+    ctaEyebrow: 'MULAI HARI INI',
+    ctaHeading: '12 menit untuk arah karier yang lebih jelas.',
+    ctaSubheading:
+      'Mulai dengan PsyAI. Hasil langsung tersambung ke Path Finder dan Goal Align — tanpa pengulangan, tanpa tebakan.',
+    ctaCTAPrimary: { label: 'Mulai asesmen →', href: '/demo' },
+    ctaCTASecondary: { label: 'Jadwalkan demo', href: '/demo' },
+
+    // FAQ
+    faqHeading: 'Pertanyaan yang sering diajukan.',
+    faq: [
+      { _key: blockKey('faq'), _type: 'faqItem', q: 'Apa itu Sekil.id?', a: 'Sekil.id adalah platform asesmen psikologi dan pemetaan karier berbasis AI dengan validasi akademik dari Fakultas Psikologi UNJANI. Kami membantu sekolah, kampus, dan perusahaan memahami potensi individu secara ilmiah dan akurat.' },
+      { _key: blockKey('faq'), _type: 'faqItem', q: 'Berapa lama waktu asesmen?', a: 'Tergantung produk yang dipilih: PsyAI (12 menit), Path Finder AI (15 menit), Goal Align AI (20 menit). Hasil tersedia langsung setelah asesmen selesai.' },
+      { _key: blockKey('faq'), _type: 'faqItem', q: 'Apakah hasil asesmen tervalidasi ilmiah?', a: 'Ya. Semua instrumen divalidasi oleh Fakultas Psikologi UNJANI menggunakan standar psikometri internasional (validitas & reliabilitas). Ini bukan sekadar kuis — ini asesmen psikologi yang sesungguhnya.' },
+      { _key: blockKey('faq'), _type: 'faqItem', q: 'Bagaimana cara mulai untuk institusi?', a: 'Jadwalkan demo gratis dengan tim kami. Kami menjelaskan paket yang sesuai, menunjukkan contoh laporan, dan membantu setup. Onboarding biasanya 1–3 hari kerja.' },
+      { _key: blockKey('faq'), _type: 'faqItem', q: 'Apakah data peserta aman?', a: 'Data disimpan di server terenkripsi. Kami mematuhi UU Perlindungan Data Pribadi (UU 27/2022). Data peserta tidak dibagikan ke pihak ketiga tanpa izin institusi.' },
+    ],
+  }
+
+  console.log('\n📝 Home Page singleton')
+  await client.createOrReplace(doc)
+  console.log('   ✓ Created/updated homePage singleton')
+}
+
 // ── Seed: Solution Segments ───────────────────────────────────────────────
 
 async function seedSolutionSegments() {
@@ -1145,8 +1240,9 @@ async function main() {
   console.log('\n─── SOLUTION SEGMENTS ─────────────────────────────────────')
   await seedSolutionSegments()
 
-  // 5. Singletons: navigation, site settings, pricing page
+  // 5. Singletons: home page, navigation, site settings, pricing page
   console.log('\n─── SINGLETONS ────────────────────────────────────────────')
+  await seedHomePage()
   await seedNavigation()
   await seedSiteSettings()
   await seedPricingPage()

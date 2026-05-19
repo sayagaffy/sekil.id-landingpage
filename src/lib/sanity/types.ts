@@ -150,6 +150,48 @@ export interface SanityProductRef {
   price: number
 }
 
+// ── Home Page ────────────────────────────────────────────────────────────────
+
+export interface HomePageProductCard {
+  tag: string
+  iconName?: string
+  title: string
+  body?: string
+  meta?: string[]
+  variant?: 'default' | 'peach' | 'navy'
+  href?: string
+}
+
+export interface HomePageStat {
+  label: string
+  value: string
+  unit?: string
+  featured?: boolean
+}
+
+export interface HomePageData {
+  heroEyebrow?: string
+  heroHeading?: string
+  heroHeadingAccent?: string
+  heroSubheading?: string
+  heroCTAPrimary?: { label?: string; href?: string }
+  heroCTASecondary?: { label?: string; href?: string }
+  heroMeta?: { val: string; label: string }[]
+  productsEyebrow?: string
+  productsHeading?: string
+  products?: HomePageProductCard[]
+  statsEyebrow?: string
+  statsHeading?: string
+  stats?: HomePageStat[]
+  ctaEyebrow?: string
+  ctaHeading?: string
+  ctaSubheading?: string
+  ctaCTAPrimary?: { label?: string; href?: string }
+  ctaCTASecondary?: { label?: string; href?: string }
+  faqHeading?: string
+  faq?: { q: string; a: string }[]
+}
+
 // ── Solution Segment ─────────────────────────────────────────────────────────
 
 /** Shape returned by ALL_SEGMENTS_QUERY / SEGMENT_BY_SLUG_QUERY */

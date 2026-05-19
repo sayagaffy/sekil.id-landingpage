@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Brain, Compass, Target } from 'lucide-react';
+import { Brain, Compass, Target, BarChart2, Zap, Star, type LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { getSiteSchema, getWebSiteSchema } from '@/lib/seo/site-schema';
+import { sanityFetch } from '@/lib/sanity/live';
+import type { HomePageData } from '@/lib/sanity/types';
+import { HOME_PAGE_QUERY } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
   title: 'Asesmen Psikologi & Pemetaan Karier untuk Indonesia | Sekil.id',
@@ -13,10 +16,43 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-const PRODUCTS = [
+// ── Icon map for product cards ────────────────────────────────────────────────
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  brain: Brain,
+  compass: Compass,
+  target: Target,
+  'bar-chart': BarChart2,
+  zap: Zap,
+  star: Star,
+};
+
+function getIcon(name?: string): LucideIcon {
+  return (name && ICON_MAP[name]) ? ICON_MAP[name] : Brain;
+}
+
+// ── Hardcoded defaults (used when Sanity doc is empty / not yet published) ────
+
+const DEFAULT_HERO = {
+  eyebrow: 'SEKIL.ID · ASESMEN AI',
+  heading: 'Pahami diri Anda.',
+  headingAccent: 'Tanpa tebakan.',
+  subheading:
+    'Sekil.id memetakan minat, kekuatan, dan potensi Anda dengan tiga AI khusus — PsyAI, Path Finder AI, dan Goal Align AI. Hasil yang bisa Anda jelaskan ke orang tua, ke wali kelas, ke diri sendiri.',
+  ctaPrimary: { label: 'Mulai asesmen →', href: '/demo' },
+  ctaSecondary: { label: 'Lihat metodologi', href: '/metodologi' },
+  meta: [
+    { val: '+62,000', label: 'SISWA' },
+    { val: '340', label: 'SEKOLAH' },
+    { val: '18', label: 'PROVINSI' },
+    { val: 'v2.1', label: 'PSYAI' },
+  ],
+};
+
+const DEFAULT_PRODUCTS = [
   {
     tag: 'PSYAI',
-    icon: Brain,
+    iconName: 'brain',
     title: 'Asesmen psikologi adaptif.',
     body: '18 dimensi kepribadian, minat, dan kekuatan. Dipetakan oleh AI dalam 12 menit.',
     meta: ['12 MIN', '18 DIMENSI', 'EVIDENCE-LED'],
@@ -25,7 +61,7 @@ const PRODUCTS = [
   },
   {
     tag: 'PATH FINDER AI',
-    icon: Compass,
+    iconName: 'compass',
     title: 'Temukan jalur jurusan & profesi.',
     body: '248 jurusan dan 1,400+ profesi dipetakan ke profil minat & kekuatan Anda.',
     meta: ['248 JURUSAN', '1,400+ PROFESI'],
@@ -34,7 +70,7 @@ const PRODUCTS = [
   },
   {
     tag: 'GOAL ALIGN AI',
-    icon: Target,
+    iconName: 'target',
     title: 'Selaraskan tujuan personal & karier.',
     body: 'Untuk profesional dan institusi yang ingin memantau perkembangan tim.',
     meta: ['BETA · v0.4'],
@@ -43,14 +79,23 @@ const PRODUCTS = [
   },
 ];
 
-const STATS = [
+const DEFAULT_STATS = [
   { label: 'Siswa terverifikasi', value: '62,400', unit: '+' },
   { label: 'Sekolah mitra', value: '340', unit: '' },
   { label: 'Akurasi PsyAI', value: '94', unit: '%', featured: true },
   { label: 'Durasi rata-rata', value: '11', unit: ' min' },
 ];
 
-const FAQ_ITEMS = [
+const DEFAULT_CTA = {
+  eyebrow: 'MULAI HARI INI',
+  heading: '12 menit untuk arah karier yang lebih jelas.',
+  subheading:
+    'Mulai dengan PsyAI. Hasil langsung tersambung ke Path Finder dan Goal Align — tanpa pengulangan, tanpa tebakan.',
+  ctaPrimary: { label: 'Mulai asesmen →', href: '/demo' },
+  ctaSecondary: { label: 'Jadwalkan demo', href: '/demo' },
+};
+
+const DEFAULT_FAQ = [
   {
     q: 'Apa itu Sekil.id?',
     a: 'Sekil.id adalah platform asesmen psikologi dan pemetaan karier berbasis AI dengan validasi akademik dari Fakultas Psikologi UNJANI. Kami membantu sekolah, kampus, dan perusahaan memahami potensi individu secara ilmiah dan akurat.',
@@ -73,7 +118,70 @@ const FAQ_ITEMS = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { data } = await sanityFetch({ query: HOME_PAGE_QUERY });
+  const cms = data as HomePageData | null;
+
+  // ── Merge CMS + defaults ───────────────────────────────────────────────────
+
+  const hero = {
+    eyebrow: cms?.heroEyebrow ?? DEFAULT_HERO.eyebrow,
+    heading: cms?.heroHeading ?? DEFAULT_HERO.heading,
+    headingAccent: cms?.heroHeadingAccent ?? DEFAULT_HERO.headingAccent,
+    subheading: cms?.heroSubheading ?? DEFAULT_HERO.subheading,
+    ctaPrimary: {
+      label: cms?.heroCTAPrimary?.label ?? DEFAULT_HERO.ctaPrimary.label,
+      href: cms?.heroCTAPrimary?.href ?? DEFAULT_HERO.ctaPrimary.href,
+    },
+    ctaSecondary: {
+      label: cms?.heroCTASecondary?.label ?? DEFAULT_HERO.ctaSecondary.label,
+      href: cms?.heroCTASecondary?.href ?? DEFAULT_HERO.ctaSecondary.href,
+    },
+    meta:
+      cms?.heroMeta && cms.heroMeta.length > 0 ? cms.heroMeta : DEFAULT_HERO.meta,
+  };
+
+  const productsEyebrow = cms?.productsEyebrow ?? 'TIGA AI · SATU PERJALANAN';
+  const productsHeading = cms?.productsHeading ?? 'Setiap orang punya jalurnya sendiri.';
+  const products =
+    cms?.products && cms.products.length > 0
+      ? cms.products.map((p) => ({
+          tag: p.tag,
+          iconName: p.iconName ?? 'brain',
+          title: p.title,
+          body: p.body ?? '',
+          meta: p.meta ?? [],
+          variant: (p.variant ?? 'default') as 'default' | 'peach' | 'navy',
+          href: p.href ?? '/produk',
+        }))
+      : DEFAULT_PRODUCTS;
+
+  const statsEyebrow = cms?.statsEyebrow ?? 'DALAM ANGKA · 2026';
+  const statsHeading = cms?.statsHeading ?? 'Hasil yang dapat dijelaskan.\nBukan tebakan.';
+  const stats =
+    cms?.stats && cms.stats.length > 0 ? cms.stats : DEFAULT_STATS;
+
+  const cta = {
+    eyebrow: cms?.ctaEyebrow ?? DEFAULT_CTA.eyebrow,
+    heading: cms?.ctaHeading ?? DEFAULT_CTA.heading,
+    subheading: cms?.ctaSubheading ?? DEFAULT_CTA.subheading,
+    ctaPrimary: {
+      label: cms?.ctaCTAPrimary?.label ?? DEFAULT_CTA.ctaPrimary.label,
+      href: cms?.ctaCTAPrimary?.href ?? DEFAULT_CTA.ctaPrimary.href,
+    },
+    ctaSecondary: {
+      label: cms?.ctaCTASecondary?.label ?? DEFAULT_CTA.ctaSecondary.label,
+      href: cms?.ctaCTASecondary?.href ?? DEFAULT_CTA.ctaSecondary.href,
+    },
+  };
+
+  const faqHeading = cms?.faqHeading ?? 'Pertanyaan yang sering diajukan.';
+  const faqItems =
+    cms?.faq && cms.faq.length > 0 ? cms.faq : DEFAULT_FAQ;
+
+  // Split stats heading on \n for the <br /> rendering
+  const statsHeadingParts = statsHeading.split('\n');
+
   return (
     <>
       <JsonLd data={getSiteSchema()} />
@@ -82,7 +190,7 @@ export default function HomePage() {
         data={{
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
-          mainEntity: FAQ_ITEMS.map((faq) => ({
+          mainEntity: faqItems.map((faq) => ({
             '@type': 'Question',
             name: faq.q,
             acceptedAnswer: { '@type': 'Answer', text: faq.a },
@@ -96,33 +204,29 @@ export default function HomePage() {
           <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-end gap-16 px-8 lg:grid-cols-[7fr_5fr]">
             {/* Left — copy */}
             <div>
-              <p className="eyebrow mb-3">SEKIL.ID · ASESMEN AI</p>
+              <p className="eyebrow mb-3">{hero.eyebrow}</p>
               <h1 className="font-display text-[clamp(48px,7vw,96px)] font-bold leading-[0.92] tracking-[-0.04em] text-ink">
-                Pahami diri Anda.{' '}
-                <em className="not-italic text-blue-500">Tanpa tebakan.</em>
+                {hero.heading}{' '}
+                <em className="not-italic text-blue-500">{hero.headingAccent}</em>
               </h1>
               <p className="mt-6 max-w-[48ch] text-[17px] leading-[1.55] text-ash-700">
-                Sekil.id memetakan minat, kekuatan, dan potensi Anda dengan tiga AI khusus —
-                PsyAI, Path Finder AI, dan Goal Align AI. Hasil yang bisa Anda jelaskan ke orang
-                tua, ke wali kelas, ke diri sendiri.
+                {hero.subheading}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button variant="brand" size="lg" asChild>
-                  <Link href="/demo">Mulai asesmen &rarr;</Link>
+                  <Link href={hero.ctaPrimary.href}>{hero.ctaPrimary.label}</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/metodologi">Lihat metodologi</Link>
+                  <Link href={hero.ctaSecondary.href}>{hero.ctaSecondary.label}</Link>
                 </Button>
               </div>
               {/* Meta strip */}
               <div className="mt-12 flex flex-wrap gap-8 border-t-2 border-ink pt-6">
-                {[
-                  ['+62,000', 'SISWA'],
-                  ['340', 'SEKOLAH'],
-                  ['18', 'PROVINSI'],
-                  ['v2.1', 'PSYAI'],
-                ].map(([val, label]) => (
-                  <div key={label} className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
+                {hero.meta.map(({ val, label }) => (
+                  <div
+                    key={label}
+                    className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700"
+                  >
                     <span className="font-bold text-ink">{val}</span> {label}
                   </div>
                 ))}
@@ -130,8 +234,10 @@ export default function HomePage() {
             </div>
 
             {/* Right — hero art card */}
-            <div className="hidden border-2 border-ink bg-peach-300 p-6 shadow-lg lg:flex lg:flex-col lg:justify-between"
-              style={{ aspectRatio: '4/5' }}>
+            <div
+              className="hidden border-2 border-ink bg-peach-300 p-6 shadow-lg lg:flex lg:flex-col lg:justify-between"
+              style={{ aspectRatio: '4/5' }}
+            >
               <div className="flex items-start justify-between">
                 <p className="eyebrow eyebrow-ink">PSYAI / SAMPEL</p>
                 <span className="border-2 border-ink bg-ink px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-white">
@@ -164,13 +270,13 @@ export default function HomePage() {
           <div className="mx-auto max-w-[1280px] px-8">
             <div className="mb-12 flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
               <div>
-                <p className="eyebrow mb-3">TIGA AI · SATU PERJALANAN</p>
+                <p className="eyebrow mb-3">{productsEyebrow}</p>
                 <h2
                   id="produk-heading"
                   className="font-display text-[clamp(32px,4vw,56px)] font-bold leading-[0.96] tracking-[-0.03em] text-ink"
                   style={{ maxWidth: '18ch' }}
                 >
-                  Setiap orang punya jalurnya sendiri.
+                  {productsHeading}
                 </h2>
               </div>
               <Button variant="ghost" asChild className="shrink-0">
@@ -179,8 +285,8 @@ export default function HomePage() {
             </div>
 
             <div className="grid gap-0 border-2 border-ink sm:grid-cols-3">
-              {PRODUCTS.map((p, i) => {
-                const Icon = p.icon;
+              {products.map((p, i) => {
+                const Icon = getIcon(p.iconName);
                 const isNavy = p.variant === 'navy';
                 const isPeach = p.variant === 'peach';
                 return (
@@ -188,7 +294,7 @@ export default function HomePage() {
                     key={p.tag}
                     className={[
                       'flex flex-col border-b-2 border-ink p-0 sm:border-b-0',
-                      i < 2 ? 'sm:border-r-2 sm:border-ink' : '',
+                      i < products.length - 1 ? 'sm:border-r-2 sm:border-ink' : '',
                       isNavy ? 'bg-navy-900' : isPeach ? 'bg-peach-300' : 'bg-white',
                     ].join(' ')}
                   >
@@ -237,11 +343,7 @@ export default function HomePage() {
                         ))}
                       </div>
                       <div className="mt-6">
-                        <Button
-                          variant={isNavy ? 'peach' : 'default'}
-                          size="sm"
-                          asChild
-                        >
+                        <Button variant={isNavy ? 'peach' : 'default'} size="sm" asChild>
                           <Link href={p.href}>Pelajari &rarr;</Link>
                         </Button>
                       </div>
@@ -254,28 +356,34 @@ export default function HomePage() {
         </section>
 
         {/* ── STAT BAND ────────────────────────────────────────── */}
-        <section className="border-b-2 border-ink bg-navy-900 py-24" aria-labelledby="stats-heading">
+        <section
+          className="border-b-2 border-ink bg-navy-900 py-24"
+          aria-labelledby="stats-heading"
+        >
           <div className="mx-auto max-w-[1280px] px-8">
             <div className="mb-12">
-              <p className="eyebrow eyebrow-peach mb-3">DALAM ANGKA · 2026</p>
+              <p className="eyebrow eyebrow-peach mb-3">{statsEyebrow}</p>
               <h2
                 id="stats-heading"
                 className="font-display text-[clamp(32px,4vw,56px)] font-bold leading-[0.96] tracking-[-0.03em] text-paper"
               >
-                Hasil yang dapat dijelaskan.
-                <br />
-                Bukan tebakan.
+                {statsHeadingParts.map((part, i) => (
+                  <span key={i}>
+                    {part}
+                    {i < statsHeadingParts.length - 1 && <br />}
+                  </span>
+                ))}
               </h2>
             </div>
 
             <div className="grid grid-cols-2 border-2 border-paper md:grid-cols-4">
-              {STATS.map((s, i) => (
+              {stats.map((s, i) => (
                 <div
                   key={s.label}
                   className={[
                     'p-8',
                     s.featured ? 'bg-peach-300' : '',
-                    i < 3 ? 'border-r-2 border-r-paper' : '',
+                    i < stats.length - 1 ? 'border-r-2 border-r-paper' : '',
                     i < 2 ? 'border-b-2 border-b-paper md:border-b-0' : '',
                   ].join(' ')}
                 >
@@ -335,21 +443,22 @@ export default function HomePage() {
 
             {/* Right — copy + CTA */}
             <div>
-              <p className="eyebrow mb-3">MULAI HARI INI</p>
-              <h2 className="font-display text-[clamp(32px,4vw,56px)] font-bold leading-[0.96] tracking-[-0.03em] text-ink"
-                style={{ maxWidth: '20ch' }}>
-                12 menit untuk arah karier yang lebih jelas.
+              <p className="eyebrow mb-3">{cta.eyebrow}</p>
+              <h2
+                className="font-display text-[clamp(32px,4vw,56px)] font-bold leading-[0.96] tracking-[-0.03em] text-ink"
+                style={{ maxWidth: '20ch' }}
+              >
+                {cta.heading}
               </h2>
               <p className="mt-6 max-w-[48ch] text-[17px] leading-[1.55] text-ash-700">
-                Mulai dengan PsyAI. Hasil langsung tersambung ke Path Finder dan Goal Align —
-                tanpa pengulangan, tanpa tebakan.
+                {cta.subheading}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button variant="brand" size="lg" asChild>
-                  <Link href="/demo">Mulai asesmen &rarr;</Link>
+                  <Link href={cta.ctaPrimary.href}>{cta.ctaPrimary.label}</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/demo">Jadwalkan demo</Link>
+                  <Link href={cta.ctaSecondary.href}>{cta.ctaSecondary.label}</Link>
                 </Button>
               </div>
             </div>
@@ -365,12 +474,12 @@ export default function HomePage() {
                 id="faq-heading"
                 className="font-display text-[clamp(32px,4vw,48px)] font-bold leading-[0.96] tracking-[-0.03em] text-ink"
               >
-                Pertanyaan yang sering diajukan.
+                {faqHeading}
               </h2>
             </div>
 
             <div className="divide-y-2 divide-ink border-y-2 border-ink">
-              {FAQ_ITEMS.map((item) => (
+              {faqItems.map((item) => (
                 <details key={item.q} className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-8 py-5 font-display text-lg font-semibold text-ink hover:text-blue-500">
                     {item.q}
@@ -378,9 +487,7 @@ export default function HomePage() {
                       +
                     </span>
                   </summary>
-                  <div className="pb-6 text-[15px] leading-[1.65] text-ash-700">
-                    {item.a}
-                  </div>
+                  <div className="pb-6 text-[15px] leading-[1.65] text-ash-700">{item.a}</div>
                 </details>
               ))}
             </div>

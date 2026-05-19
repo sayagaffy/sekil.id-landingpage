@@ -15,6 +15,9 @@ export { citationBlock } from './blocks/citationBlock'
 // Document types
 export { product } from './documents/product'
 export { solutionSegment } from './documents/solutionSegment'
+
+// Singletons (content pages)
+export { homePage } from './documents/homePage'
 export { author } from './documents/author'
 export { post } from './documents/post'
 export { panduan } from './documents/panduan'

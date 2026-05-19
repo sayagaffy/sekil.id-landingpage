@@ -360,6 +360,41 @@ export const ALL_PRODUCT_SLUGS_QUERY = defineQuery(`
   }
 `)
 
+// ── Home Page ────────────────────────────────────────────────────────────────
+
+export const HOME_PAGE_QUERY = defineQuery(`
+  *[_type == "homePage" && _id == "homePage"][0] {
+    heroEyebrow,
+    heroHeading,
+    heroHeadingAccent,
+    heroSubheading,
+    heroCTAPrimary { label, href },
+    heroCTASecondary { label, href },
+    heroMeta[] { val, label },
+    productsEyebrow,
+    productsHeading,
+    products[] {
+      tag,
+      iconName,
+      title,
+      body,
+      meta,
+      variant,
+      href,
+    },
+    statsEyebrow,
+    statsHeading,
+    stats[] { label, value, unit, featured },
+    ctaEyebrow,
+    ctaHeading,
+    ctaSubheading,
+    ctaCTAPrimary { label, href },
+    ctaCTASecondary { label, href },
+    faqHeading,
+    faq[] { q, a },
+  }
+`)
+
 // ── Solution Segments ───────────────────────────────────────────────────────
 
 export const ALL_SEGMENTS_QUERY = defineQuery(`
