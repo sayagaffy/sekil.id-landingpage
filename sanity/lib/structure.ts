@@ -2,7 +2,7 @@ import type { StructureResolver } from 'sanity/structure'
 
 /**
  * Custom desk structure.
- * - Singletons (siteSettings, pricingPage, navigation) are pinned
+ * - Singletons (homePage, pricingPage, siteSettings, navigation) are pinned
  *   as direct links so editors can never accidentally create duplicates.
  * - Collections are grouped by purpose.
  */
@@ -40,6 +40,20 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
+      // ── Produk & Solusi ────────────────────────────────────────────────
+      S.listItem()
+        .title('Produk & Solusi')
+        .child(
+          S.list()
+            .title('Produk & Solusi')
+            .items([
+              S.documentTypeListItem('product').title('Produk Asesmen'),
+              S.documentTypeListItem('solutionSegment').title('Segmen Solusi'),
+            ])
+        ),
+
+      S.divider(),
+
       // ── Halaman (Singletons) ───────────────────────────────────────────
       S.listItem()
         .title('Halaman')
@@ -47,6 +61,13 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title('Halaman')
             .items([
+              S.listItem()
+                .title('Home Page (/)')
+                .child(
+                  S.document()
+                    .schemaType('homePage')
+                    .documentId('homePage')
+                ),
               S.listItem()
                 .title('Pricing Page (/harga)')
                 .child(
