@@ -5,6 +5,9 @@ import { Container } from '@/components/layout/Container';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 import { SOLUTION_SEGMENTS } from '@/data/solutions';
+import { sanityFetch } from '@/lib/sanity/live';
+import type { SanitySolutionSegment } from '@/lib/sanity/types';
+import { ALL_SEGMENTS_QUERY } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
   title: 'Solusi Asesmen Institusional | Sekil.id',
@@ -20,21 +23,61 @@ export const metadata: Metadata = {
   },
 };
 
+// Maps heroAccent value → Tailwind background class for the card header
 const ACCENT_BG: Record<string, string> = {
-  'untuk-sekolah': 'bg-peach-300',
-  'untuk-perguruan-tinggi': 'bg-blue-500',
-  'untuk-perusahaan': 'bg-navy-900',
-  'untuk-yayasan': 'bg-ink',
+  peach: 'bg-peach-300',
+  blue: 'bg-blue-500',
+  navy: 'bg-navy-900',
+  ink: 'bg-ink',
 };
 
 const ACCENT_TEXT: Record<string, string> = {
-  'untuk-sekolah': 'text-ink',
-  'untuk-perguruan-tinggi': 'text-white',
-  'untuk-perusahaan': 'text-white',
-  'untuk-yayasan': 'text-white',
+  peach: 'text-ink',
+  blue: 'text-white',
+  navy: 'text-white',
+  ink: 'text-white',
 };
 
-export default function SolusiPage() {
+// Fallback: map segment slug → heroAccent for hardcoded data
+const SLUG_TO_ACCENT: Record<string, string> = {
+  'untuk-sekolah': 'peach',
+  'untuk-perguruan-tinggi': 'blue',
+  'untuk-perusahaan': 'navy',
+  'untuk-yayasan': 'ink',
+};
+
+interface SegmentCard {
+  slug: string;
+  name: string;
+  eyebrow: string;
+  subheadline: string;
+  heroAccent: string;
+  recommendedProducts: string[];
+}
+
+export default async function SolusiPage() {
+  const result = await sanityFetch({ query: ALL_SEGMENTS_QUERY });
+  const rawSegments = result.data as SanitySolutionSegment[] | null;
+
+  const segments: SegmentCard[] =
+    rawSegments && rawSegments.length > 0
+      ? rawSegments.map((s) => ({
+          slug: s.slug,
+          name: s.name,
+          eyebrow: s.eyebrow ?? '',
+          subheadline: s.subheadline ?? '',
+          heroAccent: s.heroAccent ?? SLUG_TO_ACCENT[s.slug] ?? 'peach',
+          recommendedProducts: s.recommendedProducts ?? [],
+        }))
+      : SOLUTION_SEGMENTS.map((s) => ({
+          slug: s.slug,
+          name: s.name,
+          eyebrow: s.eyebrow,
+          subheadline: s.subheadline,
+          heroAccent: SLUG_TO_ACCENT[s.slug] ?? 'peach',
+          recommendedProducts: s.recommendedProducts,
+        }));
+
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
     { name: 'Solusi', url: '/solusi' },
@@ -71,7 +114,7 @@ export default function SolusiPage() {
         {/* Hero */}
         <section className="border-b-2 border-ink bg-paper py-16">
           <Container>
-            <p className="eyebrow mb-4">SOLUSI INSTITUSIONAL · 4 SEGMEN</p>
+            <p className="eyebrow mb-4">SOLUSI INSTITUSIONAL · {segments.length} SEGMEN</p>
             <h1 className="font-display text-[clamp(36px,5vw,64px)] font-bold leading-[1.05] tracking-tight text-ink">
               Solusi untuk setiap institusi
             </h1>
@@ -87,53 +130,56 @@ export default function SolusiPage() {
         <section className="border-b-2 border-ink bg-white py-16">
           <Container>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {SOLUTION_SEGMENTS.map((segment) => (
-                <Link
-                  key={segment.slug}
-                  href={`/solusi/${segment.slug}`}
-                  className="group flex flex-col border-2 border-ink transition-shadow hover:shadow-[4px_4px_0_0_#0a1230]"
-                >
-                  <div
-                    className={[
-                      'border-b-2 border-ink p-6',
-                      ACCENT_BG[segment.slug] ?? 'bg-paper',
-                    ].join(' ')}
+              {segments.map((segment) => {
+                const accent = segment.heroAccent;
+                return (
+                  <Link
+                    key={segment.slug}
+                    href={`/solusi/${segment.slug}`}
+                    className="group flex flex-col border-2 border-ink transition-shadow hover:shadow-[4px_4px_0_0_#0a1230]"
                   >
-                    <p
+                    <div
                       className={[
-                        'font-mono text-[10px] uppercase tracking-[0.16em] opacity-70',
-                        ACCENT_TEXT[segment.slug] ?? 'text-ink',
+                        'border-b-2 border-ink p-6',
+                        ACCENT_BG[accent] ?? 'bg-paper',
                       ].join(' ')}
                     >
-                      {segment.eyebrow}
-                    </p>
-                    <h2
-                      className={[
-                        'mt-2 font-display text-xl font-bold',
-                        ACCENT_TEXT[segment.slug] ?? 'text-ink',
-                      ].join(' ')}
-                    >
-                      {segment.name}
-                    </h2>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="text-sm leading-relaxed text-ash-700">{segment.subheadline}</p>
-                    <div className="mt-4 flex flex-wrap gap-1">
-                      {segment.recommendedProducts.slice(0, 3).map((slug) => (
-                        <span
-                          key={slug}
-                          className="border border-ash-300 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ash-700"
-                        >
-                          {slug.replace(/-/g, ' ')}
-                        </span>
-                      ))}
+                      <p
+                        className={[
+                          'font-mono text-[10px] uppercase tracking-[0.16em] opacity-70',
+                          ACCENT_TEXT[accent] ?? 'text-ink',
+                        ].join(' ')}
+                      >
+                        {segment.eyebrow}
+                      </p>
+                      <h2
+                        className={[
+                          'mt-2 font-display text-xl font-bold',
+                          ACCENT_TEXT[accent] ?? 'text-ink',
+                        ].join(' ')}
+                      >
+                        {segment.name}
+                      </h2>
                     </div>
-                    <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-blue-500 transition-colors group-hover:text-ink">
-                      Lihat solusi →
-                    </p>
-                  </div>
-                </Link>
-              ))}
+                    <div className="flex flex-1 flex-col p-6">
+                      <p className="text-sm leading-relaxed text-ash-700">{segment.subheadline}</p>
+                      <div className="mt-4 flex flex-wrap gap-1">
+                        {segment.recommendedProducts.slice(0, 3).map((slug) => (
+                          <span
+                            key={slug}
+                            className="border border-ash-300 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ash-700"
+                          >
+                            {slug.replace(/-/g, ' ')}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-blue-500 transition-colors group-hover:text-ink">
+                        Lihat solusi →
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </Container>
         </section>

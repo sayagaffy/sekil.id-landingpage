@@ -150,6 +150,35 @@ export interface SanityProductRef {
   price: number
 }
 
+// ── Solution Segment ─────────────────────────────────────────────────────────
+
+/** Shape returned by ALL_SEGMENTS_QUERY / SEGMENT_BY_SLUG_QUERY */
+export interface SanitySolutionSegment {
+  _id: string
+  slug: string
+  order: number
+  name: string
+  eyebrow?: string
+  headline: string
+  subheadline?: string
+  heroAccent?: 'peach' | 'blue' | 'navy' | 'ink'
+  problems?: string[]
+  useCases?: { title: string; description?: string }[]
+  /** Dereffed to slug strings via GROQ `recommendedProducts[]->slug.current` */
+  recommendedProducts?: string[]
+  stats?: { value: string; label: string }[]
+  testimonial?: {
+    quote?: string
+    author?: string
+    role?: string
+    institution?: string
+  }
+  faq?: { q: string; a: string }[]
+  showATCDashboard?: boolean
+  seoTitle?: string
+  seoDescription?: string
+}
+
 // ── Pricing Page ─────────────────────────────────────────────────────────────
 
 export interface PricingPillar {

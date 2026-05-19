@@ -14,6 +14,7 @@ export { citationBlock } from './blocks/citationBlock'
 
 // Document types
 export { product } from './documents/product'
+export { solutionSegment } from './documents/solutionSegment'
 export { author } from './documents/author'
 export { post } from './documents/post'
 export { panduan } from './documents/panduan'

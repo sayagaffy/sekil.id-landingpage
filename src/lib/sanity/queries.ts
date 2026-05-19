@@ -360,6 +360,58 @@ export const ALL_PRODUCT_SLUGS_QUERY = defineQuery(`
   }
 `)
 
+// ── Solution Segments ───────────────────────────────────────────────────────
+
+export const ALL_SEGMENTS_QUERY = defineQuery(`
+  *[_type == "solutionSegment"] | order(order asc) {
+    _id,
+    "slug": slug.current,
+    order,
+    name,
+    eyebrow,
+    headline,
+    subheadline,
+    heroAccent,
+    problems,
+    useCases[] { title, description },
+    "recommendedProducts": recommendedProducts[]->slug.current,
+    stats[] { value, label },
+    testimonial { quote, author, role, institution },
+    faq[] { q, a },
+    showATCDashboard,
+    seoTitle,
+    seoDescription,
+  }
+`)
+
+export const SEGMENT_BY_SLUG_QUERY = defineQuery(`
+  *[_type == "solutionSegment" && slug.current == $slug][0] {
+    _id,
+    "slug": slug.current,
+    order,
+    name,
+    eyebrow,
+    headline,
+    subheadline,
+    heroAccent,
+    problems,
+    useCases[] { title, description },
+    "recommendedProducts": recommendedProducts[]->slug.current,
+    stats[] { value, label },
+    testimonial { quote, author, role, institution },
+    faq[] { q, a },
+    showATCDashboard,
+    seoTitle,
+    seoDescription,
+  }
+`)
+
+export const ALL_SEGMENT_SLUGS_QUERY = defineQuery(`
+  *[_type == "solutionSegment" && defined(slug.current)] | order(order asc) {
+    "slug": slug.current
+  }
+`)
+
 // ── Singletons ──────────────────────────────────────────────────────────────
 
 export const PRICING_PAGE_QUERY = defineQuery(`

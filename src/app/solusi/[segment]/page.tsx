@@ -13,19 +13,64 @@ import { SolutionTestimonial } from '@/components/solution/SolutionTestimonial';
 import { SolutionFAQ } from '@/components/solution/SolutionFAQ';
 import { SolutionCTA } from '@/components/solution/SolutionCTA';
 import { SOLUTION_SEGMENTS, getSegmentBySlug } from '@/data/solutions';
+import type { SolutionSegment, SegmentSlug } from '@/data/solutions';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 import { getSolutionWebPageSchema } from '@/lib/seo/solution-schema';
+import { sanityFetch } from '@/lib/sanity/live';
+import type { SanitySolutionSegment } from '@/lib/sanity/types';
+import { SEGMENT_BY_SLUG_QUERY, ALL_SEGMENT_SLUGS_QUERY } from '@/lib/sanity/queries';
 
 interface Props {
   params: { segment: string };
 }
 
-export function generateStaticParams() {
+function sanityToSegment(s: SanitySolutionSegment): SolutionSegment {
+  return {
+    slug: s.slug as SegmentSlug,
+    name: s.name,
+    eyebrow: s.eyebrow ?? '',
+    headline: s.headline,
+    subheadline: s.subheadline ?? '',
+    heroAccent: s.heroAccent ?? 'peach',
+    problems: s.problems ?? [],
+    useCases: (s.useCases ?? []).map((u) => ({
+      title: u.title,
+      description: u.description ?? '',
+    })),
+    recommendedProducts: s.recommendedProducts ?? [],
+    stats: s.stats ?? [],
+    testimonial:
+      s.testimonial?.quote
+        ? {
+            quote: s.testimonial.quote,
+            author: s.testimonial.author ?? '',
+            role: s.testimonial.role ?? '',
+            institution: s.testimonial.institution ?? '',
+          }
+        : undefined,
+    faq: s.faq ?? [],
+    seoTitle: s.seoTitle ?? `${s.name} | Sekil.id`,
+    seoDescription: s.seoDescription ?? '',
+    showATCDashboard: s.showATCDashboard ?? false,
+  };
+}
+
+export async function generateStaticParams() {
+  try {
+    const { data } = await sanityFetch({ query: ALL_SEGMENT_SLUGS_QUERY });
+    const sanitySlugs = data as { slug: string }[] | null;
+    if (sanitySlugs && sanitySlugs.length > 0) return sanitySlugs.map((s) => ({ segment: s.slug }));
+  } catch {}
   return SOLUTION_SEGMENTS.map((s) => ({ segment: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const segment = getSegmentBySlug(params.segment);
+  const { data } = await sanityFetch({
+    query: SEGMENT_BY_SLUG_QUERY,
+    params: { slug: params.segment },
+  });
+  const sanitySegment = data as SanitySolutionSegment | null;
+  const segment = sanitySegment ? sanityToSegment(sanitySegment) : getSegmentBySlug(params.segment);
   if (!segment) return {};
   return {
     title: segment.seoTitle,
@@ -40,8 +85,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SolutionSegmentPage({ params }: Props) {
-  const segment = getSegmentBySlug(params.segment);
+export default async function SolutionSegmentPage({ params }: Props) {
+  const { data } = await sanityFetch({
+    query: SEGMENT_BY_SLUG_QUERY,
+    params: { slug: params.segment },
+  });
+  const sanitySegment = data as SanitySolutionSegment | null;
+  const segment = sanitySegment ? sanityToSegment(sanitySegment) : getSegmentBySlug(params.segment);
   if (!segment) notFound();
 
   const breadcrumb = getBreadcrumbSchema([
