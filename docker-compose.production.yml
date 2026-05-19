@@ -1,0 +1,169 @@
+# docker-compose.production.yml — Sekil.id Landing Page production stack
+#
+# Topology: cloudflared (VM-A) → landingpage:3000 (VM-B, this host)
+# TLS terminates at Cloudflare edge. No Caddy needed.
+#
+# Usage on VM-B:
+#   cp .env.production.example .env.production
+#   $EDITOR .env.production          # fill every CHANGE_ME
+#   docker compose -f docker-compose.production.yml --env-file .env.production up -d
+#
+# Port binding: default 127.0.0.1:3000. Override BIND_ADDR to VM-B's
+# private IP so cloudflared on VM-A can reach it across the private network.
+
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "30m"
+    max-file: "3"
+
+services:
+
+  migrate:
+    # WHY: one-shot service applies pending migrations before landingpage starts.
+    # restart: "no" ensures it doesn't loop on failure — investigate logs instead.
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://sekil.id}
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://app.sekil.id}
+        NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${NEXT_PUBLIC_TURNSTILE_SITE_KEY:-}
+        NEXT_PUBLIC_GA_MEASUREMENT_ID: ${NEXT_PUBLIC_GA_MEASUREMENT_ID:-}
+        NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN:-}
+        NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: ${NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG:-}
+    image: sekil-landingpage:local
+    env_file: .env.production
+    command: ["npx", "prisma", "migrate", "deploy"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    networks: [sekil-landing-net]
+    logging: *default-logging
+
+  landingpage:
+    image: sekil-landingpage:local
+    env_file: .env.production
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          memory: 128M
+    restart: unless-stopped
+    networks: [sekil-landing-net]
+    logging: *default-logging
+
+  postgres:
+    image: postgres:16-alpine
+    command:
+      - postgres
+      - -c
+      - max_connections=50
+      - -c
+      - shared_buffers=128MB
+      - -c
+      - effective_cache_size=384MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - maintenance_work_mem=32MB
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - landingpage-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          memory: 64M
+    restart: unless-stopped
+    networks: [sekil-landing-net]
+    logging: *default-logging
+
+  backup:
+    image: prodrigestivill/postgres-backup-local:16-alpine
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_EXTRA_OPTS: "-Z6 --schema=public --blobs"
+      SCHEDULE: "@daily"
+      BACKUP_KEEP_DAYS: 7
+      BACKUP_KEEP_WEEKS: 4
+      BACKUP_KEEP_MONTHS: 3
+      HEALTHCHECK_PORT: 8080
+      TZ: ${TZ:-Asia/Jakarta}
+    volumes:
+      - ./backups:/backups
+    depends_on:
+      postgres:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+    restart: unless-stopped
+    networks: [sekil-landing-net]
+    logging: *default-logging
+
+  rclone-sync:
+    # WHY: syncs ./backups/ to Backblaze B2 daily so lead data survives home server loss.
+    # rclone/rclone is the official rclone Docker image.
+    image: rclone/rclone:latest
+    environment:
+      RCLONE_CONFIG_B2_TYPE: b2
+      RCLONE_CONFIG_B2_ACCOUNT: ${B2_APPLICATION_KEY_ID}
+      RCLONE_CONFIG_B2_KEY: ${B2_APPLICATION_KEY}
+    volumes:
+      - ./backups:/backups:ro
+    command: >
+      sync /backups/daily
+      b2:${B2_BUCKET_NAME}/daily
+      --transfers=4
+      --b2-hard-delete
+      --log-level=INFO
+    depends_on:
+      - backup
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 64M
+    restart: unless-stopped
+    networks: [sekil-landing-net]
+    logging: *default-logging
+
+networks:
+  sekil-landing-net:
+    driver: bridge
+
+volumes:
+  landingpage-pg-data:
+    driver: local

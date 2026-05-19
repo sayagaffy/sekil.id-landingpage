@@ -1,0 +1,16 @@
+.git
+.gitignore
+.github
+.next
+.env*
+node_modules
+backups
+docs
+*.md
+*.test.*
+*.spec.*
+coverage
+.nyc_output
+.turbo
+.vercel
+.netlify
