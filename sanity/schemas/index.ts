@@ -18,6 +18,7 @@ export { solutionSegment } from './documents/solutionSegment'
 
 // Singletons (content pages)
 export { homePage } from './documents/homePage'
+export { aboutPage } from './documents/aboutPage'
 export { author } from './documents/author'
 export { post } from './documents/post'
 export { panduan } from './documents/panduan'

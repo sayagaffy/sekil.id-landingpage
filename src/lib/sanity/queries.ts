@@ -360,6 +360,33 @@ export const ALL_PRODUCT_SLUGS_QUERY = defineQuery(`
   }
 `)
 
+// ── About Page ───────────────────────────────────────────────────────────────
+
+export const ABOUT_PAGE_QUERY = defineQuery(`
+  *[_type == "aboutPage" && _id == "aboutPage"][0] {
+    heroEyebrow,
+    heroHeading,
+    heroSubheading,
+    storyEyebrow,
+    storyHeading,
+    storyParagraphs,
+    pillarsEyebrow,
+    pillarsHeading,
+    pillars[] { label, partner, description, accentColor },
+    teamEyebrow,
+    teamHeading,
+    teamNote,
+    team[] { name, role, bio },
+    milestonesEyebrow,
+    milestonesHeading,
+    milestones[] { period, event, description },
+    ctaHeading,
+    ctaSubheading,
+    ctaCTAPrimary { label, href },
+    ctaCTASecondary { label, href },
+  }
+`)
+
 // ── Home Page ────────────────────────────────────────────────────────────────
 
 export const HOME_PAGE_QUERY = defineQuery(`

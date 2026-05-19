@@ -69,6 +69,13 @@ export const structure: StructureResolver = (S) =>
                     .documentId('homePage')
                 ),
               S.listItem()
+                .title('About Page (/tentang)')
+                .child(
+                  S.document()
+                    .schemaType('aboutPage')
+                    .documentId('aboutPage')
+                ),
+              S.listItem()
                 .title('Pricing Page (/harga)')
                 .child(
                   S.document()

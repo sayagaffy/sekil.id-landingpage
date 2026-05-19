@@ -150,6 +150,50 @@ export interface SanityProductRef {
   price: number
 }
 
+// ── About Page ───────────────────────────────────────────────────────────────
+
+export interface AboutPagePillar {
+  label: string
+  partner: string
+  description?: string
+  accentColor?: 'peach' | 'blue' | 'navy'
+}
+
+export interface AboutPageTeamMember {
+  name: string
+  role: string
+  bio?: string
+}
+
+export interface AboutPageMilestone {
+  period: string
+  event: string
+  description?: string
+}
+
+export interface AboutPageData {
+  heroEyebrow?: string
+  heroHeading?: string
+  heroSubheading?: string
+  storyEyebrow?: string
+  storyHeading?: string
+  storyParagraphs?: string[]
+  pillarsEyebrow?: string
+  pillarsHeading?: string
+  pillars?: AboutPagePillar[]
+  teamEyebrow?: string
+  teamHeading?: string
+  teamNote?: string
+  team?: AboutPageTeamMember[]
+  milestonesEyebrow?: string
+  milestonesHeading?: string
+  milestones?: AboutPageMilestone[]
+  ctaHeading?: string
+  ctaSubheading?: string
+  ctaCTAPrimary?: { label?: string; href?: string }
+  ctaCTASecondary?: { label?: string; href?: string }
+}
+
 // ── Home Page ────────────────────────────────────────────────────────────────
 
 export interface HomePageProductCard {

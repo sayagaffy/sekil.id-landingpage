@@ -707,6 +707,93 @@ async function seedProducts() {
   console.log('   ✓ 5 product documents seeded')
 }
 
+// ── Seed: About Page singleton ────────────────────────────────────────────
+
+async function seedAboutPage() {
+  const doc = {
+    _id: 'aboutPage',
+    _type: 'aboutPage',
+
+    // Hero
+    heroEyebrow: 'TENTANG SEKIL.ID',
+    heroHeading: 'Memetakan Potensi Indonesia dengan Sains, Bukan Tebakan',
+    heroSubheading:
+      'Sekil.id adalah joint venture Sekil.id × B One Corp untuk membawa asesmen psikologi tervalidasi ke setiap sekolah, kampus, dan perusahaan di Indonesia.',
+
+    // Cerita Kami
+    storyEyebrow: 'CERITA KAMI',
+    storyHeading: 'Mengapa Sekil.id ada?',
+    storyParagraphs: [
+      'Setiap tahun, ratusan ribu siswa Indonesia memilih jurusan kuliah berdasarkan tekanan teman sebaya, ekspektasi orang tua, atau sekadar tren. Hasilnya: angka mismatch jurusan yang tinggi, mahasiswa yang tidak termotivasi, dan tenaga kerja yang tidak sesuai dengan potensi aslinya. Di sisi korporasi, keputusan rekrutmen dan pengembangan talent masih didominasi intuisi subjektif — bukan data yang dapat dipertanggungjawabkan.',
+      'Asesmen psikologi impor yang ada sering kali mahal, tidak dikalibrasi untuk konteks budaya Indonesia, dan laporan yang dihasilkan sulit dipahami tanpa pendampingan psikolog. Sekil.id hadir sebagai solusi: partnership antara Sekil.id dan B One Corp, didukung validasi akademik dari Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI) — menghasilkan asesmen psikologi tervalidasi, terjangkau, dan relevan untuk konteks Indonesia.',
+      'Visi kami adalah mendemokratisasi asesmen psikologi: menjadikan keputusan karier dan pengembangan talent berbasis data yang akurat dan dapat diakses oleh siapa pun — mulai dari siswa di sekolah negeri hingga manajer di perusahaan multinasional. Bukan tebakan. Bukan intuisi. Sains.',
+    ],
+
+    // Tiga Pilar
+    pillarsEyebrow: 'TIGA PILAR SEKIL.ID',
+    pillarsHeading: 'Dibangun di atas tiga fondasi',
+    pillars: [
+      {
+        _key: blockKey('pillar'),
+        _type: 'pillar',
+        label: 'Akademik',
+        partner: 'UNJANI',
+        description: 'Fakultas Psikologi UNJANI memvalidasi metodologi, item bank, dan content. Setiap instrumen dan konten programatik disetujui dosen psikologi tersertifikasi sebelum dipublikasikan.',
+        accentColor: 'peach',
+      },
+      {
+        _key: blockKey('pillar'),
+        _type: 'pillar',
+        label: 'Teknologi',
+        partner: 'Sekil.id',
+        description: 'AI-powered scoring dan narrative generation. Dibangun di atas Next.js dan AI stack modern. Dashboard analytics multi-tenant yang dapat dikelola institusi secara mandiri.',
+        accentColor: 'blue',
+      },
+      {
+        _key: blockKey('pillar'),
+        _type: 'pillar',
+        label: 'Distribusi',
+        partner: 'B One Corp',
+        description: '10+ tahun pengalaman sertifikasi profesional di Indonesia. Sales force enterprise dan jaringan training partner di seluruh kepulauan — yang sudah terbukti dan dipercaya institusi.',
+        accentColor: 'navy',
+      },
+    ],
+
+    // Tim
+    teamEyebrow: 'TIM',
+    teamHeading: 'Tim Inti',
+    teamNote: 'Profil lengkap tim akan dipublikasikan bertahap setelah masing-masing anggota menyetujui penggunaan informasi.',
+    team: [
+      { _key: blockKey('team'), _type: 'teamMember', name: '[Founder Name]', role: 'Founder & CEO', bio: 'Memimpin visi dan strategi Sekil.id dari nol hingga launch.' },
+      { _key: blockKey('team'), _type: 'teamMember', name: '[CTO Name]', role: 'Co-Founder & CTO', bio: 'Bertanggung jawab atas arsitektur platform dan AI stack.' },
+      { _key: blockKey('team'), _type: 'teamMember', name: '[Head of Product Name]', role: 'Head of Product', bio: 'Merancang pengalaman asesmen yang berpusat pada pengguna.' },
+      { _key: blockKey('team'), _type: 'teamMember', name: '[B One Liaison]', role: 'B One Corp Partner', bio: 'Jembatan antara jaringan distribusi B One dan Sekil.id.' },
+      { _key: blockKey('team'), _type: 'teamMember', name: '[UNJANI Academic Lead]', role: 'Academic Lead, UNJANI', bio: 'Dosen Fakultas Psikologi UNJANI, pengawas validasi akademik semua instrumen.' },
+      { _key: blockKey('team'), _type: 'teamMember', name: '[Sales Lead]', role: 'Head of Sales', bio: 'Membangun pipeline institusional dari sekolah hingga korporasi.' },
+    ],
+
+    // Milestones
+    milestonesEyebrow: 'PERJALANAN',
+    milestonesHeading: 'Milestone kami',
+    milestones: [
+      { _key: blockKey('ms'), _type: 'milestone', period: '2024 Q4', event: 'JV Sekil.id × B One Corp signed', description: 'Perjanjian joint venture resmi ditandatangani antara Sekil.id dan B One Corp.' },
+      { _key: blockKey('ms'), _type: 'milestone', period: '2025 Q1', event: 'UNJANI onboard sebagai mitra akademik', description: 'Fakultas Psikologi UNJANI resmi bergabung sebagai mitra validasi akademik instrumen.' },
+      { _key: blockKey('ms'), _type: 'milestone', period: '2025 Q3', event: 'Pilot dengan 3 design partner', description: 'Pilot program bersama Yayasan Pengusaha Pendidikan Jabar, Muhammadiyah, dan Metranet.' },
+      { _key: blockKey('ms'), _type: 'milestone', period: '2026 Q2', event: 'Platform v1.0 live', description: 'sekil.id resmi diluncurkan ke publik dengan 5 produk asesmen tervalidasi.' },
+    ],
+
+    // CTA
+    ctaHeading: 'Mau diskusi langsung dengan tim?',
+    ctaSubheading: 'Kami terbuka untuk kemitraan baru, kolaborasi akademik, dan pertanyaan dari media. Respons dalam 1 hari kerja.',
+    ctaCTAPrimary: { label: 'Jadwalkan Demo →', href: '/demo' },
+    ctaCTASecondary: { label: 'Kontak Lain', href: '/kontak' },
+  }
+
+  console.log('\n📝 About Page singleton')
+  await client.createOrReplace(doc)
+  console.log('   ✓ Created/updated aboutPage singleton')
+}
+
 // ── Seed: Home Page singleton ─────────────────────────────────────────────
 
 async function seedHomePage() {
@@ -1240,8 +1327,9 @@ async function main() {
   console.log('\n─── SOLUTION SEGMENTS ─────────────────────────────────────')
   await seedSolutionSegments()
 
-  // 5. Singletons: home page, navigation, site settings, pricing page
+  // 5. Singletons: about, home page, navigation, site settings, pricing page
   console.log('\n─── SINGLETONS ────────────────────────────────────────────')
+  await seedAboutPage()
   await seedHomePage()
   await seedNavigation()
   await seedSiteSettings()
