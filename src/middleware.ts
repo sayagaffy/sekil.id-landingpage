@@ -13,8 +13,12 @@ function getSecret(): Uint8Array | null {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  const isKeystatic =
-    pathname.startsWith('/keystatic') || pathname.startsWith('/api/keystatic')
+  // Only protect the admin page routes — NOT /api/keystatic/* (those are
+  // Keystatic's internal API, guarded by Keystatic's own GitHub OAuth).
+  // Including the API routes caused the middleware to redirect fetch()
+  // calls to the login page (HTML), which Keystatic tried to JSON.parse
+  // and crashed with "unexpected character at line 1 column 1".
+  const isKeystatic = pathname.startsWith('/keystatic')
 
   if (!isKeystatic) return NextResponse.next()
 
@@ -53,5 +57,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/keystatic/:path*', '/api/keystatic/:path*'],
+  // Only match page routes — API routes use Keystatic's own auth mechanism
+  matcher: ['/keystatic/:path*'],
 }
