@@ -1,8 +1,18 @@
-import { PRODUCTS } from '@/data/products';
-import { VOLUME_TIER_LABELS, calcVolumeDiscount } from '@/lib/pricing/calculator';
+import { calcVolumeDiscount } from '@/lib/pricing/calculator';
 
-export function PricingTable() {
-  const SEAT_SAMPLES = [1, 500, 2000, 5000, 15000, 50000];
+interface PricingTableProps {
+  products: Array<{ slug: string; name: string; duration?: string; price: number }>
+  tiers: Array<{ minSeats: number; discountRate: number; label?: string }>
+}
+
+export function PricingTable({ products, tiers }: PricingTableProps) {
+  const seatSamples = [
+    1,
+    ...tiers
+      .filter((t) => t.minSeats > 0)
+      .map((t) => t.minSeats)
+      .sort((a, b) => a - b),
+  ]
 
   return (
     <section className="border-b-2 border-ink bg-white py-16" aria-labelledby="pricing-table-heading">
@@ -21,14 +31,14 @@ export function PricingTable() {
 
         {/* Tier legend */}
         <div className="mt-8 flex flex-wrap gap-2">
-          {VOLUME_TIER_LABELS.map((tier) => (
+          {tiers.map((tier) => (
             <span
-              key={tier.label}
+              key={tier.label ?? tier.minSeats}
               className="border-2 border-ink px-3 py-1 font-mono text-[10px] uppercase tracking-[0.12em]"
             >
-              {tier.label}
-              {tier.rate > 0 && (
-                <span className="ml-1.5 text-blue-500">–{Math.round(tier.rate * 100)}%</span>
+              {tier.label ?? tier.minSeats}
+              {tier.discountRate > 0 && (
+                <span className="ml-1.5 text-blue-500">–{Math.round(tier.discountRate * 100)}%</span>
               )}
             </span>
           ))}
@@ -45,7 +55,7 @@ export function PricingTable() {
                 <th className="px-4 py-3 text-left font-mono text-[10px] uppercase tracking-[0.14em]">
                   Durasi
                 </th>
-                {SEAT_SAMPLES.map((seats) => (
+                {seatSamples.map((seats) => (
                   <th
                     key={seats}
                     className="px-4 py-3 text-right font-mono text-[10px] uppercase tracking-[0.14em]"
@@ -56,7 +66,7 @@ export function PricingTable() {
               </tr>
             </thead>
             <tbody>
-              {PRODUCTS.map((product, pi) => (
+              {products.map((product, pi) => (
                 <tr
                   key={product.slug}
                   className={pi % 2 === 0 ? 'bg-white' : 'bg-ash-50 bg-opacity-50'}
@@ -65,10 +75,10 @@ export function PricingTable() {
                     {product.name}
                   </td>
                   <td className="border-b border-ash-300 px-4 py-3 font-mono text-[11px] text-ash-700">
-                    {product.duration}
+                    {product.duration ?? ''}
                   </td>
-                  {SEAT_SAMPLES.map((seats) => {
-                    const result = calcVolumeDiscount(seats, product.price);
+                  {seatSamples.map((seats) => {
+                    const result = calcVolumeDiscount(seats, product.price, tiers)
                     const isDiscounted = result.discountRate > 0;
                     return (
                       <td

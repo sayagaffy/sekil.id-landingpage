@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { PRODUCTS } from '@/data/products';
 import { calcVolumeDiscount, formatRupiah } from '@/lib/pricing/calculator';
 
 const SEAT_PRESETS = [100, 250, 500, 1000, 2000, 5000, 15000, 50000];
@@ -12,13 +11,18 @@ function sliderIndexToSeats(index: number): number {
   return SEAT_PRESETS[Math.round(index)] ?? SEAT_PRESETS[0];
 }
 
-export function VolumeCalculator() {
-  const [selectedSlug, setSelectedSlug] = useState(PRODUCTS[0].slug);
+interface VolumeCalculatorProps {
+  products: Array<{ slug: string; name: string; price: number }>
+  tiers: Array<{ minSeats: number; discountRate: number }>
+}
+
+export function VolumeCalculator({ products, tiers }: VolumeCalculatorProps) {
+  const [selectedSlug, setSelectedSlug] = useState(products[0]?.slug ?? '');
   const [sliderIndex, setSliderIndex] = useState(2);
 
   const seats = sliderIndexToSeats(sliderIndex);
-  const product = PRODUCTS.find((p) => p.slug === selectedSlug) ?? PRODUCTS[0];
-  const result = calcVolumeDiscount(seats, product.price);
+  const product = products.find((p) => p.slug === selectedSlug) ?? products[0];
+  const result = calcVolumeDiscount(seats, product?.price ?? 0, tiers);
 
   const discountPct = Math.round(result.discountRate * 100);
 
@@ -49,9 +53,9 @@ export function VolumeCalculator() {
                 onChange={(e) => setSelectedSlug(e.target.value)}
                 className="mt-2 w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-sm text-ink focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                {PRODUCTS.map((p) => (
+                {products.map((p) => (
                   <option key={p.slug} value={p.slug}>
-                    {p.name} — {p.priceDisplay}/seat
+                    {p.name} — Rp {p.price.toLocaleString('id-ID')}/seat
                   </option>
                 ))}
               </select>

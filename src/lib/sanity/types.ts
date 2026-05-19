@@ -130,11 +130,36 @@ export interface PricingFaq {
   a: string
 }
 
+export interface PricingProduct {
+  slug: string
+  name: string
+  duration?: string
+  price: number
+}
+
+export interface PricingVolumeTier {
+  minSeats: number
+  discountRate: number
+  label?: string
+}
+
+export interface PricingBundle {
+  bundleId?: string
+  name: string
+  tagline?: string
+  productSlugs?: string[]
+  bundlePrice: number
+  comingSoon?: boolean
+}
+
 export interface PricingPageData {
   heroEyebrow?: string
-  heroHeading: string
+  heroHeading?: string
   heroSubheading?: string
   heroPillars?: PricingPillar[]
+  products?: PricingProduct[]
+  volumeTiers?: PricingVolumeTier[]
+  bundles?: PricingBundle[]
   faq?: PricingFaq[]
   atcDashboard?: {
     price: string

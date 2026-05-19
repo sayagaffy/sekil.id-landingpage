@@ -9,6 +9,7 @@ import { VolumeCalculator } from '@/components/pricing/VolumeCalculator'
 import { BundleCard } from '@/components/pricing/BundleCard'
 import { ATCDashboardCard } from '@/components/pricing/ATCDashboardCard'
 import { PricingFAQ } from '@/components/pricing/PricingFAQ'
+import { PRODUCTS } from '@/data/products'
 import { BUNDLES } from '@/data/solutions'
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema'
 import { getPricingPageSchema } from '@/lib/seo/pricing-schema'
@@ -80,6 +81,31 @@ const DEFAULT_ATC = {
   ],
 }
 
+const DEFAULT_PRODUCTS = PRODUCTS.map((p) => ({
+  slug: p.slug,
+  name: p.name,
+  duration: p.duration,
+  price: p.price,
+}))
+
+const DEFAULT_VOLUME_TIERS = [
+  { minSeats: 0, discountRate: 0, label: '1–499' },
+  { minSeats: 500, discountRate: 0.15, label: '500–1.999' },
+  { minSeats: 2000, discountRate: 0.25, label: '2.000–4.999' },
+  { minSeats: 5000, discountRate: 0.35, label: '5.000–14.999' },
+  { minSeats: 15000, discountRate: 0.45, label: '15.000–49.999' },
+  { minSeats: 50000, discountRate: 0.5, label: '50.000+' },
+]
+
+const DEFAULT_BUNDLES = BUNDLES.map((b) => ({
+  bundleId: b.id,
+  name: b.name,
+  tagline: b.tagline,
+  productSlugs: b.productSlugs,
+  bundlePrice: b.bundlePrice,
+  comingSoon: b.comingSoon ?? false,
+}))
+
 export default async function HargaPage() {
   const pricingResult = await sanityFetch({ query: PRICING_PAGE_QUERY })
   const sanityData = pricingResult.data as PricingPageData | null
@@ -117,6 +143,36 @@ export default async function HargaPage() {
   const ctaSubheading =
     sanityData?.ctaSubheading ??
     'Tim sales Sekil.id siap membantu menyusun proposal yang sesuai dengan anggaran dan kebutuhan program Anda. Respons dalam 1 hari kerja.'
+
+  // Resolve products (from Sanity or default)
+  const products =
+    sanityData?.products && sanityData.products.length > 0
+      ? sanityData.products
+      : DEFAULT_PRODUCTS
+
+  // Resolve volume tiers
+  const tiers =
+    sanityData?.volumeTiers && sanityData.volumeTiers.length > 0
+      ? sanityData.volumeTiers
+      : DEFAULT_VOLUME_TIERS
+
+  // Resolve bundles
+  const rawBundles =
+    sanityData?.bundles && sanityData.bundles.length > 0
+      ? sanityData.bundles
+      : DEFAULT_BUNDLES
+
+  // Resolve bundle products (join each bundle's productSlugs with products array)
+  const resolvedBundles = rawBundles.map((bundle) => ({
+    bundleId: bundle.bundleId,
+    name: bundle.name,
+    tagline: bundle.tagline ?? '',
+    bundlePrice: bundle.bundlePrice ?? 0,
+    comingSoon: bundle.comingSoon ?? false,
+    includedProducts: (bundle.productSlugs ?? [])
+      .map((slug) => products.find((p) => p.slug === slug))
+      .filter((p): p is NonNullable<typeof p> => p !== undefined),
+  }))
 
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
@@ -189,10 +245,10 @@ export default async function HargaPage() {
         </section>
 
         {/* 1. Pricing table */}
-        <PricingTable />
+        <PricingTable products={products} tiers={tiers} />
 
         {/* 2. Volume calculator */}
-        <VolumeCalculator />
+        <VolumeCalculator products={products} tiers={tiers} />
 
         {/* 3. Bundle offers */}
         <section
@@ -212,8 +268,8 @@ export default async function HargaPage() {
             </p>
 
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {BUNDLES.map((bundle) => (
-                <BundleCard key={bundle.id} bundle={bundle} />
+              {resolvedBundles.map((bundle, i) => (
+                <BundleCard key={bundle.bundleId ?? i} bundle={bundle} />
               ))}
             </div>
           </Container>

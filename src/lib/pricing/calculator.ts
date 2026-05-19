@@ -16,9 +16,22 @@ const VOLUME_TIERS: { minSeats: number; rate: number }[] = [
   { minSeats: 0, rate: 0 },
 ];
 
-export function calcVolumeDiscount(seats: number, basePrice: number): VolumeDiscountResult {
+type CustomTier = { minSeats: number; discountRate: number }
+
+export function calcVolumeDiscount(
+  seats: number,
+  basePrice: number,
+  customTiers?: CustomTier[]
+): VolumeDiscountResult {
+  const activeTiers: { minSeats: number; rate: number }[] = customTiers
+    ? [...customTiers]
+        .sort((a, b) => b.minSeats - a.minSeats)
+        .map((t) => ({ minSeats: t.minSeats, rate: t.discountRate }))
+    : VOLUME_TIERS
   const tier =
-    VOLUME_TIERS.find((t) => seats >= t.minSeats) ?? VOLUME_TIERS[VOLUME_TIERS.length - 1];
+    activeTiers.find((t) => seats >= t.minSeats) ??
+    activeTiers[activeTiers.length - 1] ??
+    { minSeats: 0, rate: 0 }
   const discountedPricePerSeat = Math.round(basePrice * (1 - tier.rate));
   const totalCost = discountedPricePerSeat * seats;
   const savingsAmount = (basePrice - discountedPricePerSeat) * seats;
@@ -32,9 +45,16 @@ export function calcVolumeDiscount(seats: number, basePrice: number): VolumeDisc
   };
 }
 
-export function getDiscountRate(seats: number): number {
+export function getDiscountRate(seats: number, customTiers?: CustomTier[]): number {
+  const activeTiers: { minSeats: number; rate: number }[] = customTiers
+    ? [...customTiers]
+        .sort((a, b) => b.minSeats - a.minSeats)
+        .map((t) => ({ minSeats: t.minSeats, rate: t.discountRate }))
+    : VOLUME_TIERS
   const tier =
-    VOLUME_TIERS.find((t) => seats >= t.minSeats) ?? VOLUME_TIERS[VOLUME_TIERS.length - 1];
+    activeTiers.find((t) => seats >= t.minSeats) ??
+    activeTiers[activeTiers.length - 1] ??
+    { minSeats: 0, rate: 0 }
   return tier.rate;
 }
 

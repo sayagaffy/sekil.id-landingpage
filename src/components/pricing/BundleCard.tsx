@@ -1,17 +1,26 @@
 import Link from 'next/link';
-import { PRODUCTS } from '@/data/products';
-import type { Bundle } from '@/data/solutions';
+
+interface ResolvedProduct {
+  slug: string
+  name: string
+  price: number
+}
+
+interface ResolvedBundle {
+  bundleId?: string
+  name: string
+  tagline: string
+  bundlePrice: number
+  comingSoon?: boolean
+  includedProducts: ResolvedProduct[]
+}
 
 interface BundleCardProps {
-  bundle: Bundle;
+  bundle: ResolvedBundle
 }
 
 export function BundleCard({ bundle }: BundleCardProps) {
-  const includedProducts = bundle.productSlugs
-    .map((slug) => PRODUCTS.find((p) => p.slug === slug))
-    .filter((p): p is NonNullable<typeof p> => p !== undefined);
-
-  const normalPrice = includedProducts.reduce((sum, p) => sum + p.price, 0);
+  const normalPrice = bundle.includedProducts.reduce((sum, p) => sum + p.price, 0);
   const savingsPct =
     normalPrice > 0 ? Math.round(((normalPrice - bundle.bundlePrice) / normalPrice) * 100) : 0;
 
@@ -43,14 +52,14 @@ export function BundleCard({ bundle }: BundleCardProps) {
 
       <div className="flex flex-1 flex-col p-4">
         <ul className="space-y-2">
-          {includedProducts.map((p) => (
+          {bundle.includedProducts.map((p) => (
             <li
               key={p.slug}
               className="flex items-center justify-between border-b border-ash-300 pb-2 last:border-b-0 last:pb-0"
             >
               <span className="text-sm text-ink">{p.name}</span>
               <span className="font-mono text-[11px] text-ash-700 line-through">
-                {p.priceDisplay}
+                Rp {p.price.toLocaleString('id-ID')}
               </span>
             </li>
           ))}
@@ -75,7 +84,7 @@ export function BundleCard({ bundle }: BundleCardProps) {
         </div>
 
         <Link
-          href={`/demo?bundle=${bundle.id}`}
+          href={`/demo?bundle=${bundle.bundleId ?? ''}`}
           className="mt-4 block border-2 border-ink bg-ink px-4 py-2.5 text-center font-mono text-[11px] uppercase tracking-[0.12em] text-paper transition-colors hover:bg-blue-500 hover:border-blue-500"
         >
           Dapatkan Bundle →
