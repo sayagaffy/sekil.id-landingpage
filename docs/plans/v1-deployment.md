@@ -97,7 +97,7 @@ Tiap tahap mengikuti aturan repo:
 - `Dockerfile` (multi-stage: deps → builder → runner, base `node:20-alpine`). Pattern: lihat draft di `docs/deployment.md` section "Dockerfile" (di-relokasi dari `deploy.md` di Tahap 0)
 - `.dockerignore` — exclude `node_modules`, `.next`, `.env*`, `backups/`, `.git`, `docs/`, dll
 - Patch `next.config.mjs`: tambah `output: 'standalone'` di paling atas `nextConfig` object
-- Build args: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_SENTRY_DSN`, `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
+- Build args: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_SENTRY_DSN`, `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`
 
 **Acceptance**:
 - `docker build -t sekil-landingpage:local .` sukses, image < 300MB

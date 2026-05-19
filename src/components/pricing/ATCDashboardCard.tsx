@@ -1,5 +1,9 @@
 import Link from 'next/link';
-import type { PricingAtcDashboard } from '@/lib/cms/pricing-reader';
+export interface PricingAtcDashboard {
+  price: string
+  priceUnit: string
+  features: string[]
+}
 
 interface ATCDashboardCardProps {
   /** ATC data from CMS */

@@ -7,11 +7,11 @@ import { CookieConsent } from '@/components/legal/CookieConsent'
 
 /**
  * Conditionally renders the site Header, Footer, and CookieConsent.
- * Hidden on /keystatic/* routes so the CMS admin area gets a clean shell.
+ * Hidden on /cms/* (Sanity Studio) so the admin area gets a clean shell.
  */
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const isCms = pathname?.startsWith('/keystatic')
+  const isCms = pathname?.startsWith('/cms')
 
   return (
     <>

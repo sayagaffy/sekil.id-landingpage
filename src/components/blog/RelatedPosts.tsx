@@ -1,12 +1,12 @@
-import { PostCard } from './PostCard';
-import type { PostMeta } from '@/lib/mdx/index';
+import { PostCard } from './PostCard'
+import type { PostCardData } from './PostCard'
 
 interface RelatedPostsProps {
-  posts: PostMeta[];
+  posts: PostCardData[]
 }
 
 export function RelatedPosts({ posts }: RelatedPostsProps) {
-  if (posts.length === 0) return null;
+  if (posts.length === 0) return null
 
   return (
     <section className="border-t-2 border-ink pt-12" aria-labelledby="related-heading">
@@ -20,5 +20,5 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
         ))}
       </div>
     </section>
-  );
+  )
 }

@@ -1,11 +1,6 @@
-import createMDX from '@next/mdx';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  pageExtensions: ['ts', 'tsx', 'mdx'],
-  experimental: { mdxRs: false },
-  transpilePackages: ['@keystatic/core', '@keystatic/next'],
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [],
@@ -42,9 +37,4 @@ const nextConfig = {
   },
 };
 
-const withMDX = createMDX({
-  extension: /\.mdx?$/,
-  options: { remarkPlugins: [], rehypePlugins: [] },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;

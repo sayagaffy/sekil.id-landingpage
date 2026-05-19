@@ -57,7 +57,7 @@ async function main() {
   })
   if (existing) {
     console.log(`✓ Superadmin already exists: ${existing.email}`)
-    console.log('  Use the /keystatic/users page to add more users.\n')
+    console.log('  Manage users in Sanity Studio at /cms.\n')
     return
   }
 
@@ -85,7 +85,7 @@ async function main() {
   })
 
   console.log(`\n✅ Superadmin created: ${user.email} (id: ${user.id})`)
-  console.log('   Login at /keystatic/login\n')
+  console.log('   Access Sanity Studio at /cms\n')
 }
 
 main()

@@ -2,17 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronRight } from 'lucide-react';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { PortableText } from '@portabletext/react'
+import type { PortableTextBlock } from '@portabletext/react'
 import { Container } from '@/components/layout/Container';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { PendingReviewBanner } from '@/components/programmatic/PendingReviewBanner';
 import { RelatedPersonalities } from '@/components/programmatic/RelatedPersonalities';
 import { RelatedMajors } from '@/components/programmatic/RelatedMajors';
 import { SalaryChart } from '@/components/programmatic/SalaryChart';
-import { mdxComponents } from '@/components/mdx/components';
+import { portableTextComponents } from '@/components/sanity/PortableTextComponents'
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 import { SITE_URL } from '@/lib/seo/site-schema';
-import { getProgrammaticContent } from '@/lib/mdx/programmatic';
+import { client } from '@/lib/sanity/client'
+import { CAREER_POST_QUERY } from '@/lib/sanity/queries'
+import type { ProgrammaticPost } from '@/lib/sanity/types'
 import { getCareerBySlug, getAllCareerSlugs, type Career } from '@/data/careers';
 
 interface Props {
@@ -27,16 +30,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const career = getCareerBySlug(params.slug);
   if (!career) return {};
 
-  const hasMdx = !!getProgrammaticContent('karier', params.slug);
+  const sanityPost = await client.fetch<ProgrammaticPost | null>(
+    CAREER_POST_QUERY,
+    { slug: params.slug },
+  )
+  const hasContent = !!(sanityPost?.body && sanityPost.body.length > 0)
+
+  const title = sanityPost?.seo?.metaTitle ?? career.seoTitle
+  const description = sanityPost?.seo?.metaDescription ?? career.seoDescription
 
   return {
-    title: career.seoTitle,
-    description: career.seoDescription,
+    title,
+    description,
     alternates: { canonical: `${SITE_URL}/karier/${params.slug}` },
-    robots: hasMdx ? 'index,follow' : 'noindex,nofollow',
+    robots: hasContent ? 'index,follow' : 'noindex,nofollow',
     openGraph: {
-      title: career.seoTitle,
-      description: career.seoDescription,
+      title,
+      description,
       url: `${SITE_URL}/karier/${params.slug}`,
       type: 'article',
     },
@@ -243,11 +253,15 @@ function CareerDataTemplate({ career }: { career: Career }) {
   );
 }
 
-export default function CareerPage({ params }: Props) {
+export default async function CareerPage({ params }: Props) {
   const career = getCareerBySlug(params.slug);
   if (!career) notFound();
 
-  const mdxResult = getProgrammaticContent('karier', params.slug);
+  const sanityPost = await client.fetch<ProgrammaticPost | null>(
+    CAREER_POST_QUERY,
+    { slug: params.slug },
+  )
+  const hasContent = !!(sanityPost?.body && sanityPost.body.length > 0)
 
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
@@ -269,8 +283,7 @@ export default function CareerPage({ params }: Props) {
     },
   };
 
-  if (mdxResult) {
-    const { meta, content } = mdxResult;
+  if (hasContent) {
     return (
       <>
         <JsonLd data={breadcrumb} />
@@ -298,11 +311,14 @@ export default function CareerPage({ params }: Props) {
           <div className="border-b-2 border-ink bg-white py-12">
             <Container>
               <article className="prose-none mx-auto max-w-3xl">
-                <MDXRemote source={content} components={mdxComponents} />
+                <PortableText
+                  value={sanityPost!.body as PortableTextBlock[]}
+                  components={portableTextComponents}
+                />
               </article>
-              {meta.reviewedBy && (
+              {sanityPost!.reviewedBy && (
                 <p className="mx-auto mt-8 max-w-3xl font-mono text-[11px] text-ash-700">
-                  Direview oleh: {meta.reviewedBy}
+                  Direview oleh: {sanityPost!.reviewedBy}
                 </p>
               )}
             </Container>

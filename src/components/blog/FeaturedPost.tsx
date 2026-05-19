@@ -1,21 +1,43 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import type { PostMeta } from '@/lib/mdx/index';
+import Link from 'next/link'
+import Image from 'next/image'
+import { urlFor } from '@/lib/sanity/image'
+import type { PostCardData } from './PostCard'
+import type { SanityImage } from '@/lib/sanity/types'
 
 interface FeaturedPostProps {
-  post: PostMeta;
+  post: PostCardData
+}
+
+function resolveCoverImageUrl(
+  coverImage: string | SanityImage | null | undefined,
+): string | null {
+  if (!coverImage) return null
+  if (typeof coverImage === 'string') return coverImage
+  if (coverImage.asset?._ref) {
+    return urlFor(coverImage).width(1200).height(675).fit('crop').auto('format').url()
+  }
+  return null
+}
+
+function resolveAuthorName(author: string | { name: string } | null | undefined): string {
+  if (!author) return ''
+  if (typeof author === 'string') return author
+  return author.name
 }
 
 export function FeaturedPost({ post }: FeaturedPostProps) {
+  const coverUrl = resolveCoverImageUrl(post.coverImage)
+  const authorName = resolveAuthorName(post.author)
+
   return (
     <article className="group border-2 border-ink transition-shadow hover:shadow-[6px_6px_0_0_#0a1230]">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Cover image */}
         <Link href={`/blog/${post.slug}`} tabIndex={-1} aria-hidden>
           <div className="relative aspect-video h-full min-h-[240px] overflow-hidden border-b-2 border-ink bg-ash-300/30 lg:border-b-0 lg:border-r-2">
-            {post.coverImage ? (
+            {coverUrl ? (
               <Image
-                src={post.coverImage}
+                src={coverUrl}
                 alt={post.title}
                 fill
                 priority
@@ -42,7 +64,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
           </div>
 
           <h2 className="mt-4 font-display text-[clamp(20px,3vw,32px)] font-bold leading-snug text-ink">
-            <Link href={`/blog/${post.slug}`} className="hover:text-blue-500 transition-colors">
+            <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-blue-500">
               {post.title}
             </Link>
           </h2>
@@ -51,11 +73,19 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
 
           <div className="mt-6 flex items-center justify-between border-t-2 border-ink pt-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-ash-700">
-              {post.author}{' · '}{post.readingTime}
+              {authorName && <>{authorName} · </>}
+              {post.readingTime && <>{post.readingTime} · </>}
+              <time dateTime={post.publishedAt}>
+                {new Date(post.publishedAt).toLocaleDateString('id-ID', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </time>
             </p>
             <Link
               href={`/blog/${post.slug}`}
-              className="font-mono text-[11px] uppercase tracking-[0.12em] text-blue-500 hover:text-ink transition-colors"
+              className="font-mono text-[11px] uppercase tracking-[0.12em] text-blue-500 transition-colors hover:text-ink"
             >
               Baca →
             </Link>
@@ -63,5 +93,5 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
         </div>
       </div>
     </article>
-  );
+  )
 }

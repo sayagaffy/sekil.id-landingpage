@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
+import { draftMode } from 'next/headers';
+import { VisualEditing } from 'next-sanity'
 import '@/styles/globals.css';
 import { SiteChrome } from '@/components/layout/SiteChrome';
+import { SanityLive } from '@/lib/sanity/live';
+import { DisableDraftMode } from '@/components/sanity/DisableDraftMode';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -58,7 +62,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { isEnabled: isDraftMode } = await draftMode()
+
   return (
     <html
       lang="id"
@@ -74,6 +80,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteChrome>
           {children}
         </SiteChrome>
+        {/* Sanity Live Content API — enables real-time updates in Studio preview */}
+        <SanityLive />
+        {/* Visual editing overlays — only active when Presentation tool is open */}
+        {isDraftMode && (
+          <>
+            <VisualEditing />
+            <DisableDraftMode />
+          </>
+        )}
         {GA_ID && (
           <>
             <Script

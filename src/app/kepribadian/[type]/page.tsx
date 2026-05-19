@@ -2,16 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronRight } from 'lucide-react';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { PortableText } from '@portabletext/react'
+import type { PortableTextBlock } from '@portabletext/react'
 import { Container } from '@/components/layout/Container';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { PendingReviewBanner } from '@/components/programmatic/PendingReviewBanner';
 import { RelatedCareers } from '@/components/programmatic/RelatedCareers';
 import { RelatedMajors } from '@/components/programmatic/RelatedMajors';
-import { mdxComponents } from '@/components/mdx/components';
+import { portableTextComponents } from '@/components/sanity/PortableTextComponents'
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 import { SITE_URL } from '@/lib/seo/site-schema';
-import { getProgrammaticContent } from '@/lib/mdx/programmatic';
+import { client } from '@/lib/sanity/client'
+import { PERSONALITY_POST_QUERY } from '@/lib/sanity/queries'
+import type { ProgrammaticPost } from '@/lib/sanity/types'
 import {
   getPersonalityBySlug,
   getAllPersonalitySlugs,
@@ -30,16 +33,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const personality = getPersonalityBySlug(params.type);
   if (!personality) return {};
 
-  const hasMdx = !!getProgrammaticContent('kepribadian', params.type);
+  const sanityPost = await client.fetch<ProgrammaticPost | null>(
+    PERSONALITY_POST_QUERY,
+    { slug: params.type },
+  )
+  const hasContent = !!(sanityPost?.body && sanityPost.body.length > 0)
+
+  const title = sanityPost?.seo?.metaTitle ?? personality.seoTitle
+  const description = sanityPost?.seo?.metaDescription ?? personality.seoDescription
 
   return {
-    title: personality.seoTitle,
-    description: personality.seoDescription,
+    title,
+    description,
     alternates: { canonical: `${SITE_URL}/kepribadian/${params.type}` },
-    robots: hasMdx ? 'index,follow' : 'noindex,nofollow',
+    robots: hasContent ? 'index,follow' : 'noindex,nofollow',
     openGraph: {
-      title: personality.seoTitle,
-      description: personality.seoDescription,
+      title,
+      description,
       url: `${SITE_URL}/kepribadian/${params.type}`,
       type: 'article',
     },
@@ -241,11 +251,15 @@ function PersonalityDataTemplate({ personality }: { personality: PersonalityType
   );
 }
 
-export default function PersonalityTypePage({ params }: Props) {
+export default async function PersonalityTypePage({ params }: Props) {
   const personality = getPersonalityBySlug(params.type);
   if (!personality) notFound();
 
-  const mdxResult = getProgrammaticContent('kepribadian', params.type);
+  const sanityPost = await client.fetch<ProgrammaticPost | null>(
+    PERSONALITY_POST_QUERY,
+    { slug: params.type },
+  )
+  const hasContent = !!(sanityPost?.body && sanityPost.body.length > 0)
 
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
@@ -267,8 +281,7 @@ export default function PersonalityTypePage({ params }: Props) {
     },
   };
 
-  if (mdxResult) {
-    const { meta, content } = mdxResult;
+  if (hasContent) {
     return (
       <>
         <JsonLd data={breadcrumb} />
@@ -297,11 +310,14 @@ export default function PersonalityTypePage({ params }: Props) {
           <div className="border-b-2 border-ink bg-white py-12">
             <Container>
               <article className="prose-none mx-auto max-w-3xl">
-                <MDXRemote source={content} components={mdxComponents} />
+                <PortableText
+                  value={sanityPost!.body as PortableTextBlock[]}
+                  components={portableTextComponents}
+                />
               </article>
-              {meta.reviewedBy && (
+              {sanityPost!.reviewedBy && (
                 <p className="mx-auto mt-8 max-w-3xl font-mono text-[11px] text-ash-700">
-                  Direview oleh: {meta.reviewedBy}
+                  Direview oleh: {sanityPost!.reviewedBy}
                 </p>
               )}
             </Container>

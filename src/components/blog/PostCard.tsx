@@ -1,20 +1,60 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import type { PostMeta } from '@/lib/mdx/index';
+import Link from 'next/link'
+import Image from 'next/image'
+import { urlFor } from '@/lib/sanity/image'
+import type { SanityImage } from '@/lib/sanity/types'
+
+/**
+ * Unified PostCard data shape that works with both:
+ *  - MDX-sourced posts (legacy) — coverImage is a string URL
+ *  - Sanity-sourced posts — coverImage is a SanityImage object
+ */
+export interface PostCardData {
+  slug: string
+  title: string
+  description: string
+  publishedAt: string
+  category: string
+  tags?: string[]
+  /** String URL (MDX) or Sanity image object */
+  coverImage?: string | SanityImage | null
+  /** Display name string (MDX) or Author object with name */
+  author?: string | { name: string } | null
+  readingTime?: string
+}
 
 interface PostCardProps {
-  post: PostMeta;
+  post: PostCardData
+}
+
+function resolveCoverImageUrl(
+  coverImage: string | SanityImage | null | undefined,
+): string | null {
+  if (!coverImage) return null
+  if (typeof coverImage === 'string') return coverImage
+  if (coverImage.asset?._ref) {
+    return urlFor(coverImage).width(600).height(338).fit('crop').auto('format').url()
+  }
+  return null
+}
+
+function resolveAuthorName(author: string | { name: string } | null | undefined): string {
+  if (!author) return ''
+  if (typeof author === 'string') return author
+  return author.name
 }
 
 export function PostCard({ post }: PostCardProps) {
+  const coverUrl = resolveCoverImageUrl(post.coverImage)
+  const authorName = resolveAuthorName(post.author)
+
   return (
     <article className="group flex flex-col border-2 border-ink transition-shadow hover:shadow-[4px_4px_0_0_#0a1230]">
       {/* Cover image */}
       <Link href={`/blog/${post.slug}`} tabIndex={-1} aria-hidden>
         <div className="relative aspect-video w-full overflow-hidden border-b-2 border-ink bg-ash-300/30">
-          {post.coverImage ? (
+          {coverUrl ? (
             <Image
-              src={post.coverImage}
+              src={coverUrl}
               alt={post.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -36,12 +76,14 @@ export function PostCard({ post }: PostCardProps) {
           <span className="border-2 border-ink bg-peach-300 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-ink">
             {post.category}
           </span>
-          <span className="font-mono text-[10px] text-ash-700">{post.readingTime}</span>
+          {post.readingTime && (
+            <span className="font-mono text-[10px] text-ash-700">{post.readingTime}</span>
+          )}
         </div>
 
         {/* Title */}
         <h3 className="mt-3 font-display text-lg font-bold leading-snug text-ink line-clamp-2">
-          <Link href={`/blog/${post.slug}`} className="hover:text-blue-500 transition-colors">
+          <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-blue-500">
             {post.title}
           </Link>
         </h3>
@@ -54,8 +96,7 @@ export function PostCard({ post }: PostCardProps) {
         {/* Author + date */}
         <div className="mt-4 border-t-2 border-ink pt-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-ash-700">
-            {post.author}
-            {' · '}
+            {authorName && <>{authorName} · </>}
             <time dateTime={post.publishedAt}>
               {new Date(post.publishedAt).toLocaleDateString('id-ID', {
                 day: 'numeric',
@@ -67,5 +108,5 @@ export function PostCard({ post }: PostCardProps) {
         </div>
       </div>
     </article>
-  );
+  )
 }

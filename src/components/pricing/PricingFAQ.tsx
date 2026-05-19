@@ -7,7 +7,10 @@ import {
 import { JsonLd } from '@/components/seo/JsonLd';
 import { getPricingFAQSchema } from '@/lib/seo/pricing-schema';
 import { Container } from '@/components/layout/Container';
-import type { PricingFaqItem } from '@/lib/cms/pricing-reader';
+export interface PricingFaqItem {
+  q: string
+  a: string
+}
 
 interface PricingFAQProps {
   /** FAQ items from CMS — falls back to empty array if omitted */

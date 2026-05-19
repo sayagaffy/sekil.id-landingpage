@@ -1,35 +1,48 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { PortableText } from '@portabletext/react'
+import type { PortableTextBlock } from '@portabletext/react'
 import { Container } from '@/components/layout/Container'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { AuthorBio } from '@/components/blog/AuthorBio'
 import { RelatedPosts } from '@/components/blog/RelatedPosts'
-import { mdxComponents } from '@/components/mdx/components'
+import { SanityImage } from '@/components/sanity/SanityImage'
+import { portableTextComponents } from '@/components/sanity/PortableTextComponents'
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema'
 import { SITE_URL, SITE_NAME } from '@/lib/seo/site-schema'
-import { getPostBySlug, getAllPostSlugs, getRelatedPosts } from '@/lib/mdx/index'
+import { client } from '@/lib/sanity/client'
+import { sanityFetch } from '@/lib/sanity/live'
+import type { PostFull } from '@/lib/sanity/types'
+import {
+  POST_BY_SLUG_QUERY,
+  ALL_POST_SLUGS_QUERY,
+  RELATED_POSTS_QUERY,
+} from '@/lib/sanity/queries'
 
 interface Props {
   params: { slug: string }
 }
 
-export function generateStaticParams() {
-  return getAllPostSlugs().map((slug) => ({ slug }))
+export async function generateStaticParams() {
+  // Use raw client (not sanityFetch) — generateStaticParams runs at build time,
+  // outside a request scope, so draftMode() cannot be called here.
+  const slugs = await client.fetch<Array<{ slug: string | null }>>(ALL_POST_SLUGS_QUERY)
+  return (slugs ?? []).map((item) => ({ slug: item.slug ?? '' }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const result = getPostBySlug(params.slug)
-  if (!result) return {}
-  const { meta } = result
-  const title = meta.seo?.metaTitle ?? `${meta.title} | Sekil.id Blog`
-  const description = meta.seo?.metaDescription ?? meta.description
-  const canonical = meta.seo?.canonical ?? `${SITE_URL}/blog/${meta.slug}`
-  const robotsDirective = meta.seo?.robots ?? 'index, follow'
-  const [robotsIndex, robotsFollow] = robotsDirective.split(',').map((s) => s.trim())
+  const result = await sanityFetch({ query: POST_BY_SLUG_QUERY, params: { slug: params.slug } })
+  const post = result.data as PostFull | null
+  if (!post) return {}
+
+  const title = post.seo?.metaTitle ?? `${post.title} | Sekil.id Blog`
+  const description = post.seo?.metaDescription ?? post.description
+  const canonical = post.seo?.canonical ?? `${SITE_URL}/blog/${post.slug}`
+  const robotsDirective = post.seo?.robots ?? 'index, follow'
+  const [robotsIndex, robotsFollow] = robotsDirective.split(',').map((s: string) => s.trim())
+
   return {
     title,
     description,
@@ -38,83 +51,99 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: `${SITE_URL}/blog/${meta.slug}`,
+      url: canonical,
       type: 'article',
-      publishedTime: meta.publishedAt,
-      modifiedTime: meta.modifiedAt,
-      authors: [meta.author],
-      ...(meta.coverImage ? { images: [meta.coverImage] } : {}),
+      publishedTime: post.publishedAt ?? undefined,
+      modifiedTime: post.modifiedAt ?? undefined,
+      authors: post.author?.name ? [post.author.name] : undefined,
     },
     twitter: { card: 'summary_large_image', title, description },
   }
 }
 
-function extractHeadings(content: string): { id: string; text: string }[] {
-  const headingRegex = /^## (.+)$/gm
-  const headings: { id: string; text: string }[] = []
-  let match
-  while ((match = headingRegex.exec(content)) !== null) {
-    const text = match[1]
-    const id = text
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '')
-      .replace(/\s+/g, '-')
-    headings.push({ id, text })
-  }
-  return headings
+/** Extract TOC headings from Portable Text blocks using the block _key as anchor id */
+function extractHeadings(
+  body: PortableTextBlock[] | undefined,
+): { id: string; text: string }[] {
+  if (!body) return []
+  return body
+    .filter(
+      (block): block is PortableTextBlock & { _key: string; style: string } =>
+        block._type === 'block' &&
+        ['h2', 'h3'].includes((block as { style?: string }).style ?? ''),
+    )
+    .map((block) => {
+      const text = (
+        (block as { children?: Array<{ text?: string }> }).children ?? []
+      )
+        .map((child) => child.text ?? '')
+        .join('')
+      return { id: block._key, text }
+    })
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const result = getPostBySlug(params.slug)
-  if (!result) notFound()
+export default async function BlogPostPage({ params }: Props) {
+  const postResult = await sanityFetch({
+    query: POST_BY_SLUG_QUERY,
+    params: { slug: params.slug },
+  })
+  const post = postResult.data as PostFull | null
 
-  const { meta, content } = result
-  const related = getRelatedPosts(meta.slug, meta.category, 3)
-  const headings = extractHeadings(content)
-  const faq = meta.aeo?.faq ?? []
-  const citations = (meta.aeo?.citations ?? []).filter((c) => c.text)
-  const keyTakeaways = meta.geo?.keyTakeaways ?? []
-  const tldr = meta.geo?.tldr
+  if (!post) notFound()
+
+  const relatedResult = await sanityFetch({
+    query: RELATED_POSTS_QUERY,
+    params: { currentSlug: params.slug, category: post.category ?? '', limit: 3 },
+  })
+  const related = relatedResult.data as PostFull[] | null
+
+  const headings = extractHeadings(post.body as PortableTextBlock[] | undefined)
+  const faq = post.aeo?.faq ?? []
+  const citations = (post.aeo?.citations ?? []).filter((c) => Boolean(c.text))
+  const keyTakeaways = post.geo?.keyTakeaways ?? []
+  const tldr = post.geo?.tldr
 
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
     { name: 'Blog', url: '/blog' },
-    { name: meta.category, url: '/blog' },
-    { name: meta.title, url: `/blog/${meta.slug}` },
+    { name: post.category ?? 'Blog', url: post.category ? `/blog/kategori/${post.category}` : '/blog' },
+    { name: post.title, url: `/blog/${post.slug}` },
   ])
 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    '@id': `${SITE_URL}/blog/${meta.slug}`,
-    headline: meta.title,
-    description: meta.description,
-    url: `${SITE_URL}/blog/${meta.slug}`,
-    datePublished: meta.publishedAt,
-    dateModified: meta.modifiedAt,
-    author: {
-      '@type': 'Person',
-      name: meta.author,
-      ...(meta.authorCredential ? { jobTitle: meta.authorCredential } : {}),
-    },
+    '@id': `${SITE_URL}/blog/${post.slug}`,
+    headline: post.title,
+    description: post.description,
+    url: `${SITE_URL}/blog/${post.slug}`,
+    datePublished: post.publishedAt,
+    dateModified: post.modifiedAt,
+    author: post.author
+      ? {
+          '@type': 'Person',
+          name: post.author.name,
+          ...(post.author.slug ? { url: `${SITE_URL}/penulis/${post.author.slug}` } : {}),
+          ...(post.author.credential ? { jobTitle: post.author.credential } : {}),
+        }
+      : undefined,
     publisher: {
       '@type': 'Organization',
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
     },
-    keywords: meta.tags.join(', '),
-    articleSection: meta.category,
-    ...(meta.coverImage ? { image: meta.coverImage } : {}),
-    ...(meta.reviewedBy
+    keywords: post.tags?.join(', '),
+    articleSection: post.category,
+    ...(post.reviewedBy
       ? {
           reviewedBy: {
             '@type': 'Person',
-            name: meta.reviewedBy,
-            ...(meta.reviewedByCredential ? { jobTitle: meta.reviewedByCredential } : {}),
+            name: post.reviewedBy.name,
+            ...(post.reviewedBy.credential ? { jobTitle: post.reviewedBy.credential } : {}),
           },
         }
       : {}),
-    ...(meta.aeo?.quotableSummary ? { abstract: meta.aeo.quotableSummary } : {}),
+    ...(post.aeo?.quotableSummary ? { abstract: post.aeo.quotableSummary } : {}),
   }
 
   const faqSchema =
@@ -125,10 +154,7 @@ export default function BlogPostPage({ params }: Props) {
           mainEntity: faq.map((item) => ({
             '@type': 'Question',
             name: item.question,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: item.answer,
-            },
+            acceptedAnswer: { '@type': 'Answer', text: item.answer },
           })),
         }
       : null
@@ -163,7 +189,7 @@ export default function BlogPostPage({ params }: Props) {
                 </li>
                 <li>
                   <span className="line-clamp-1 text-ink" aria-current="page">
-                    {meta.title}
+                    {post.title}
                   </span>
                 </li>
               </ol>
@@ -173,25 +199,30 @@ export default function BlogPostPage({ params }: Props) {
 
         {/* 2 — Hero */}
         <header className="border-b-2 border-ink bg-paper">
-          {meta.coverImage && (
+          {post.coverImage && (
             <div className="relative aspect-[21/9] w-full border-b-2 border-ink">
-              <Image
-                src={meta.coverImage}
-                alt={meta.title}
+              <SanityImage
+                image={post.coverImage}
+                alt={post.title}
                 fill
                 priority
-                className="object-cover"
                 sizes="100vw"
+                className="object-cover"
               />
             </div>
           )}
           <Container>
             <div className="py-10">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="border-2 border-ink bg-peach-300 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-ink">
-                  {meta.category}
-                </span>
-                {meta.tags.slice(0, 3).map((tag) => (
+                {post.category && (
+                  <Link
+                    href={`/blog/kategori/${post.category}`}
+                    className="border-2 border-ink bg-peach-300 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-ink transition-colors hover:bg-peach-400"
+                  >
+                    {post.category}
+                  </Link>
+                )}
+                {post.tags?.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
                     className="border border-ash-300 px-2 py-0.5 font-mono text-[10px] text-ash-700"
@@ -201,24 +232,37 @@ export default function BlogPostPage({ params }: Props) {
                 ))}
               </div>
               <h1 className="mt-4 font-display text-[clamp(28px,4vw,52px)] font-bold leading-tight text-ink">
-                {meta.title}
+                {post.title}
               </h1>
               <div className="mt-4 flex flex-wrap items-center gap-4 font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
-                <span>{meta.author}</span>
-                <span aria-hidden="true">·</span>
-                <time dateTime={meta.publishedAt}>
-                  {new Date(meta.publishedAt).toLocaleDateString('id-ID', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })}
+                {post.author && (
+                  <>
+                    {post.author.slug ? (
+                      <Link
+                        href={`/penulis/${post.author.slug}`}
+                        className="transition-colors hover:text-blue-500"
+                      >
+                        {post.author.name}
+                      </Link>
+                    ) : (
+                      <span>{post.author.name}</span>
+                    )}
+                    <span aria-hidden="true">·</span>
+                  </>
+                )}
+                <time dateTime={post.publishedAt ?? ''}>
+                  {post.publishedAt
+                    ? new Date(post.publishedAt).toLocaleDateString('id-ID', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })
+                    : ''}
                 </time>
-                <span aria-hidden="true">·</span>
-                <span>{meta.readingTime}</span>
-                {meta.reviewedBy && (
+                {post.reviewedBy && (
                   <>
                     <span aria-hidden="true">·</span>
-                    <span>Direview: {meta.reviewedBy}</span>
+                    <span>Direview: {post.reviewedBy.name}</span>
                   </>
                 )}
               </div>
@@ -251,7 +295,10 @@ export default function BlogPostPage({ params }: Props) {
                 <ul className="grid gap-2 sm:grid-cols-2">
                   {keyTakeaways.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-ash-700">
-                      <span className="mt-1.5 h-2 w-2 shrink-0 border-2 border-blue-500 bg-blue-500/20" aria-hidden />
+                      <span
+                        className="mt-1.5 h-2 w-2 shrink-0 border-2 border-blue-500 bg-blue-500/20"
+                        aria-hidden
+                      />
                       {item}
                     </li>
                   ))}
@@ -291,9 +338,16 @@ export default function BlogPostPage({ params }: Props) {
                 </aside>
               )}
 
-              {/* MDX content */}
-              <article className="prose-none min-w-0 max-w-prose" aria-label={meta.title}>
-                <MDXRemote source={content} components={mdxComponents} />
+              {/* Article body */}
+              <article className="prose-none min-w-0 max-w-prose" aria-label={post.title}>
+                {post.body ? (
+                  <PortableText
+                    value={post.body as PortableTextBlock[]}
+                    components={portableTextComponents}
+                  />
+                ) : (
+                  <p className="font-mono text-[11px] text-ash-500">Konten segera tersedia.</p>
+                )}
               </article>
             </div>
           </Container>
@@ -301,7 +355,10 @@ export default function BlogPostPage({ params }: Props) {
 
         {/* 6 — FAQ section */}
         {faq.length > 0 && (
-          <section className="border-b-2 border-ink bg-paper py-12" aria-labelledby="faq-heading">
+          <section
+            className="border-b-2 border-ink bg-paper py-12"
+            aria-labelledby="faq-heading"
+          >
             <Container>
               <div className="max-w-3xl">
                 <h2
@@ -356,27 +413,29 @@ export default function BlogPostPage({ params }: Props) {
           </section>
         )}
 
-        {/* 8+9 — Author bio + reviewer bio */}
+        {/* 8 — Author bio */}
         <div className="border-b-2 border-ink bg-paper py-12">
           <Container>
             <div className="max-w-3xl">
-              <AuthorBio meta={meta} />
+              <AuthorBio
+                author={post.author}
+                reviewedBy={post.reviewedBy}
+                authorCredential={post.authorCredential ?? undefined}
+              />
             </div>
           </Container>
         </div>
 
-        {/* 10 — Related posts */}
-        {related.length > 0 && (
+        {/* 9 — Related posts */}
+        {related && related.length > 0 && (
           <div className="border-b-2 border-ink bg-paper py-12">
             <Container>
-              <div className="max-w-3xl">
-                <RelatedPosts posts={related} />
-              </div>
+              <RelatedPosts posts={related} />
             </Container>
           </div>
         )}
 
-        {/* 11 — CTA */}
+        {/* 10 — CTA */}
         <section className="bg-blue-500 py-14">
           <Container>
             <div className="mx-auto max-w-2xl text-center">
