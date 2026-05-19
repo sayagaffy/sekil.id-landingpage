@@ -12,6 +12,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production'
 export default defineConfig({
   name: 'sekilid',
   title: 'Sekil.id CMS',
+  basePath: '/cms',
 
   projectId,
   dataset,
