@@ -1,16 +1,21 @@
 import '@/styles/keystatic-brand.css'
+import { LogoutButton } from '@/components/cms/LogoutButton'
 
 /**
  * Layout for all /keystatic routes.
- * Imports the brand CSS override that remaps @keystar/ui color tokens
- * (--kui-color-scale-*) to the Sekil.id navy + electric blue + peach palette.
- * Uses html.kui-scheme--* selectors (specificity 0,1,1) to beat the
- * library's injected .kui-scheme--* rules (specificity 0,1,0).
+ * - Imports brand CSS (remaps @keystar/ui tokens to Sekil.id palette)
+ * - Renders a fixed LogoutButton over the Keystatic admin shell
+ *   (the Keystatic SPA has no built-in logout for custom auth setups)
  */
 export default function KeystaticAdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <>
+      {children}
+      <LogoutButton />
+    </>
+  )
 }
