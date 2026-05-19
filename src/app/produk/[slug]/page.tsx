@@ -15,17 +15,50 @@ import { ProductFAQ } from '@/components/product/ProductFAQ';
 import { PRODUCTS, getProductBySlug } from '@/data/products';
 import { getProductSchema } from '@/lib/seo/product-schema';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
+import { sanityFetch } from '@/lib/sanity/live';
+import type { SanityProduct } from '@/lib/sanity/types';
+import { PRODUCT_BY_SLUG_QUERY, ALL_PRODUCT_SLUGS_QUERY } from '@/lib/sanity/queries';
 
 interface Props {
   params: { slug: string };
 }
 
-export function generateStaticParams() {
+function sanityToProduct(p: SanityProduct): (typeof PRODUCTS)[number] {
+  return {
+    slug: p.slug,
+    name: p.name,
+    nameDisplay: p.nameDisplay ?? p.name,
+    tagline: p.tagline,
+    description: p.description,
+    longDescription: p.longDescription ?? '',
+    duration: p.duration,
+    price: p.price,
+    priceDisplay: `Rp ${p.price.toLocaleString('id-ID')}`,
+    targetPersonas: (p.targetPersonas ?? []) as (typeof PRODUCTS)[number]['targetPersonas'],
+    instruments: (p.instruments ?? []) as (typeof PRODUCTS)[number]['instruments'],
+    outputs: p.outputs ?? [],
+    sampleReportTeaser: p.sampleReportTeaser ?? '',
+    bundleSuggestions: p.bundleSuggestions ?? [],
+    faq: p.faq ?? [],
+    seoTitle: p.seoTitle ?? `${p.name} | Sekil.id`,
+    seoDescription: p.seoDescription ?? p.description,
+    primaryKeyword: p.primaryKeyword ?? '',
+  };
+}
+
+export async function generateStaticParams() {
+  try {
+    const { data } = await sanityFetch({ query: ALL_PRODUCT_SLUGS_QUERY })
+    const sanitySlug = data as { slug: string }[] | null
+    if (sanitySlug && sanitySlug.length > 0) return sanitySlug
+  } catch {}
   return PRODUCTS.map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+  const { data } = await sanityFetch({ query: PRODUCT_BY_SLUG_QUERY, params: { slug: params.slug } })
+  const sanityProduct = data as SanityProduct | null
+  const product = sanityProduct ? sanityToProduct(sanityProduct) : getProductBySlug(params.slug)
   if (!product) return {};
   return {
     title: product.seoTitle,
@@ -40,8 +73,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProductDetailPage({ params }: Props) {
-  const product = getProductBySlug(params.slug);
+export default async function ProductDetailPage({ params }: Props) {
+  const { data } = await sanityFetch({ query: PRODUCT_BY_SLUG_QUERY, params: { slug: params.slug } })
+  const sanityProduct = data as SanityProduct | null
+  const product = sanityProduct ? sanityToProduct(sanityProduct) : getProductBySlug(params.slug)
   if (!product) notFound();
 
   const breadcrumb = getBreadcrumbSchema([

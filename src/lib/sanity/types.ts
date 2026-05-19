@@ -117,6 +117,39 @@ export interface ProgrammaticPost {
   geo?: GeoFields
 }
 
+// ── Product ──────────────────────────────────────────────────────────────────
+
+/** Shape returned by ALL_PRODUCTS_QUERY / PRODUCT_BY_SLUG_QUERY */
+export interface SanityProduct {
+  _id: string
+  slug: string
+  order: number
+  name: string
+  nameDisplay?: string
+  tagline: string
+  description: string
+  longDescription?: string
+  duration: string
+  price: number
+  targetPersonas?: string[]
+  instruments?: string[]
+  outputs?: string[]
+  sampleReportTeaser?: string
+  bundleSuggestions?: string[]
+  faq?: { q: string; a: string }[]
+  seoTitle?: string
+  seoDescription?: string
+  primaryKeyword?: string
+}
+
+/** Minimal shape used inside bundle cards and pricing table */
+export interface SanityProductRef {
+  _id: string
+  slug: string
+  name: string
+  price: number
+}
+
 // ── Pricing Page ─────────────────────────────────────────────────────────────
 
 export interface PricingPillar {
@@ -147,7 +180,8 @@ export interface PricingBundle {
   bundleId?: string
   name: string
   tagline?: string
-  productSlugs?: string[]
+  /** Products dereffed from Sanity references — replaces the old productSlugs string array */
+  products?: SanityProductRef[]
   bundlePrice: number
   comingSoon?: boolean
 }
@@ -157,7 +191,7 @@ export interface PricingPageData {
   heroHeading?: string
   heroSubheading?: string
   heroPillars?: PricingPillar[]
-  products?: PricingProduct[]
+  // products[] removed — fetched from product collection via ALL_PRODUCTS_QUERY
   volumeTiers?: PricingVolumeTier[]
   bundles?: PricingBundle[]
   faq?: PricingFaq[]

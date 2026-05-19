@@ -304,6 +304,62 @@ export const MAJOR_POST_QUERY = defineQuery(`
   }
 `)
 
+// ── Products ────────────────────────────────────────────────────────────────
+
+export const ALL_PRODUCTS_QUERY = defineQuery(`
+  *[_type == "product"] | order(order asc) {
+    _id,
+    "slug": slug.current,
+    order,
+    name,
+    nameDisplay,
+    tagline,
+    description,
+    longDescription,
+    duration,
+    price,
+    targetPersonas,
+    instruments,
+    outputs,
+    sampleReportTeaser,
+    bundleSuggestions,
+    faq[] { q, a },
+    seoTitle,
+    seoDescription,
+    primaryKeyword,
+  }
+`)
+
+export const PRODUCT_BY_SLUG_QUERY = defineQuery(`
+  *[_type == "product" && slug.current == $slug][0] {
+    _id,
+    "slug": slug.current,
+    order,
+    name,
+    nameDisplay,
+    tagline,
+    description,
+    longDescription,
+    duration,
+    price,
+    targetPersonas,
+    instruments,
+    outputs,
+    sampleReportTeaser,
+    bundleSuggestions,
+    faq[] { q, a },
+    seoTitle,
+    seoDescription,
+    primaryKeyword,
+  }
+`)
+
+export const ALL_PRODUCT_SLUGS_QUERY = defineQuery(`
+  *[_type == "product" && defined(slug.current)] | order(order asc) {
+    "slug": slug.current
+  }
+`)
+
 // ── Singletons ──────────────────────────────────────────────────────────────
 
 export const PRICING_PAGE_QUERY = defineQuery(`
@@ -312,9 +368,20 @@ export const PRICING_PAGE_QUERY = defineQuery(`
     heroHeading,
     heroSubheading,
     heroPillars[] { label, value, sub },
-    products[] { slug, name, duration, price },
     volumeTiers[] { minSeats, discountRate, label },
-    bundles[] { bundleId, name, tagline, productSlugs, bundlePrice, comingSoon },
+    bundles[] {
+      bundleId,
+      name,
+      tagline,
+      bundlePrice,
+      comingSoon,
+      "products": products[]-> {
+        _id,
+        "slug": slug.current,
+        name,
+        price,
+      },
+    },
     faq[] { q, a },
     atcDashboard { price, priceUnit, features },
     ctaHeading,

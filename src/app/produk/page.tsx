@@ -8,6 +8,32 @@ import { ProductCard } from '@/components/product/ProductCard';
 import { PRODUCTS, ACCENT_SEQUENCE } from '@/data/products';
 import { getProductHubItemListSchema } from '@/lib/seo/product-schema';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
+import { sanityFetch } from '@/lib/sanity/live';
+import type { SanityProduct } from '@/lib/sanity/types';
+import { ALL_PRODUCTS_QUERY } from '@/lib/sanity/queries';
+
+function sanityToProduct(p: SanityProduct): (typeof PRODUCTS)[number] {
+  return {
+    slug: p.slug,
+    name: p.name,
+    nameDisplay: p.nameDisplay ?? p.name,
+    tagline: p.tagline,
+    description: p.description,
+    longDescription: p.longDescription ?? '',
+    duration: p.duration,
+    price: p.price,
+    priceDisplay: `Rp ${p.price.toLocaleString('id-ID')}`,
+    targetPersonas: (p.targetPersonas ?? []) as (typeof PRODUCTS)[number]['targetPersonas'],
+    instruments: (p.instruments ?? []) as (typeof PRODUCTS)[number]['instruments'],
+    outputs: p.outputs ?? [],
+    sampleReportTeaser: p.sampleReportTeaser ?? '',
+    bundleSuggestions: p.bundleSuggestions ?? [],
+    faq: p.faq ?? [],
+    seoTitle: p.seoTitle ?? `${p.name} | Sekil.id`,
+    seoDescription: p.seoDescription ?? p.description,
+    primaryKeyword: p.primaryKeyword ?? '',
+  };
+}
 
 export const metadata: Metadata = {
   title: 'Asesmen & Tes Kepribadian | Sekil.id',
@@ -31,7 +57,14 @@ const FILTER_PILLS = [
   'Untuk Manager',
 ];
 
-export default function ProdukPage() {
+export default async function ProdukPage() {
+  const result = await sanityFetch({ query: ALL_PRODUCTS_QUERY })
+  const rawProducts = result.data as SanityProduct[] | null
+  const products =
+    rawProducts && rawProducts.length > 0
+      ? rawProducts.map(sanityToProduct)
+      : PRODUCTS
+
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
     { name: 'Produk', url: '/produk' },
@@ -40,7 +73,7 @@ export default function ProdukPage() {
   return (
     <>
       <JsonLd data={breadcrumb} />
-      <JsonLd data={getProductHubItemListSchema(PRODUCTS)} />
+      <JsonLd data={getProductHubItemListSchema(products)} />
 
       <main id="main-content">
         {/* Breadcrumb */}
@@ -105,7 +138,7 @@ export default function ProdukPage() {
         <section className="border-b-2 border-ink bg-white py-16">
           <Container>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {PRODUCTS.map((product, i) => (
+              {products.map((product, i) => (
                 <ProductCard
                   key={product.slug}
                   product={product}

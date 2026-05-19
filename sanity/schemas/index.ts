@@ -13,6 +13,7 @@ export { calloutBlock } from './blocks/calloutBlock'
 export { citationBlock } from './blocks/citationBlock'
 
 // Document types
+export { product } from './documents/product'
 export { author } from './documents/author'
 export { post } from './documents/post'
 export { panduan } from './documents/panduan'

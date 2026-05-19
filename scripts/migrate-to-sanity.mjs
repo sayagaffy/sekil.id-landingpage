@@ -484,6 +484,229 @@ async function migrateBlogPosts(authorSlugToId) {
 // migratePricingPage: kept for backward compat — delegates to seedPricingPage below
 // (pricing.yaml was removed when Keystatic was uninstalled; data now lives in code)
 
+// ── Seed: Product documents ───────────────────────────────────────────────
+
+async function seedProducts() {
+  const products = [
+    {
+      _id: 'product-career-interest',
+      order: 0,
+      slug: 'career-interest',
+      name: 'Career Interest',
+      nameDisplay: 'Career Interest — Peta Minat Karier',
+      tagline: 'Petakan minat karier dengan Holland Code RIASEC',
+      description:
+        'Tes minat karier menggunakan Holland Code (RIASEC) untuk siswa SMA dan mahasiswa. Dapatkan 3-letter Holland Code dan rekomendasi karier yang sesuai dengan profil minat Anda dalam 15 menit.',
+      longDescription:
+        'Career Interest menggunakan kerangka Holland Code (RIASEC) yang telah divalidasi akademik selama 60+ tahun untuk memetakan minat vokasional Anda. Dalam 15 menit, Anda mendapatkan 3-letter code yang mencerminkan kombinasi unik minat Anda, beserta rekomendasi karier dan jurusan yang paling sesuai dengan profil tersebut — semuanya dikalibrasi untuk konteks pasar kerja Indonesia menggunakan data LinkedIn 2025.',
+      duration: '15 menit',
+      price: 150000,
+      targetPersonas: ['siswa-sma', 'mahasiswa'],
+      instruments: ['holland'],
+      outputs: [
+        '3-letter Holland Code (RIASEC) unik Anda dengan breakdown persentase 6 dimensi',
+        'Top 10 rekomendasi karier yang match dengan profil minat',
+        'Rekomendasi 5 jurusan kuliah yang paling relevan',
+        'Deskripsi lingkungan kerja yang paling cocok untuk tipe kepribadian vokasional Anda',
+        'Narasi kepribadian karier yang dipersonalisasi (500+ kata)',
+        'Laporan PDF 10+ halaman dalam Bahasa Indonesia',
+      ],
+      sampleReportTeaser:
+        'Laporan Career Interest Anda mencakup: breakdown visual enam dimensi RIASEC dalam format spider chart, narasi kepribadian vokasional yang dipersonalisasi, tabel 10 karier yang paling match dengan tingkat kecocokan dan proyeksi pertumbuhan industri hingga 2030, serta rekomendasi 5 jurusan kuliah dengan alasan spesifik mengapa jurusan tersebut sesuai dengan profil Anda.',
+      bundleSuggestions: ['psyai', 'path-finder-ai'],
+      faq: [
+        { _key: blockKey('faq'), q: 'Apa itu Holland Code (RIASEC)?', a: 'Holland Code adalah kerangka pemetaan minat vokasional yang dikembangkan psikolog John L. Holland (1959). Enam dimensi RIASEC — Realistic, Investigative, Artistic, Social, Enterprising, Conventional — mencerminkan tipe minat dan lingkungan kerja yang sesuai. Kombinasi 3 dimensi tertinggi Anda menjadi "code" unik yang memandu eksplorasi karier.' },
+        { _key: blockKey('faq'), q: 'Berapa lama tes Career Interest berlangsung?', a: '15 menit. Tes terdiri dari serangkaian pertanyaan preferensi aktivitas yang ringkas dan dapat diselesaikan dalam satu sesi di laptop atau smartphone. Tidak ada jawaban benar atau salah — yang penting Anda menjawab jujur sesuai preferensi asli Anda.' },
+        { _key: blockKey('faq'), q: 'Siapa yang paling cocok mengikuti tes ini?', a: 'Career Interest dirancang untuk siswa SMA kelas 10–12 yang sedang merencanakan pilihan jurusan kuliah, dan mahasiswa yang ingin memvalidasi arah karier mereka.' },
+        { _key: blockKey('faq'), q: 'Apakah hasil Holland Code bisa berubah seiring waktu?', a: 'Ya. Minat vokasional dapat berevolusi seiring pengalaman, pendidikan, dan perkembangan diri. Sebaiknya Anda re-take tes setiap 2–3 tahun atau setelah transisi besar.' },
+        { _key: blockKey('faq'), q: 'Apakah laporan tersedia dalam Bahasa Indonesia?', a: 'Ya, seluruh laporan Career Interest ditulis dalam Bahasa Indonesia native — bukan terjemahan literal dari versi bahasa Inggris.' },
+      ],
+      seoTitle: 'Tes Minat Karier Holland Code RIASEC | Career Interest Sekil.id',
+      seoDescription: 'Temukan minat karier Anda dengan tes Holland Code RIASEC yang tervalidasi akademik. 15 menit, dapatkan rekomendasi karier dan jurusan untuk konteks Indonesia.',
+      primaryKeyword: 'tes minat karier',
+    },
+    {
+      _id: 'product-psyai',
+      order: 1,
+      slug: 'psyai',
+      name: 'PsyAI',
+      nameDisplay: 'PsyAI — Profil Kepribadian Terintegrasi',
+      tagline: 'Asesmen kepribadian terintegrasi Holland Code dan MBTI dengan narrative AI',
+      description:
+        'PsyAI menggabungkan Holland Code dan MBTI dalam satu asesmen kepribadian terintegrasi 25 menit. Dapatkan profil kepribadian komprehensif dengan narasi yang dipersonalisasi AI dan action plan pengembangan diri.',
+      longDescription:
+        'PsyAI adalah asesmen kepribadian paling komprehensif di Sekil.id. Dengan menggabungkan Holland Code (minat vokasional) dan MBTI-style typing (preferensi kepribadian), PsyAI menghasilkan satu profil kohesif yang menjelaskan bukan hanya apa yang Anda minati, tapi bagaimana cara Anda bekerja, berkomunikasi, dan berkembang.',
+      duration: '25 menit',
+      price: 195000,
+      targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
+      instruments: ['holland', 'mbti'],
+      outputs: [
+        'Profil Holland Code (RIASEC) 3-letter code dengan breakdown 6 dimensi',
+        'Tipe MBTI-style Anda (salah satu dari 16 tipe kepribadian)',
+        'Narasi kepribadian terintegrasi Holland × MBTI yang dipersonalisasi AI',
+        'Matriks minat × kepribadian untuk pemetaan karier yang lebih presisi',
+        'Action plan pengembangan diri berbasis profil (5 area prioritas)',
+        'Panduan wawancara berbasis kepribadian untuk persiapan karier',
+        'Laporan PDF 15+ halaman dalam Bahasa Indonesia',
+      ],
+      sampleReportTeaser:
+        'Laporan PsyAI menggabungkan Holland Code dan MBTI dalam satu narasi kohesif 20+ halaman. Anda mendapatkan: matriks kepribadian × minat yang menjelaskan mengapa kombinasi tipe MBTI dan code Holland Anda cenderung gravitate ke lingkungan kerja tertentu, action plan pengembangan diri berbasis profil, dan panduan karier dengan rekomendasi spesifik untuk konteks Indonesia.',
+      bundleSuggestions: ['career-interest', 'leadership-styles-test'],
+      faq: [
+        { _key: blockKey('faq'), q: 'Apa yang membedakan PsyAI dari tes kepribadian biasa?', a: 'PsyAI menggabungkan dua instrumen — Holland Code untuk minat vokasional dan MBTI-style typing untuk preferensi kepribadian — dalam satu laporan terintegrasi.' },
+        { _key: blockKey('faq'), q: 'Apakah AI yang menginterpretasikan hasil kepribadian saya?', a: 'Tidak. AI menghasilkan narasi dari template yang dirancang dan divalidasi oleh tim psikolog. AI tidak membuat penilaian klinis atau diagnostik.' },
+        { _key: blockKey('faq'), q: 'Berapa lama proses tes hingga laporan tersedia?', a: '25 menit untuk tes, dan laporan tersedia langsung setelah tes selesai.' },
+        { _key: blockKey('faq'), q: 'Bisakah laporan PsyAI digunakan untuk proses seleksi karyawan?', a: 'Tidak disarankan untuk seleksi karyawan. PsyAI dirancang untuk pengembangan diri dan eksplorasi karier, bukan untuk tujuan seleksi.' },
+        { _key: blockKey('faq'), q: 'Apa bedanya PsyAI dengan Career Interest?', a: 'Career Interest hanya menggunakan Holland Code dan berfokus pada pemetaan minat vokasional. PsyAI menggabungkan Holland Code + MBTI dan menghasilkan profil kepribadian yang lebih holistik.' },
+      ],
+      seoTitle: 'Tes Kepribadian AI Terintegrasi Holland dan MBTI | PsyAI Sekil.id',
+      seoDescription: 'PsyAI menggabungkan Holland Code dan MBTI dalam satu asesmen kepribadian terintegrasi. Dapatkan profil kepribadian komprehensif dan action plan karier dalam 25 menit.',
+      primaryKeyword: 'tes kepribadian ai',
+    },
+    {
+      _id: 'product-path-finder-ai',
+      order: 2,
+      slug: 'path-finder-ai',
+      name: 'Path Finder AI',
+      nameDisplay: 'Path Finder AI — Pilih Jurusan Kuliah',
+      tagline: 'Pilih jurusan kuliah dengan data, bukan tebakan',
+      description:
+        'Path Finder AI membantu siswa SMA memilih jurusan kuliah berdasarkan profil minat Holland Code dan kepribadian MBTI. Dapatkan rekomendasi 5 jurusan top match dengan prospek karier dan universitas Indonesia.',
+      longDescription:
+        'Path Finder AI dirancang khusus untuk siswa SMA yang menghadapi dilema pemilihan jurusan kuliah. Dengan menggabungkan profil minat Holland Code dan preferensi kepribadian MBTI-style, Path Finder AI menyilangkan data tersebut dengan informasi jurusan, prospek karier, dan universitas Indonesia — menghasilkan rekomendasi yang personal dan berbasis data.',
+      duration: '20 menit',
+      price: 150000,
+      targetPersonas: ['siswa-sma'],
+      instruments: ['holland', 'mbti'],
+      outputs: [
+        'Top 5 jurusan kuliah yang paling match dengan profil minat dan kepribadian Anda',
+        'Analisis kesesuaian per jurusan: mengapa jurusan ini fit dengan profil Anda',
+        'Prospek karier dan median gaji untuk setiap jurusan yang direkomendasikan',
+        'Rekomendasi universitas Indonesia yang memiliki program tersebut (negeri & swasta)',
+        'Tip persiapan masuk jurusan dan kegiatan pendukung karier',
+        'Laporan PDF 12+ halaman dalam Bahasa Indonesia',
+      ],
+      sampleReportTeaser:
+        'Laporan Path Finder AI mencakup: ranking 5 jurusan berdasarkan tingkat match dengan profil Anda, analisis satu-halaman per jurusan, serta panduan persiapan masuk dan rekomendasi kegiatan ekstrakurikuler yang mendukung karier di bidang tersebut.',
+      bundleSuggestions: ['career-interest', 'psyai'],
+      faq: [
+        { _key: blockKey('faq'), q: 'Apakah rekomendasi jurusan Path Finder AI 100% akurat?', a: 'Tidak ada tes yang memberikan jaminan akurasi 100%. Hasil bersifat indikatif dan dirancang sebagai titik diskusi, bukan keputusan final.' },
+        { _key: blockKey('faq'), q: 'Dari mana data universitas dan jurusan diambil?', a: 'Data jurusan mengacu pada informasi publik Kemendikbudristek, akreditasi BAN-PT, dan LinkedIn Education Insights Indonesia 2025.' },
+        { _key: blockKey('faq'), q: 'Path Finder AI cocok untuk siswa kelas berapa?', a: 'Paling optimal untuk siswa kelas 10 (sebelum penjurusan) dan kelas 11-12 yang sedang dalam proses memilih program studi.' },
+        { _key: blockKey('faq'), q: 'Apakah Path Finder AI menggantikan konsultasi dengan konselor sekolah?', a: 'Tidak. Path Finder AI adalah alat bantu eksplorasi, bukan pengganti konsultasi profesional.' },
+        { _key: blockKey('faq'), q: 'Bagaimana cara mendapatkan laporan setelah tes?', a: 'Laporan tersedia langsung setelah tes selesai dalam format PDF yang bisa diunduh dan dibagikan.' },
+      ],
+      seoTitle: 'Tes Pemilihan Jurusan Kuliah Berbasis AI | Path Finder AI Sekil.id',
+      seoDescription: 'Pilih jurusan kuliah dengan data, bukan tebakan. Path Finder AI menggunakan Holland Code dan MBTI untuk merekomendasikan 5 jurusan terbaik dengan prospek karier Indonesia.',
+      primaryKeyword: 'tes pemilihan jurusan kuliah',
+    },
+    {
+      _id: 'product-leadership-styles-test',
+      order: 3,
+      slug: 'leadership-styles-test',
+      name: 'Leadership Styles Test',
+      nameDisplay: 'Leadership Styles Test — Gaya Kepemimpinan',
+      tagline: 'Identifikasi dan kembangkan gaya kepemimpinan dengan Papi Kostick',
+      description:
+        'Leadership Styles Test menggunakan Papi Kostick untuk mengidentifikasi 4 gaya kepemimpinan situasional Anda. Dapatkan profil kepemimpinan, matriks strength-blind spot, dan Individual Development Plan dalam 20 menit.',
+      longDescription:
+        'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan Papi Kostick — instrumen standar industri untuk konteks kerja profesional.',
+      duration: '20 menit',
+      price: 150000,
+      targetPersonas: ['karyawan', 'manager'],
+      instruments: ['papi'],
+      outputs: [
+        'Profil gaya kepemimpinan dominan dari 4 gaya situasional (Direktif, Coaching, Suportif, Delegatif)',
+        'Skor 10 dimensi Papi Kostick yang relevan untuk kepemimpinan dalam spider chart',
+        'Matriks kekuatan (strength) dan titik buta (blind spot) sebagai pemimpin',
+        'Panduan konteks tim dan situasi di mana gaya Anda paling efektif',
+        'Individual Development Plan (IDP) dengan 5 area pengembangan prioritas',
+        'Laporan PDF 12+ halaman dalam Bahasa Indonesia',
+      ],
+      sampleReportTeaser:
+        'Laporan Leadership Styles Test mencakup: profil gaya kepemimpinan dominan dari 4 gaya situasional, skor 10 dimensi Papi Kostick dalam spider chart, matriks kekuatan-blind spot, dan Individual Development Plan (IDP) dengan 5 area pengembangan yang diprioritaskan.',
+      bundleSuggestions: ['psyai', 'emotional-intelligence-test'],
+      faq: [
+        { _key: blockKey('faq'), q: 'Apa saja 4 gaya kepemimpinan yang diukur?', a: 'Leadership Styles Test mengidentifikasi 4 profil: (1) Direktif, (2) Coaching, (3) Suportif, (4) Delegatif. Setiap gaya efektif dalam konteks dan tingkat kematangan tim yang berbeda.' },
+        { _key: blockKey('faq'), q: 'Apakah tes ini cocok untuk semua level jabatan?', a: 'Paling relevan untuk supervisor, manajer lini pertama, manajer menengah, dan calon pemimpin (high-potential employee).' },
+        { _key: blockKey('faq'), q: 'Instrumen psikologi apa yang digunakan?', a: 'Leadership Styles Test menggunakan Papi Kostick yang diadaptasi untuk konteks kepemimpinan.' },
+        { _key: blockKey('faq'), q: 'Bisakah hasilnya digunakan untuk program leadership development HRD?', a: 'Ya. Laporan mencakup profil gaya kepemimpinan, matriks kekuatan-blind spot, dan IDP yang dapat langsung diintegrasikan ke dalam program People Development.' },
+        { _key: blockKey('faq'), q: 'Berapa lama berlakunya hasil tes kepemimpinan?', a: 'Tidak ada batas waktu formal. Kami merekomendasikan re-assessment setiap 12–18 bulan, atau setelah transisi peran yang signifikan.' },
+      ],
+      seoTitle: 'Tes Gaya Kepemimpinan Papi Kostick | Leadership Styles Test Sekil.id',
+      seoDescription: 'Identifikasi gaya kepemimpinan Anda dengan Papi Kostick. Leadership Styles Test menghasilkan profil 4 gaya situasional, matriks strength-blind spot, dan Individual Development Plan.',
+      primaryKeyword: 'tes gaya kepemimpinan',
+    },
+    {
+      _id: 'product-emotional-intelligence-test',
+      order: 4,
+      slug: 'emotional-intelligence-test',
+      name: 'Emotional Intelligence Test',
+      nameDisplay: 'EQ Test — Kecerdasan Emosional',
+      tagline: 'Ukur dan kembangkan Emotional Intelligence untuk karier dan kehidupan',
+      description:
+        'EQ Test Sekil.id mengukur 4 dimensi kecerdasan emosional (EQ) menggunakan Papi Kostick yang diadaptasi. Dapatkan skor EQ, analisis per dimensi, dan development tips yang dapat langsung diterapkan dalam 20 menit.',
+      longDescription:
+        'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills.',
+      duration: '20 menit',
+      price: 175000,
+      targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
+      instruments: ['papi'],
+      outputs: [
+        'Skor 4 dimensi EQ: Self-Awareness, Self-Regulation, Empathy, Social Skills (skala 100)',
+        'Profil EQ keseluruhan dengan perbandingan terhadap norma responden Indonesia',
+        'Analisis mendalam per dimensi dengan contoh perilaku konkret',
+        'Identifikasi dimensi EQ terkuat dan yang paling perlu dikembangkan',
+        '12 development tips praktis (3 per dimensi) yang dapat langsung diterapkan',
+        'Rencana pengembangan EQ 6 bulan yang terstruktur',
+        'Laporan PDF 12+ halaman dalam Bahasa Indonesia',
+      ],
+      sampleReportTeaser:
+        'Laporan EQ Test mencakup: skor 4 dimensi EQ dalam skala 100 dengan visualisasi radar, profil EQ keseluruhan dengan perbandingan terhadap norma Indonesia, analisis mendalam per dimensi, 12 development tips praktis, dan rencana pengembangan EQ 6 bulan.',
+      bundleSuggestions: ['leadership-styles-test', 'psyai'],
+      faq: [
+        { _key: blockKey('faq'), q: 'Apa itu Emotional Intelligence (EQ) dan mengapa penting?', a: 'Emotional Intelligence (EQ) adalah kemampuan mengenali, memahami, dan mengelola emosi — baik emosi diri sendiri maupun orang lain. Riset menunjukkan EQ berkontribusi signifikan terhadap keberhasilan profesional.' },
+        { _key: blockKey('faq'), q: 'Apa 4 dimensi EQ yang diukur?', a: 'EQ Test mengukur: (1) Self-Awareness, (2) Self-Regulation, (3) Empathy, (4) Social Skills.' },
+        { _key: blockKey('faq'), q: 'Apakah EQ saya bisa meningkat setelah tes?', a: 'Ya. Berbeda dengan IQ yang relatif stabil, EQ sangat responsif terhadap pembelajaran dan latihan. Peningkatan EQ yang terukur biasanya membutuhkan 3–6 bulan praktik yang konsisten.' },
+        { _key: blockKey('faq'), q: 'Apakah instrumen EQ Test ini sudah divalidasi?', a: 'EQ Test Sekil.id menggunakan Papi Kostick yang diadaptasi untuk mengukur dimensi-dimensi kecerdasan emosional dalam konteks kerja. Adaptasi dilakukan oleh tim Fakultas Psikologi UNJANI.' },
+        { _key: blockKey('faq'), q: 'Apa bedanya EQ Test Sekil.id dengan tes EQ lain yang beredar online?', a: 'EQ Test Sekil.id dibangun di atas Papi Kostick yang digunakan dalam konteks profesional selama 50+ tahun, diadaptasi oleh psikolog UNJANI, dan menghasilkan laporan dalam Bahasa Indonesia native.' },
+      ],
+      seoTitle: 'Tes EQ Online Kecerdasan Emosional Tervalidasi | Sekil.id',
+      seoDescription: 'Ukur 4 dimensi Emotional Intelligence (EQ) dengan tes tervalidasi Papi Kostick. Dapatkan skor EQ, analisis mendalam, dan rencana pengembangan dalam 20 menit.',
+      primaryKeyword: 'tes eq online',
+    },
+  ]
+
+  for (const p of products) {
+    const doc = {
+      _id: p._id,
+      _type: 'product',
+      order: p.order,
+      slug: { _type: 'slug', current: p.slug },
+      name: p.name,
+      nameDisplay: p.nameDisplay,
+      tagline: p.tagline,
+      description: p.description,
+      longDescription: p.longDescription,
+      duration: p.duration,
+      price: p.price,
+      targetPersonas: p.targetPersonas,
+      instruments: p.instruments,
+      outputs: p.outputs,
+      sampleReportTeaser: p.sampleReportTeaser,
+      bundleSuggestions: p.bundleSuggestions,
+      faq: p.faq,
+      seoTitle: p.seoTitle,
+      seoDescription: p.seoDescription,
+      primaryKeyword: p.primaryKeyword,
+    }
+    console.log(`   • ${p.order}. ${p.name} (${p.slug})`)
+    await client.createOrReplace(doc)
+  }
+
+  console.log('   ✓ 5 product documents seeded')
+}
+
 // ── Seed: Navigation singleton ────────────────────────────────────────────
 
 async function seedNavigation() {
@@ -567,14 +790,17 @@ async function seedPricingPage() {
       { _key: blockKey('tier'), minSeats: 50000, discountRate: 0.5, label: '50.000+' },
     ],
 
-    // Bundles
+    // Bundles — products use Sanity document references (-> product-{slug})
     bundles: [
       {
         _key: blockKey('bundle'),
         bundleId: 'career-starter',
         name: 'Career Starter',
         tagline: 'Eksplorasi awal minat karier dan pilihan jurusan kuliah',
-        productSlugs: ['career-interest', 'path-finder-ai'],
+        products: [
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-career-interest' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-path-finder-ai' },
+        ],
         bundlePrice: 250000,
         comingSoon: false,
       },
@@ -583,7 +809,11 @@ async function seedPricingPage() {
         bundleId: 'corporate-leadership',
         name: 'Corporate Leadership',
         tagline: 'Kepemimpinan dan kecerdasan emosional untuk manajer dan HR',
-        productSlugs: ['leadership-styles-test', 'emotional-intelligence-test', 'psyai'],
+        products: [
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-leadership-styles-test' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-emotional-intelligence-test' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-psyai' },
+        ],
         bundlePrice: 470000,
         comingSoon: false,
       },
@@ -592,7 +822,11 @@ async function seedPricingPage() {
         bundleId: 'comprehensive-personality',
         name: 'Comprehensive Personality',
         tagline: 'Profil kepribadian lengkap lintas instrumen Holland, MBTI, dan Papi',
-        productSlugs: ['psyai', 'career-interest', 'emotional-intelligence-test'],
+        products: [
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-psyai' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-career-interest' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-emotional-intelligence-test' },
+        ],
         bundlePrice: 450000,
         comingSoon: false,
       },
@@ -601,7 +835,7 @@ async function seedPricingPage() {
         bundleId: 'self-awareness',
         name: 'Self Awareness',
         tagline: 'Kenali diri lebih dalam dengan 4 instrumen terintegrasi',
-        productSlugs: [],
+        products: [],
         bundlePrice: 0,
         comingSoon: true,
       },
@@ -676,7 +910,11 @@ async function main() {
   console.log('─── BLOG POSTS ────────────────────────────────────────────')
   await migrateBlogPosts(authorSlugToId)
 
-  // 3. Singletons: navigation, site settings, pricing page
+  // 3. Products (must run before pricingPage — bundles use references)
+  console.log('\n─── PRODUCTS ──────────────────────────────────────────────')
+  await seedProducts()
+
+  // 4. Singletons: navigation, site settings, pricing page
   console.log('\n─── SINGLETONS ────────────────────────────────────────────')
   await seedNavigation()
   await seedSiteSettings()

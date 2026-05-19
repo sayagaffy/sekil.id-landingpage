@@ -14,8 +14,8 @@ import { BUNDLES } from '@/data/solutions'
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema'
 import { getPricingPageSchema } from '@/lib/seo/pricing-schema'
 import { sanityFetch } from '@/lib/sanity/live'
-import type { PricingPageData } from '@/lib/sanity/types'
-import { PRICING_PAGE_QUERY } from '@/lib/sanity/queries'
+import type { PricingPageData, SanityProduct } from '@/lib/sanity/types'
+import { PRICING_PAGE_QUERY, ALL_PRODUCTS_QUERY } from '@/lib/sanity/queries'
 
 export const metadata: Metadata = {
   title: 'Harga Asesmen Psikologi & Karier | Sekil.id',
@@ -107,8 +107,12 @@ const DEFAULT_BUNDLES = BUNDLES.map((b) => ({
 }))
 
 export default async function HargaPage() {
-  const pricingResult = await sanityFetch({ query: PRICING_PAGE_QUERY })
+  const [pricingResult, productsResult] = await Promise.all([
+    sanityFetch({ query: PRICING_PAGE_QUERY }),
+    sanityFetch({ query: ALL_PRODUCTS_QUERY }),
+  ])
   const sanityData = pricingResult.data as PricingPageData | null
+  const sanityProducts = productsResult.data as SanityProduct[] | null
 
   // Merge Sanity data with hardcoded defaults
   const hero = {
@@ -144,10 +148,10 @@ export default async function HargaPage() {
     sanityData?.ctaSubheading ??
     'Tim sales Sekil.id siap membantu menyusun proposal yang sesuai dengan anggaran dan kebutuhan program Anda. Respons dalam 1 hari kerja.'
 
-  // Resolve products (from Sanity or default)
+  // Resolve products — from product collection (Sanity) or fallback to hardcoded defaults
   const products =
-    sanityData?.products && sanityData.products.length > 0
-      ? sanityData.products
+    sanityProducts && sanityProducts.length > 0
+      ? sanityProducts.map((p) => ({ slug: p.slug, name: p.name, duration: p.duration, price: p.price }))
       : DEFAULT_PRODUCTS
 
   // Resolve volume tiers
@@ -156,23 +160,36 @@ export default async function HargaPage() {
       ? sanityData.volumeTiers
       : DEFAULT_VOLUME_TIERS
 
-  // Resolve bundles
-  const rawBundles =
-    sanityData?.bundles && sanityData.bundles.length > 0
-      ? sanityData.bundles
-      : DEFAULT_BUNDLES
-
-  // Resolve bundle products (join each bundle's productSlugs with products array)
-  const resolvedBundles = rawBundles.map((bundle) => ({
-    bundleId: bundle.bundleId,
-    name: bundle.name,
-    tagline: bundle.tagline ?? '',
-    bundlePrice: bundle.bundlePrice ?? 0,
-    comingSoon: bundle.comingSoon ?? false,
-    includedProducts: (bundle.productSlugs ?? [])
-      .map((slug) => products.find((p) => p.slug === slug))
-      .filter((p): p is NonNullable<typeof p> => p !== undefined),
-  }))
+  // Resolve bundles — Sanity returns products already dereffed via ->
+  // Fallback joins DEFAULT_BUNDLES with DEFAULT_PRODUCTS by slug
+  const resolvedBundles = (() => {
+    const sanityBundles = sanityData?.bundles
+    if (sanityBundles && sanityBundles.length > 0) {
+      return sanityBundles.map((bundle) => ({
+        bundleId: bundle.bundleId,
+        name: bundle.name,
+        tagline: bundle.tagline ?? '',
+        bundlePrice: bundle.bundlePrice ?? 0,
+        comingSoon: bundle.comingSoon ?? false,
+        includedProducts: (bundle.products ?? []).map((p) => ({
+          slug: p.slug,
+          name: p.name,
+          price: p.price,
+        })),
+      }))
+    }
+    // Fallback: join DEFAULT_BUNDLES with DEFAULT_PRODUCTS by slug
+    return DEFAULT_BUNDLES.map((bundle) => ({
+      bundleId: bundle.bundleId,
+      name: bundle.name,
+      tagline: bundle.tagline ?? '',
+      bundlePrice: bundle.bundlePrice ?? 0,
+      comingSoon: bundle.comingSoon ?? false,
+      includedProducts: (bundle.productSlugs ?? [])
+        .map((slug) => products.find((p) => p.slug === slug))
+        .filter((p): p is NonNullable<typeof p> => p !== undefined),
+    }))
+  })()
 
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
