@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity'
 import '@/styles/globals.css';
 import { SiteChrome } from '@/components/layout/SiteChrome';
+import { HeaderServer } from '@/components/layout/HeaderServer';
 import { SanityLive } from '@/lib/sanity/live';
 import { DisableDraftMode } from '@/components/sanity/DisableDraftMode';
 
@@ -77,7 +78,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           Lewati ke konten utama
         </a>
-        <SiteChrome>
+        <SiteChrome header={<HeaderServer />}>
           {children}
         </SiteChrome>
         {/* Sanity Live Content API — enables real-time updates in Studio preview */}

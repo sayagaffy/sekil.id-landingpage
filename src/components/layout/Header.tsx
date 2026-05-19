@@ -7,8 +7,9 @@ import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { buildAppUrl } from '@/lib/env';
+import type { NavItem } from '@/lib/sanity/types';
 
-const NAV_LINKS = [
+const DEFAULT_NAV_LINKS: NavItem[] = [
   { href: '/produk', label: 'Produk' },
   { href: '/solusi', label: 'Solusi' },
   { href: '/harga', label: 'Harga' },
@@ -16,7 +17,19 @@ const NAV_LINKS = [
   { href: '/blog', label: 'Blog' },
 ];
 
-export function Header() {
+const DEFAULT_CTA_LABEL = 'Mulai asesmen';
+const DEFAULT_CTA_HREF = '/demo';
+
+interface HeaderProps {
+  navItems?: NavItem[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+export function Header({ navItems, ctaLabel, ctaHref }: HeaderProps) {
+  const links = navItems?.length ? navItems : DEFAULT_NAV_LINKS;
+  const primaryLabel = ctaLabel || DEFAULT_CTA_LABEL;
+  const primaryHref = ctaHref || DEFAULT_CTA_HREF;
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -36,7 +49,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-7 md:flex" aria-label="Navigasi utama">
-          {NAV_LINKS.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -53,7 +66,7 @@ export function Header() {
             <a href={buildAppUrl('/login', 'header-masuk')} rel="noopener">Masuk</a>
           </Button>
           <Button variant="brand" size="sm" asChild>
-            <Link href="/demo">Mulai asesmen &rarr;</Link>
+            <Link href={primaryHref}>{primaryLabel} &rarr;</Link>
           </Button>
         </div>
 
@@ -70,7 +83,7 @@ export function Header() {
                 <Image src="/logo-color.png" alt="Sekil.id" width={100} height={28} className="h-7 w-auto" />
               </div>
               <nav className="flex flex-col" aria-label="Navigasi mobile">
-                {NAV_LINKS.map((link) => (
+                {links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -92,8 +105,8 @@ export function Header() {
                   </a>
                 </Button>
                 <Button variant="brand" asChild>
-                  <Link href="/demo" onClick={() => setMobileOpen(false)}>
-                    Mulai asesmen &rarr;
+                  <Link href={primaryHref} onClick={() => setMobileOpen(false)}>
+                    {primaryLabel} &rarr;
                   </Link>
                 </Button>
               </div>
