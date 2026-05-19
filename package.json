@@ -23,7 +23,8 @@
     "db:migrate": "npx dotenv-cli -e .env.local -- prisma migrate dev",
     "db:generate": "prisma generate",
     "db:seed": "npx dotenv-cli -e .env.local -- tsx scripts/seed-db.ts",
-    "admin:seed": "npx dotenv-cli -e .env.local -- tsx scripts/seed-admin.ts"
+    "admin:seed": "npx dotenv-cli -e .env.local -- tsx scripts/seed-admin.ts",
+    "admin:reset-password": "npx dotenv-cli -e .env.local -- tsx scripts/reset-admin-password.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

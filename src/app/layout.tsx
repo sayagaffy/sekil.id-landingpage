@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
 import '@/styles/globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { CookieConsent } from '@/components/legal/CookieConsent';
+import { SiteChrome } from '@/components/layout/SiteChrome';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -73,10 +71,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Lewati ke konten utama
         </a>
-        <Header />
-        {children}
-        <Footer />
-        <CookieConsent />
+        <SiteChrome>
+          {children}
+        </SiteChrome>
         {GA_ID && (
           <>
             <Script
