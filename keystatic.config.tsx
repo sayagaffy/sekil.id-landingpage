@@ -195,7 +195,11 @@ const articleMdxComponents = {
 // Keystatic config — storage auto-detects local (dev) vs GitHub (production)
 // ---------------------------------------------------------------------------
 export default config({
-  storage: process.env.KEYSTATIC_GITHUB_CLIENT_ID
+  // process.env.NODE_ENV is the only env var reliably available in the
+  // client bundle (Next.js inlines it at build time). KEYSTATIC_GITHUB_CLIENT_ID
+  // is server-only (no NEXT_PUBLIC_ prefix) so it resolves to undefined on the
+  // client → config would always fall back to 'local', breaking GitHub mode.
+  storage: process.env.NODE_ENV === 'production'
     ? {
         kind: 'github',
         repo: { owner: 'sayagaffy', name: 'sekil.id-landingpage' },
