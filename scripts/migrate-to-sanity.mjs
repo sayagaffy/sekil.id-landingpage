@@ -481,50 +481,182 @@ async function migrateBlogPosts(authorSlugToId) {
   }
 }
 
-async function migratePricingPage() {
-  const pricingFile = path.join(CONTENT_DIR, 'pages', 'pricing.yaml')
-  if (!fs.existsSync(pricingFile)) {
-    console.log('\n⚠️  No pricing.yaml found — skipping')
-    return
+// migratePricingPage: kept for backward compat — delegates to seedPricingPage below
+// (pricing.yaml was removed when Keystatic was uninstalled; data now lives in code)
+
+// ── Seed: Navigation singleton ────────────────────────────────────────────
+
+async function seedNavigation() {
+  const doc = {
+    _id: 'navigation',
+    _type: 'navigation',
+    headerItems: [
+      { _key: blockKey('nav'), label: 'Produk', href: '/produk', isExternal: false },
+      { _key: blockKey('nav'), label: 'Solusi', href: '/solusi', isExternal: false },
+      { _key: blockKey('nav'), label: 'Harga', href: '/harga', isExternal: false },
+      { _key: blockKey('nav'), label: 'Metodologi', href: '/metodologi', isExternal: false },
+      { _key: blockKey('nav'), label: 'Blog', href: '/blog', isExternal: false },
+    ],
+    ctaLabel: 'Mulai asesmen',
+    ctaHref: '/demo',
   }
 
-  const raw = fs.readFileSync(pricingFile, 'utf-8')
-  // Simple YAML parse using our parser
-  const { data } = parseFrontmatter(`---\n${raw}\n---\n`)
+  console.log('\n📝 Navigation singleton')
+  await client.createOrReplace(doc)
+  console.log('   ✓ Created/updated navigation singleton')
+}
 
-  const hero = data.hero || {}
-  const faq = data.faq || []
-  const atc = data.atcDashboard || {}
+// ── Seed: Site Settings singleton ─────────────────────────────────────────
 
+async function seedSiteSettings() {
+  const doc = {
+    _id: 'siteSettings',
+    _type: 'siteSettings',
+    siteName: 'Sekil.id',
+    siteDescription:
+      'Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI. AI-powered, hasil dalam 10 menit. Dipakai sekolah, kampus, dan perusahaan.',
+    socialLinks: {
+      instagram: 'https://instagram.com/sekil.id',
+      linkedin: 'https://linkedin.com/company/sekil-id',
+    },
+    announcement: {
+      enabled: false,
+      message: '',
+      linkLabel: '',
+      linkHref: '',
+      variant: 'info',
+    },
+  }
+
+  console.log('\n📝 Site Settings singleton')
+  await client.createOrReplace(doc)
+  console.log('   ✓ Created/updated siteSettings singleton')
+}
+
+// ── Seed: Pricing Page singleton (full data) ──────────────────────────────
+
+async function seedPricingPage() {
   const doc = {
     _id: 'pricingPage',
     _type: 'pricingPage',
-    heroEyebrow: hero.eyebrow ?? null,
-    heroHeading: hero.heading ?? 'Harga yang sesuai dengan skala Anda',
-    heroSubheading: hero.subheading ?? null,
-    heroPillars: (hero.pillars || []).map((p) => ({
-      _key: blockKey('pillar'),
-      label: p.label ?? '',
-      value: p.value ?? '',
-      sub: p.sub ?? '',
-    })),
-    faq: faq.map((item) => ({
-      _key: blockKey('faq'),
-      q: item.q ?? '',
-      a: item.a ?? '',
-    })),
-    atcDashboard: atc.price
-      ? {
-          price: atc.price ?? '',
-          priceUnit: atc.priceUnit ?? '',
-          features: atc.features ?? [],
-        }
-      : null,
-    ctaHeading: data.ctaHeading ?? null,
-    ctaSubheading: data.ctaSubheading ?? null,
+
+    // Hero
+    heroEyebrow: 'HARGA TRANSPARAN · DISKON VOLUME',
+    heroHeading: 'Harga yang sesuai dengan skala Anda',
+    heroSubheading:
+      'Mulai dari Rp 150.000 per peserta untuk individu. Dapatkan diskon hingga 50% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.',
+    heroPillars: [
+      { _key: blockKey('pillar'), label: 'Harga mulai dari', value: 'Rp 150.000', sub: 'per peserta' },
+      { _key: blockKey('pillar'), label: 'Diskon volume', value: 'Hingga 50%', sub: 'untuk 50.000+ seat' },
+      { _key: blockKey('pillar'), label: 'Bundle hemat', value: '–7% hingga –17%', sub: 'paket multi-produk' },
+    ],
+
+    // Products & volume tiers
+    products: [
+      { _key: blockKey('prod'), slug: 'career-interest', name: 'Career Interest', duration: '15 menit', price: 150000 },
+      { _key: blockKey('prod'), slug: 'psyai', name: 'PsyAI', duration: '25 menit', price: 195000 },
+      { _key: blockKey('prod'), slug: 'path-finder-ai', name: 'Path Finder AI', duration: '20 menit', price: 150000 },
+      { _key: blockKey('prod'), slug: 'leadership-styles-test', name: 'Leadership Styles Test', duration: '20 menit', price: 150000 },
+      { _key: blockKey('prod'), slug: 'emotional-intelligence-test', name: 'Emotional Intelligence Test', duration: '20 menit', price: 175000 },
+    ],
+    volumeTiers: [
+      { _key: blockKey('tier'), minSeats: 0, discountRate: 0, label: '1–499' },
+      { _key: blockKey('tier'), minSeats: 500, discountRate: 0.15, label: '500–1.999' },
+      { _key: blockKey('tier'), minSeats: 2000, discountRate: 0.25, label: '2.000–9.999' },
+      { _key: blockKey('tier'), minSeats: 10000, discountRate: 0.35, label: '10.000–49.999' },
+      { _key: blockKey('tier'), minSeats: 50000, discountRate: 0.5, label: '50.000+' },
+    ],
+
+    // Bundles
+    bundles: [
+      {
+        _key: blockKey('bundle'),
+        bundleId: 'career-starter',
+        name: 'Career Starter',
+        tagline: 'Eksplorasi awal minat karier dan pilihan jurusan kuliah',
+        productSlugs: ['career-interest', 'path-finder-ai'],
+        bundlePrice: 250000,
+        comingSoon: false,
+      },
+      {
+        _key: blockKey('bundle'),
+        bundleId: 'corporate-leadership',
+        name: 'Corporate Leadership',
+        tagline: 'Kepemimpinan dan kecerdasan emosional untuk manajer dan HR',
+        productSlugs: ['leadership-styles-test', 'emotional-intelligence-test', 'psyai'],
+        bundlePrice: 470000,
+        comingSoon: false,
+      },
+      {
+        _key: blockKey('bundle'),
+        bundleId: 'comprehensive-personality',
+        name: 'Comprehensive Personality',
+        tagline: 'Profil kepribadian lengkap lintas instrumen Holland, MBTI, dan Papi',
+        productSlugs: ['psyai', 'career-interest', 'emotional-intelligence-test'],
+        bundlePrice: 450000,
+        comingSoon: false,
+      },
+      {
+        _key: blockKey('bundle'),
+        bundleId: 'self-awareness',
+        name: 'Self Awareness',
+        tagline: 'Kenali diri lebih dalam dengan 4 instrumen terintegrasi',
+        productSlugs: [],
+        bundlePrice: 0,
+        comingSoon: true,
+      },
+    ],
+
+    // FAQ
+    faq: [
+      {
+        _key: blockKey('faq'),
+        q: 'Bagaimana sistem pembayaran untuk institusi?',
+        a: 'Institusi dapat melakukan pembelian seat secara bulk via transfer bank (BCA, Mandiri, BNI) atau kartu kredit. Setelah pembayaran dikonfirmasi, seat akan aktif dan link tes dapat didistribusikan ke peserta. Untuk pembelian 500+ seat, tersedia opsi invoice dan pembayaran Net-30.',
+      },
+      {
+        _key: blockKey('faq'),
+        q: 'Apakah seat yang dibeli ada masa berlakunya?',
+        a: 'Ya. Seat berlaku selama 12 bulan sejak tanggal pembelian. Seat yang belum digunakan tidak dapat di-refund setelah masa berlaku berakhir. Kami merekomendasikan membeli sesuai kebutuhan aktual dan melakukan top-up jika diperlukan.',
+      },
+      {
+        _key: blockKey('faq'),
+        q: 'Apakah diskon volume berlaku per produk atau per total peserta?',
+        a: 'Diskon berlaku per-asesmen per-seat. Jika Anda membeli 1.000 seat untuk Career Interest dan 500 seat untuk PsyAI, masing-masing mendapatkan diskon berdasarkan jumlah seat produk tersebut.',
+      },
+      {
+        _key: blockKey('faq'),
+        q: 'Apakah ada uji coba gratis untuk institusi?',
+        a: 'Kami menyediakan demo produk dan penjelasan metodologi untuk pengambil keputusan institusi — bukan akses tes gratis untuk peserta. Untuk pilot program dengan 50 seat atau lebih, hubungi tim kami untuk mendiskusikan kemungkinan harga pilot.',
+      },
+      {
+        _key: blockKey('faq'),
+        q: 'Bagaimana jika saya ingin produk yang berbeda untuk kelompok peserta yang berbeda?',
+        a: 'Tidak ada masalah. Anda bisa membeli seat untuk beberapa produk secara bersamaan atau terpisah. Setiap pembelian produk dihitung diskon volumenya secara independen.',
+      },
+    ],
+
+    // ATC Dashboard add-on
+    atcDashboard: {
+      price: 'Rp 30 juta',
+      priceUnit: '/tahun',
+      features: [
+        'Pantau status asesmen seluruh karyawan dalam satu dashboard',
+        'Analisis distribusi profil kepribadian dan EQ per departemen',
+        'Ekspor data ke HRIS (CSV, JSON, Webhook)',
+        'Laporan agregat untuk kebutuhan audit dan talent review',
+        'Dedicated account manager dan SLA 99.5% uptime',
+        'Integrasi SSO dan LDAP/Active Directory',
+      ],
+    },
+
+    // CTA
+    ctaHeading: 'Siap memulai?',
+    ctaSubheading:
+      'Jadwalkan demo 30 menit dan lihat bagaimana Sekil.id membantu institusi Anda.',
   }
 
-  console.log(`\n📝 Pricing page (${faq.length} FAQ items)`)
+  console.log('\n📝 Pricing page (seeded from code defaults)')
   await client.createOrReplace(doc)
   console.log('   ✓ Created/updated pricingPage singleton')
 }
@@ -532,7 +664,7 @@ async function migratePricingPage() {
 // ── Main ───────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log('🚀 Sekil.id → Sanity Migration')
+  console.log('🚀 Sekil.id → Sanity Migration & Seed')
   console.log('   Project: 2p33r6a9 | Dataset: production\n')
 
   // 1. Authors
@@ -544,20 +676,23 @@ async function main() {
   console.log('─── BLOG POSTS ────────────────────────────────────────────')
   await migrateBlogPosts(authorSlugToId)
 
-  // 3. Pricing page
-  console.log('\n─── PRICING PAGE ──────────────────────────────────────────')
-  await migratePricingPage()
+  // 3. Singletons: navigation, site settings, pricing page
+  console.log('\n─── SINGLETONS ────────────────────────────────────────────')
+  await seedNavigation()
+  await seedSiteSettings()
+  await seedPricingPage()
 
-  console.log('\n✅  Migration complete!')
+  console.log('\n✅  Migration & seed complete!')
   console.log('\nNext steps:')
-  console.log('  1. Open Sanity Studio at /cms to review the migrated content')
+  console.log('  1. Open Sanity Studio at /cms to review all seeded content')
   console.log('  2. Add cover images to posts if needed')
-  console.log('  3. Verify author photos')
-  console.log('  4. Set up the ISR webhook in Sanity dashboard:')
+  console.log('  3. Set up the ISR webhook in Sanity dashboard:')
   console.log('     URL: https://sekil.id/api/revalidate')
   console.log('     Secret: (value of SANITY_REVALIDATE_SECRET env var)')
-  console.log('  5. Add CORS origin in Sanity dashboard:')
+  console.log('  4. Add CORS origins in Sanity dashboard:')
   console.log('     https://sekil.id and http://localhost:3000 (with credentials)')
+  console.log('  5. Set NEXT_PUBLIC_SITE_URL=https://sekil.id in Vercel env vars')
+  console.log('     then redeploy to fix Presentation tool "Unable to connect"')
 }
 
 main().catch((err) => {
