@@ -23,11 +23,10 @@ export default defineConfig({
     presentationTool({
       resolve,
       previewUrl: {
-        // In development, preview against localhost
-        origin:
-          process.env.NEXT_PUBLIC_VERCEL_URL
-            ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-            : 'http://localhost:3000',
+        // Use the canonical site URL so the preview iframe stays same-origin
+        // as the Studio (both on sekil.id) and passes X-Frame-Options: SAMEORIGIN.
+        // In local dev this falls back to localhost:3000.
+        origin: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
         previewMode: {
           enable: '/api/draft-mode/enable',
         },
