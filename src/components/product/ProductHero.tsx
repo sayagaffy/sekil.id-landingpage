@@ -5,9 +5,9 @@ import type { Product } from '@/data/products';
 import { PRODUCT_CODES } from '@/data/products';
 
 const INSTRUMENT_LABELS: Record<string, string> = {
-  holland: 'Holland Code (RIASEC)',
-  mbti: 'MBTI-style',
-  papi: 'Papi Kostick',
+  holland: 'Pemetaan Minat Vokasional',
+  mbti: 'Preferensi Kepribadian',
+  papi: 'Profiling Kebutuhan Kerja',
 };
 
 interface ProductHeroProps {

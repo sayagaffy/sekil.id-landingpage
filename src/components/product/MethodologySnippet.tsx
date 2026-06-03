@@ -11,23 +11,23 @@ interface InstrumentMeta {
 
 const INSTRUMENT_META: Record<InstrumentKey, InstrumentMeta> = {
   holland: {
-    name: 'Holland Code (RIASEC)',
+    name: 'Pemetaan Minat Vokasional',
     description:
-      'Dikembangkan psikolog John L. Holland (1959). Kerangka pemetaan minat vokasional yang paling banyak digunakan dan diteliti secara akademik selama 60+ tahun. Mengidentifikasi 6 dimensi minat yang mencerminkan lingkungan kerja yang sesuai.',
+      'Dikembangkan psikolog John L. Holland (1959). Kerangka minat vokasional ini telah digunakan dan diteliti secara akademik selama 60+ tahun di berbagai konteks budaya dan profesi. Mengidentifikasi 6 dimensi minat yang mencerminkan lingkungan kerja yang paling sesuai.',
     headerClass: 'bg-peach-300 text-ink',
     textClass: 'text-ink',
   },
   mbti: {
-    name: 'MBTI-style Typing',
+    name: 'Preferensi Kepribadian',
     description:
-      'Berbasis teori tipe psikologis Carl Jung (1921), dioperasionalkan Myers & Briggs (1962). Menghasilkan 16 tipe kepribadian dari kombinasi 4 dikotomi preferensi. Digunakan sebagai alat eksplorasi diri, bukan label permanen.',
+      'Berbasis teori tipe psikologis Carl Jung (1921). Menghasilkan 16 arketipe kepribadian dari kombinasi 4 dikotomi preferensi. Digunakan sebagai alat eksplorasi diri dan pengembangan karier — bukan label permanen.',
     headerClass: 'bg-blue-500 text-paper',
     textClass: 'text-ink',
   },
   papi: {
-    name: 'Papi Kostick',
+    name: 'Profiling Kebutuhan & Peran Kerja',
     description:
-      'Personality and Preference Inventory oleh Max Kostick (1960an). Dirancang khusus untuk konteks kerja profesional — mengukur kebutuhan (needs) dan peran (roles) yang mendorong perilaku individu dalam lingkungan kerja.',
+      'Dikembangkan Max Kostick (1960an) di Boston University. Dirancang khusus untuk konteks kerja profesional — mengukur kebutuhan (needs) dan peran (roles) yang mendorong perilaku individu dalam lingkungan kerja.',
     headerClass: 'bg-navy-900 text-paper',
     textClass: 'text-ink',
   },
