@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Lock } from 'lucide-react';
 import { Container } from '@/components/layout/Container';
 import { AuthorByline } from '@/components/seo/AuthorByline';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Button } from '@/components/ui/button';
-import { InstrumentSection } from '@/components/methodology/InstrumentSection';
 import { UnjaniTeam } from '@/components/methodology/UnjaniTeam';
 import { AIBoundary } from '@/components/methodology/AIBoundary';
-import { ReferencesList } from '@/components/methodology/ReferencesList';
-import { INSTRUMENTS, UNJANI_TEAM, REFERENCES } from '@/data/methodology';
+import { UNJANI_TEAM } from '@/data/methodology';
 import { getMethodologyArticleSchema } from '@/lib/seo/methodology-schema';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 
@@ -18,14 +16,14 @@ const AUTHOR_NAME = 'Dr. [Placeholder UNJANI Lecturer Name], M.Psi., Psikolog';
 const AUTHOR_AFFILIATION = 'Dosen Psikologi UNJANI · Reviewer Akademik Sekil.id';
 
 export const metadata: Metadata = {
-  title: 'Metodologi Asesmen: Instrumen Psikologi Tervalidasi | Sekil.id',
+  title: 'Metodologi: Bagaimana Sekil.id Mengukur — dan Apa yang Tidak Kami Klaim | Sekil.id',
   description:
-    'Sekil.id dibangun di atas 3 instrumen psikologi akademik yang telah diuji selama puluhan tahun, divalidasi ulang untuk konteks Indonesia oleh Fakultas Psikologi UNJANI.',
+    'Cara Sekil.id mengukur minat, kepribadian, dan potensi: model riset puluhan tahun, dikalibrasi untuk Indonesia, dengan batasan yang kami nyatakan terbuka.',
   alternates: { canonical: 'https://sekil.id/metodologi' },
   openGraph: {
-    title: 'Metodologi Asesmen: Instrumen Psikologi Tervalidasi | Sekil.id',
+    title: 'Metodologi: Bagaimana Sekil.id Mengukur — dan Apa yang Tidak Kami Klaim | Sekil.id',
     description:
-      'Sekil.id dibangun di atas 3 instrumen psikologi akademik yang telah diuji selama puluhan tahun, divalidasi ulang untuk konteks Indonesia oleh Fakultas Psikologi UNJANI.',
+      'Cara Sekil.id mengukur minat, kepribadian, dan potensi: model riset puluhan tahun, dikalibrasi untuk Indonesia, dengan batasan yang kami nyatakan terbuka.',
     url: 'https://sekil.id/metodologi',
     type: 'article',
   },
@@ -69,107 +67,210 @@ export default function MetodologiPage() {
         {/* 2. Hero */}
         <section className="border-b-2 border-ink bg-paper py-16">
           <Container>
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[3fr_2fr]">
-              <div>
-                <p className="eyebrow mb-4">METODOLOGI · 3 INSTRUMEN TERVALIDASI</p>
-                <h1 className="font-display text-[clamp(36px,5vw,64px)] font-bold leading-[1.05] tracking-tight text-ink">
-                  Dibangun di Atas 3 Instrumen Tervalidasi
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ash-700">
-                  Asesmen Sekil.id menggunakan instrumen psikologi yang sudah teruji secara akademik
-                  selama puluhan tahun, divalidasi ulang untuk konteks Indonesia oleh tim Fakultas
-                  Psikologi UNJANI. Detail teknis instrumen tersedia untuk mitra institusi.
-                </p>
-                <div className="mt-8 border-2 border-ink bg-peach-300 p-5 shadow-sm">
-                  <AuthorByline
-                    name={AUTHOR_NAME}
-                    affiliation={AUTHOR_AFFILIATION}
-                    publishedAt={PUBLISHED}
-                    modifiedAt={PUBLISHED}
-                  />
-                </div>
+            <div className="max-w-3xl">
+              <p className="eyebrow mb-4">METODOLOGI</p>
+              <h1 className="font-display text-[clamp(36px,5vw,64px)] font-bold leading-[1.05] tracking-tight text-ink">
+                Dibangun di atas riset.{' '}
+                <span className="text-blue-500">Bukan tebakan.</span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ash-700">
+                Asesmen Sekil.id memakai model pengukuran yang telah diteliti puluhan tahun di
+                berbagai budaya dan profesi — dikalibrasi ulang untuk konteks Indonesia. Halaman
+                ini menjelaskan cara kami mengukur, dan sama pentingnya: apa yang{' '}
+                <strong className="text-ink">tidak</strong> kami klaim.
+              </p>
+              <div className="mt-8 border-2 border-ink bg-peach-300 p-5 shadow-sm">
+                <AuthorByline
+                  name={AUTHOR_NAME}
+                  affiliation={AUTHOR_AFFILIATION}
+                  publishedAt={PUBLISHED}
+                  modifiedAt={PUBLISHED}
+                />
               </div>
-
-              {/* Quick-nav to instrument sections */}
-              <nav
-                aria-label="Daftar Instrumen"
-                className="border-2 border-ink shadow-md self-start"
-              >
-                <div className="border-b-2 border-ink bg-ink px-5 py-3">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-paper/70">
-                    Instrumen yang Digunakan
-                  </p>
-                </div>
-                {INSTRUMENTS.map((inst, i) => (
-                  <a
-                    key={inst.id}
-                    href={`#${inst.id}`}
-                    className={[
-                      'flex items-center gap-3 px-5 py-4 text-sm font-medium text-ink transition-colors duration-120 hover:bg-ink hover:text-paper',
-                      i < INSTRUMENTS.length - 1 ? 'border-b-2 border-ink' : '',
-                    ].join(' ')}
-                  >
-                    <span className="font-mono text-[10px] text-ash-700">0{i + 1}</span>
-                    <span>{inst.publicName}</span>
-                  </a>
-                ))}
-              </nav>
             </div>
           </Container>
         </section>
 
-        {/* 3. Intro paragraph */}
+        {/* 3. Pendekatan */}
         <section className="border-b-2 border-ink bg-white py-12">
           <Container>
             <div className="mx-auto max-w-3xl">
               <p className="eyebrow mb-4">PENDEKATAN KAMI</p>
-              <div className="space-y-5 leading-relaxed text-ash-700">
+              <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold text-ink">
+                Kenapa metodologi itu penting
+              </h2>
+              <div className="mt-6 space-y-5 leading-relaxed text-ash-700">
                 <p>
-                  Metodologi yang kokoh adalah fondasi kepercayaan dalam asesmen psikologi. Tidak
-                  seperti kuis kepribadian populer yang sering beredar di media sosial, instrumen
-                  psikologi yang digunakan Sekil.id memiliki basis riset akademik yang panjang —
-                  beberapa di antaranya telah diuji selama lebih dari 60 tahun di berbagai konteks
-                  budaya dan profesi.
+                  Sebuah kuis kepribadian yang beredar di media sosial bisa terasa akurat dalam
+                  lima menit. Masalahnya, &ldquo;terasa akurat&rdquo; bukan ukuran apa pun. Yang
+                  membedakan asesmen sungguhan dari kuis adalah apa yang terjadi di belakang
+                  layar: dari mana pertanyaannya, bagaimana jawaban ditimbang, dan apakah hasilnya
+                  konsisten kalau Anda mengerjakannya lagi.
                 </p>
                 <p>
-                  Sekil.id tidak menciptakan instrumen baru. Kami memilih untuk membangun di atas
-                  instrumen yang sudah tervalidasi secara akademik: kerangka minat vokasional
-                  enam-dimensi untuk pemetaan karier, kerangka preferensi kepribadian berbasis
-                  teori tipe psikologis Jung, dan inventori kebutuhan &amp; peran kerja untuk
-                  profiling profesional. Ketiga instrumen ini dipilih karena kedalaman evidensnya,
-                  relevansinya untuk konteks karier, dan kemampuannya menghasilkan insight yang
-                  dapat ditindaklanjuti.
-                </p>
-                <p>
-                  Peran AI dalam sistem kami bersifat teknis, bukan interpretif. AI menangani
-                  scoring jawaban berdasarkan algoritma yang dirancang oleh tim metodologi, serta
-                  menghasilkan narasi dari template yang telah divalidasi secara akademik. AI tidak
-                  melakukan interpretasi diagnostik, tidak membuat penilaian klinis, dan tidak
-                  menggantikan peran psikolog atau konselor berlisensi. Keputusan tentang metodologi,
-                  item development, dan content review sepenuhnya berada di tangan manusia —
-                  khususnya tim Fakultas Psikologi UNJANI.
+                  Sekil.id tidak menciptakan teori kepribadian sendiri. Kami membangun di atas
+                  model pengukuran yang sudah teruji secara akademik — beberapa di antaranya
+                  diteliti dan dipakai konselor karier selama lebih dari enam dekade. Yang kami
+                  tambahkan adalah kalibrasi untuk konteks Indonesia dan proses review yang membuat
+                  hasilnya bisa dipertanggungjawabkan, bukan sekadar menarik.
                 </p>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* 4. Three instrument sections */}
+        {/* 4. Tiga lapis */}
         <section className="border-b-2 border-ink bg-paper py-16">
           <Container>
-            <p className="eyebrow mb-8">INSTRUMEN PSIKOLOGI TERVALIDASI</p>
-            <div className="space-y-8">
-              {INSTRUMENTS.map((instrument, i) => (
-                <InstrumentSection key={instrument.id} instrument={instrument} index={i} mode="public" />
-              ))}
+            <div className="mx-auto max-w-3xl">
+              <p className="eyebrow mb-4">APA YANG KAMI UKUR</p>
+              <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold text-ink">
+                Tiga lapis yang kami ukur
+              </h2>
+
+              <div className="mt-10 border-2 border-ink shadow-md">
+                {/* Lapis 1 */}
+                <div className="border-b-2 border-ink">
+                  <div className="border-b-2 border-ink bg-peach-300 px-6 py-3">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink/60">
+                      LAPIS 1
+                    </p>
+                    <p className="font-display font-bold text-ink">
+                      Minat vokasional (enam dimensi)
+                    </p>
+                  </div>
+                  <div className="bg-paper px-6 py-5">
+                    <p className="leading-relaxed text-ash-700">
+                      Ke mana energi dan ketertarikan Anda condong secara alami: pada hal praktis
+                      dan teknis, pada analisis dan riset, pada ekspresi kreatif, pada membantu
+                      orang, pada memimpin dan memengaruhi, atau pada keteraturan dan sistem. Model
+                      enam-dimensi ini adalah salah satu kerangka pemetaan minat karier yang paling
+                      banyak diteliti di dunia.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Lapis 2 */}
+                <div className="border-b-2 border-ink">
+                  <div className="border-b-2 border-ink bg-blue-500 px-6 py-3">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-paper/70">
+                      LAPIS 2
+                    </p>
+                    <p className="font-display font-bold text-paper">Preferensi kepribadian</p>
+                  </div>
+                  <div className="bg-paper px-6 py-5">
+                    <p className="leading-relaxed text-ash-700">
+                      Bagaimana Anda cenderung mengambil energi, menyerap informasi, mengambil
+                      keputusan, dan menata hidup. Berakar pada teori tipe psikologis yang
+                      dikembangkan sejak awal abad ke-20, kami gunakan untuk eksplorasi diri dan
+                      pengembangan karier — bukan untuk seleksi atau diagnosis.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Lapis 3 */}
+                <div>
+                  <div className="border-b-2 border-ink bg-navy-900 px-6 py-3">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-paper/70">
+                      LAPIS 3
+                    </p>
+                    <p className="font-display font-bold text-paper">
+                      Kebutuhan &amp; peran kerja
+                    </p>
+                  </div>
+                  <div className="bg-paper px-6 py-5">
+                    <p className="leading-relaxed text-ash-700">
+                      Apa yang mendorong Anda di lingkungan kerja: kebutuhan akan pencapaian,
+                      pengakuan, struktur, atau hubungan; dan peran yang Anda ambil secara alami
+                      dalam tim. Lapis ini dirancang khusus untuk konteks profesional, bukan
+                      kepribadian umum.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Soft institutional CTA */}
+              <div className="mt-6 flex items-start gap-2.5 text-sm text-ash-700">
+                <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ash-400" aria-hidden="true" />
+                <p>
+                  Institusi yang membutuhkan rincian instrumen dan referensi akademik lengkap dapat{' '}
+                  <Link
+                    href="/institusi/metodologi"
+                    className="font-medium text-blue-500 hover:underline"
+                  >
+                    memintanya di sini →
+                  </Link>
+                </p>
+              </div>
             </div>
           </Container>
         </section>
 
-        {/* 5. UNJANI team */}
+        {/* 5. Batas penggunaan */}
         <section className="border-b-2 border-ink bg-white py-16">
           <Container>
-            <UnjaniTeam members={UNJANI_TEAM} />
+            <div className="mx-auto max-w-3xl">
+              <p className="eyebrow mb-4">KETERBATASAN</p>
+              <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold text-ink">
+                Batas penggunaan — yang jujur kami sampaikan
+              </h2>
+
+              <ul className="mt-8 space-y-6" role="list">
+                <li className="flex gap-4">
+                  <span
+                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-ink"
+                    aria-hidden="true"
+                  />
+                  <p className="leading-relaxed text-ash-700">
+                    Hasil Sekil.id{' '}
+                    <strong className="text-ink">bukan diagnosis</strong>. Kami tidak menilai
+                    gangguan, kesehatan mental, atau kondisi klinis. Untuk itu, temui psikolog atau
+                    psikiater berlisensi.
+                  </p>
+                </li>
+                <li className="flex gap-4">
+                  <span
+                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-ink"
+                    aria-hidden="true"
+                  />
+                  <p className="leading-relaxed text-ash-700">
+                    Hasil{' '}
+                    <strong className="text-ink">bukan label permanen</strong>. Minat dan preferensi
+                    bergeser seiring pengalaman. Sebagian orang memperoleh profil yang sedikit
+                    berbeda bila mengerjakan lagi setelah beberapa waktu — itu wajar, bukan
+                    kesalahan sistem.
+                  </p>
+                </li>
+                <li className="flex gap-4">
+                  <span
+                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-ink"
+                    aria-hidden="true"
+                  />
+                  <p className="leading-relaxed text-ash-700">
+                    Hasil{' '}
+                    <strong className="text-ink">mengukur kecenderungan, bukan kemampuan</strong>.
+                    Profil minat tidak mengukur kecerdasan, bakat teknis, atau jaminan sukses pada
+                    bidang tertentu.
+                  </p>
+                </li>
+                <li className="flex gap-4">
+                  <span
+                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-ink"
+                    aria-hidden="true"
+                  />
+                  <p className="leading-relaxed text-ash-700">
+                    Hasil paling berguna{' '}
+                    <strong className="text-ink">sebagai bahan diskusi</strong> — dengan orang tua,
+                    wali kelas, konselor, atau diri sendiri — bukan sebagai keputusan otomatis.
+                  </p>
+                </li>
+              </ul>
+
+              <p className="mt-8 border-l-4 border-blue-500 pl-5 text-sm leading-relaxed text-ash-700">
+                Kami menampilkan batasan ini di depan karena asesmen yang jujur soal batasnya lebih
+                layak dipercaya daripada yang menjanjikan kepastian.
+              </p>
+            </div>
           </Container>
         </section>
 
@@ -180,32 +281,46 @@ export default function MetodologiPage() {
           </Container>
         </section>
 
-        {/* 7. References */}
+        {/* 7. Validasi UNJANI (varian a — MoU ditandatangani) */}
         <section className="border-b-2 border-ink bg-white py-16">
           <Container>
-            <ReferencesList references={REFERENCES} />
+            <div className="mx-auto max-w-3xl">
+              <p className="eyebrow mb-4">VALIDASI AKADEMIK</p>
+              <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold text-ink">
+                Divalidasi bersama Fakultas Psikologi UNJANI
+              </h2>
+              <p className="mt-6 leading-relaxed text-ash-700">
+                Seluruh metodologi, item, dan konten asesmen kami direview oleh tim dosen aktif
+                Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI), Bandung. Review
+                dilakukan berkala untuk menjaga relevansi dan standar akademik.
+              </p>
+            </div>
+            <div className="mt-10">
+              <UnjaniTeam members={UNJANI_TEAM} />
+            </div>
           </Container>
         </section>
 
-        {/* 8. Soft educational CTA */}
+        {/* 8. CTA */}
         <section className="bg-paper py-16">
           <Container>
             <div className="border-2 border-ink p-10 text-center shadow-md">
-              <p className="eyebrow mb-4">EKSPLORASI LEBIH LANJUT</p>
+              <p className="eyebrow mb-4">COBA SENDIRI</p>
               <h2 className="font-display text-[clamp(24px,3vw,40px)] font-bold text-ink">
-                Pelajari produk yang menerapkan metodologi ini
+                Coba sendiri
               </h2>
               <p className="mx-auto mt-4 max-w-lg leading-relaxed text-ash-700">
-                Lihat bagaimana instrumen-instrumen tervalidasi ini diimplementasikan dalam
-                produk-produk asesmen Sekil.id — dari pemetaan karier hingga profiling tim
-                organisasi.
+                Cara terbaik memahami metodologi ini adalah menjalaninya. Mulai dalam 12 menit —
+                hasilnya bisa Anda jelaskan ke siapa pun.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Button variant="brand" size="lg" asChild>
-                  <Link href="/produk">Lihat Produk Asesmen →</Link>
+                  <Link href="/demo">Mulai asesmen →</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/institusi/metodologi">Detail Instrumen untuk Institusi →</Link>
+                  <Link href="/institusi/metodologi">
+                    Untuk institusi: minta rincian metodologi lengkap →
+                  </Link>
                 </Button>
               </div>
             </div>

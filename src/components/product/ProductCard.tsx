@@ -3,9 +3,9 @@ import { Clock, ArrowRight } from 'lucide-react';
 import type { Product } from '@/data/products';
 
 const INSTRUMENT_LABELS: Record<string, string> = {
-  holland: 'Holland Code',
-  mbti: 'MBTI',
-  papi: 'Papi Kostick',
+  holland: 'Pemetaan Minat Vokasional',
+  mbti: 'Preferensi Kepribadian',
+  papi: 'Profiling Kebutuhan Kerja',
 };
 
 const PERSONA_LABELS: Record<string, string> = {

@@ -292,7 +292,7 @@ export function getProductBySlug(slug: string): Product | undefined {
 }
 
 export const PRODUCT_CODES: Record<string, string> = {
-  'career-interest': 'RIASEC',
+  'career-interest': 'CI',
   psyai: 'PSYAI',
   'path-finder-ai': 'PFAI',
   'leadership-styles-test': 'LST',

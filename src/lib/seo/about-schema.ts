@@ -25,9 +25,9 @@ export function getAboutPageSchema() {
       areaServed: { '@type': 'Country', name: 'Indonesia' },
       knowsAbout: [
         'Asesmen Psikologi',
-        'Holland Code RIASEC',
-        'MBTI',
-        'Papi Kostick',
+        'Pemetaan Minat Vokasional',
+        'Preferensi Kepribadian',
+        'Inventori Kebutuhan dan Peran Kerja',
         'Career Mapping',
         'Emotional Intelligence',
       ],

@@ -73,7 +73,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
       {
         title: 'Laporan Profil Kelas',
         description:
-          'Dapatkan agregat profil minat per kelas: distribusi Holland Code, dominansi tipe MBTI, dan tren karier yang diminati untuk perencanaan program sekolah.',
+          'Dapatkan agregat profil minat per kelas: distribusi profil minat vokasional, dominansi preferensi kepribadian, dan tren karier yang diminati untuk perencanaan program sekolah.',
       },
     ],
     recommendedProducts: ['career-interest', 'path-finder-ai', 'psyai'],
@@ -365,7 +365,7 @@ export const BUNDLES: Bundle[] = [
   {
     id: 'comprehensive-personality',
     name: 'Comprehensive Personality',
-    tagline: 'Profil kepribadian lengkap lintas instrumen Holland, MBTI, dan Papi',
+    tagline: 'Profil kepribadian lengkap lintas tiga dimensi asesmen: minat, kepribadian, dan kebutuhan kerja',
     productSlugs: ['psyai', 'career-interest', 'emotional-intelligence-test'],
     bundlePrice: 450000,
   },
