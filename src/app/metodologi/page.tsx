@@ -18,14 +18,14 @@ const AUTHOR_NAME = 'Dr. [Placeholder UNJANI Lecturer Name], M.Psi., Psikolog';
 const AUTHOR_AFFILIATION = 'Dosen Psikologi UNJANI · Reviewer Akademik Sekil.id';
 
 export const metadata: Metadata = {
-  title: 'Metodologi Asesmen: Holland Code, MBTI, Papi Kostick | Sekil.id',
+  title: 'Metodologi Asesmen: Instrumen Psikologi Tervalidasi | Sekil.id',
   description:
-    'Sekil.id dibangun di atas 3 instrumen psikologi tervalidasi: Holland Code, MBTI, Papi Kostick. Divalidasi akademik oleh Fakultas Psikologi UNJANI.',
+    'Sekil.id dibangun di atas 3 instrumen psikologi akademik yang telah diuji selama puluhan tahun, divalidasi ulang untuk konteks Indonesia oleh Fakultas Psikologi UNJANI.',
   alternates: { canonical: 'https://sekil.id/metodologi' },
   openGraph: {
-    title: 'Metodologi Asesmen: Holland Code, MBTI, Papi Kostick | Sekil.id',
+    title: 'Metodologi Asesmen: Instrumen Psikologi Tervalidasi | Sekil.id',
     description:
-      'Sekil.id dibangun di atas 3 instrumen psikologi tervalidasi: Holland Code, MBTI, Papi Kostick. Divalidasi akademik oleh Fakultas Psikologi UNJANI.',
+      'Sekil.id dibangun di atas 3 instrumen psikologi akademik yang telah diuji selama puluhan tahun, divalidasi ulang untuk konteks Indonesia oleh Fakultas Psikologi UNJANI.',
     url: 'https://sekil.id/metodologi',
     type: 'article',
   },
@@ -78,7 +78,7 @@ export default function MetodologiPage() {
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ash-700">
                   Asesmen Sekil.id menggunakan instrumen psikologi yang sudah teruji secara akademik
                   selama puluhan tahun, divalidasi ulang untuk konteks Indonesia oleh tim Fakultas
-                  Psikologi UNJANI.
+                  Psikologi UNJANI. Detail teknis instrumen tersedia untuk mitra institusi.
                 </p>
                 <div className="mt-8 border-2 border-ink bg-peach-300 p-5 shadow-sm">
                   <AuthorByline
@@ -110,7 +110,7 @@ export default function MetodologiPage() {
                     ].join(' ')}
                   >
                     <span className="font-mono text-[10px] text-ash-700">0{i + 1}</span>
-                    <span>{inst.name}</span>
+                    <span>{inst.publicName}</span>
                   </a>
                 ))}
               </nav>
@@ -133,11 +133,12 @@ export default function MetodologiPage() {
                 </p>
                 <p>
                   Sekil.id tidak menciptakan instrumen baru. Kami memilih untuk membangun di atas
-                  instrumen yang sudah tervalidasi secara akademik: Holland Code (RIASEC) untuk
-                  pemetaan minat vokasional, MBTI-style typing untuk pemahaman preferensi
-                  kepribadian, dan Papi Kostick untuk profil kebutuhan dan peran kerja. Ketiga
-                  instrumen ini dipilih karena kedalaman evidensnya, relevansinya untuk konteks
-                  karier, dan kemampuannya menghasilkan insight yang dapat ditindaklanjuti.
+                  instrumen yang sudah tervalidasi secara akademik: kerangka minat vokasional
+                  enam-dimensi untuk pemetaan karier, kerangka preferensi kepribadian berbasis
+                  teori tipe psikologis Jung, dan inventori kebutuhan &amp; peran kerja untuk
+                  profiling profesional. Ketiga instrumen ini dipilih karena kedalaman evidensnya,
+                  relevansinya untuk konteks karier, dan kemampuannya menghasilkan insight yang
+                  dapat ditindaklanjuti.
                 </p>
                 <p>
                   Peran AI dalam sistem kami bersifat teknis, bukan interpretif. AI menangani
@@ -159,7 +160,7 @@ export default function MetodologiPage() {
             <p className="eyebrow mb-8">INSTRUMEN PSIKOLOGI TERVALIDASI</p>
             <div className="space-y-8">
               {INSTRUMENTS.map((instrument, i) => (
-                <InstrumentSection key={instrument.id} instrument={instrument} index={i} />
+                <InstrumentSection key={instrument.id} instrument={instrument} index={i} mode="public" />
               ))}
             </div>
           </Container>
@@ -195,7 +196,7 @@ export default function MetodologiPage() {
                 Pelajari produk yang menerapkan metodologi ini
               </h2>
               <p className="mx-auto mt-4 max-w-lg leading-relaxed text-ash-700">
-                Lihat bagaimana Holland Code, MBTI, dan Papi Kostick diimplementasikan dalam
+                Lihat bagaimana instrumen-instrumen tervalidasi ini diimplementasikan dalam
                 produk-produk asesmen Sekil.id — dari pemetaan karier hingga profiling tim
                 organisasi.
               </p>
@@ -204,7 +205,7 @@ export default function MetodologiPage() {
                   <Link href="/produk">Lihat Produk Asesmen →</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/demo">Coba Demo Gratis</Link>
+                  <Link href="/institusi/metodologi">Detail Instrumen untuk Institusi →</Link>
                 </Button>
               </div>
             </div>

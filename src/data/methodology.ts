@@ -1,7 +1,12 @@
 export interface Instrument {
   id: string;
+  /** Full technical name — for internal/buyer-facing pages */
   name: string;
   fullName: string;
+  /** De-branded name for public-facing /metodologi page */
+  publicName: string;
+  /** De-branded origin text (no instrument brand names) for public page */
+  publicOrigin: string;
   origin: string;
   citation: string;
   dimensions: string[];
@@ -26,6 +31,9 @@ export const INSTRUMENTS: Instrument[] = [
     id: 'holland',
     name: 'Holland Code (RIASEC)',
     fullName: 'Holland Code — RIASEC Interest Model',
+    publicName: 'Kerangka Minat Vokasional',
+    publicOrigin:
+      'Dikembangkan oleh psikolog John L. Holland (1959). Instrumen ini mengklasifikasikan minat vokasional ke dalam enam tipe kepribadian yang mencerminkan lingkungan kerja yang sesuai. Selama lebih dari enam dekade, kerangka minat vokasional ini menjadi salah satu kerangka pemetaan karier yang paling banyak digunakan dan diteliti di dunia.',
     origin:
       'Dikembangkan oleh psikolog John L. Holland (1959). Instrumen ini mengklasifikasikan minat vokasional ke dalam enam tipe kepribadian yang mencerminkan lingkungan kerja yang sesuai. Selama lebih dari enam dekade, Holland Code menjadi salah satu kerangka pemetaan karier yang paling banyak digunakan dan diteliti di dunia.',
     citation:
@@ -51,6 +59,9 @@ export const INSTRUMENTS: Instrument[] = [
     id: 'mbti',
     name: 'MBTI-style Typing',
     fullName: 'Myers-Briggs Type Indicator — Tipe Kepribadian',
+    publicName: 'Kerangka Preferensi Kepribadian',
+    publicOrigin:
+      'Berbasis teori tipe psikologis Carl Jung (1921), dioperasionalkan oleh Isabel Briggs Myers dan Katharine Cook Briggs (1962). Menghasilkan 16 tipe kepribadian dari kombinasi empat dikotomi preferensi psikologis. Sekil.id menggunakan pendekatan berbasis konstruk Jung yang sama, diadaptasi untuk konteks pengembangan karier — bukan seleksi atau diagnosis.',
     origin:
       'Berbasis teori tipe psikologis Carl Jung (1921), dioperasionalkan oleh Isabel Briggs Myers dan Katharine Cook Briggs (1962). Menghasilkan 16 tipe kepribadian dari kombinasi empat dikotomi preferensi psikologis. Sekil.id menggunakan pendekatan berbasis konstruk Jung yang sama, diadaptasi untuk konteks pengembangan karier — bukan seleksi atau diagnosis.',
     citation:
@@ -74,6 +85,9 @@ export const INSTRUMENTS: Instrument[] = [
     id: 'papi',
     name: 'Papi Kostick',
     fullName: 'PAPI — Personality and Preference Inventory',
+    publicName: 'Inventori Kebutuhan & Peran Kerja',
+    publicOrigin:
+      'Dikembangkan oleh Max Kostick pada dekade 1960-an di Boston University. Dirancang khusus untuk konteks kerja profesional dan organisasional, instrumen ini mengukur kebutuhan (needs) dan peran (roles) yang mendorong perilaku individu dalam lingkungan kerja — berbeda dari instrumen kepribadian umum yang tidak berorientasi kerja.',
     origin:
       'Personality and Preference Inventory dikembangkan oleh Max Kostick pada dekade 1960-an di Boston University. Dirancang khusus untuk konteks kerja profesional dan organisasional, PAPI mengukur kebutuhan (needs) dan peran (roles) yang mendorong perilaku individu dalam lingkungan kerja — berbeda dari instrumen kepribadian umum yang tidak berorientasi kerja.',
     citation: 'Kostick, M. M. (1976). PAPI Manual. PA Consulting Group.',

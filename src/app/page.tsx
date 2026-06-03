@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { getSiteSchema, getWebSiteSchema } from '@/lib/seo/site-schema';
 import { sanityFetch } from '@/lib/sanity/live';
-import type { HomePageData } from '@/lib/sanity/types';
+import type { HomePageData, HomePageStat } from '@/lib/sanity/types';
 import { HOME_PAGE_QUERY } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
@@ -79,10 +79,10 @@ const DEFAULT_PRODUCTS = [
   },
 ];
 
-const DEFAULT_STATS = [
+const DEFAULT_STATS: HomePageStat[] = [
   { label: 'Siswa terverifikasi', value: '62,400', unit: '+' },
   { label: 'Sekolah mitra', value: '340', unit: '' },
-  { label: 'Akurasi PsyAI', value: '94', unit: '%', featured: true },
+  { label: 'Dimensi diukur', value: '18', unit: '' },
   { label: 'Durasi rata-rata', value: '11', unit: ' min' },
 ];
 
@@ -255,10 +255,10 @@ export default async function HomePage() {
               </div>
               <div>
                 <p className="font-display text-[28px] font-bold leading-[1.05] tracking-[-0.02em] text-ink">
-                  Andika &middot; INTJ-A
+                  Andika &middot; Sang Strategis
                 </p>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
-                  STRATEGIST &middot; 87 / 100
+                  87 / 100
                 </p>
               </div>
             </div>

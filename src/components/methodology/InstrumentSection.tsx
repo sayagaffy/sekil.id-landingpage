@@ -4,9 +4,17 @@ import type { Instrument } from '@/data/methodology';
 interface InstrumentSectionProps {
   instrument: Instrument;
   index: number;
+  /**
+   * "public"  — de-branded name + no citation (for /metodologi public page)
+   * "buyer"   — full technical name + full citation (for /institusi/metodologi, default)
+   */
+  mode?: 'public' | 'buyer';
 }
 
-export function InstrumentSection({ instrument, index }: InstrumentSectionProps) {
+export function InstrumentSection({ instrument, index, mode = 'buyer' }: InstrumentSectionProps) {
+  const displayName = mode === 'public' ? instrument.publicName : instrument.name;
+  const displayOrigin = mode === 'public' ? instrument.publicOrigin : instrument.origin;
+
   return (
     <section
       id={instrument.id}
@@ -22,7 +30,7 @@ export function InstrumentSection({ instrument, index }: InstrumentSectionProps)
           id={`instrument-${instrument.id}-heading`}
           className="font-display text-xl font-bold text-ink"
         >
-          {instrument.name}
+          {displayName}
         </h2>
       </div>
 
@@ -35,10 +43,14 @@ export function InstrumentSection({ instrument, index }: InstrumentSectionProps)
               Asal-usul Akademik
             </h3>
           </div>
-          <p className="mb-4 leading-relaxed text-ink/80">{instrument.origin}</p>
-          <blockquote className="border-l-4 border-blue-500 pl-4 text-sm italic text-ash-700">
-            {instrument.citation}
-          </blockquote>
+          <p className={mode === 'buyer' ? 'mb-4 leading-relaxed text-ink/80' : 'leading-relaxed text-ink/80'}>
+            {displayOrigin}
+          </p>
+          {mode === 'buyer' && (
+            <blockquote className="border-l-4 border-blue-500 pl-4 text-sm italic text-ash-700">
+              {instrument.citation}
+            </blockquote>
+          )}
         </div>
 
         {/* Dimensi yang Diukur */}
