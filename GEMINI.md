@@ -78,6 +78,7 @@ npm run build
 
 *Seluruh penulisan kasus uji otomatis wajib merujuk pada standar dan metodologi yang ditetapkan di [Automated Tester Playbook](file:///home/pahlawanto/Project/PT. Dart Prihaditama Studio/sekil.id-docs/22_Tester_Playbook_v1.0.md).*
 *Pastikan build berhasil lulus 100% sebelum mengajukan Pull Request.*
+*Setiap env var yang diakses saat `npm run build` (termasuk `NEXT_PUBLIC_*`, Keystatic, Resend, dll) **WAJIB** terdefinisi di `.github/workflows/ci.yml` \u2014 minimal sebagai nilai placeholder. Kegagalan mendefinisikan env var menyebabkan error `collecting page data` di CI. Lihat [GitHub Actions CI/CD Playbook](file:///home/pahlawanto/Project/PT. Dart Prihaditama Studio/sekil.id-docs/29_GitHub_Actions_CICD_Playbook_v1.0.md) §2.1.*
 
 ---
 
