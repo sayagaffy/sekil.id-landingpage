@@ -44,3 +44,9 @@ jobs:
           KEYSTATIC_GITHUB_CLIENT_SECRET: placeholder
           KEYSTATIC_SECRET: placeholder-secret-minimum-32-chars-fill
           NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: placeholder
+          # WHY: Sanity CMS — NEXT_PUBLIC_* vars are safe to expose in CI (they
+          # are used for the public Sanity studio and GROQ queries). The read
+          # token is a secret so it comes from GitHub Secrets, not plaintext.
+          NEXT_PUBLIC_SANITY_PROJECT_ID: 2p33r6a9
+          NEXT_PUBLIC_SANITY_DATASET: production
+          SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
