@@ -26,7 +26,27 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://sekil.id
+          NEXT_PUBLIC_APP_URL: https://app.sekil.id
           DATABASE_URL: postgresql://placeholder
           RESEND_API_KEY: placeholder
+          RESEND_FROM: no-reply@sekil.id
+          SALES_NOTIFICATION_EMAIL: ci@placeholder.com
+          REPLY_TO_EMAIL: ci@placeholder.com
           NEXT_PUBLIC_TURNSTILE_SITE_KEY: placeholder
           TURNSTILE_SECRET_KEY: placeholder
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: G-PLACEHOLDER
+          SENTRY_DSN: ""
+          NEXT_PUBLIC_SENTRY_DSN: ""
+          # WHY: Keystatic CMS env vars required during Next.js build for
+          # route generation. Using placeholder values; real secrets are only
+          # needed for Keystatic GitHub mode in production, not CI builds.
+          KEYSTATIC_GITHUB_CLIENT_ID: placeholder
+          KEYSTATIC_GITHUB_CLIENT_SECRET: placeholder
+          KEYSTATIC_SECRET: placeholder-secret-minimum-32-chars-fill
+          NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: placeholder
+          # WHY: Sanity CMS — NEXT_PUBLIC_* vars are safe to expose in CI (they
+          # are used for the public Sanity studio and GROQ queries). The read
+          # token is a secret so it comes from GitHub Secrets, not plaintext.
+          NEXT_PUBLIC_SANITY_PROJECT_ID: 2p33r6a9
+          NEXT_PUBLIC_SANITY_DATASET: production
+          SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
