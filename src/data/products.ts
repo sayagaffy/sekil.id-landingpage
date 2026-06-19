@@ -285,6 +285,270 @@ export const PRODUCTS: Product[] = [
       'Ukur 4 dimensi Emotional Intelligence (EQ) dengan tes tervalidasi akademik. Dapatkan skor EQ, analisis mendalam, dan rencana pengembangan dalam 20 menit.',
     primaryKeyword: 'tes eq online',
   },
+  {
+    slug: 'self-discovery-ai',
+    name: 'Self DiscoveryAI',
+    nameDisplay: 'Self DiscoveryAI — Kenali Dirimu',
+    tagline: 'Peta diri komprehensif: siapa Anda, bagaimana Anda bekerja, apa yang paling bermakna bagi Anda',
+    description:
+      'Self DiscoveryAI mengintegrasikan profil preferensi kepribadian dan inventori kebutuhan kerja untuk menghasilkan peta diri yang holistik. 20 menit untuk memahami kekuatan alami, kebutuhan, dan cara kerja terbaik Anda.',
+    longDescription:
+      'Self DiscoveryAI dirancang untuk mereka yang ingin memahami dirinya lebih dalam sebelum membuat keputusan karier atau hidup yang signifikan. Dengan mengintegrasikan kerangka preferensi kepribadian dan inventori kebutuhan & peran kerja, Self DiscoveryAI menghasilkan peta diri holistik — mencakup bagaimana Anda memproses informasi, apa yang memotivasi Anda, dan lingkungan seperti apa yang membuat Anda tumbuh paling baik.',
+    duration: '20 menit',
+    price: 175000,
+    priceDisplay: 'Rp 175.000',
+    targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
+    instruments: ['mbti', 'papi'],
+    outputs: [
+      'Profil preferensi kepribadian dengan 4 dimensi utama',
+      'Peta kebutuhan & peran kerja: apa yang memotivasi dan menguras energi Anda',
+      'Narasi self-discovery dipersonalisasi AI dalam konteks kerja dan kehidupan',
+      'Profil lingkungan kerja ideal berdasarkan kebutuhan dan preferensi',
+      'Panduan pengembangan diri berbasis titik terkuat dan blind spot',
+      'Laporan PDF 15+ halaman dalam Bahasa Indonesia',
+    ],
+    sampleReportTeaser:
+      'Laporan Self DiscoveryAI mencakup: profil preferensi kepribadian 4 dimensi, peta kebutuhan & peran kerja dalam 10 dimensi, narasi self-discovery yang dipersonalisasi AI, dan panduan "cara kerja terbaik Anda" untuk dikomunikasikan ke atasan, rekan, dan tim.',
+    bundleSuggestions: ['psyai', 'career-interest'],
+    faq: [
+      {
+        q: 'Apa bedanya Self DiscoveryAI dengan PsyAI?',
+        a: 'PsyAI berfokus pada integrasi minat vokasional dan kepribadian untuk arah karier. Self DiscoveryAI lebih dalam pada self-understanding — siapa Anda, apa kebutuhan kerja Anda, dan bagaimana Anda berfungsi terbaik — tanpa terlalu fokus pada rekomendasi karier spesifik. Cocok untuk yang ingin memahami diri sebelum memutuskan langkah berikutnya.',
+      },
+      {
+        q: 'Siapa yang paling cocok mengikuti tes ini?',
+        a: 'Self DiscoveryAI paling bermanfaat untuk mahasiswa di persimpangan pilihan karier, fresh graduate yang ingin memahami diri sebelum memulai karier, dan karyawan yang sedang dalam proses refleksi diri atau perubahan karier.',
+      },
+      {
+        q: 'Berapa lama tes dan bagaimana cara mendapatkan laporan?',
+        a: '20 menit untuk menyelesaikan tes. Laporan tersedia langsung setelah selesai dalam format PDF yang dapat diunduh dan dikirim ke email Anda.',
+      },
+    ],
+    seoTitle: 'Self Discovery AI — Kenali Dirimu Lebih Dalam | Sekil.id',
+    seoDescription:
+      'Self DiscoveryAI mengintegrasikan profil kepribadian dan inventori kebutuhan kerja untuk peta diri yang komprehensif. Kenali kekuatan, kebutuhan, dan cara kerja terbaik Anda dalam 20 menit.',
+    primaryKeyword: 'tes self discovery',
+  },
+  {
+    slug: 'goal-align-ai',
+    name: 'Goal AlignAI',
+    nameDisplay: 'Goal AlignAI — Selaraskan Tujuan Karier',
+    tagline: 'Selaraskan ambisi karier dengan profil kebutuhan kerja dan motivasi asli Anda',
+    description:
+      'Goal AlignAI membantu Anda menyusun tujuan karier yang benar-benar selaras dengan kebutuhan, motivasi, dan kekuatan kerja Anda — menghasilkan roadmap karier yang realistis dan menggerakkan semangat.',
+    longDescription:
+      'Banyak orang menetapkan tujuan karier berdasarkan ekspektasi sosial atau tekanan lingkungan — bukan berdasarkan profil diri yang sesungguhnya. Goal AlignAI menggabungkan analisis inventori kebutuhan & peran kerja dengan eksplorasi tujuan karier untuk menghasilkan roadmap yang selaras dengan motivasi intrinsik Anda. Hasilnya: tujuan yang tidak hanya realistis, tapi juga menggerakkan energi dan komitmen jangka panjang.',
+    duration: '20 menit',
+    price: 175000,
+    priceDisplay: 'Rp 175.000',
+    targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
+    instruments: ['papi'],
+    outputs: [
+      'Profil kebutuhan & motivasi kerja: apa yang benar-benar menggerakkan Anda',
+      'Analisis keselarasan antara tujuan karier dan profil kebutuhan Anda',
+      'Roadmap karier 1–3 tahun yang selaras dengan profil motivasi',
+      'Identifikasi hambatan internal dan strategi mengatasinya',
+      'Panduan komunikasi tujuan karier ke atasan atau mentor',
+      'Laporan PDF 12+ halaman dalam Bahasa Indonesia',
+    ],
+    sampleReportTeaser:
+      'Laporan Goal AlignAI mencakup: profil motivasi kerja dan kebutuhan karier Anda, analisis keselarasan tujuan versus profil, roadmap karier dengan milestone konkret, serta identifikasi hambatan internal yang perlu diatasi untuk mencapai tujuan tersebut.',
+    bundleSuggestions: ['self-discovery-ai', 'psyai'],
+    faq: [
+      {
+        q: 'Apa yang membedakan Goal AlignAI dari career coaching biasa?',
+        a: 'Goal AlignAI berbasis data profil psikologis — bukan opini atau asumsi. Roadmap yang dihasilkan didasarkan pada inventori kebutuhan & peran kerja yang tervalidasi, sehingga lebih akurat mencerminkan motivasi asli Anda daripada sekadar nasihat umum.',
+      },
+      {
+        q: 'Siapa yang paling cocok mengikuti Goal AlignAI?',
+        a: 'Fresh graduate yang akan memulai karier dan ingin arah yang jelas, karyawan yang merasa karier tidak selaras dengan motivasi aslinya, dan manajer yang ingin merekalkulasi tujuan karier jangka menengah.',
+      },
+      {
+        q: 'Apakah hasilnya bisa digunakan dalam sesi mentoring atau coaching?',
+        a: 'Ya. Laporan Goal AlignAI dirancang sebagai bahan diskusi produktif dalam sesi mentoring, coaching karier, atau konsultasi HR. Profil dan roadmap yang konkret mempercepat proses karena titik awal sudah berbasis data.',
+      },
+    ],
+    seoTitle: 'Goal AlignAI — Selaraskan Tujuan Karier dengan Profil Anda | Sekil.id',
+    seoDescription:
+      'Goal AlignAI membantu menyusun roadmap karier yang selaras dengan motivasi dan kebutuhan kerja asli Anda. 20 menit untuk tujuan karier yang lebih bermakna dan realistis.',
+    primaryKeyword: 'goal alignment karier',
+  },
+  {
+    slug: 'goal-orientation-coaching',
+    name: 'Goal Orientation Coaching',
+    nameDisplay: 'Goal Orientation Coaching — Coaching Karier Premium',
+    tagline: 'Sesi coaching 1-on-1 dengan psikolog karier berbasis data profil Anda',
+    description:
+      'Paket premium Goal Orientation Coaching menggabungkan asesmen profil kebutuhan kerja dengan sesi coaching intensif 1-on-1 bersama psikolog karier Sekil.id. Dapatkan action plan karier yang konkret, tervalidasi, dan didampingi profesional.',
+    longDescription:
+      'Goal Orientation Coaching adalah layanan premium Sekil.id yang menggabungkan rigor asesmen psikologis dengan kedalaman coaching profesional. Sesi dimulai dengan asesmen inventori kebutuhan & peran kerja untuk membangun profil yang objektif, dilanjutkan dengan sesi coaching 1-on-1 bersama psikolog karier. Hasilnya: action plan karier yang tidak hanya diinginkan, tapi dapat dicapai sesuai profil dan kondisi aktual Anda.',
+    duration: '45 menit',
+    price: 350000,
+    priceDisplay: 'Rp 350.000',
+    targetPersonas: ['karyawan', 'manager'],
+    instruments: ['papi'],
+    outputs: [
+      'Asesmen profil kebutuhan & peran kerja sebelum sesi coaching',
+      'Sesi coaching 1-on-1 45 menit dengan psikolog karier Sekil.id',
+      'Goal clarity framework: tujuan jangka pendek, menengah, dan panjang',
+      'Identifikasi hambatan dan strategi eksekusi yang realistis',
+      'Action plan tertulis 90 hari yang dapat langsung dimulai',
+      'Ringkasan sesi dan catatan psikolog dalam format PDF',
+    ],
+    sampleReportTeaser:
+      'Setelah sesi Goal Orientation Coaching, Anda mendapatkan: ringkasan profil kebutuhan & peran kerja, goal clarity framework dengan milestone konkret, action plan 90 hari yang dipersonalisasi, dan catatan psikolog mengenai rekomendasi pengembangan lanjutan.',
+    bundleSuggestions: ['goal-align-ai', 'professional-authenticity-test'],
+    faq: [
+      {
+        q: 'Bagaimana jadwal sesi coaching diatur?',
+        a: 'Setelah pembelian, tim Sekil.id akan menghubungi Anda dalam 1 hari kerja untuk menjadwalkan sesi. Sesi dapat dilakukan via video call (Zoom/Google Meet) sesuai jadwal yang disepakati.',
+      },
+      {
+        q: 'Apakah psikolog yang akan coaching sudah bersertifikat?',
+        a: 'Ya. Semua psikolog karier Sekil.id adalah psikolog berlisensi dengan keahlian di bidang psikologi industri dan karier. Profil psikolog dapat diminta sebelum sesi.',
+      },
+      {
+        q: 'Apakah ada sesi follow-up setelah coaching?',
+        a: 'Paket dasar mencakup 1 sesi coaching. Follow-up session tersedia dengan pembelian terpisah. Untuk paket institusional yang mencakup multiple sesi, hubungi tim kami.',
+      },
+    ],
+    seoTitle: 'Goal Orientation Coaching — Coaching Karier dengan Psikolog | Sekil.id',
+    seoDescription:
+      'Sesi coaching karier 1-on-1 dengan psikolog Sekil.id berbasis asesmen profil kebutuhan kerja. Dapatkan action plan 90 hari yang konkret dan tervalidasi profesional.',
+    primaryKeyword: 'coaching karier psikolog',
+  },
+  {
+    slug: 'professional-authenticity-test',
+    name: 'Professional Authenticity Test',
+    nameDisplay: 'Professional Authenticity Test — Keaslian di Tempat Kerja',
+    tagline: 'Ukur seberapa autentik Anda bekerja dan identifikasi kesenjangan antara diri asli dan peran profesional',
+    description:
+      'Professional Authenticity Test mengukur keselarasan antara nilai-nilai diri, kebutuhan kerja, dan cara Anda berpresentasi di lingkungan profesional. Identifikasi "authenticity gap" yang mungkin menyebabkan kelelahan atau ketidakpuasan karier.',
+    longDescription:
+      'Ketidakselarasan antara siapa Anda sebenarnya dan bagaimana Anda berperilaku di tempat kerja adalah sumber utama kelelahan dan ketidakpuasan karier jangka panjang. Professional Authenticity Test mengukur gap ini menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks keaslian profesional — menghasilkan profil yang menunjukkan area di mana Anda paling dan paling tidak autentik, beserta strategi untuk mempersempit kesenjangan tersebut.',
+    duration: '20 menit',
+    price: 175000,
+    priceDisplay: 'Rp 175.000',
+    targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
+    instruments: ['papi'],
+    outputs: [
+      'Profil keaslian profesional: area di mana Anda paling dan paling kurang autentik',
+      'Analisis authenticity gap antara nilai diri dan perilaku profesional',
+      'Identifikasi pemicu ketidakautentikan: situasi, orang, atau konteks tertentu',
+      'Strategi mempersempit authenticity gap dengan langkah konkret',
+      'Panduan komunikasi yang lebih autentik di tempat kerja',
+      'Laporan PDF 12+ halaman dalam Bahasa Indonesia',
+    ],
+    sampleReportTeaser:
+      'Laporan Professional Authenticity Test mencakup: skor keaslian per dimensi profesional, analisis authenticity gap antara nilai dan perilaku, identifikasi situasi pemicu, dan 5 strategi konkret untuk bekerja dengan lebih autentik tanpa mengorbankan profesionalisme.',
+    bundleSuggestions: ['self-discovery-ai', 'goal-orientation-coaching'],
+    faq: [
+      {
+        q: 'Apa yang dimaksud dengan "authenticity gap" dalam konteks kerja?',
+        a: 'Authenticity gap adalah jarak antara siapa Anda sebenarnya (nilai, kebutuhan, preferensi kerja) dan bagaimana Anda berpresentasi di tempat kerja. Gap yang terlalu besar adalah sumber utama kelelahan dan ketidakpuasan karier kronis.',
+      },
+      {
+        q: 'Apakah tes ini hanya untuk individu yang "tidak autentik"?',
+        a: 'Tidak. Semua orang menyesuaikan diri di tempat kerja — itu normal. Tes ini mengukur seberapa besar penyesuaian tersebut dan apakah sudah melewati ambang yang berdampak negatif pada wellbeing dan performa.',
+      },
+      {
+        q: 'Bagaimana hasil tes ini bisa membantu karier saya?',
+        a: 'Dengan memahami di mana dan mengapa Anda tidak autentik, Anda bisa membuat keputusan yang lebih tepat: apakah perlu mengubah cara berkomunikasi, mencari peran yang lebih sesuai, atau mempertimbangkan perubahan lingkungan kerja.',
+      },
+    ],
+    seoTitle: 'Professional Authenticity Test — Keaslian di Tempat Kerja | Sekil.id',
+    seoDescription:
+      'Ukur keselarasan antara nilai diri dan perilaku profesional. Professional Authenticity Test mengidentifikasi authenticity gap dan memberikan strategi konkret untuk bekerja lebih autentik.',
+    primaryKeyword: 'tes keaslian profesional',
+  },
+  {
+    slug: 'job-burnout-test',
+    name: 'Job Burnout Test',
+    nameDisplay: 'Job Burnout Test — Deteksi Risiko Burnout',
+    tagline: 'Deteksi dini risiko burnout dan susun strategi pemulihan berbasis data',
+    description:
+      'Job Burnout Test mengukur tingkat kelelahan kerja di tiga dimensi: kelelahan emosional, depersonalisasi, dan efektivitas diri. Dapatkan profil risiko burnout yang akurat dan panduan pemulihan yang konkret dalam 15 menit.',
+    longDescription:
+      'Burnout bukan sekadar kelelahan biasa — ia adalah kondisi psikologis yang berkembang bertahap dan berdampak serius pada kesehatan, produktivitas, dan hubungan kerja. Job Burnout Test menggunakan asesmen kebutuhan & peran kerja yang diadaptasi untuk mengukur tiga dimensi burnout paling kritis: kelelahan emosional, depersonalisasi, dan efektivitas diri. Hasilnya mencakup profil risiko dan rencana pemulihan berbasis evidence.',
+    duration: '15 menit',
+    price: 200000,
+    priceDisplay: 'Rp 200.000',
+    targetPersonas: ['karyawan', 'manager'],
+    instruments: ['papi'],
+    outputs: [
+      'Skor 3 dimensi burnout: Kelelahan Emosional, Depersonalisasi, dan Efektivitas Diri',
+      'Profil risiko burnout keseluruhan: rendah, sedang, atau tinggi',
+      'Identifikasi dimensi burnout yang paling kritis saat ini',
+      'Analisis penyebab potensial berdasarkan profil kebutuhan kerja',
+      'Panduan pemulihan bertahap dengan 10 strategi berbasis evidence',
+      'Laporan PDF 10+ halaman dalam Bahasa Indonesia',
+    ],
+    sampleReportTeaser:
+      'Laporan Job Burnout Test mencakup: skor per dimensi burnout dengan interpretasi mendalam, profil risiko keseluruhan, identifikasi faktor penyebab dari lingkungan dan pola kerja, serta panduan pemulihan 30-60-90 hari yang dapat langsung dimulai.',
+    bundleSuggestions: ['professional-authenticity-test', 'emotional-intelligence-test'],
+    faq: [
+      {
+        q: 'Apakah tes ini bisa mendiagnosis burnout secara klinis?',
+        a: 'Tidak. Job Burnout Test adalah alat skrining dan self-assessment — bukan alat diagnostik klinis. Hasilnya bersifat indikatif dan edukatif. Jika Anda mengalami gejala burnout yang parah, sangat disarankan untuk berkonsultasi dengan psikolog atau dokter berlisensi.',
+      },
+      {
+        q: 'Seberapa sering saya perlu mengulang tes ini?',
+        a: 'Kami merekomendasikan melakukan Job Burnout Test setiap 6 bulan sebagai check-in rutin, atau segera jika ada perubahan signifikan dalam kondisi kerja atau kesehatan mental.',
+      },
+      {
+        q: 'Apakah employer atau HRD bisa melihat hasil tes saya?',
+        a: 'Tidak. Hasil tes hanya dapat diakses oleh peserta yang bersangkutan. Kami tidak berbagi data individual dengan employer, HR, atau pihak ketiga manapun tanpa persetujuan eksplisit peserta.',
+      },
+    ],
+    seoTitle: 'Job Burnout Test — Deteksi Risiko Burnout Kerja | Sekil.id',
+    seoDescription:
+      'Deteksi dini risiko burnout dengan asesmen tervalidasi. Job Burnout Test mengukur 3 dimensi burnout dan memberikan panduan pemulihan berbasis evidence dalam 15 menit.',
+    primaryKeyword: 'tes burnout kerja',
+  },
+  {
+    slug: 'personal-authenticity-test',
+    name: 'Personal Authenticity Test',
+    nameDisplay: 'Personal Authenticity Test — Keaslian Diri Sejati',
+    tagline: 'Temukan dan ekspresikan versi diri yang paling autentik dalam kehidupan sehari-hari',
+    description:
+      'Personal Authenticity Test mengukur keselarasan antara nilai-nilai inti, preferensi hidup, dan cara Anda menjalani keseharian. Untuk individu yang ingin hidup lebih bermakna dan selaras dengan siapa diri mereka sebenarnya.',
+    longDescription:
+      'Keaslian diri bukan tentang sempurna atau tidak berubah — ini tentang menjalani hidup yang selaras dengan nilai dan preferensi terdalam Anda. Personal Authenticity Test mengintegrasikan kerangka preferensi kepribadian dengan inventori kebutuhan personal untuk menghasilkan profil keaslian yang menyeluruh: di area mana Anda sudah autentik, di mana Anda paling sering menekan diri sendiri, dan apa yang perlu diubah untuk hidup yang lebih bermakna.',
+    duration: '20 menit',
+    price: 200000,
+    priceDisplay: 'Rp 200.000',
+    targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
+    instruments: ['mbti', 'papi'],
+    outputs: [
+      'Profil nilai inti: apa yang paling penting bagi Anda dalam hidup dan hubungan',
+      'Skor keaslian diri per domain: karier, hubungan, ekspresi diri, dan pilihan hidup',
+      'Identifikasi area di mana Anda paling sering menekan atau menyembunyikan diri',
+      'Analisis akar ketidakautentikan: ekspektasi sosial, rasa takut, atau kebiasaan',
+      'Panduan hidup lebih autentik dengan langkah konkret dan bertahap',
+      'Laporan PDF 12+ halaman dalam Bahasa Indonesia',
+    ],
+    sampleReportTeaser:
+      'Laporan Personal Authenticity Test mencakup: profil nilai inti dan preferensi hidup, skor keaslian per domain kehidupan, analisis mendalam tentang pola ketidakautentikan, serta panduan 5 langkah untuk mulai menjalani hidup yang lebih selaras dengan diri asli Anda.',
+    bundleSuggestions: ['self-discovery-ai', 'job-burnout-test'],
+    faq: [
+      {
+        q: 'Apa bedanya Personal Authenticity Test dengan Professional Authenticity Test?',
+        a: 'Professional Authenticity Test berfokus pada konteks tempat kerja. Personal Authenticity Test lebih luas — mencakup seluruh domain kehidupan: karier, hubungan, ekspresi diri, dan pilihan hidup secara keseluruhan.',
+      },
+      {
+        q: 'Apakah tes ini cocok untuk remaja atau siswa?',
+        a: 'Tes ini paling optimal untuk usia 18 tahun ke atas. Untuk siswa SMA, Career Interest atau Path Finder AI mungkin lebih relevan sebagai titik awal eksplorasi diri.',
+      },
+      {
+        q: 'Apakah hasil tes ini bisa berubah?',
+        a: 'Ya. Nilai, preferensi, dan tingkat keaslian diri dapat berkembang seiring pengalaman dan pertumbuhan. Kami merekomendasikan re-assessment setiap 12–18 bulan, atau setelah transisi hidup yang signifikan.',
+      },
+    ],
+    seoTitle: 'Personal Authenticity Test — Keaslian Diri Sejati | Sekil.id',
+    seoDescription:
+      'Ukur keselarasan antara nilai inti dan cara hidup Anda sehari-hari. Personal Authenticity Test membantu Anda hidup lebih autentik dan bermakna dalam 20 menit.',
+    primaryKeyword: 'tes keaslian diri',
+  },
 ];
 
 export function getProductBySlug(slug: string): Product | undefined {
@@ -297,9 +561,21 @@ export const PRODUCT_CODES: Record<string, string> = {
   'path-finder-ai': 'PFAI',
   'leadership-styles-test': 'LST',
   'emotional-intelligence-test': 'EQ',
+  'self-discovery-ai': 'SDAI',
+  'goal-align-ai': 'GAAI',
+  'goal-orientation-coaching': 'GOC',
+  'professional-authenticity-test': 'PAT',
+  'job-burnout-test': 'JBT',
+  'personal-authenticity-test': 'PEAT',
 };
 
 export const ACCENT_SEQUENCE: ('peach' | 'blue' | 'navy')[] = [
+  'peach',
+  'blue',
+  'navy',
+  'peach',
+  'blue',
+  'navy',
   'peach',
   'blue',
   'navy',

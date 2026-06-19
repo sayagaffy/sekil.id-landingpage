@@ -93,7 +93,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
     faq: [
       {
         q: 'Berapa minimum jumlah siswa untuk paket institusional?',
-        a: 'Tidak ada minimum. Anda bisa mulai dari 1 siswa dengan harga reguler. Diskon volume mulai berlaku dari 500 seat ke atas — semakin banyak, semakin hemat hingga 50% untuk 50.000+ seat.',
+        a: 'Tidak ada minimum. Anda bisa mulai dari 1 siswa dengan harga reguler. Diskon volume mulai berlaku dari 500 seat ke atas — semakin banyak, semakin hemat hingga 20% untuk 50.000+ seat.',
       },
       {
         q: 'Apakah guru BK mendapat dashboard terpisah untuk memantau siswa?',
@@ -353,21 +353,21 @@ export const BUNDLES: Bundle[] = [
     name: 'Career Starter',
     tagline: 'Eksplorasi awal minat karier dan pilihan jurusan kuliah',
     productSlugs: ['career-interest', 'path-finder-ai'],
-    bundlePrice: 250000,
+    bundlePrice: 276000,
   },
   {
     id: 'corporate-leadership',
     name: 'Corporate Leadership',
     tagline: 'Kepemimpinan dan kecerdasan emosional untuk manajer dan HR',
     productSlugs: ['leadership-styles-test', 'emotional-intelligence-test', 'psyai'],
-    bundlePrice: 470000,
+    bundlePrice: 510000,
   },
   {
     id: 'comprehensive-personality',
     name: 'Comprehensive Personality',
     tagline: 'Profil kepribadian lengkap lintas tiga dimensi asesmen: minat, kepribadian, dan kebutuhan kerja',
     productSlugs: ['psyai', 'career-interest', 'emotional-intelligence-test'],
-    bundlePrice: 450000,
+    bundlePrice: 489000,
   },
   {
     id: 'self-awareness',

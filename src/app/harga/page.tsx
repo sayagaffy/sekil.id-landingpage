@@ -20,12 +20,12 @@ import { PRICING_PAGE_QUERY, ALL_PRODUCTS_QUERY } from '@/lib/sanity/queries'
 export const metadata: Metadata = {
   title: 'Harga Asesmen Psikologi & Karier | Sekil.id',
   description:
-    'Harga transparan asesmen psikologi dan karier Sekil.id. Mulai Rp 150.000/peserta dengan diskon volume hingga 50% untuk institusi. Kalkulator harga interaktif tersedia.',
+    'Harga transparan asesmen psikologi dan karier Sekil.id. Mulai Rp 150.000/peserta dengan diskon volume hingga 20% untuk institusi. Kalkulator harga interaktif tersedia.',
   alternates: { canonical: 'https://sekil.id/harga' },
   openGraph: {
     title: 'Harga Asesmen Psikologi & Karier | Sekil.id',
     description:
-      'Harga transparan asesmen Sekil.id. Mulai Rp 150.000/peserta dengan diskon volume hingga 50% untuk institusi.',
+      'Harga transparan asesmen Sekil.id. Mulai Rp 150.000/peserta dengan diskon volume hingga 20% untuk institusi.',
     url: 'https://sekil.id/harga',
     type: 'website',
   },
@@ -37,11 +37,11 @@ const DEFAULT_HERO = {
   eyebrow: 'HARGA TRANSPARAN · DISKON VOLUME',
   heading: 'Harga yang sesuai dengan skala Anda',
   subheading:
-    'Mulai dari Rp 150.000 per peserta untuk individu. Dapatkan diskon hingga 50% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.',
+    'Mulai dari Rp 150.000 per peserta untuk individu. Dapatkan diskon volume hingga 20% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.',
   pillars: [
     { label: 'Harga mulai dari', value: 'Rp 150.000', sub: 'per peserta' },
-    { label: 'Diskon volume', value: 'Hingga 50%', sub: 'untuk 50.000+ seat' },
-    { label: 'Bundle hemat', value: '–7% hingga –17%', sub: 'paket multi-produk' },
+    { label: 'Diskon volume', value: 'Hingga 20%', sub: 'untuk 50.000+ seat' },
+    { label: 'Bundle hemat', value: '–15%', sub: 'paket multi-produk' },
   ],
 }
 
@@ -90,11 +90,10 @@ const DEFAULT_PRODUCTS = PRODUCTS.map((p) => ({
 
 const DEFAULT_VOLUME_TIERS = [
   { minSeats: 0, discountRate: 0, label: '1–499' },
-  { minSeats: 500, discountRate: 0.15, label: '500–1.999' },
-  { minSeats: 2000, discountRate: 0.25, label: '2.000–4.999' },
-  { minSeats: 5000, discountRate: 0.35, label: '5.000–14.999' },
-  { minSeats: 15000, discountRate: 0.45, label: '15.000–49.999' },
-  { minSeats: 50000, discountRate: 0.5, label: '50.000+' },
+  { minSeats: 500, discountRate: 0.05, label: '500–1.999' },
+  { minSeats: 2000, discountRate: 0.075, label: '2.000–9.999' },
+  { minSeats: 10000, discountRate: 0.125, label: '10.000–49.999' },
+  { minSeats: 50000, discountRate: 0.2, label: '50.000+' },
 ]
 
 const DEFAULT_BUNDLES = BUNDLES.map((b) => ({
