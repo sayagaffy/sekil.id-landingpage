@@ -152,7 +152,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
     recommendedProducts: ['psyai', 'career-interest', 'emotional-intelligence-test'],
     stats: [
       { value: '25 menit', label: 'Waktu asesmen terlengkap' },
-      { value: 'Rp 150k–195k', label: 'Per mahasiswa' },
+      { value: 'Rp 150k–225k', label: 'Per mahasiswa' },
       { value: 'API-ready', label: 'Integrasi SIAKAD tersedia' },
       { value: 'BAN-PT', label: 'Mendukung poin akreditasi kemahasiswaan' },
     ],
@@ -226,7 +226,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
     stats: [
       { value: '20 menit', label: 'Per sesi asesmen karyawan' },
       { value: 'ISO 27001', label: 'Standar keamanan data' },
-      { value: 'Rp 30 juta', label: 'ATC Dashboard/tahun (opsional)' },
+      { value: 'Rp 35 juta', label: 'ATC Dashboard/tahun (opsional)' },
       { value: 'HRIS API', label: 'Integrasi sistem HR tersedia' },
     ],
     testimonial: {
@@ -247,7 +247,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
       },
       {
         q: 'Apakah ada ATC Dashboard untuk memantau seluruh karyawan?',
-        a: 'Ya. Kami menyediakan ATC (Assessment Tracking Center) Dashboard seharga Rp 30 juta/tahun — platform terintegrasi untuk memantau status asesmen, menganalisis distribusi profil, dan mengekspor data ke HRIS.',
+        a: 'Ya. Kami menyediakan ATC (Assessment Tracking Center) Dashboard seharga Rp 35 juta/tahun — platform terintegrasi untuk memantau status asesmen, menganalisis distribusi profil, dan mengekspor data ke HRIS.',
       },
       {
         q: 'Bagaimana SLA dan dukungan teknis untuk enterprise?',

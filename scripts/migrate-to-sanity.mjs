@@ -538,7 +538,7 @@ async function seedProducts() {
       longDescription:
         'PsyAI adalah asesmen kepribadian paling komprehensif di Sekil.id. Dengan menggabungkan pemetaan minat vokasional dan preferensi kepribadian berbasis konstruk psikologis Jung, PsyAI menghasilkan satu profil kohesif yang menjelaskan bukan hanya apa yang Anda minati, tapi bagaimana cara Anda bekerja, berkomunikasi, dan berkembang. Narasi laporan dihasilkan AI berbasis template yang divalidasi psikolog UNJANI.',
       duration: '25 menit',
-      price: 195000,
+      price: 225000,
       targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
       instruments: ['holland', 'mbti'],
       outputs: [
@@ -577,7 +577,7 @@ async function seedProducts() {
       longDescription:
         'Path Finder AI dirancang khusus untuk siswa SMA yang menghadapi dilema pemilihan jurusan kuliah. Dengan menggabungkan profil minat vokasional dan preferensi kepribadian, Path Finder AI menyilangkan data tersebut dengan informasi jurusan, prospek karier, dan universitas Indonesia — menghasilkan rekomendasi yang personal dan berbasis data, bukan intuisi semata.',
       duration: '20 menit',
-      price: 150000,
+      price: 175000,
       targetPersonas: ['siswa-sma'],
       instruments: ['holland', 'mbti'],
       outputs: [
@@ -615,7 +615,7 @@ async function seedProducts() {
       longDescription:
         'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan inventori kebutuhan & peran kerja yang merupakan standar industri untuk konteks profesional — tes ini mengidentifikasi gaya kepemimpinan dominan Anda dari 4 profil situasional, lengkap dengan matriks kekuatan, blind spot, dan rencana pengembangan yang dapat langsung diimplementasikan.',
       duration: '20 menit',
-      price: 150000,
+      price: 175000,
       targetPersonas: ['karyawan', 'manager'],
       instruments: ['papi'],
       outputs: [
@@ -653,7 +653,7 @@ async function seedProducts() {
       longDescription:
         'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills. Menggunakan inventori kebutuhan & peran kerja yang diadaptasi oleh tim psikolog UNJANI untuk konteks Indonesia, hasilnya mencakup skor per dimensi, analisis mendalam, dan rencana pengembangan EQ yang konkret dan dapat langsung diterapkan.',
       duration: '20 menit',
-      price: 175000,
+      price: 200000,
       targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
       instruments: ['papi'],
       outputs: [
@@ -970,7 +970,7 @@ async function seedSolutionSegments() {
       recommendedProductIds: ['product-psyai', 'product-career-interest', 'product-emotional-intelligence-test'],
       stats: [
         { value: '25 menit', label: 'Waktu asesmen terlengkap' },
-        { value: 'Rp 150k–195k', label: 'Per mahasiswa' },
+        { value: 'Rp 150k–225k', label: 'Per mahasiswa' },
         { value: 'API-ready', label: 'Integrasi SIAKAD tersedia' },
         { value: 'BAN-PT', label: 'Mendukung poin akreditasi kemahasiswaan' },
       ],
@@ -1017,7 +1017,7 @@ async function seedSolutionSegments() {
       stats: [
         { value: '20 menit', label: 'Per sesi asesmen karyawan' },
         { value: 'ISO 27001', label: 'Standar keamanan data' },
-        { value: 'Rp 30 juta', label: 'ATC Dashboard/tahun (opsional)' },
+        { value: 'Rp 35 juta', label: 'ATC Dashboard/tahun (opsional)' },
         { value: 'HRIS API', label: 'Integrasi sistem HR tersedia' },
       ],
       testimonial: {
@@ -1029,7 +1029,7 @@ async function seedSolutionSegments() {
       faq: [
         { q: 'Apakah asesmen ini bisa digunakan sebagai satu-satunya alat seleksi karyawan?', a: 'Tidak kami rekomendasikan. Asesmen Sekil.id adalah data pendukung — bukan pengganti wawancara, uji kompetensi teknis, atau keputusan manusia. Gunakan sebagai satu lapisan dari proses seleksi yang komprehensif.' },
         { q: 'Apakah kandidat bisa memalsukan hasil asesmen?', a: 'Instrumen kami menggunakan teknik forced-choice dan consistency check untuk mendeteksi social desirability bias. Kami merekomendasikan komunikasikan kepada kandidat bahwa tes ini untuk pengembangan — hasilnya akan lebih jujur.' },
-        { q: 'Apakah ada ATC Dashboard untuk memantau seluruh karyawan?', a: 'Ya. Kami menyediakan ATC (Assessment Tracking Center) Dashboard seharga Rp 30 juta/tahun — platform terintegrasi untuk memantau status asesmen, menganalisis distribusi profil, dan mengekspor data ke HRIS.' },
+        { q: 'Apakah ada ATC Dashboard untuk memantau seluruh karyawan?', a: 'Ya. Kami menyediakan ATC (Assessment Tracking Center) Dashboard seharga Rp 35 juta/tahun — platform terintegrasi untuk memantau status asesmen, menganalisis distribusi profil, dan mengekspor data ke HRIS.' },
         { q: 'Bagaimana SLA dan dukungan teknis untuk enterprise?', a: 'Paket enterprise mencakup dedicated account manager, SLA 99.5% uptime, dan dukungan teknis prioritas. Kami juga menyediakan onboarding tatap muka untuk tim HR dan IT.' },
       ],
       showATCDashboard: true,
@@ -1191,10 +1191,10 @@ async function seedPricingPage() {
     // Products & volume tiers
     products: [
       { _key: blockKey('prod'), slug: 'career-interest', name: 'Career Interest', duration: '15 menit', price: 150000 },
-      { _key: blockKey('prod'), slug: 'psyai', name: 'PsyAI', duration: '25 menit', price: 195000 },
-      { _key: blockKey('prod'), slug: 'path-finder-ai', name: 'Path Finder AI', duration: '20 menit', price: 150000 },
-      { _key: blockKey('prod'), slug: 'leadership-styles-test', name: 'Leadership Styles Test', duration: '20 menit', price: 150000 },
-      { _key: blockKey('prod'), slug: 'emotional-intelligence-test', name: 'Emotional Intelligence Test', duration: '20 menit', price: 175000 },
+      { _key: blockKey('prod'), slug: 'psyai', name: 'PsyAI', duration: '25 menit', price: 225000 },
+      { _key: blockKey('prod'), slug: 'path-finder-ai', name: 'Path Finder AI', duration: '20 menit', price: 175000 },
+      { _key: blockKey('prod'), slug: 'leadership-styles-test', name: 'Leadership Styles Test', duration: '20 menit', price: 175000 },
+      { _key: blockKey('prod'), slug: 'emotional-intelligence-test', name: 'Emotional Intelligence Test', duration: '20 menit', price: 200000 },
     ],
     volumeTiers: [
       { _key: blockKey('tier'), minSeats: 0, discountRate: 0, label: '1–499' },
@@ -1286,7 +1286,7 @@ async function seedPricingPage() {
 
     // ATC Dashboard add-on
     atcDashboard: {
-      price: 'Rp 30 juta',
+      price: 'Rp 35 juta',
       priceUnit: '/tahun',
       features: [
         'Pantau status asesmen seluruh karyawan dalam satu dashboard',

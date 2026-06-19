@@ -69,7 +69,7 @@ const DEFAULT_FAQ = [
 ]
 
 const DEFAULT_ATC = {
-  price: 'Rp 30 juta',
+  price: 'Rp 35 juta',
   priceUnit: '/tahun',
   features: [
     'Pantau status asesmen seluruh karyawan dalam satu dashboard',

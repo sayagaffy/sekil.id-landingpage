@@ -85,8 +85,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'PsyAI adalah asesmen kepribadian paling komprehensif di Sekil.id. Dengan menggabungkan pemetaan minat vokasional dan preferensi kepribadian berbasis konstruk psikologis Jung, PsyAI menghasilkan satu profil kohesif yang menjelaskan bukan hanya apa yang Anda minati, tapi bagaimana cara Anda bekerja, berkomunikasi, dan berkembang. Narasi laporan dihasilkan AI berbasis template yang divalidasi psikolog UNJANI.',
     duration: '25 menit',
-    price: 195000,
-    priceDisplay: 'Rp 195.000',
+    price: 225000,
+    priceDisplay: 'Rp 225.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
     instruments: ['holland', 'mbti'],
     outputs: [
@@ -138,8 +138,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Path Finder AI dirancang khusus untuk siswa SMA yang menghadapi dilema pemilihan jurusan kuliah. Dengan menggabungkan profil minat vokasional dan preferensi kepribadian, Path Finder AI menyilangkan data tersebut dengan informasi jurusan, prospek karier, dan universitas Indonesia — menghasilkan rekomendasi yang personal dan berbasis data, bukan intuisi semata.',
     duration: '20 menit',
-    price: 150000,
-    priceDisplay: 'Rp 150.000',
+    price: 175000,
+    priceDisplay: 'Rp 175.000',
     targetPersonas: ['siswa-sma'],
     instruments: ['holland', 'mbti'],
     outputs: [
@@ -190,8 +190,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan inventori kebutuhan & peran kerja yang merupakan standar industri untuk konteks profesional — tes ini mengidentifikasi gaya kepemimpinan dominan Anda dari 4 profil situasional, lengkap dengan matriks kekuatan, blind spot, dan rencana pengembangan yang dapat langsung diimplementasikan.',
     duration: '20 menit',
-    price: 150000,
-    priceDisplay: 'Rp 150.000',
+    price: 175000,
+    priceDisplay: 'Rp 175.000',
     targetPersonas: ['karyawan', 'manager'],
     instruments: ['papi'],
     outputs: [
@@ -242,8 +242,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills. Menggunakan inventori kebutuhan & peran kerja yang diadaptasi oleh tim psikolog UNJANI untuk konteks Indonesia, hasilnya mencakup skor per dimensi, analisis mendalam, dan rencana pengembangan EQ yang konkret dan dapat langsung diterapkan.',
     duration: '20 menit',
-    price: 175000,
-    priceDisplay: 'Rp 175.000',
+    price: 200000,
+    priceDisplay: 'Rp 200.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
     instruments: ['papi'],
     outputs: [
