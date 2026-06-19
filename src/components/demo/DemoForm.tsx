@@ -39,11 +39,17 @@ const SEAT_OPTIONS = [
 ] as const;
 
 const PRODUCTS = [
-  { value: 'Sekil Career Mapping', label: 'Career Mapping' },
-  { value: 'Sekil Aptitude Test', label: 'Aptitude Test' },
-  { value: 'Sekil Personality Insight', label: 'Personality Insight' },
-  { value: 'Sekil Talent Scouting', label: 'Talent Scouting' },
-  { value: 'Sekil Learning Styles', label: 'Learning Styles' },
+  { value: 'Career Interest', label: 'Career Interest' },
+  { value: 'PsyAI', label: 'PsyAI' },
+  { value: 'Path Finder AI', label: 'Path Finder AI' },
+  { value: 'Leadership Styles Test', label: 'Leadership Styles Test' },
+  { value: 'Emotional Intelligence Test', label: 'Emotional Intelligence Test' },
+  { value: 'Self DiscoveryAI', label: 'Self DiscoveryAI' },
+  { value: 'Goal AlignAI', label: 'Goal AlignAI' },
+  { value: 'Goal Orientation Coaching', label: 'Goal Orientation Coaching' },
+  { value: 'Professional Authenticity Test', label: 'Professional Authenticity Test' },
+  { value: 'Job Burnout Test', label: 'Job Burnout Test' },
+  { value: 'Personal Authenticity Test', label: 'Personal Authenticity Test' },
 ];
 
 export function DemoForm() {
