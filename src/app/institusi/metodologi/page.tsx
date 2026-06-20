@@ -27,7 +27,7 @@ const AUTHOR_AFFILIATION = 'Dosen Psikologi UNJANI · Reviewer Akademik Sekil.id
 export const metadata: Metadata = {
   title: 'Spesifikasi Teknis Instrumen Asesmen | Sekil.id untuk Institusi',
   description:
-    'Dokumentasi teknis instrumen psikologi Sekil.id untuk mitra institusi: Holland Code (RIASEC), MBTI-style Typing, Papi Kostick. Sitasi akademik lengkap dan adaptasi Indonesia.',
+    'Dokumentasi teknis 3 instrumen psikologi Sekil.id untuk mitra institusi: kerangka minat vokasional, preferensi kepribadian, dan inventori peran kerja. Sitasi akademik lengkap dan adaptasi Indonesia.',
   // noindex: halaman ini tidak boleh muncul di Google
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://sekil.id/institusi/metodologi' },
@@ -116,7 +116,7 @@ export default function InstitusiMetodologiPage() {
                     ].join(' ')}
                   >
                     <span className="font-mono text-[10px] text-ash-700">0{i + 1}</span>
-                    <span>{inst.name}</span>
+                    <span>{inst.publicName}</span>
                   </a>
                 ))}
               </nav>
@@ -130,10 +130,10 @@ export default function InstitusiMetodologiPage() {
             <div className="mx-auto max-w-3xl space-y-5 leading-relaxed text-ash-700">
               <p>
                 Sekil.id membangun platform asesmen di atas tiga instrumen psikologi yang telah
-                mapan secara akademik: <strong className="text-ink">Holland Code (RIASEC)</strong> untuk
-                pemetaan minat vokasional, <strong className="text-ink">MBTI-style Typing</strong> untuk
-                pemahaman preferensi kepribadian berbasis teori Jung, dan{' '}
-                <strong className="text-ink">Papi Kostick</strong> untuk profil kebutuhan dan peran kerja.
+                mapan secara akademik: <strong className="text-ink">Kerangka Minat Vokasional</strong> untuk
+                pemetaan minat karier enam dimensi, <strong className="text-ink">Kerangka Preferensi Kepribadian</strong> untuk
+                pemahaman tipe psikologis berbasis teori Jung, dan{' '}
+                <strong className="text-ink">Inventori Kebutuhan &amp; Peran Kerja</strong> untuk profil kebutuhan dan peran dalam konteks profesional.
               </p>
               <p>
                 Ketiga instrumen diadaptasi untuk konteks Indonesia oleh tim Fakultas Psikologi
@@ -157,7 +157,7 @@ export default function InstitusiMetodologiPage() {
             <p className="eyebrow mb-8">SPESIFIKASI TEKNIS INSTRUMEN</p>
             <div className="space-y-8">
               {INSTRUMENTS.map((instrument, i) => (
-                <InstrumentSection key={instrument.id} instrument={instrument} index={i} />
+                <InstrumentSection key={instrument.id} instrument={instrument} index={i} mode="public" showCitation />
               ))}
             </div>
           </Container>

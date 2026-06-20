@@ -9,11 +9,14 @@ interface InstrumentSectionProps {
    * "buyer"   — full technical name + full citation (for /institusi/metodologi, default)
    */
   mode?: 'public' | 'buyer';
+  /** Override citation visibility; defaults to true for buyer, false for public */
+  showCitation?: boolean;
 }
 
-export function InstrumentSection({ instrument, index, mode = 'buyer' }: InstrumentSectionProps) {
+export function InstrumentSection({ instrument, index, mode = 'buyer', showCitation }: InstrumentSectionProps) {
   const displayName = mode === 'public' ? instrument.publicName : instrument.name;
   const displayOrigin = mode === 'public' ? instrument.publicOrigin : instrument.origin;
+  const shouldShowCitation = showCitation ?? mode === 'buyer';
 
   return (
     <section
@@ -46,7 +49,7 @@ export function InstrumentSection({ instrument, index, mode = 'buyer' }: Instrum
           <p className={mode === 'buyer' ? 'mb-4 leading-relaxed text-ink/80' : 'leading-relaxed text-ink/80'}>
             {displayOrigin}
           </p>
-          {mode === 'buyer' && (
+          {shouldShowCitation && (
             <blockquote className="border-l-4 border-blue-500 pl-4 text-sm italic text-ash-700">
               {instrument.citation}
             </blockquote>

@@ -35,7 +35,7 @@ export const INSTRUMENTS: Instrument[] = [
     publicOrigin:
       'Dikembangkan oleh psikolog John L. Holland (1959). Instrumen ini mengklasifikasikan minat vokasional ke dalam enam tipe kepribadian yang mencerminkan lingkungan kerja yang sesuai. Selama lebih dari enam dekade, kerangka minat vokasional ini menjadi salah satu kerangka pemetaan karier yang paling banyak digunakan dan diteliti di dunia.',
     origin:
-      'Dikembangkan oleh psikolog John L. Holland (1959). Instrumen ini mengklasifikasikan minat vokasional ke dalam enam tipe kepribadian yang mencerminkan lingkungan kerja yang sesuai. Selama lebih dari enam dekade, Holland Code menjadi salah satu kerangka pemetaan karier yang paling banyak digunakan dan diteliti di dunia.',
+      'Dikembangkan oleh psikolog John L. Holland (1959). Instrumen ini mengklasifikasikan minat vokasional ke dalam enam tipe kepribadian yang mencerminkan lingkungan kerja yang sesuai. Selama lebih dari enam dekade, kerangka minat vokasional ini menjadi salah satu kerangka pemetaan karier yang paling banyak digunakan dan diteliti di dunia.',
     citation:
       'Holland, J. L. (1997). Making Vocational Choices: A Theory of Vocational Personalities and Work Environments (3rd ed.). Psychological Assessment Resources.',
     dimensions: [
@@ -47,7 +47,7 @@ export const INSTRUMENTS: Instrument[] = [
       'Conventional (C) — Orientasi terstruktur: menyukai sistem, data, dan prosedur yang teratur',
     ],
     limitations:
-      'Validitas konkuren terhadap kepuasan karier baik (Nauta, 2010), tetapi konteks budaya non-Barat perlu kalibrasi. Tidak mengukur kemampuan, kecerdasan, atau kompetensi teknis — hanya minat vokasional. Interpretasi lintas budaya harus dilakukan dengan kehati-hatian. Hasil Holland Code tidak bersifat permanen dan dapat berubah seiring pengalaman hidup.',
+      'Validitas konkuren terhadap kepuasan karier baik (Nauta, 2010), tetapi konteks budaya non-Barat perlu kalibrasi. Tidak mengukur kemampuan, kecerdasan, atau kompetensi teknis — hanya minat vokasional. Interpretasi lintas budaya harus dilakukan dengan kehati-hatian. Hasil asesmen ini tidak bersifat permanen dan dapat berubah seiring pengalaman hidup.',
     indonesiaAdaptation: [
       'Item bank dikalibrasi dengan 2.000+ responden Indonesia dari berbagai latar belakang geografis dan sosial-ekonomi',
       'Mapping pekerjaan ke pasar kerja Indonesia menggunakan data LinkedIn Indonesia (2025) dan BPS',
@@ -89,7 +89,7 @@ export const INSTRUMENTS: Instrument[] = [
     publicOrigin:
       'Dikembangkan oleh Max Kostick pada dekade 1960-an di Boston University. Dirancang khusus untuk konteks kerja profesional dan organisasional, instrumen ini mengukur kebutuhan (needs) dan peran (roles) yang mendorong perilaku individu dalam lingkungan kerja — berbeda dari instrumen kepribadian umum yang tidak berorientasi kerja.',
     origin:
-      'Personality and Preference Inventory dikembangkan oleh Max Kostick pada dekade 1960-an di Boston University. Dirancang khusus untuk konteks kerja profesional dan organisasional, PAPI mengukur kebutuhan (needs) dan peran (roles) yang mendorong perilaku individu dalam lingkungan kerja — berbeda dari instrumen kepribadian umum yang tidak berorientasi kerja.',
+      'Instrumen ini dikembangkan oleh Max Kostick pada dekade 1960-an di Boston University. Dirancang khusus untuk konteks kerja profesional dan organisasional, instrumen ini mengukur kebutuhan (needs) dan peran (roles) yang mendorong perilaku individu dalam lingkungan kerja — berbeda dari instrumen kepribadian umum yang tidak berorientasi kerja.',
     citation: 'Kostick, M. M. (1976). PAPI Manual. PA Consulting Group.',
     dimensions: [
       'Kebutuhan Pengakuan — Dorongan untuk dilihat dan dihargai kontribusinya oleh tim dan atasan',
