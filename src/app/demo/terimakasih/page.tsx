@@ -5,7 +5,7 @@ import { Container } from '@/components/layout/Container';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'Permintaan Demo Diterima — Sekil.id',
+  title: 'Permintaan Demo Diterima',
   description: 'Terima kasih! Tim Sekil.id akan menghubungi Anda dalam 24 jam kerja.',
   robots: { index: false, follow: false },
 };

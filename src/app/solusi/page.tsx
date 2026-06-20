@@ -10,12 +10,12 @@ import type { SanitySolutionSegment } from '@/lib/sanity/types';
 import { ALL_SEGMENTS_QUERY } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
-  title: 'Solusi Asesmen Institusional | Sekil.id',
+  title: 'Solusi Asesmen Institusional',
   description:
     'Solusi asesmen psikologi dan karier Sekil.id untuk sekolah, perguruan tinggi, perusahaan, dan yayasan. Diskon volume dan dashboard institusional tersedia.',
   alternates: { canonical: 'https://sekil.id/solusi' },
   openGraph: {
-    title: 'Solusi Asesmen Institusional | Sekil.id',
+    title: 'Solusi Asesmen Institusional',
     description:
       'Solusi asesmen psikologi dan karier Sekil.id untuk sekolah, perguruan tinggi, perusahaan, dan yayasan.',
     url: 'https://sekil.id/solusi',

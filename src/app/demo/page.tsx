@@ -3,7 +3,7 @@ import { CheckCircle } from 'lucide-react';
 import { DemoForm } from '@/components/demo/DemoForm';
 
 export const metadata: Metadata = {
-  title: 'Jadwalkan Demo Gratis — Sekil.id',
+  title: 'Jadwalkan Demo Gratis',
   description:
     'Lihat langsung bagaimana Sekil.id membantu institusi Anda menjalankan asesmen psikologi dan pemetaan karier. Konsultasi gratis, tanpa komitmen.',
   robots: { index: false, follow: true },

@@ -10,7 +10,7 @@ import type { HomePageData, HomePageStat } from '@/lib/sanity/types';
 import { HOME_PAGE_QUERY } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
-  title: 'Asesmen Psikologi & Pemetaan Karier untuk Indonesia | Sekil.id',
+  title: 'Asesmen Psikologi & Pemetaan Karier Indonesia',
   description:
     'Platform asesmen psikologi & pemetaan karier dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Untuk sekolah, kampus, dan perusahaan di Indonesia.',
   alternates: { canonical: '/' },

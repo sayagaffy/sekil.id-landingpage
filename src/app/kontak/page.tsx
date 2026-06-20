@@ -8,12 +8,12 @@ import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 import { getContactPageSchema } from '@/lib/seo/contact-schema';
 
 export const metadata: Metadata = {
-  title: 'Kontak Sekil.id',
+  title: 'Kontak',
   description:
     'Hubungi Sekil.id untuk demo, partnership, akademik, atau pertanyaan data. Kantor pusat Bandung.',
   alternates: { canonical: 'https://sekil.id/kontak' },
   openGraph: {
-    title: 'Kontak Sekil.id',
+    title: 'Kontak',
     description: 'Hubungi Sekil.id untuk demo, partnership, akademik, atau pertanyaan data.',
     url: 'https://sekil.id/kontak',
     type: 'website',
@@ -189,9 +189,12 @@ export default function KontakPage() {
             <div className="mt-10 grid grid-cols-1 gap-0 border-2 border-ink lg:grid-cols-2">
               {/* Address */}
               <div className="border-b-2 border-ink p-6 lg:border-b-0 lg:border-r-2">
-                <address className="not-italic space-y-2">
+                <address className="not-italic space-y-1">
                   <p className="font-display text-lg font-bold text-ink">Sekil.id</p>
-                  <p className="text-ash-700">Bandung, Jawa Barat, Indonesia</p>
+                  <p className="text-ash-700">Jl. Cukang Kawung No.11</p>
+                  <p className="text-ash-700">Cigadung, Kec. Cibeunying Kaler</p>
+                  <p className="text-ash-700">Kota Bandung, Jawa Barat 40125</p>
+                  <p className="text-ash-700">Indonesia</p>
                 </address>
                 <div className="mt-6 space-y-1">
                   <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">

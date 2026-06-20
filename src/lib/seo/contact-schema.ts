@@ -21,11 +21,12 @@ export function getContactPageSchema() {
       name: SITE_NAME,
       url: SITE_URL,
       email: 'hello@sekil.id',
-      // __NEEDS_REAL_VALUE__: alamat lengkap belum dikonfirmasi — jangan emit streetAddress placeholder ke schema
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Bandung',
+        streetAddress: 'Jl. Cukang Kawung No.11, Cigadung, Kec. Cibeunying Kaler',
+        addressLocality: 'Kota Bandung',
         addressRegion: 'Jawa Barat',
+        postalCode: '40125',
         addressCountry: 'ID',
       },
       contactPoint: [

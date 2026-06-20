@@ -11,12 +11,12 @@ import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 const PUBLISHED = '2026-05-16';
 
 export const metadata: Metadata = {
-  title: 'Metodologi: Bagaimana Sekil.id Mengukur — dan Apa yang Tidak Kami Klaim | Sekil.id',
+  title: 'Metodologi Asesmen — Cara Kerja dan Batasannya',
   description:
     'Cara Sekil.id mengukur minat, kepribadian, dan potensi: model riset puluhan tahun, dikalibrasi untuk Indonesia, dengan batasan yang kami nyatakan terbuka.',
   alternates: { canonical: 'https://sekil.id/metodologi' },
   openGraph: {
-    title: 'Metodologi: Bagaimana Sekil.id Mengukur — dan Apa yang Tidak Kami Klaim | Sekil.id',
+    title: 'Metodologi Asesmen — Cara Kerja dan Batasannya',
     description:
       'Cara Sekil.id mengukur minat, kepribadian, dan potensi: model riset puluhan tahun, dikalibrasi untuk Indonesia, dengan batasan yang kami nyatakan terbuka.',
     url: 'https://sekil.id/metodologi',

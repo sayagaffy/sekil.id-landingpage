@@ -11,12 +11,12 @@ import type { AboutPageData } from '@/lib/sanity/types';
 import { ABOUT_PAGE_QUERY } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
-  title: 'Tentang Sekil.id — Joint Venture untuk Asesmen Psikologi Indonesia',
+  title: { absolute: 'Tentang Sekil.id — Platform Asesmen Psikologi Indonesia' },
   description:
     'Sekil.id adalah JV Sekil.id × B One Corp dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Tim, partner, dan misi memetakan potensi Indonesia.',
   alternates: { canonical: 'https://sekil.id/tentang' },
   openGraph: {
-    title: 'Tentang Sekil.id — Joint Venture untuk Asesmen Psikologi Indonesia',
+    title: 'Tentang Sekil.id — Platform Asesmen Psikologi Indonesia',
     description:
       'Sekil.id adalah JV Sekil.id × B One Corp dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Tim, partner, dan misi memetakan potensi Indonesia.',
     url: 'https://sekil.id/tentang',

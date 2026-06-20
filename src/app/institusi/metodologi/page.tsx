@@ -21,7 +21,7 @@ import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 const PUBLISHED = '2026-05-16';
 
 export const metadata: Metadata = {
-  title: 'Spesifikasi Teknis Instrumen Asesmen | Sekil.id untuk Institusi',
+  title: 'Spesifikasi Teknis Instrumen Asesmen',
   description:
     'Dokumentasi teknis 3 instrumen psikologi Sekil.id untuk mitra institusi: kerangka minat vokasional, preferensi kepribadian, dan inventori peran kerja. Sitasi akademik lengkap dan adaptasi Indonesia.',
   // noindex: halaman ini tidak boleh muncul di Google

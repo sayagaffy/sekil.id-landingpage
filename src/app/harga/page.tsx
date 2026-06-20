@@ -18,12 +18,12 @@ import type { PricingPageData, SanityProduct } from '@/lib/sanity/types'
 import { PRICING_PAGE_QUERY, ALL_PRODUCTS_QUERY } from '@/lib/sanity/queries'
 
 export const metadata: Metadata = {
-  title: 'Harga Asesmen Psikologi & Karier | Sekil.id',
+  title: 'Harga Asesmen Psikologi & Karier',
   description:
     'Harga transparan asesmen psikologi dan karier Sekil.id. Mulai Rp 159.000/peserta dengan diskon volume hingga 20% untuk institusi. Kalkulator harga interaktif tersedia.',
   alternates: { canonical: 'https://sekil.id/harga' },
   openGraph: {
-    title: 'Harga Asesmen Psikologi & Karier | Sekil.id',
+    title: 'Harga Asesmen Psikologi & Karier',
     description:
       'Harga transparan asesmen Sekil.id. Mulai Rp 159.000/peserta dengan diskon volume hingga 20% untuk institusi.',
     url: 'https://sekil.id/harga',
