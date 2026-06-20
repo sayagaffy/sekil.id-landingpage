@@ -14,13 +14,6 @@ export interface Instrument {
   indonesiaAdaptation: string[];
 }
 
-export interface UnjaniMember {
-  id: string;
-  name: string;
-  title: string;
-  roleAtSekil: string;
-}
-
 export interface Reference {
   id: string;
   apa: string;
@@ -115,31 +108,6 @@ export const INSTRUMENTS: Instrument[] = [
       // __NEEDS_FOUNDER_CONFIRM__: review UNJANI in progress — MoU belum signed
       'Dalam proses review bersama tim UNJANI untuk relevansi item dengan nilai, norma kerja, dan ekspektasi karier lokal',
     ],
-  },
-];
-
-// __NEEDS_REAL_VALUE__: nama dosen UNJANI belum dikonfirmasi — isi setelah MoU/agreement ditandatangani
-export const UNJANI_TEAM: UnjaniMember[] = [
-  {
-    id: 'reviewer-1',
-    name: '__NEEDS_REAL_VALUE__',
-    title: 'Lektor Kepala · Fakultas Psikologi UNJANI',
-    roleAtSekil:
-      'Lead Academic Reviewer — bertanggung jawab atas validasi keseluruhan item bank, metodologi scoring, dan standar psikometri.',
-  },
-  {
-    id: 'reviewer-2',
-    name: '__NEEDS_REAL_VALUE__',
-    title: 'Dosen Psikologi Industri & Organisasi · UNJANI',
-    roleAtSekil:
-      'Validator Konteks Indonesia — memastikan relevansi item dengan kondisi pasar kerja, budaya organisasi, dan norma kerja lokal.',
-  },
-  {
-    id: 'reviewer-3',
-    name: '__NEEDS_REAL_VALUE__',
-    title: 'Dosen Psikologi Pendidikan & Karier · UNJANI',
-    roleAtSekil:
-      'Content Sign-off — mereview dan menyetujui seluruh konten programmatic dan narasi asesmen sebelum dipublikasikan.',
   },
 ];
 

@@ -548,8 +548,7 @@ export const PERSONALITY_TYPES: PersonalityType[] = [
     seoTitle: 'Minat Vokasional R (Realistic) — Karier dan Jurusan yang Cocok | Sekil.id',
     seoDescription:
       'Panduan tipe Minat Vokasional Realistic (R): ciri-ciri, karier yang cocok, dan jurusan kuliah untuk profil minat Realistic di Indonesia.',
-    // KEYWORD_PENDING: ganti token di bawah dengan keyword final setelah verifikasi volume via Autocomplete/Ubersuggest
-    primaryKeyword: '__NEEDS_KEYWORD_VERIFY__ tes minat bakat teknik',
+    primaryKeyword: 'karier untuk tipe praktis',
   },
   {
     slug: 'holland-i',
@@ -583,8 +582,7 @@ export const PERSONALITY_TYPES: PersonalityType[] = [
     seoTitle: 'Minat Vokasional I (Investigative) — Karier dan Jurusan yang Cocok | Sekil.id',
     seoDescription:
       'Panduan tipe Minat Vokasional Investigative (I): ciri-ciri, kekuatan, karier yang cocok, dan jurusan kuliah untuk profil minat Investigative di Indonesia.',
-    // KEYWORD_PENDING: ganti token di bawah dengan keyword final setelah verifikasi volume via Autocomplete/Ubersuggest
-    primaryKeyword: '__NEEDS_KEYWORD_VERIFY__ tes minat bakat sains',
+    primaryKeyword: 'karier untuk tipe analitis',
   },
   {
     slug: 'holland-a',
@@ -614,8 +612,7 @@ export const PERSONALITY_TYPES: PersonalityType[] = [
     seoTitle: 'Minat Vokasional A (Artistic) — Karier dan Jurusan yang Cocok | Sekil.id',
     seoDescription:
       'Panduan tipe Minat Vokasional Artistic (A): ciri-ciri, karier yang cocok, dan jurusan kuliah untuk profil minat Artistic di Indonesia.',
-    // KEYWORD_PENDING: ganti token di bawah dengan keyword final setelah verifikasi volume via Autocomplete/Ubersuggest
-    primaryKeyword: '__NEEDS_KEYWORD_VERIFY__ tes minat bakat seni',
+    primaryKeyword: 'karier untuk tipe kreatif',
   },
   {
     slug: 'holland-s',
@@ -645,8 +642,7 @@ export const PERSONALITY_TYPES: PersonalityType[] = [
     seoTitle: 'Minat Vokasional S (Social) — Karier dan Jurusan yang Cocok | Sekil.id',
     seoDescription:
       'Panduan tipe Minat Vokasional Social (S): ciri-ciri, karier yang cocok, dan jurusan kuliah untuk profil minat Social di Indonesia.',
-    // KEYWORD_PENDING: ganti token di bawah dengan keyword final setelah verifikasi volume via Autocomplete/Ubersuggest
-    primaryKeyword: '__NEEDS_KEYWORD_VERIFY__ tes minat bakat sosial',
+    primaryKeyword: 'karier untuk tipe sosial',
   },
   {
     slug: 'holland-e',
@@ -676,8 +672,7 @@ export const PERSONALITY_TYPES: PersonalityType[] = [
     seoTitle: 'Minat Vokasional E (Enterprising) — Karier dan Jurusan yang Cocok | Sekil.id',
     seoDescription:
       'Panduan tipe Minat Vokasional Enterprising (E): ciri-ciri, karier yang cocok, dan jurusan kuliah untuk profil minat Enterprising di Indonesia.',
-    // KEYWORD_PENDING: ganti token di bawah dengan keyword final setelah verifikasi volume via Autocomplete/Ubersuggest
-    primaryKeyword: '__NEEDS_KEYWORD_VERIFY__ tes minat bakat bisnis',
+    primaryKeyword: 'karier untuk tipe wirausaha',
   },
   {
     slug: 'holland-c',
@@ -707,8 +702,7 @@ export const PERSONALITY_TYPES: PersonalityType[] = [
     seoTitle: 'Minat Vokasional C (Conventional) — Karier dan Jurusan yang Cocok | Sekil.id',
     seoDescription:
       'Panduan tipe Minat Vokasional Conventional (C): ciri-ciri, karier yang cocok, dan jurusan kuliah untuk profil minat Conventional di Indonesia.',
-    // KEYWORD_PENDING: ganti token di bawah dengan keyword final setelah verifikasi volume via Autocomplete/Ubersuggest
-    primaryKeyword: '__NEEDS_KEYWORD_VERIFY__ tes minat bakat administrasi',
+    primaryKeyword: 'karier untuk tipe terstruktur',
   },
 ];
 

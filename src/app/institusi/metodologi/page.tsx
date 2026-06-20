@@ -13,9 +13,8 @@ import { Container } from '@/components/layout/Container';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Button } from '@/components/ui/button';
 import { InstrumentSection } from '@/components/methodology/InstrumentSection';
-import { UnjaniTeam } from '@/components/methodology/UnjaniTeam';
 import { ReferencesList } from '@/components/methodology/ReferencesList';
-import { INSTRUMENTS, UNJANI_TEAM, REFERENCES } from '@/data/methodology';
+import { INSTRUMENTS, REFERENCES } from '@/data/methodology';
 import { getBuyerMethodologySchema } from '@/lib/seo/methodology-schema';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 
@@ -157,10 +156,23 @@ export default function InstitusiMetodologiPage() {
           </Container>
         </section>
 
-        {/* 5. UNJANI team */}
+        {/* 5. Tim Akademik — identitas pending konfirmasi founder */}
         <section className="border-b-2 border-ink bg-white py-16">
           <Container>
-            <UnjaniTeam members={UNJANI_TEAM} />
+            <div className="mx-auto max-w-3xl">
+              <p className="eyebrow mb-4">TIM AKADEMIK</p>
+              <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold text-ink">
+                Dalam proses validasi bersama Fakultas Psikologi UNJANI
+              </h2>
+              <p className="mt-6 leading-relaxed text-ash-700">
+                Metodologi, item, dan konten asesmen Sekil.id sedang dalam proses validasi bersama
+                tim Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI), Bandung.
+                Proses ini mencakup review relevansi konteks Indonesia dan standar psikometri.
+              </p>
+              <p className="mt-4 text-sm text-ash-700">
+                Informasi tim reviewer akan dipublikasikan setelah konfirmasi formal selesai.
+              </p>
+            </div>
           </Container>
         </section>
 
