@@ -38,12 +38,12 @@ function sanityToProduct(p: SanityProduct): (typeof PRODUCTS)[number] {
 export const metadata: Metadata = {
   title: 'Asesmen & Tes Kepribadian',
   description:
-    'Katalog 5 asesmen psikologi & karier Sekil.id: Career Interest, PsyAI, Path Finder AI, Leadership Styles, EQ Test. Validasi akademik UNJANI.',
+    'Katalog 5 asesmen psikologi & karier Sekil.id: Career Interest, PsyAI, Path Finder AI, Leadership Styles, EQ Test. Dibangun di atas model psikometri tervalidasi akademik.',
   alternates: { canonical: 'https://sekil.id/produk' },
   openGraph: {
     title: 'Asesmen & Tes Kepribadian',
     description:
-      'Katalog 5 asesmen psikologi & karier Sekil.id: Career Interest, PsyAI, Path Finder AI, Leadership Styles, EQ Test. Validasi akademik UNJANI.',
+      'Katalog 5 asesmen psikologi & karier Sekil.id: Career Interest, PsyAI, Path Finder AI, Leadership Styles, EQ Test. Dibangun di atas model psikometri tervalidasi akademik.',
     url: 'https://sekil.id/produk',
     type: 'website',
   },
@@ -107,9 +107,9 @@ export default async function ProdukPage() {
               Asesmen Sekil.id
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ash-700">
-              5 instrumen tervalidasi untuk memetakan kepribadian, minat, dan karier. Mulai dari{' '}
-              <strong className="text-ink">Rp 150.000</strong> per peserta. Semua divalidasi
-              akademik oleh Fakultas Psikologi UNJANI.
+              5 instrumen untuk memetakan kepribadian, minat, dan karier. Mulai dari{' '}
+              <strong className="text-ink">Rp 150.000</strong> per peserta. Dalam proses validasi
+              akademik bersama Fakultas Psikologi UNJANI.
             </p>
 
             {/* Filter pills — V1 visual only, no interactivity */}

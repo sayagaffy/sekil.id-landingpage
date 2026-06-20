@@ -90,17 +90,17 @@ jobs:
             NEXT_PUBLIC_APP_URL=${{ vars.NEXT_PUBLIC_APP_URL || 'https://app.sekil.id' }}
             NEXT_PUBLIC_GA_MEASUREMENT_ID=${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
             NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+            NEXT_PUBLIC_SANITY_PROJECT_ID=${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+            NEXT_PUBLIC_SANITY_DATASET=${{ vars.NEXT_PUBLIC_SANITY_DATASET || 'production' }}
 
   deploy:
     name: Deploy to VM-B
     runs-on: ubuntu-latest
     needs: build
     # WHY: skip_deploy allows testing build+push without touching the server.
-    # Also skips if SSH secrets are not yet configured (VM-B not provisioned).
-    if: >
-      !inputs.skip_deploy &&
-      secrets.SSH_HOST != '' &&
-      github.ref == 'refs/heads/main'
+    # secrets.SSH_HOST check removed — secrets context is not available in job if-conditions.
+    # If SSH_HOST is unset the ssh-action step itself will fail with a clear error.
+    if: ${{ !inputs.skip_deploy && github.ref == 'refs/heads/main' }}
 
     steps:
       - name: Deploy via SSH
