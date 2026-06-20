@@ -22,6 +22,7 @@
  */
 
 import { createClient } from '@sanity/client'
+import { parse as parseYaml } from 'yaml'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -75,103 +76,17 @@ function withTimeout(promise, ms, label) {
 // as active Sanity documents (e.g. placeholder reviewers before MoU is signed).
 const SKIP_AUTHOR_SLUGS = new Set(['unjani-reviewer-placeholder'])
 
-// ── Frontmatter parser (no external dep) ──────────────────────────────────
+// ── Frontmatter parser ────────────────────────────────────────────────────
+// Uses the `yaml` package (transitive dep — available via @sanity/client tree).
+// The previous hand-rolled parser silently converted nested blocks with empty-value
+// sub-keys (aeo.faq:, geo.keyTakeaways:) into strings instead of arrays/objects,
+// causing FAQ/TL;DR/keyTakeaways to never be seeded to Sanity.
 
-/**
- * Minimal YAML frontmatter extractor.
- * Handles: strings, numbers, booleans, null, simple arrays, simple objects.
- */
 function parseFrontmatter(raw) {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/m)
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)
   if (!match) return { data: {}, content: raw }
-
-  const [, yaml, content] = match
-
-  // Very simple YAML → JS object parser (handles what we need)
-  function parseValue(v) {
-    const t = v.trim()
-    if (t === 'null' || t === '~') return null
-    if (t === 'true') return true
-    if (t === 'false') return false
-    if (/^-?\d+(\.\d+)?$/.test(t)) return Number(t)
-    if ((t.startsWith('"') && t.endsWith('"')) || (t.startsWith("'") && t.endsWith("'"))) {
-      return t.slice(1, -1)
-    }
-    return t
-  }
-
-  function parseBlock(lines, baseIndent = 0) {
-    const obj = {}
-    let i = 0
-
-    while (i < lines.length) {
-      const line = lines[i]
-      const indent = line.match(/^(\s*)/)[1].length
-      if (indent < baseIndent) break
-
-      const keyMatch = line.match(/^(\s*)(\w[\w\s-]*):\s*(.*)$/)
-      if (!keyMatch) { i++; continue }
-
-      const [, , key, rawVal] = keyMatch
-
-      // Block scalar (|-) or array-style list
-      if (rawVal === '' || rawVal === '|' || rawVal === '>') {
-        // Peek ahead for array items or nested object
-        const children = []
-        i++
-        while (i < lines.length) {
-          const next = lines[i]
-          const nextIndent = next.match(/^(\s*)/)[1].length
-          if (nextIndent <= indent && next.trim() !== '') break
-          children.push(next)
-          i++
-        }
-        // Array of scalar
-        if (children.every((l) => l.trim().startsWith('- '))) {
-          obj[key] = children
-            .map((l) => l.trim().slice(2).trim())
-            .filter(Boolean)
-            .map(parseValue)
-        } else if (children.every((l) => l.match(/^\s+\w[\w\s-]*:\s*.+$/))) {
-          // Nested object
-          obj[key] = parseBlock(children, indent + 2)
-        } else if (children.every((l) => l.match(/^\s{4,}(question|answer|q|a|label|value|sub|text|url|year):/))) {
-          // Array of objects (FAQ / pillars / citations)
-          const items = []
-          let item = {}
-          for (const l of children) {
-            const m = l.match(/^\s*(question|answer|q|a|label|value|sub|text|url|year):\s*(.*)$/)
-            if (m) item[m[1]] = parseValue(m[2])
-          }
-          if (Object.keys(item).length) items.push(item)
-          obj[key] = items
-        } else {
-          obj[key] = children.map((l) => l.trim()).join('\n').trim() || null
-        }
-        continue
-      }
-
-      // Inline array: [a, b, c]
-      if (rawVal.startsWith('[')) {
-        try {
-          obj[key] = JSON.parse(rawVal)
-        } catch {
-          obj[key] = rawVal
-            .replace(/[\[\]]/g, '')
-            .split(',')
-            .map((s) => parseValue(s.trim()))
-        }
-        i++
-        continue
-      }
-
-      obj[key] = parseValue(rawVal)
-      i++
-    }
-    return obj
-  }
-
-  const data = parseBlock(yaml.split('\n'), 0)
+  const data = parseYaml(match[1]) ?? {}
+  const content = raw.slice(match[0].length)
   return { data, content }
 }
 
