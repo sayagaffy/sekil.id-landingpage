@@ -110,8 +110,8 @@ export default async function TentangPage() {
   const teamNote =
     cms?.teamNote ??
     'Profil lengkap tim akan dipublikasikan bertahap setelah masing-masing anggota menyetujui penggunaan informasi.';
-  const hasCmsTeam = !!(cms?.team && cms.team.length > 0);
-  const team = hasCmsTeam ? cms.team : [];
+  const team = cms?.team ?? [];
+  const hasCmsTeam = team.length > 0;
 
   const milestonesEyebrow = cms?.milestonesEyebrow ?? 'PERJALANAN';
   const milestonesHeading = cms?.milestonesHeading ?? 'Milestone kami';
