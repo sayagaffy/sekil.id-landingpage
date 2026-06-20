@@ -20,12 +20,12 @@ import { PRICING_PAGE_QUERY, ALL_PRODUCTS_QUERY } from '@/lib/sanity/queries'
 export const metadata: Metadata = {
   title: 'Harga Asesmen Psikologi & Karier | Sekil.id',
   description:
-    'Harga transparan asesmen psikologi dan karier Sekil.id. Mulai Rp 150.000/peserta dengan diskon volume hingga 20% untuk institusi. Kalkulator harga interaktif tersedia.',
+    'Harga transparan asesmen psikologi dan karier Sekil.id. Mulai Rp 159.000/peserta dengan diskon volume hingga 20% untuk institusi. Kalkulator harga interaktif tersedia.',
   alternates: { canonical: 'https://sekil.id/harga' },
   openGraph: {
     title: 'Harga Asesmen Psikologi & Karier | Sekil.id',
     description:
-      'Harga transparan asesmen Sekil.id. Mulai Rp 150.000/peserta dengan diskon volume hingga 20% untuk institusi.',
+      'Harga transparan asesmen Sekil.id. Mulai Rp 159.000/peserta dengan diskon volume hingga 20% untuk institusi.',
     url: 'https://sekil.id/harga',
     type: 'website',
   },
@@ -37,9 +37,9 @@ const DEFAULT_HERO = {
   eyebrow: 'HARGA TRANSPARAN · DISKON VOLUME',
   heading: 'Harga yang sesuai dengan skala Anda',
   subheading:
-    'Mulai dari Rp 150.000 per peserta untuk individu. Dapatkan diskon volume hingga 20% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.',
+    'Mulai dari Rp 159.000 per peserta untuk individu. Dapatkan diskon volume hingga 20% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.',
   pillars: [
-    { label: 'Harga mulai dari', value: 'Rp 150.000', sub: 'per peserta' },
+    { label: 'Harga mulai dari', value: 'Rp 159.000', sub: 'per peserta' },
     { label: 'Diskon volume', value: 'Hingga 20%', sub: 'untuk 50.000+ seat' },
     { label: 'Bundle hemat', value: '–15%', sub: 'paket multi-produk' },
   ],

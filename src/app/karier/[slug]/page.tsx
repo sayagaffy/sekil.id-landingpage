@@ -164,9 +164,9 @@ function CareerDataTemplate({ career }: { career: Career }) {
 
               {/* Holland */}
               <section>
-                <h2 className="font-display text-xl font-bold text-ink">Profil Holland Code</h2>
+                <h2 className="font-display text-xl font-bold text-ink">Profil Minat Vokasional</h2>
                 <p className="mt-2 text-sm text-ash-700">
-                  Karier ini cocok untuk profil minat Holland Code:
+                  Karier ini cocok untuk profil minat vokasional:
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {career.hollandCodes.map((code) => (

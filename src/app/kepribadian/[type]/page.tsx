@@ -75,7 +75,7 @@ function PersonalityDataTemplate({ personality }: { personality: PersonalityType
               </li>
               <li aria-hidden="true"><ChevronRight className="h-3 w-3" /></li>
               <li>
-                <span className="text-ink">{isHolland ? 'Holland Code' : 'MBTI'}</span>
+                <span className="text-ink">{isHolland ? 'Minat Vokasional' : 'Tipe Kepribadian'}</span>
               </li>
               <li aria-hidden="true"><ChevronRight className="h-3 w-3" /></li>
               <li>
@@ -92,7 +92,7 @@ function PersonalityDataTemplate({ personality }: { personality: PersonalityType
       <header className="border-b-2 border-ink bg-paper py-10">
         <Container>
           <span className="inline-block border-2 border-ink bg-peach-300 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-ink">
-            {isHolland ? `Holland Code ${personality.code}` : `MBTI · ${personality.code}`}
+            {isHolland ? `Minat Vokasional · ${personality.code}` : `Tipe Kepribadian · ${personality.code}`}
           </span>
           <h1 className="mt-3 font-display text-[clamp(32px,5vw,64px)] font-bold leading-tight text-ink">
             {personality.code}
@@ -263,7 +263,7 @@ export default async function PersonalityTypePage({ params }: Props) {
 
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Beranda', url: '/' },
-    { name: personality.type === 'holland' ? 'Holland Code' : 'MBTI', url: '/kepribadian' },
+    { name: personality.type === 'holland' ? 'Minat Vokasional' : 'Tipe Kepribadian', url: '/kepribadian' },
     { name: `${personality.code} — ${personality.name}`, url: `/kepribadian/${params.type}` },
   ]);
 

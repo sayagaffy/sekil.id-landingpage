@@ -125,10 +125,10 @@ function MajorDataTemplate({ major }: { major: Major }) {
               {/* Holland */}
               <section>
                 <h2 className="font-display text-xl font-bold text-ink">
-                  Cocok untuk Profil Holland Code
+                  Cocok untuk Profil Minat Vokasional
                 </h2>
                 <p className="mt-2 text-sm text-ash-700">
-                  Mahasiswa dengan minat Holland Code berikut cenderung puas dan berhasil di jurusan
+                  Mahasiswa dengan profil minat vokasional berikut cenderung puas dan berhasil di jurusan
                   ini:
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">

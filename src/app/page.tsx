@@ -265,6 +265,51 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* ── PARTNER STRIP ────────────────────────────────────── */}
+        <section className="border-b-2 border-ink bg-paper py-8" aria-label="Mitra dan akademik">
+          <div className="mx-auto max-w-[1280px] px-8">
+            <p className="eyebrow mb-6">DIBANGUN BERSAMA · MITRA &amp; AKADEMIK</p>
+            <div className="grid grid-cols-1 border-2 border-ink sm:grid-cols-3">
+              {[
+                {
+                  src: '/logos/logo-b-one-corp-full-3.png',
+                  alt: 'B One Corp — PT. Satu Visi Indocreative',
+                  width: 180,
+                  height: 52,
+                },
+                {
+                  src: '/logos/dartstudio-logo.png',
+                  alt: 'Dartstudio',
+                  width: 160,
+                  height: 40,
+                },
+                {
+                  src: '/logos/logoprdc.png',
+                  alt: 'PRDC — Psychological Research & Development Center, Fakultas Psikologi UNJANI',
+                  width: 180,
+                  height: 52,
+                },
+              ].map((logo, i, arr) => (
+                <div
+                  key={logo.src}
+                  className={[
+                    'group flex items-center justify-center bg-white px-8 py-6',
+                    i < arr.length - 1 ? 'border-b-2 border-ink sm:border-b-0 sm:border-r-2' : '',
+                  ].join(' ')}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    className="h-10 w-auto grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── PRODUCT GRID ─────────────────────────────────────── */}
         <section className="border-b-2 border-ink py-24" aria-labelledby="produk-heading">
           <div className="mx-auto max-w-[1280px] px-8">

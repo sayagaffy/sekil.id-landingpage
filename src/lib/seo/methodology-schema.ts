@@ -115,7 +115,7 @@ export function getBuyerMethodologySchema() {
     '@context': 'https://schema.org',
     '@type': 'Article',
     '@id': `${SITE_URL}/institusi/metodologi#article`,
-    headline: 'Spesifikasi Teknis Instrumen Asesmen Sekil.id: Holland Code, MBTI-style Typing, Papi Kostick',
+    headline: 'Spesifikasi Teknis Instrumen Asesmen Sekil.id: Kerangka Minat Vokasional, Preferensi Kepribadian, dan Inventori Peran Kerja',
     description:
       'Dokumentasi teknis lengkap instrumen psikologi Sekil.id — untuk mitra institusi (sekolah, kampus, perusahaan). Mencakup sitasi akademik, dimensi, dan adaptasi Indonesia.',
     url: `${SITE_URL}/institusi/metodologi`,
@@ -138,9 +138,9 @@ export function getBuyerMethodologySchema() {
       '@id': `${SITE_URL}/#organization`,
     },
     about: [
-      { '@type': 'Thing', name: 'Holland Code RIASEC' },
-      { '@type': 'Thing', name: 'Myers-Briggs Type Indicator' },
-      { '@type': 'Thing', name: 'Papi Kostick' },
+      { '@type': 'Thing', name: 'Kerangka Minat Vokasional' },
+      { '@type': 'Thing', name: 'Kerangka Preferensi Kepribadian' },
+      { '@type': 'Thing', name: 'Inventori Kebutuhan & Peran Kerja' },
       { '@type': 'Thing', name: 'Asesmen Psikologi' },
       { '@type': 'Thing', name: 'Pemetaan Karier Indonesia' },
     ],

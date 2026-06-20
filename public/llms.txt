@@ -1,28 +1,85 @@
-# Sekil.id
+# Sekil.id — Platform Asesmen Psikologi Berbasis AI
 
-> Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI.
-> Joint venture Sekil.id × B One Corp untuk pendidikan & korporasi di Indonesia.
+Sekil.id adalah platform asesmen psikologi tervalidasi akademik untuk siswa SMA, mahasiswa, dan profesional Indonesia. Dibangun di atas tiga instrumen psikologi yang diadaptasi untuk konteks Indonesia oleh tim Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI).
 
-## Produk Utama
-- [Career Interest](https://sekil.id/produk/career-interest): Tes minat karier Holland Code, 15 menit, Rp 150.000/peserta
-- [PsyAI](https://sekil.id/produk/psyai): Tes kepribadian terintegrasi MBTI + Holland, Rp 195.000
-- [Path Finder AI](https://sekil.id/produk/path-finder-ai): Rekomendasi jurusan kuliah, Rp 150.000
-- [Leadership Styles Test](https://sekil.id/produk/leadership-styles-test): Asesmen gaya kepemimpinan Papi Kostick, Rp 150.000
-- [Emotional Intelligence Test](https://sekil.id/produk/emotional-intelligence-test): Tes EQ, Rp 175.000
+**Produksi**: https://sekil.id
+**App portal**: https://app.sekil.id
+**Demo institusi**: https://sekil.id/demo
 
-## Metodologi
-- Holland Code (RIASEC) — minat karier
-- MBTI-style typing — dimensi kepribadian
-- Papi Kostick — gaya kerja
+---
 
-Validasi akademik oleh Fakultas Psikologi UNJANI.
+## Produk Individual
 
-## Audience
-- Sekolah Menengah Atas (SMA/SMK)
-- Perguruan Tinggi (PT)
-- Perusahaan & Korporasi
-- Yayasan pendidikan multi-unit
+| Produk | Harga | Durasi | Segmen |
+|--------|-------|--------|--------|
+| Career Interest | Rp 159.000 | 15 menit | Siswa SMA, Mahasiswa |
+| PsyAI | Rp 229.000 | 25 menit | Mahasiswa, Fresh Grad, Karyawan |
+| Path Finder AI | Rp 179.000 | 20 menit | Siswa SMA |
+| Leadership Styles Test | Rp 179.000 | 20 menit | Karyawan, Manajer |
+| EQ Test (Kecerdasan Emosional) | Rp 209.000 | 20 menit | Mahasiswa, Fresh Grad, Karyawan |
+| Self DiscoveryAI | Rp 179.000 | 20 menit | Mahasiswa, Fresh Grad, Karyawan |
+| Goal AlignAI | Rp 179.000 | 20 menit | Fresh Grad, Karyawan, Manajer |
+| Goal Orientation Coaching | Rp 359.000 | 45 menit | Karyawan, Manajer |
+| Professional Authenticity Test | Rp 179.000 | 20 menit | Fresh Grad, Karyawan, Manajer |
+| Job Burnout Test | Rp 209.000 | 15 menit | Karyawan, Manajer |
+| Personal Authenticity Test | Rp 209.000 | 20 menit | Mahasiswa, Fresh Grad, Karyawan |
 
-## Kontak
-Email: hello@sekil.id
-Website: https://sekil.id
+---
+
+## Paket Bundle
+
+| Bundle | Harga | Produk Termasuk | Hemat |
+|--------|-------|-----------------|-------|
+| Career Starter | Rp 289.000 | Career Interest + Path Finder AI | ~14,5% |
+| Wellbeing Kit | Rp 339.000 | Job Burnout Test + Professional Authenticity Test | ~12,6% |
+| Self Awareness | Rp 489.000 | Self DiscoveryAI + Personal Authenticity Test + Goal AlignAI | ~13,8% |
+| Comprehensive Personality | Rp 509.000 | PsyAI + Career Interest + EQ Test | ~14,7% |
+| Corporate Leadership | Rp 529.000 | Leadership Styles Test + EQ Test + PsyAI | ~14,3% |
+| Professional Growth | Rp 659.000 | PsyAI + Goal AlignAI + Goal Orientation Coaching | ~14,1% |
+
+---
+
+## Instrumen Asesmen
+
+Sekil.id menggunakan tiga instrumen psikologi tervalidasi akademik, diadaptasi oleh tim Fakultas Psikologi UNJANI:
+
+**Kerangka Minat Vokasional**
+Berbasis teori John L. Holland (1959). Mengklasifikasikan minat vokasional ke dalam 6 dimensi (Realistic, Investigative, Artistic, Social, Enterprising, Conventional) untuk pemetaan karier dan pemilihan jurusan.
+
+**Kerangka Preferensi Kepribadian**
+Berbasis teori tipe psikologis Carl Jung (1921). Menghasilkan 16 profil kepribadian dari kombinasi empat dikotomi preferensi. Digunakan untuk memahami cara kerja, komunikasi, dan pengambilan keputusan.
+
+**Inventori Kebutuhan & Peran Kerja**
+Dikembangkan Max Kostick (1960an) di Boston University. Mengukur kebutuhan dan peran yang mendorong perilaku individu dalam lingkungan kerja profesional. Digunakan dalam Leadership Styles Test, EQ Test, Goal AlignAI, dan lainnya.
+
+---
+
+## Diskon Volume
+
+| Jumlah Seat | Diskon |
+|-------------|--------|
+| 1–499 | 0% |
+| 500–1.999 | 5% |
+| 2.000–9.999 | 7,5% |
+| 10.000–49.999 | 12,5% |
+| 50.000+ | 20% |
+
+---
+
+## Segmen Layanan
+
+- **Sekolah & SMA**: Asesmen minat karier massal untuk bimbingan konseling. Mulai Rp 159.000/siswa.
+- **Universitas & Politeknik**: Platform asesmen karier mahasiswa, API-ready untuk SIAKAD.
+- **Perusahaan & HRD**: Leadership development, EQ assessment, talent profiling. ATC Dashboard tersedia (Rp 35 juta/tahun).
+- **Yayasan & NGO**: Harga institusional dan diskon NGO untuk program sosial dan beasiswa.
+
+---
+
+## Fitur Platform
+
+- Laporan PDF tersedia langsung setelah tes selesai
+- Seluruh laporan dalam Bahasa Indonesia native
+- Tidak perlu instalasi aplikasi — berbasis web
+- Data tersimpan di server Indonesia (UU PDP compliant)
+- API dan webhook tersedia untuk integrasi HRIS/SIAKAD
+- ATC Dashboard untuk monitoring asesmen karyawan skala enterprise

@@ -500,7 +500,7 @@ async function seedProducts() {
       longDescription:
         'Career Interest menggunakan kerangka minat vokasional yang telah divalidasi akademik selama 60+ tahun untuk memetakan preferensi karier Anda. Dalam 15 menit, Anda mendapatkan profil unik yang mencerminkan kombinasi minat vokasional Anda, beserta rekomendasi karier dan jurusan yang paling sesuai — semuanya dikalibrasi untuk konteks pasar kerja Indonesia menggunakan data LinkedIn 2025.',
       duration: '15 menit',
-      price: 150000,
+      price: 159000,
       targetPersonas: ['siswa-sma', 'mahasiswa'],
       instruments: ['holland'],
       outputs: [
@@ -538,7 +538,7 @@ async function seedProducts() {
       longDescription:
         'PsyAI adalah asesmen kepribadian paling komprehensif di Sekil.id. Dengan menggabungkan pemetaan minat vokasional dan preferensi kepribadian berbasis konstruk psikologis Jung, PsyAI menghasilkan satu profil kohesif yang menjelaskan bukan hanya apa yang Anda minati, tapi bagaimana cara Anda bekerja, berkomunikasi, dan berkembang. Narasi laporan dihasilkan AI berbasis template yang divalidasi psikolog UNJANI.',
       duration: '25 menit',
-      price: 225000,
+      price: 229000,
       targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
       instruments: ['holland', 'mbti'],
       outputs: [
@@ -577,7 +577,7 @@ async function seedProducts() {
       longDescription:
         'Path Finder AI dirancang khusus untuk siswa SMA yang menghadapi dilema pemilihan jurusan kuliah. Dengan menggabungkan profil minat vokasional dan preferensi kepribadian, Path Finder AI menyilangkan data tersebut dengan informasi jurusan, prospek karier, dan universitas Indonesia — menghasilkan rekomendasi yang personal dan berbasis data, bukan intuisi semata.',
       duration: '20 menit',
-      price: 175000,
+      price: 179000,
       targetPersonas: ['siswa-sma'],
       instruments: ['holland', 'mbti'],
       outputs: [
@@ -615,7 +615,7 @@ async function seedProducts() {
       longDescription:
         'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan inventori kebutuhan & peran kerja yang merupakan standar industri untuk konteks profesional — tes ini mengidentifikasi gaya kepemimpinan dominan Anda dari 4 profil situasional, lengkap dengan matriks kekuatan, blind spot, dan rencana pengembangan yang dapat langsung diimplementasikan.',
       duration: '20 menit',
-      price: 175000,
+      price: 179000,
       targetPersonas: ['karyawan', 'manager'],
       instruments: ['papi'],
       outputs: [
@@ -653,7 +653,7 @@ async function seedProducts() {
       longDescription:
         'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills. Menggunakan inventori kebutuhan & peran kerja yang diadaptasi oleh tim psikolog UNJANI untuk konteks Indonesia, hasilnya mencakup skor per dimensi, analisis mendalam, dan rencana pengembangan EQ yang konkret dan dapat langsung diterapkan.',
       duration: '20 menit',
-      price: 200000,
+      price: 209000,
       targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
       instruments: ['papi'],
       outputs: [
@@ -690,7 +690,7 @@ async function seedProducts() {
       description: 'Self DiscoveryAI mengintegrasikan profil preferensi kepribadian dan inventori kebutuhan kerja untuk menghasilkan peta diri yang holistik. 20 menit untuk memahami kekuatan alami, kebutuhan, dan cara kerja terbaik Anda.',
       longDescription: 'Self DiscoveryAI dirancang untuk mereka yang ingin memahami dirinya lebih dalam sebelum membuat keputusan karier atau hidup yang signifikan. Dengan mengintegrasikan kerangka preferensi kepribadian dan inventori kebutuhan & peran kerja, Self DiscoveryAI menghasilkan peta diri holistik — mencakup bagaimana Anda memproses informasi, apa yang memotivasi Anda, dan lingkungan seperti apa yang membuat Anda tumbuh paling baik.',
       duration: '20 menit',
-      price: 175000,
+      price: 179000,
       targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
       instruments: ['mbti', 'papi'],
       outputs: [
@@ -722,7 +722,7 @@ async function seedProducts() {
       description: 'Goal AlignAI membantu Anda menyusun tujuan karier yang benar-benar selaras dengan kebutuhan, motivasi, dan kekuatan kerja Anda — menghasilkan roadmap karier yang realistis dan menggerakkan semangat.',
       longDescription: 'Banyak orang menetapkan tujuan karier berdasarkan ekspektasi sosial atau tekanan lingkungan — bukan berdasarkan profil diri yang sesungguhnya. Goal AlignAI menggabungkan analisis inventori kebutuhan & peran kerja dengan eksplorasi tujuan karier untuk menghasilkan roadmap yang selaras dengan motivasi intrinsik Anda.',
       duration: '20 menit',
-      price: 175000,
+      price: 179000,
       targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
       instruments: ['papi'],
       outputs: [
@@ -754,7 +754,7 @@ async function seedProducts() {
       description: 'Paket premium Goal Orientation Coaching menggabungkan asesmen profil kebutuhan kerja dengan sesi coaching intensif 1-on-1 bersama psikolog karier Sekil.id. Dapatkan action plan karier yang konkret, tervalidasi, dan didampingi profesional.',
       longDescription: 'Goal Orientation Coaching adalah layanan premium Sekil.id yang menggabungkan rigor asesmen psikologis dengan kedalaman coaching profesional. Sesi dimulai dengan asesmen inventori kebutuhan & peran kerja, dilanjutkan dengan sesi coaching 1-on-1 bersama psikolog karier. Hasilnya: action plan karier yang tidak hanya diinginkan, tapi dapat dicapai sesuai profil aktual Anda.',
       duration: '45 menit',
-      price: 350000,
+      price: 359000,
       targetPersonas: ['karyawan', 'manager'],
       instruments: ['papi'],
       outputs: [
@@ -786,7 +786,7 @@ async function seedProducts() {
       description: 'Professional Authenticity Test mengukur keselarasan antara nilai-nilai diri, kebutuhan kerja, dan cara Anda berpresentasi di lingkungan profesional. Identifikasi "authenticity gap" yang mungkin menyebabkan kelelahan atau ketidakpuasan karier.',
       longDescription: 'Ketidakselarasan antara siapa Anda sebenarnya dan bagaimana Anda berperilaku di tempat kerja adalah sumber utama kelelahan dan ketidakpuasan karier jangka panjang. Professional Authenticity Test mengukur gap ini menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks keaslian profesional.',
       duration: '20 menit',
-      price: 175000,
+      price: 179000,
       targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
       instruments: ['papi'],
       outputs: [
@@ -818,7 +818,7 @@ async function seedProducts() {
       description: 'Job Burnout Test mengukur tingkat kelelahan kerja di tiga dimensi: kelelahan emosional, depersonalisasi, dan efektivitas diri. Dapatkan profil risiko burnout yang akurat dan panduan pemulihan yang konkret dalam 15 menit.',
       longDescription: 'Burnout bukan sekadar kelelahan biasa — ia adalah kondisi psikologis yang berkembang bertahap dan berdampak serius pada kesehatan, produktivitas, dan hubungan kerja. Job Burnout Test menggunakan asesmen kebutuhan & peran kerja yang diadaptasi untuk mengukur tiga dimensi burnout paling kritis: kelelahan emosional, depersonalisasi, dan efektivitas diri.',
       duration: '15 menit',
-      price: 200000,
+      price: 209000,
       targetPersonas: ['karyawan', 'manager'],
       instruments: ['papi'],
       outputs: [
@@ -850,7 +850,7 @@ async function seedProducts() {
       description: 'Personal Authenticity Test mengukur keselarasan antara nilai-nilai inti, preferensi hidup, dan cara Anda menjalani keseharian. Untuk individu yang ingin hidup lebih bermakna dan selaras dengan siapa diri mereka sebenarnya.',
       longDescription: 'Keaslian diri bukan tentang sempurna atau tidak berubah — ini tentang menjalani hidup yang selaras dengan nilai dan preferensi terdalam Anda. Personal Authenticity Test mengintegrasikan kerangka preferensi kepribadian dengan inventori kebutuhan personal untuk menghasilkan profil keaslian yang menyeluruh.',
       duration: '20 menit',
-      price: 200000,
+      price: 209000,
       targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
       instruments: ['mbti', 'papi'],
       outputs: [
@@ -1373,26 +1373,26 @@ async function seedPricingPage() {
     heroEyebrow: 'HARGA TRANSPARAN · DISKON VOLUME',
     heroHeading: 'Harga yang sesuai dengan skala Anda',
     heroSubheading:
-      'Mulai dari Rp 150.000 per peserta untuk individu. Dapatkan diskon volume hingga 20% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.',
+      'Mulai dari Rp 159.000 per peserta untuk individu. Dapatkan diskon volume hingga 20% untuk pembelian institusional. Tidak ada biaya setup, tidak ada biaya tersembunyi.',
     heroPillars: [
-      { _key: blockKey('pillar'), label: 'Harga mulai dari', value: 'Rp 150.000', sub: 'per peserta' },
+      { _key: blockKey('pillar'), label: 'Harga mulai dari', value: 'Rp 159.000', sub: 'per peserta' },
       { _key: blockKey('pillar'), label: 'Diskon volume', value: 'Hingga 20%', sub: 'untuk 50.000+ seat' },
       { _key: blockKey('pillar'), label: 'Bundle hemat', value: '–15%', sub: 'paket multi-produk' },
     ],
 
     // Products & volume tiers
     products: [
-      { _key: blockKey('prod'), slug: 'career-interest', name: 'Career Interest', duration: '15 menit', price: 150000 },
-      { _key: blockKey('prod'), slug: 'psyai', name: 'PsyAI', duration: '25 menit', price: 225000 },
-      { _key: blockKey('prod'), slug: 'path-finder-ai', name: 'Path Finder AI', duration: '20 menit', price: 175000 },
-      { _key: blockKey('prod'), slug: 'leadership-styles-test', name: 'Leadership Styles Test', duration: '20 menit', price: 175000 },
-      { _key: blockKey('prod'), slug: 'emotional-intelligence-test', name: 'Emotional Intelligence Test', duration: '20 menit', price: 200000 },
-      { _key: blockKey('prod'), slug: 'self-discovery-ai', name: 'Self DiscoveryAI', duration: '20 menit', price: 175000 },
-      { _key: blockKey('prod'), slug: 'goal-align-ai', name: 'Goal AlignAI', duration: '20 menit', price: 175000 },
-      { _key: blockKey('prod'), slug: 'goal-orientation-coaching', name: 'Goal Orientation Coaching', duration: '45 menit', price: 350000 },
-      { _key: blockKey('prod'), slug: 'professional-authenticity-test', name: 'Professional Authenticity Test', duration: '20 menit', price: 175000 },
-      { _key: blockKey('prod'), slug: 'job-burnout-test', name: 'Job Burnout Test', duration: '15 menit', price: 200000 },
-      { _key: blockKey('prod'), slug: 'personal-authenticity-test', name: 'Personal Authenticity Test', duration: '20 menit', price: 200000 },
+      { _key: blockKey('prod'), slug: 'career-interest', name: 'Career Interest', duration: '15 menit', price: 159000 },
+      { _key: blockKey('prod'), slug: 'psyai', name: 'PsyAI', duration: '25 menit', price: 229000 },
+      { _key: blockKey('prod'), slug: 'path-finder-ai', name: 'Path Finder AI', duration: '20 menit', price: 179000 },
+      { _key: blockKey('prod'), slug: 'leadership-styles-test', name: 'Leadership Styles Test', duration: '20 menit', price: 179000 },
+      { _key: blockKey('prod'), slug: 'emotional-intelligence-test', name: 'Emotional Intelligence Test', duration: '20 menit', price: 209000 },
+      { _key: blockKey('prod'), slug: 'self-discovery-ai', name: 'Self DiscoveryAI', duration: '20 menit', price: 179000 },
+      { _key: blockKey('prod'), slug: 'goal-align-ai', name: 'Goal AlignAI', duration: '20 menit', price: 179000 },
+      { _key: blockKey('prod'), slug: 'goal-orientation-coaching', name: 'Goal Orientation Coaching', duration: '45 menit', price: 359000 },
+      { _key: blockKey('prod'), slug: 'professional-authenticity-test', name: 'Professional Authenticity Test', duration: '20 menit', price: 179000 },
+      { _key: blockKey('prod'), slug: 'job-burnout-test', name: 'Job Burnout Test', duration: '15 menit', price: 209000 },
+      { _key: blockKey('prod'), slug: 'personal-authenticity-test', name: 'Personal Authenticity Test', duration: '20 menit', price: 209000 },
     ],
     volumeTiers: [
       { _key: blockKey('tier'), minSeats: 0, discountRate: 0, label: '1–499' },
@@ -1413,20 +1413,32 @@ async function seedPricingPage() {
           { _key: blockKey('ref'), _type: 'reference', _ref: 'product-career-interest' },
           { _key: blockKey('ref'), _type: 'reference', _ref: 'product-path-finder-ai' },
         ],
-        bundlePrice: 276000,
+        bundlePrice: 289000,
         comingSoon: false,
       },
       {
         _key: blockKey('bundle'),
-        bundleId: 'corporate-leadership',
-        name: 'Corporate Leadership',
-        tagline: 'Kepemimpinan dan kecerdasan emosional untuk manajer dan HR',
+        bundleId: 'wellbeing-kit',
+        name: 'Wellbeing Kit',
+        tagline: 'Deteksi burnout dan identifikasi gap keaslian di lingkungan profesional Anda',
         products: [
-          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-leadership-styles-test' },
-          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-emotional-intelligence-test' },
-          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-psyai' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-job-burnout-test' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-professional-authenticity-test' },
         ],
-        bundlePrice: 510000,
+        bundlePrice: 339000,
+        comingSoon: false,
+      },
+      {
+        _key: blockKey('bundle'),
+        bundleId: 'self-awareness',
+        name: 'Self Awareness',
+        tagline: 'Kenali diri, tujuan, dan keaslian hidup dalam satu paket lengkap',
+        products: [
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-self-discovery-ai' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-personal-authenticity-test' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-goal-align-ai' },
+        ],
+        bundlePrice: 489000,
         comingSoon: false,
       },
       {
@@ -1439,17 +1451,34 @@ async function seedPricingPage() {
           { _key: blockKey('ref'), _type: 'reference', _ref: 'product-career-interest' },
           { _key: blockKey('ref'), _type: 'reference', _ref: 'product-emotional-intelligence-test' },
         ],
-        bundlePrice: 489000,
+        bundlePrice: 509000,
         comingSoon: false,
       },
       {
         _key: blockKey('bundle'),
-        bundleId: 'self-awareness',
-        name: 'Self Awareness',
-        tagline: 'Kenali diri lebih dalam dengan 4 instrumen terintegrasi',
-        products: [],
-        bundlePrice: 0,
-        comingSoon: true,
+        bundleId: 'corporate-leadership',
+        name: 'Corporate Leadership',
+        tagline: 'Kepemimpinan dan kecerdasan emosional untuk manajer dan HR',
+        products: [
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-leadership-styles-test' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-emotional-intelligence-test' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-psyai' },
+        ],
+        bundlePrice: 529000,
+        comingSoon: false,
+      },
+      {
+        _key: blockKey('bundle'),
+        bundleId: 'professional-growth',
+        name: 'Professional Growth',
+        tagline: 'Profil kepribadian, keselarasan tujuan, dan coaching 1-on-1 dengan psikolog karier',
+        products: [
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-psyai' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-goal-align-ai' },
+          { _key: blockKey('ref'), _type: 'reference', _ref: 'product-goal-orientation-coaching' },
+        ],
+        bundlePrice: 659000,
+        comingSoon: false,
       },
     ],
 

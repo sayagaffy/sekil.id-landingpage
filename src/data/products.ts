@@ -33,8 +33,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Career Interest menggunakan kerangka minat vokasional yang telah divalidasi akademik selama 60+ tahun untuk memetakan preferensi karier Anda. Dalam 15 menit, Anda mendapatkan profil unik yang mencerminkan kombinasi minat vokasional Anda, beserta rekomendasi karier dan jurusan yang paling sesuai — semuanya dikalibrasi untuk konteks pasar kerja Indonesia menggunakan data LinkedIn 2025.',
     duration: '15 menit',
-    price: 150000,
-    priceDisplay: 'Rp 150.000',
+    price: 159000,
+    priceDisplay: 'Rp 159.000',
     targetPersonas: ['siswa-sma', 'mahasiswa'],
     instruments: ['holland'],
     outputs: [
@@ -85,8 +85,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'PsyAI adalah asesmen kepribadian paling komprehensif di Sekil.id. Dengan menggabungkan pemetaan minat vokasional dan preferensi kepribadian berbasis konstruk psikologis Jung, PsyAI menghasilkan satu profil kohesif yang menjelaskan bukan hanya apa yang Anda minati, tapi bagaimana cara Anda bekerja, berkomunikasi, dan berkembang. Narasi laporan dihasilkan AI berbasis template yang divalidasi psikolog UNJANI.',
     duration: '25 menit',
-    price: 225000,
-    priceDisplay: 'Rp 225.000',
+    price: 229000,
+    priceDisplay: 'Rp 229.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
     instruments: ['holland', 'mbti'],
     outputs: [
@@ -138,8 +138,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Path Finder AI dirancang khusus untuk siswa SMA yang menghadapi dilema pemilihan jurusan kuliah. Dengan menggabungkan profil minat vokasional dan preferensi kepribadian, Path Finder AI menyilangkan data tersebut dengan informasi jurusan, prospek karier, dan universitas Indonesia — menghasilkan rekomendasi yang personal dan berbasis data, bukan intuisi semata.',
     duration: '20 menit',
-    price: 175000,
-    priceDisplay: 'Rp 175.000',
+    price: 179000,
+    priceDisplay: 'Rp 179.000',
     targetPersonas: ['siswa-sma'],
     instruments: ['holland', 'mbti'],
     outputs: [
@@ -190,8 +190,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan inventori kebutuhan & peran kerja yang merupakan standar industri untuk konteks profesional — tes ini mengidentifikasi gaya kepemimpinan dominan Anda dari 4 profil situasional, lengkap dengan matriks kekuatan, blind spot, dan rencana pengembangan yang dapat langsung diimplementasikan.',
     duration: '20 menit',
-    price: 175000,
-    priceDisplay: 'Rp 175.000',
+    price: 179000,
+    priceDisplay: 'Rp 179.000',
     targetPersonas: ['karyawan', 'manager'],
     instruments: ['papi'],
     outputs: [
@@ -242,8 +242,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills. Menggunakan inventori kebutuhan & peran kerja yang diadaptasi oleh tim psikolog UNJANI untuk konteks Indonesia, hasilnya mencakup skor per dimensi, analisis mendalam, dan rencana pengembangan EQ yang konkret dan dapat langsung diterapkan.',
     duration: '20 menit',
-    price: 200000,
-    priceDisplay: 'Rp 200.000',
+    price: 209000,
+    priceDisplay: 'Rp 209.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
     instruments: ['papi'],
     outputs: [
@@ -295,8 +295,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Self DiscoveryAI dirancang untuk mereka yang ingin memahami dirinya lebih dalam sebelum membuat keputusan karier atau hidup yang signifikan. Dengan mengintegrasikan kerangka preferensi kepribadian dan inventori kebutuhan & peran kerja, Self DiscoveryAI menghasilkan peta diri holistik — mencakup bagaimana Anda memproses informasi, apa yang memotivasi Anda, dan lingkungan seperti apa yang membuat Anda tumbuh paling baik.',
     duration: '20 menit',
-    price: 175000,
-    priceDisplay: 'Rp 175.000',
+    price: 179000,
+    priceDisplay: 'Rp 179.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
     instruments: ['mbti', 'papi'],
     outputs: [
@@ -339,8 +339,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Banyak orang menetapkan tujuan karier berdasarkan ekspektasi sosial atau tekanan lingkungan — bukan berdasarkan profil diri yang sesungguhnya. Goal AlignAI menggabungkan analisis inventori kebutuhan & peran kerja dengan eksplorasi tujuan karier untuk menghasilkan roadmap yang selaras dengan motivasi intrinsik Anda. Hasilnya: tujuan yang tidak hanya realistis, tapi juga menggerakkan energi dan komitmen jangka panjang.',
     duration: '20 menit',
-    price: 175000,
-    priceDisplay: 'Rp 175.000',
+    price: 179000,
+    priceDisplay: 'Rp 179.000',
     targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
     instruments: ['papi'],
     outputs: [
@@ -383,8 +383,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Goal Orientation Coaching adalah layanan premium Sekil.id yang menggabungkan rigor asesmen psikologis dengan kedalaman coaching profesional. Sesi dimulai dengan asesmen inventori kebutuhan & peran kerja untuk membangun profil yang objektif, dilanjutkan dengan sesi coaching 1-on-1 bersama psikolog karier. Hasilnya: action plan karier yang tidak hanya diinginkan, tapi dapat dicapai sesuai profil dan kondisi aktual Anda.',
     duration: '45 menit',
-    price: 350000,
-    priceDisplay: 'Rp 350.000',
+    price: 359000,
+    priceDisplay: 'Rp 359.000',
     targetPersonas: ['karyawan', 'manager'],
     instruments: ['papi'],
     outputs: [
@@ -427,8 +427,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Ketidakselarasan antara siapa Anda sebenarnya dan bagaimana Anda berperilaku di tempat kerja adalah sumber utama kelelahan dan ketidakpuasan karier jangka panjang. Professional Authenticity Test mengukur gap ini menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks keaslian profesional — menghasilkan profil yang menunjukkan area di mana Anda paling dan paling tidak autentik, beserta strategi untuk mempersempit kesenjangan tersebut.',
     duration: '20 menit',
-    price: 175000,
-    priceDisplay: 'Rp 175.000',
+    price: 179000,
+    priceDisplay: 'Rp 179.000',
     targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
     instruments: ['papi'],
     outputs: [
@@ -471,8 +471,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Burnout bukan sekadar kelelahan biasa — ia adalah kondisi psikologis yang berkembang bertahap dan berdampak serius pada kesehatan, produktivitas, dan hubungan kerja. Job Burnout Test menggunakan asesmen kebutuhan & peran kerja yang diadaptasi untuk mengukur tiga dimensi burnout paling kritis: kelelahan emosional, depersonalisasi, dan efektivitas diri. Hasilnya mencakup profil risiko dan rencana pemulihan berbasis evidence.',
     duration: '15 menit',
-    price: 200000,
-    priceDisplay: 'Rp 200.000',
+    price: 209000,
+    priceDisplay: 'Rp 209.000',
     targetPersonas: ['karyawan', 'manager'],
     instruments: ['papi'],
     outputs: [
@@ -515,8 +515,8 @@ export const PRODUCTS: Product[] = [
     longDescription:
       'Keaslian diri bukan tentang sempurna atau tidak berubah — ini tentang menjalani hidup yang selaras dengan nilai dan preferensi terdalam Anda. Personal Authenticity Test mengintegrasikan kerangka preferensi kepribadian dengan inventori kebutuhan personal untuk menghasilkan profil keaslian yang menyeluruh: di area mana Anda sudah autentik, di mana Anda paling sering menekan diri sendiri, dan apa yang perlu diubah untuk hidup yang lebih bermakna.',
     duration: '20 menit',
-    price: 200000,
-    priceDisplay: 'Rp 200.000',
+    price: 209000,
+    priceDisplay: 'Rp 209.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
     instruments: ['mbti', 'papi'],
     outputs: [
