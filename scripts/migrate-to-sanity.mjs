@@ -51,6 +51,30 @@ const client = createClient({
   useCdn: false,
 })
 
+// ── Timeout helper ────────────────────────────────────────────────────────
+// @sanity/client has no built-in timeout; Node.js HTTP will wait forever on
+// a stalled connection. Wrap every API write with a 30-second race so the
+// script fails fast on network issues rather than hanging silently.
+
+const SANITY_TIMEOUT_MS = 30_000
+
+function withTimeout(promise, ms, label) {
+  let timer
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(
+        () => reject(new Error(`Sanity API timeout after ${ms}ms [${label}]`)),
+        ms,
+      )
+    }),
+  ]).finally(() => clearTimeout(timer))
+}
+
+// Authors whose .mdx files exist in content/authors/ but must NOT be seeded
+// as active Sanity documents (e.g. placeholder reviewers before MoU is signed).
+const SKIP_AUTHOR_SLUGS = new Set(['unjani-reviewer-placeholder'])
+
 // ── Frontmatter parser (no external dep) ──────────────────────────────────
 
 /**
@@ -376,6 +400,12 @@ async function migrateAuthors() {
 
   for (const file of files) {
     const slug = file.replace('.mdx', '')
+
+    if (SKIP_AUTHOR_SLUGS.has(slug)) {
+      console.log(`⏭ Skipping author: ${slug} (placeholder — not for public byline until MoU complete)`)
+      continue
+    }
+
     const { data, content } = readMdx(path.join(authorDir, file))
 
     const doc = {
@@ -393,9 +423,14 @@ async function migrateAuthors() {
     }
 
     console.log(`📝 Author: ${doc.name} (${slug})`)
-    await client.createOrReplace(doc)
-    slugToId[slug] = doc._id
-    console.log(`   ✓ Created/updated author doc: author-${slug}`)
+    console.log(`   Seeding author-${slug}...`)
+    try {
+      await withTimeout(client.createOrReplace(doc), SANITY_TIMEOUT_MS, `author-${slug}`)
+      slugToId[slug] = doc._id
+      console.log(`   ✓ Created/updated author doc: author-${slug}`)
+    } catch (err) {
+      console.error(`   ✗ Failed author-${slug}: ${err.message}`)
+    }
   }
 
   return slugToId
@@ -476,8 +511,13 @@ async function migrateBlogPosts(authorSlugToId) {
 
     console.log(`\n📝 Post: ${doc.title}`)
     console.log(`   slug: ${slug}, category: ${doc.category}, body blocks: ${doc.body.length}`)
-    await client.createOrReplace(doc)
-    console.log(`   ✓ Created/updated post doc: post-${slug}`)
+    console.log(`   Seeding post-${slug}...`)
+    try {
+      await withTimeout(client.createOrReplace(doc), SANITY_TIMEOUT_MS, `post-${slug}`)
+      console.log(`   ✓ Created/updated post doc: post-${slug}`)
+    } catch (err) {
+      console.error(`   ✗ Failed post-${slug}: ${err.message}`)
+    }
   }
 }
 
