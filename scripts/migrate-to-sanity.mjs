@@ -156,7 +156,7 @@ function parseInline(text) {
 function markdownToPortableText(md) {
   if (!md || !md.trim()) return []
 
-  const lines = md.split('\n')
+  const lines = md.split(/\r?\n/)
   const blocks = []
   let i = 0
 
