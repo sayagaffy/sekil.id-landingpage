@@ -10,22 +10,18 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight, Lock } from 'lucide-react';
 import { Container } from '@/components/layout/Container';
-import { AuthorByline } from '@/components/seo/AuthorByline';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Button } from '@/components/ui/button';
 import { InstrumentSection } from '@/components/methodology/InstrumentSection';
-import { UnjaniTeam } from '@/components/methodology/UnjaniTeam';
 import { ReferencesList } from '@/components/methodology/ReferencesList';
-import { INSTRUMENTS, UNJANI_TEAM, REFERENCES } from '@/data/methodology';
+import { INSTRUMENTS, REFERENCES } from '@/data/methodology';
 import { getBuyerMethodologySchema } from '@/lib/seo/methodology-schema';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 
 const PUBLISHED = '2026-05-16';
-const AUTHOR_NAME = 'Dr. [Placeholder UNJANI Lecturer Name], M.Psi., Psikolog';
-const AUTHOR_AFFILIATION = 'Dosen Psikologi UNJANI · Reviewer Akademik Sekil.id';
 
 export const metadata: Metadata = {
-  title: 'Spesifikasi Teknis Instrumen Asesmen | Sekil.id untuk Institusi',
+  title: 'Spesifikasi Teknis Instrumen Asesmen',
   description:
     'Dokumentasi teknis 3 instrumen psikologi Sekil.id untuk mitra institusi: kerangka minat vokasional, preferensi kepribadian, dan inventori peran kerja. Sitasi akademik lengkap dan adaptasi Indonesia.',
   // noindex: halaman ini tidak boleh muncul di Google
@@ -90,12 +86,9 @@ export default function InstitusiMetodologiPage() {
                   Mencakup nama teknis, sitasi akademik penuh, dimensi, dan adaptasi Indonesia.
                 </p>
                 <div className="mt-8 border-2 border-ink bg-peach-300 p-5 shadow-sm">
-                  <AuthorByline
-                    name={AUTHOR_NAME}
-                    affiliation={AUTHOR_AFFILIATION}
-                    publishedAt={PUBLISHED}
-                    modifiedAt={PUBLISHED}
-                  />
+                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
+                    Tim Akademik · review UNJANI dalam proses · {PUBLISHED}
+                  </p>
                 </div>
               </div>
 
@@ -136,8 +129,8 @@ export default function InstitusiMetodologiPage() {
                 <strong className="text-ink">Inventori Kebutuhan &amp; Peran Kerja</strong> untuk profil kebutuhan dan peran dalam konteks profesional.
               </p>
               <p>
-                Ketiga instrumen diadaptasi untuk konteks Indonesia oleh tim Fakultas Psikologi
-                Universitas Jenderal Achmad Yani (UNJANI). Dokumentasi di halaman ini mencakup
+                Ketiga instrumen sedang dalam proses adaptasi untuk konteks Indonesia bersama
+                tim Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI). Dokumentasi di halaman ini mencakup
                 asal-usul akademik, sitasi primer, dimensi yang diukur, keterbatasan, dan detail
                 adaptasi lokal — informasi yang relevan untuk proses due diligence institusi.
               </p>
@@ -163,10 +156,23 @@ export default function InstitusiMetodologiPage() {
           </Container>
         </section>
 
-        {/* 5. UNJANI team */}
+        {/* 5. Tim Akademik — identitas pending konfirmasi founder */}
         <section className="border-b-2 border-ink bg-white py-16">
           <Container>
-            <UnjaniTeam members={UNJANI_TEAM} />
+            <div className="mx-auto max-w-3xl">
+              <p className="eyebrow mb-4">TIM AKADEMIK</p>
+              <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold text-ink">
+                Dalam proses validasi bersama Fakultas Psikologi UNJANI
+              </h2>
+              <p className="mt-6 leading-relaxed text-ash-700">
+                Metodologi, item, dan konten asesmen Sekil.id sedang dalam proses validasi bersama
+                tim Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI), Bandung.
+                Proses ini mencakup review relevansi konteks Indonesia dan standar psikometri.
+              </p>
+              <p className="mt-4 text-sm text-ash-700">
+                Informasi tim reviewer akan dipublikasikan setelah konfirmasi formal selesai.
+              </p>
+            </div>
           </Container>
         </section>
 

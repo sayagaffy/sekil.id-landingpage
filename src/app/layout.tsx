@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: '%s | Sekil.id',
   },
   description:
-    'Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI. AI-powered, hasil dalam 10 menit. Dipakai sekolah, kampus, dan perusahaan di Indonesia.',
+    'Platform asesmen psikologi & pemetaan karier dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Untuk sekolah, kampus, dan perusahaan di Indonesia.',
   keywords: ['asesmen psikologi', 'pemetaan karier', 'tes minat karier', 'tes minat bakat'],
   authors: [{ name: 'Sekil.id', url: SITE_URL }],
   alternates: { canonical: SITE_URL },

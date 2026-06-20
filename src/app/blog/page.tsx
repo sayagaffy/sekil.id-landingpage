@@ -12,12 +12,12 @@ import type { PostSummary } from '@/lib/sanity/types'
 import { ALL_POSTS_QUERY } from '@/lib/sanity/queries'
 
 export const metadata: Metadata = {
-  title: 'Blog Sekil.id — Karier, Kepribadian, Pendidikan',
+  title: 'Blog — Karier, Kepribadian & Pendidikan',
   description:
     'Insight Sekil.id tentang karier, kepribadian, pendidikan, dan dunia kerja Indonesia. Validasi UNJANI.',
   alternates: { canonical: 'https://sekil.id/blog' },
   openGraph: {
-    title: 'Blog Sekil.id — Karier, Kepribadian, Pendidikan',
+    title: 'Blog — Karier, Kepribadian & Pendidikan',
     description:
       'Insight Sekil.id tentang karier, kepribadian, pendidikan, dan dunia kerja Indonesia.',
     url: 'https://sekil.id/blog',

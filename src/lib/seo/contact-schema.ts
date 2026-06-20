@@ -23,10 +23,10 @@ export function getContactPageSchema() {
       email: 'hello@sekil.id',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Jl. Placeholder No. 1',
-        addressLocality: 'Bandung',
+        streetAddress: 'Jl. Cukang Kawung No.11, Cigadung, Kec. Cibeunying Kaler',
+        addressLocality: 'Kota Bandung',
         addressRegion: 'Jawa Barat',
-        postalCode: '40000',
+        postalCode: '40125',
         addressCountry: 'ID',
       },
       contactPoint: [

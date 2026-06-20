@@ -78,7 +78,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
     ],
     recommendedProducts: ['career-interest', 'path-finder-ai', 'psyai'],
     stats: [
-      { value: '15 menit', label: 'Waktu pengerjaan per siswa' },
+      { value: 'mulai dari 15 menit', label: 'per peserta, bervariasi' },
       { value: 'Rp 159k', label: 'Mulai dari per siswa' },
       { value: '3 instrumen', label: 'Tervalidasi akademik UNJANI' },
       { value: 'PDF instan', label: 'Laporan diterima siswa langsung' },
@@ -151,7 +151,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
     ],
     recommendedProducts: ['psyai', 'career-interest', 'emotional-intelligence-test'],
     stats: [
-      { value: '25 menit', label: 'Waktu asesmen terlengkap' },
+      { value: 'mulai dari 15 menit', label: 'per peserta, bervariasi' },
       { value: 'Rp 159k–229k', label: 'Per mahasiswa' },
       { value: 'API-ready', label: 'Integrasi SIAKAD tersedia' },
       { value: 'BAN-PT', label: 'Mendukung poin akreditasi kemahasiswaan' },
@@ -224,7 +224,7 @@ export const SOLUTION_SEGMENTS: SolutionSegment[] = [
     ],
     recommendedProducts: ['leadership-styles-test', 'emotional-intelligence-test', 'psyai'],
     stats: [
-      { value: '20 menit', label: 'Per sesi asesmen karyawan' },
+      { value: 'mulai dari 15 menit', label: 'per peserta, bervariasi' },
       { value: 'ISO 27001', label: 'Standar keamanan data' },
       { value: 'Rp 35 juta', label: 'ATC Dashboard/tahun (opsional)' },
       { value: 'HRIS API', label: 'Integrasi sistem HR tersedia' },

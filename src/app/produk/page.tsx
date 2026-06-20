@@ -36,12 +36,12 @@ function sanityToProduct(p: SanityProduct): (typeof PRODUCTS)[number] {
 }
 
 export const metadata: Metadata = {
-  title: 'Asesmen & Tes Kepribadian | Sekil.id',
+  title: 'Asesmen & Tes Kepribadian',
   description:
     'Katalog 5 asesmen psikologi & karier Sekil.id: Career Interest, PsyAI, Path Finder AI, Leadership Styles, EQ Test. Validasi akademik UNJANI.',
   alternates: { canonical: 'https://sekil.id/produk' },
   openGraph: {
-    title: 'Asesmen & Tes Kepribadian | Sekil.id',
+    title: 'Asesmen & Tes Kepribadian',
     description:
       'Katalog 5 asesmen psikologi & karier Sekil.id: Career Interest, PsyAI, Path Finder AI, Leadership Styles, EQ Test. Validasi akademik UNJANI.',
     url: 'https://sekil.id/produk',
