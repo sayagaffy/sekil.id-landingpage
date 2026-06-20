@@ -2,7 +2,7 @@
 /**
  * Content validation guard — npm run content:validate
  *
- * Scans src/ + content/ + public/ and exits 1 on [FAIL] violations.
+ * Scans src/ + content/ + public/ + scripts/migrate-to-sanity.mjs and exits 1 on [FAIL] violations.
  * Prints [WARN] for soft issues that need founder review.
  *
  * Rules:
@@ -148,8 +148,11 @@ const GHOST_RE = [
   /62[,.]400/,
   /62[,.]000/,
   /2[,.]000\+\s*responden/,
-  /340\s*sekolah/,
-  /18\s*provinsi/,
+  /340\s*sekolah/i,
+  /18\s*provinsi/i,
+  // Sanity seed heroMeta fake institutional-reach labels:
+  /label:\s*['"]SEKOLAH['"]/,
+  /label:\s*['"]PROVINSI['"]/,
 ];
 
 function checkGhostNumbers(filePath, lines) {
@@ -304,6 +307,16 @@ for (const file of walkFiles(join(SRC, 'app'), ['.tsx'])) {
 // G: sitemap
 for (const file of walkFiles(PUBLIC, ['.xml'])) {
   if (file.includes('sitemap')) checkSitemap(file);
+}
+
+// A + B + C + E: Sanity seed script — must stay clean of ghost data and study claims
+const MIGRATE_SCRIPT = join(ROOT, 'scripts', 'migrate-to-sanity.mjs');
+if (existsSync(MIGRATE_SCRIPT)) {
+  const migrateLines = readFileSync(MIGRATE_SCRIPT, 'utf8').split('\n');
+  checkTokens(MIGRATE_SCRIPT, migrateLines);
+  checkPlaceholders(MIGRATE_SCRIPT, migrateLines);
+  checkGhostNumbers(MIGRATE_SCRIPT, migrateLines);
+  checkStudyClaims(MIGRATE_SCRIPT, migrateLines);
 }
 
 // ─── Summary ──────────────────────────────────────────────────────────────────
