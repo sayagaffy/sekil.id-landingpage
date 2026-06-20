@@ -496,7 +496,7 @@ async function seedProducts() {
       nameDisplay: 'Career Interest — Peta Minat Karier',
       tagline: 'Temukan arah karier yang paling sesuai dengan profil minat vokasional Anda',
       description:
-        'Tes minat karier menggunakan asesmen vokasional tervalidasi akademik untuk siswa SMA dan mahasiswa. Dapatkan profil minat 6 dimensi dan rekomendasi karier yang sesuai dengan profil unik Anda dalam 15 menit.',
+        'Tes minat karier menggunakan asesmen vokasional berbasis instrumen psikometri standar untuk siswa SMA dan mahasiswa. Dapatkan profil minat 6 dimensi dan rekomendasi karier yang sesuai dengan profil unik Anda dalam 15 menit.',
       longDescription:
         'Career Interest menggunakan kerangka minat vokasional yang telah divalidasi akademik selama 60+ tahun untuk memetakan preferensi karier Anda. Dalam 15 menit, Anda mendapatkan profil unik yang mencerminkan kombinasi minat vokasional Anda, beserta rekomendasi karier dan jurusan yang paling sesuai — disesuaikan untuk konteks pasar kerja Indonesia.',
       duration: '15 menit',
@@ -521,9 +521,9 @@ async function seedProducts() {
         { _key: blockKey('faq'), q: 'Apakah hasil tes bisa berubah seiring waktu?', a: 'Ya. Minat vokasional dapat berevolusi seiring pengalaman, pendidikan, dan perkembangan diri. Sebaiknya Anda re-take tes setiap 2–3 tahun atau setelah transisi besar (masuk kuliah, berganti bidang studi). Hasil tidak bersifat permanen — ini adalah snapshot minat Anda saat ini, bukan label seumur hidup.' },
         { _key: blockKey('faq'), q: 'Apakah laporan tersedia dalam Bahasa Indonesia?', a: 'Ya, seluruh laporan Career Interest ditulis dalam Bahasa Indonesia native — bukan terjemahan literal dari versi bahasa Inggris. Terminologi karier, referensi universitas, dan prospek gaji disesuaikan dengan konteks pasar kerja Indonesia.' },
       ],
-      seoTitle: 'Tes Minat Karier Tervalidasi | Career Interest Sekil.id',
+      seoTitle: 'Tes Minat Karier | Career Interest Sekil.id',
       seoDescription:
-        'Temukan minat karier Anda dengan asesmen vokasional tervalidasi akademik. 15 menit, dapatkan profil minat dan rekomendasi karier & jurusan untuk konteks Indonesia.',
+        'Temukan minat karier Anda dengan asesmen vokasional berbasis instrumen psikometri standar. 15 menit, dapatkan profil minat dan rekomendasi karier & jurusan untuk konteks Indonesia.',
       primaryKeyword: 'tes minat karier',
     },
     {
@@ -609,9 +609,9 @@ async function seedProducts() {
       slug: 'leadership-styles-test',
       name: 'Leadership Styles Test',
       nameDisplay: 'Leadership Styles Test — Gaya Kepemimpinan',
-      tagline: 'Identifikasi dan kembangkan gaya kepemimpinan Anda berbasis asesmen tervalidasi',
+      tagline: 'Identifikasi dan kembangkan gaya kepemimpinan Anda berbasis instrumen psikometri standar',
       description:
-        'Leadership Styles Test menggunakan asesmen kebutuhan & peran kerja tervalidasi untuk mengidentifikasi 4 gaya kepemimpinan situasional Anda. Dapatkan profil kepemimpinan, matriks strength-blind spot, dan Individual Development Plan dalam 20 menit.',
+        'Leadership Styles Test menggunakan asesmen kebutuhan & peran kerja berbasis instrumen psikometri standar untuk mengidentifikasi 4 gaya kepemimpinan situasional Anda. Dapatkan profil kepemimpinan, matriks strength-blind spot, dan Individual Development Plan dalam 20 menit.',
       longDescription:
         'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan inventori kebutuhan & peran kerja yang merupakan standar industri untuk konteks profesional — tes ini mengidentifikasi gaya kepemimpinan dominan Anda dari 4 profil situasional, lengkap dengan matriks kekuatan, blind spot, dan rencana pengembangan yang dapat langsung diimplementasikan.',
       duration: '20 menit',
@@ -636,9 +636,9 @@ async function seedProducts() {
         { _key: blockKey('faq'), q: 'Bisakah hasilnya digunakan untuk program leadership development HRD?', a: 'Ya. Laporan Leadership Styles Test mencakup profil gaya kepemimpinan, matriks kekuatan-blind spot, dan IDP yang dapat langsung diintegrasikan ke dalam program People Development. Untuk penggunaan skala organisasi (20+ peserta), hubungi tim Sekil.id melalui halaman Demo untuk penawaran institusional.' },
         { _key: blockKey('faq'), q: 'Berapa lama berlakunya hasil tes kepemimpinan?', a: 'Tidak ada batas waktu formal untuk laporan. Namun gaya kepemimpinan dapat berkembang seiring pengalaman dan pembelajaran. Kami merekomendasikan re-assessment setiap 12–18 bulan, atau setelah transisi peran yang signifikan seperti promosi ke posisi baru.' },
       ],
-      seoTitle: 'Tes Gaya Kepemimpinan Tervalidasi | Leadership Styles Test Sekil.id',
+      seoTitle: 'Tes Gaya Kepemimpinan | Leadership Styles Test Sekil.id',
       seoDescription:
-        'Identifikasi gaya kepemimpinan Anda dengan asesmen tervalidasi akademik. Leadership Styles Test menghasilkan profil 4 gaya situasional, matriks strength-blind spot, dan Individual Development Plan.',
+        'Identifikasi gaya kepemimpinan Anda dengan asesmen berbasis instrumen psikometri standar. Leadership Styles Test menghasilkan profil 4 gaya situasional, matriks strength-blind spot, dan Individual Development Plan.',
       primaryKeyword: 'tes gaya kepemimpinan',
     },
     {
@@ -649,7 +649,7 @@ async function seedProducts() {
       nameDisplay: 'EQ Test — Kecerdasan Emosional',
       tagline: 'Ukur dan kembangkan Emotional Intelligence untuk karier dan kehidupan',
       description:
-        'EQ Test Sekil.id mengukur 4 dimensi kecerdasan emosional (EQ) menggunakan asesmen tervalidasi akademik yang diadaptasi untuk konteks Indonesia. Dapatkan skor EQ, analisis per dimensi, dan development tips yang dapat langsung diterapkan dalam 20 menit.',
+        'EQ Test Sekil.id mengukur 4 dimensi kecerdasan emosional (EQ) menggunakan asesmen berbasis instrumen psikometri standar yang diadaptasi untuk konteks Indonesia. Dapatkan skor EQ, analisis per dimensi, dan development tips yang dapat langsung diterapkan dalam 20 menit.',
       longDescription:
         'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills. Menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks Indonesia, dalam proses review bersama tim Fakultas Psikologi UNJANI, hasilnya mencakup skor per dimensi, analisis mendalam, dan rencana pengembangan EQ yang konkret dan dapat langsung diterapkan.',
       duration: '20 menit',
@@ -675,9 +675,9 @@ async function seedProducts() {
         { _key: blockKey('faq'), q: 'Apakah EQ Test ini sudah divalidasi secara ilmiah?', a: 'EQ Test Sekil.id menggunakan asesmen tervalidasi akademik yang diadaptasi untuk mengukur dimensi kecerdasan emosional dalam konteks kerja. Adaptasi sedang dalam proses review bersama Fakultas Psikologi UNJANI. Instrumen bersifat deskriptif dan edukatif — bukan alat diagnostik klinis.' },
         { _key: blockKey('faq'), q: 'Apa bedanya EQ Test Sekil.id dengan tes EQ lain yang beredar online?', a: 'Sebagian besar tes EQ online tidak memiliki basis akademik yang jelas dan tidak disesuaikan untuk konteks Indonesia. EQ Test Sekil.id dibangun di atas instrumen yang digunakan dalam konteks profesional selama 50+ tahun, dalam proses adaptasi bersama psikolog UNJANI, dan menghasilkan laporan dalam Bahasa Indonesia native dengan rekomendasi yang relevan untuk lingkungan kerja Indonesia.' },
       ],
-      seoTitle: 'Tes EQ Online Kecerdasan Emosional Tervalidasi | Sekil.id',
+      seoTitle: 'Tes EQ Online Kecerdasan Emosional | Sekil.id',
       seoDescription:
-        'Ukur 4 dimensi Emotional Intelligence (EQ) dengan tes tervalidasi akademik. Dapatkan skor EQ, analisis mendalam, dan rencana pengembangan dalam 20 menit.',
+        'Ukur 4 dimensi Emotional Intelligence (EQ) dengan tes berbasis instrumen psikometri standar. Dapatkan skor EQ, analisis mendalam, dan rencana pengembangan dalam 20 menit.',
       primaryKeyword: 'tes eq online',
     },
     {
@@ -736,7 +736,7 @@ async function seedProducts() {
       sampleReportTeaser: 'Laporan Goal AlignAI mencakup: profil motivasi kerja dan kebutuhan karier Anda, analisis keselarasan tujuan versus profil, roadmap karier dengan milestone konkret, serta identifikasi hambatan internal yang perlu diatasi.',
       bundleSuggestions: ['self-discovery-ai', 'psyai'],
       faq: [
-        { _key: blockKey('faq'), q: 'Apa yang membedakan Goal AlignAI dari career coaching biasa?', a: 'Goal AlignAI berbasis data profil psikologis — bukan opini atau asumsi. Roadmap yang dihasilkan didasarkan pada inventori kebutuhan & peran kerja yang tervalidasi, sehingga lebih akurat mencerminkan motivasi asli Anda.' },
+        { _key: blockKey('faq'), q: 'Apa yang membedakan Goal AlignAI dari career coaching biasa?', a: 'Goal AlignAI berbasis data profil psikologis — bukan opini atau asumsi. Roadmap yang dihasilkan didasarkan pada inventori kebutuhan & peran kerja yang telah digunakan dalam konteks profesional selama 50+ tahun, sehingga lebih akurat mencerminkan motivasi asli Anda.' },
         { _key: blockKey('faq'), q: 'Siapa yang paling cocok mengikuti Goal AlignAI?', a: 'Fresh graduate yang akan memulai karier dan ingin arah yang jelas, karyawan yang merasa karier tidak selaras dengan motivasi aslinya, dan manajer yang ingin merekalkulasi tujuan karier jangka menengah.' },
         { _key: blockKey('faq'), q: 'Apakah hasilnya bisa digunakan dalam sesi mentoring?', a: 'Ya. Laporan Goal AlignAI dirancang sebagai bahan diskusi produktif dalam sesi mentoring, coaching karier, atau konsultasi HR.' },
       ],
@@ -751,7 +751,7 @@ async function seedProducts() {
       name: 'Goal Orientation Coaching',
       nameDisplay: 'Goal Orientation Coaching — Coaching Karier Premium',
       tagline: 'Sesi coaching 1-on-1 dengan psikolog karier berbasis data profil Anda',
-      description: 'Paket premium Goal Orientation Coaching menggabungkan asesmen profil kebutuhan kerja dengan sesi coaching intensif 1-on-1 bersama psikolog karier Sekil.id. Dapatkan action plan karier yang konkret, tervalidasi, dan didampingi profesional.',
+      description: 'Paket premium Goal Orientation Coaching menggabungkan asesmen profil kebutuhan kerja dengan sesi coaching intensif 1-on-1 bersama psikolog karier Sekil.id. Dapatkan action plan karier yang konkret dan didampingi profesional.',
       longDescription: 'Goal Orientation Coaching adalah layanan premium Sekil.id yang menggabungkan rigor asesmen psikologis dengan kedalaman coaching profesional. Sesi dimulai dengan asesmen inventori kebutuhan & peran kerja, dilanjutkan dengan sesi coaching 1-on-1 bersama psikolog karier. Hasilnya: action plan karier yang tidak hanya diinginkan, tapi dapat dicapai sesuai profil aktual Anda.',
       duration: '45 menit',
       price: 359000,
@@ -773,7 +773,7 @@ async function seedProducts() {
         { _key: blockKey('faq'), q: 'Apakah ada sesi follow-up setelah coaching?', a: 'Paket dasar mencakup 1 sesi coaching. Follow-up session tersedia dengan pembelian terpisah.' },
       ],
       seoTitle: 'Goal Orientation Coaching — Coaching Karier dengan Psikolog | Sekil.id',
-      seoDescription: 'Sesi coaching karier 1-on-1 dengan psikolog Sekil.id berbasis asesmen profil kebutuhan kerja. Dapatkan action plan 90 hari yang konkret dan tervalidasi profesional.',
+      seoDescription: 'Sesi coaching karier 1-on-1 dengan psikolog Sekil.id berbasis asesmen profil kebutuhan kerja. Dapatkan action plan 90 hari yang konkret bersama psikolog berlisensi.',
       primaryKeyword: 'coaching karier psikolog',
     },
     {
@@ -837,7 +837,7 @@ async function seedProducts() {
         { _key: blockKey('faq'), q: 'Apakah employer atau HRD bisa melihat hasil tes saya?', a: 'Tidak. Hasil tes hanya dapat diakses oleh peserta yang bersangkutan. Kami tidak berbagi data individual dengan employer, HR, atau pihak ketiga manapun tanpa persetujuan eksplisit peserta.' },
       ],
       seoTitle: 'Job Burnout Test — Deteksi Risiko Burnout Kerja | Sekil.id',
-      seoDescription: 'Deteksi dini risiko burnout dengan asesmen tervalidasi. Job Burnout Test mengukur 3 dimensi burnout dan memberikan panduan pemulihan berbasis evidence dalam 15 menit.',
+      seoDescription: 'Deteksi dini risiko burnout dengan asesmen berbasis instrumen psikometri standar. Job Burnout Test mengukur 3 dimensi burnout dan memberikan panduan pemulihan berbasis evidence dalam 15 menit.',
       primaryKeyword: 'tes burnout kerja',
     },
     {
@@ -915,7 +915,7 @@ async function seedAboutPage() {
     heroEyebrow: 'TENTANG SEKIL.ID',
     heroHeading: 'Memetakan Potensi Indonesia dengan Sains, Bukan Tebakan',
     heroSubheading:
-      'Sekil.id adalah joint venture Sekil.id × B One Corp untuk membawa asesmen psikologi tervalidasi ke setiap sekolah, kampus, dan perusahaan di Indonesia.',
+      'Sekil.id adalah joint venture Sekil.id × B One Corp untuk membawa asesmen psikologi berbasis standar ke setiap sekolah, kampus, dan perusahaan di Indonesia.',
 
     // Cerita Kami
     storyEyebrow: 'CERITA KAMI',
@@ -971,7 +971,7 @@ async function seedAboutPage() {
       { _key: blockKey('ms'), _type: 'milestone', period: '2024 Q4', event: 'JV Sekil.id × B One Corp signed', description: 'Perjanjian joint venture resmi ditandatangani antara Sekil.id dan B One Corp.' },
       { _key: blockKey('ms'), _type: 'milestone', period: '2025 Q1', event: 'UNJANI onboard sebagai mitra akademik', description: 'Fakultas Psikologi UNJANI resmi bergabung sebagai mitra validasi akademik instrumen.' },
       { _key: blockKey('ms'), _type: 'milestone', period: '2025 Q3', event: 'Pilot dengan 3 design partner', description: 'Pilot program bersama Yayasan Pengusaha Pendidikan Jabar, Muhammadiyah, dan Metranet.' },
-      { _key: blockKey('ms'), _type: 'milestone', period: '2026 Q2', event: 'Platform v1.0 live', description: 'sekil.id resmi diluncurkan ke publik dengan 5 produk asesmen tervalidasi.' },
+      { _key: blockKey('ms'), _type: 'milestone', period: '2026 Q2', event: 'Platform v1.0 live', description: 'sekil.id resmi diluncurkan ke publik dengan 5 produk asesmen.' },
     ],
 
     // CTA
@@ -1064,7 +1064,7 @@ async function seedHomePage() {
     // FAQ
     faqHeading: 'Pertanyaan yang sering diajukan.',
     faq: [
-      { _key: blockKey('faq'), _type: 'faqItem', q: 'Apa itu Sekil.id?', a: 'Sekil.id adalah platform asesmen psikologi dan pemetaan karier berbasis AI dengan validasi akademik dari Fakultas Psikologi UNJANI. Kami membantu sekolah, kampus, dan perusahaan memahami potensi individu secara ilmiah dan akurat.' },
+      { _key: blockKey('faq'), _type: 'faqItem', q: 'Apa itu Sekil.id?', a: 'Sekil.id adalah platform asesmen psikologi dan pemetaan karier berbasis AI dalam proses validasi bersama Fakultas Psikologi UNJANI. Kami membantu sekolah, kampus, dan perusahaan memahami potensi individu secara ilmiah dan akurat.' },
       { _key: blockKey('faq'), _type: 'faqItem', q: 'Berapa lama waktu asesmen?', a: 'Tergantung produk yang dipilih. Durasi bervariasi antara 15–25 menit per peserta. Hasil tersedia langsung setelah asesmen selesai.' },
       { _key: blockKey('faq'), _type: 'faqItem', q: 'Apakah hasil asesmen tervalidasi ilmiah?', a: 'Ya. Semua instrumen sedang dalam proses validasi bersama tim Fakultas Psikologi UNJANI menggunakan standar psikometri internasional. Ini bukan sekadar kuis — ini asesmen psikologi yang sesungguhnya.' },
       { _key: blockKey('faq'), _type: 'faqItem', q: 'Bagaimana cara mulai untuk institusi?', a: 'Jadwalkan demo gratis dengan tim kami. Kami menjelaskan paket yang sesuai, menunjukkan contoh laporan, dan membantu setup. Onboarding biasanya 1–3 hari kerja.' },
@@ -1089,7 +1089,7 @@ async function seedSolutionSegments() {
       eyebrow: 'SOLUSI · SEKOLAH & SMA',
       headline: 'Bimbingan karier berbasis data untuk siswa SMA',
       subheadline:
-        'Bantu siswa memilih jurusan kuliah dengan percaya diri — bukan tebakan. Asesmen minat karier tervalidasi akademik dalam satu platform yang mudah dikelola tim BK.',
+        'Bantu siswa memilih jurusan kuliah dengan percaya diri — bukan tebakan. Asesmen minat karier berbasis instrumen psikometri standar dalam satu platform yang mudah dikelola tim BK.',
       heroAccent: 'peach',
       problems: [
         'Siswa memilih jurusan berdasarkan tekanan teman sebaya atau orang tua, bukan minat asli mereka',
@@ -1108,7 +1108,7 @@ async function seedSolutionSegments() {
       stats: [
         { value: '15 menit', label: 'Waktu pengerjaan per siswa' },
         { value: 'Rp 150k', label: 'Mulai dari per siswa' },
-        { value: '3 instrumen', label: 'Tervalidasi akademik UNJANI' },
+        { value: '3 instrumen', label: 'Validasi UNJANI dalam proses' },
         { value: 'PDF instan', label: 'Laporan diterima siswa langsung' },
       ],
       testimonial: {
@@ -1171,7 +1171,7 @@ async function seedSolutionSegments() {
       ],
       showATCDashboard: false,
       seoTitle: 'Platform Asesmen Karier Mahasiswa untuk Universitas | Solusi Sekil.id',
-      seoDescription: 'Tingkatkan layanan pusat karier universitas dengan asesmen kepribadian tervalidasi. Dari orientasi mahasiswa baru hingga program magang berbasis data profil.',
+      seoDescription: 'Tingkatkan layanan pusat karier universitas dengan asesmen kepribadian berbasis instrumen psikometri standar. Dari orientasi mahasiswa baru hingga program magang berbasis data profil.',
     },
     {
       _id: 'segment-untuk-perusahaan',
@@ -1217,7 +1217,7 @@ async function seedSolutionSegments() {
       ],
       showATCDashboard: true,
       seoTitle: 'Asesmen Psikologi Karyawan untuk Perusahaan & HRD | Solusi Sekil.id',
-      seoDescription: 'Platform asesmen psikologi korporat: leadership development, EQ assessment, dan talent profiling tervalidasi akademik. Integrasi HRIS dan ATC Dashboard tersedia.',
+      seoDescription: 'Platform asesmen psikologi korporat: leadership development, EQ assessment, dan talent profiling berbasis standar psikometri. Integrasi HRIS dan ATC Dashboard tersedia.',
     },
     {
       _id: 'segment-untuk-yayasan',
@@ -1227,7 +1227,7 @@ async function seedSolutionSegments() {
       eyebrow: 'SOLUSI · YAYASAN & LEMBAGA SOSIAL',
       headline: 'Asesmen karier bersubsidi untuk program sosial dan beasiswa',
       subheadline:
-        'Bantu penerima manfaat yayasan Anda menemukan arah karier dengan asesmen tervalidasi akademik — dengan harga institusional dan dukungan implementasi yang fleksibel.',
+        'Bantu penerima manfaat yayasan Anda menemukan arah karier dengan asesmen berbasis instrumen psikometri standar — dengan harga institusional dan dukungan implementasi yang fleksibel.',
       heroAccent: 'ink',
       problems: [
         'Penerima beasiswa atau program pemberdayaan sering tidak memiliki akses ke bimbingan karier yang berkualitas',
@@ -1334,7 +1334,7 @@ async function seedSiteSettings() {
     _type: 'siteSettings',
     siteName: 'Sekil.id',
     siteDescription:
-      'Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI. AI-powered, hasil dalam 10 menit. Dipakai sekolah, kampus, dan perusahaan.',
+      'Platform asesmen psikologi & pemetaan karier dalam proses validasi bersama Fakultas Psikologi UNJANI. AI-powered, dipakai sekolah, kampus, dan perusahaan.',
     socialLinks: {
       instagram: 'https://instagram.com/sekil.id',
       linkedin: 'https://linkedin.com/company/sekil-id',
