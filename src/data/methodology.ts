@@ -49,9 +49,11 @@ export const INSTRUMENTS: Instrument[] = [
     limitations:
       'Validitas konkuren terhadap kepuasan karier baik (Nauta, 2010), tetapi konteks budaya non-Barat perlu kalibrasi. Tidak mengukur kemampuan, kecerdasan, atau kompetensi teknis — hanya minat vokasional. Interpretasi lintas budaya harus dilakukan dengan kehati-hatian. Hasil asesmen ini tidak bersifat permanen dan dapat berubah seiring pengalaman hidup.',
     indonesiaAdaptation: [
-      'Item bank dikalibrasi dengan 2.000+ responden Indonesia dari berbagai latar belakang geografis dan sosial-ekonomi',
+      // step 4: 2.000+ responden → 967 mahasiswa; kata dikalibrasi dihapus per aturan
+      'Item bank telah digunakan oleh 967 mahasiswa Indonesia dari berbagai latar belakang geografis dan sosial-ekonomi',
       'Mapping pekerjaan ke pasar kerja Indonesia menggunakan data LinkedIn Indonesia (2025) dan BPS',
-      'Validasi ulang oleh tim Fakultas Psikologi UNJANI untuk relevansi konteks dan bahasa lokal',
+      // __NEEDS_FOUNDER_CONFIRM__: status review UNJANI — MoU belum signed, jangan klaim "validasi" selesai
+      'Dalam proses review bersama tim Fakultas Psikologi UNJANI untuk relevansi konteks dan bahasa lokal',
       'Output narrative dalam Bahasa Indonesia native — bukan translasi literal dari versi bahasa Inggris',
     ],
   },
@@ -76,7 +78,8 @@ export const INSTRUMENTS: Instrument[] = [
       'Konstruk type (kategori dikotomis) menuai kritik akademik terkait validitas konstruk dan reliabilitas pengukuran (Pittenger, 1993). Test-retest reliability moderate: sebagian responden memperoleh hasil berbeda dalam rentang beberapa minggu. Hasil sebaiknya digunakan sebagai titik diskusi dan eksplorasi diri, bukan label permanen atau dasar pengambilan keputusan kritis seperti seleksi karyawan.',
     indonesiaAdaptation: [
       'Formulasi item disesuaikan dengan konteks budaya kolektivis Indonesia, menghindari bias individualistis dari item asli',
-      'Pilot testing dengan responden mahasiswa dan profesional dari 5 kota besar Indonesia',
+      // __NEEDS_FOUNDER_CONFIRM__: scope pilot testing (N responden, kota) belum dikonfirmasi founder
+      'Proses review item untuk relevansi konteks mahasiswa dan profesional Indonesia (in progress)',
       'Interpretasi karier mengacu pada pola kerja dan struktur organisasi yang relevan di pasar Indonesia',
       'Disclaimer eksplisit disertakan dalam laporan: hasil bersifat eksploratoris, bukan label kepribadian yang definitif',
     ],
@@ -108,30 +111,33 @@ export const INSTRUMENTS: Instrument[] = [
     indonesiaAdaptation: [
       'Skenario item disesuaikan dengan lingkungan kerja Indonesia: BUMN, startup, korporasi multinasional, dan sektor pendidikan',
       'Deskripsi peran karier mengacu pada struktur jabatan yang lazim di pasar kerja Indonesia',
-      'Benchmarking norma dengan data responden profesional Indonesia dari berbagai industri dan region',
-      'Validasi oleh tim UNJANI untuk memastikan relevansi item dengan nilai, norma kerja, dan ekspektasi karier lokal',
+      // __NEEDS_FOUNDER_CONFIRM__: benchmarking norma belum selesai — N responden dan scope belum dikonfirmasi
+      'Proses benchmarking norma dengan data responden profesional Indonesia dari berbagai industri (in progress)',
+      // __NEEDS_FOUNDER_CONFIRM__: review UNJANI in progress — MoU belum signed
+      'Dalam proses review bersama tim UNJANI untuk relevansi item dengan nilai, norma kerja, dan ekspektasi karier lokal',
     ],
   },
 ];
 
+// __NEEDS_REAL_VALUE__: nama dosen UNJANI belum dikonfirmasi — isi setelah MoU/agreement ditandatangani
 export const UNJANI_TEAM: UnjaniMember[] = [
   {
     id: 'reviewer-1',
-    name: 'Dr. [Nama Dosen], M.Psi., Psikolog',
+    name: '__NEEDS_REAL_VALUE__',
     title: 'Lektor Kepala · Fakultas Psikologi UNJANI',
     roleAtSekil:
       'Lead Academic Reviewer — bertanggung jawab atas validasi keseluruhan item bank, metodologi scoring, dan standar psikometri.',
   },
   {
     id: 'reviewer-2',
-    name: 'Dr. [Nama Dosen], M.Psi.',
+    name: '__NEEDS_REAL_VALUE__',
     title: 'Dosen Psikologi Industri & Organisasi · UNJANI',
     roleAtSekil:
       'Validator Konteks Indonesia — memastikan relevansi item dengan kondisi pasar kerja, budaya organisasi, dan norma kerja lokal.',
   },
   {
     id: 'reviewer-3',
-    name: '[Nama Dosen], M.Psi., Psikolog',
+    name: '__NEEDS_REAL_VALUE__',
     title: 'Dosen Psikologi Pendidikan & Karier · UNJANI',
     roleAtSekil:
       'Content Sign-off — mereview dan menyetujui seluruh konten programmatic dan narasi asesmen sebelum dipublikasikan.',
@@ -177,7 +183,8 @@ export const HUMAN_TASKS: string[] = [
   'Desain metodologi, pemilihan instrumen, dan definisi konstruk yang diukur',
   'Pengembangan item: penulisan, review bahasa, dan revisi pertanyaan',
   'Validation study: pilot testing, kalibrasi norma, dan analisis psikometri',
-  'Content review kuartalan oleh tim akademik Fakultas Psikologi UNJANI',
+  // __NEEDS_FOUNDER_CONFIRM__: apakah quarterly review agreement sudah ada?
+  'Content review oleh tim akademik Fakultas Psikologi UNJANI (proses kolaborasi dalam progres)',
   'Interpretasi edge case dan kasus yang memerlukan konteks mendalam',
   'Penetapan batas penggunaan (boundary of use) dan keputusan etika asesmen',
 ];

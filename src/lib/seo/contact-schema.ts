@@ -21,12 +21,11 @@ export function getContactPageSchema() {
       name: SITE_NAME,
       url: SITE_URL,
       email: 'hello@sekil.id',
+      // __NEEDS_REAL_VALUE__: alamat lengkap belum dikonfirmasi — jangan emit streetAddress placeholder ke schema
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Jl. Placeholder No. 1',
         addressLocality: 'Bandung',
         addressRegion: 'Jawa Barat',
-        postalCode: '40000',
         addressCountry: 'ID',
       },
       contactPoint: [

@@ -84,7 +84,7 @@ export const PRODUCTS: Product[] = [
       'PsyAI menggabungkan asesmen minat vokasional dan profil kepribadian dalam satu asesmen terintegrasi 25 menit. Dapatkan profil kepribadian komprehensif dengan narasi yang dipersonalisasi AI dan action plan pengembangan diri.',
     longDescription:
       'PsyAI adalah asesmen kepribadian paling komprehensif di Sekil.id. Dengan menggabungkan pemetaan minat vokasional dan preferensi kepribadian berbasis konstruk psikologis Jung, PsyAI menghasilkan satu profil kohesif yang menjelaskan bukan hanya apa yang Anda minati, tapi bagaimana cara Anda bekerja, berkomunikasi, dan berkembang. Narasi laporan dihasilkan AI berbasis template yang divalidasi psikolog UNJANI.',
-    duration: '25 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 229000,
     priceDisplay: 'Rp 229.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
@@ -137,7 +137,7 @@ export const PRODUCTS: Product[] = [
       'Path Finder AI membantu siswa SMA memilih jurusan kuliah berdasarkan profil minat vokasional dan preferensi kepribadian. Dapatkan rekomendasi 5 jurusan top match dengan prospek karier dan universitas Indonesia.',
     longDescription:
       'Path Finder AI dirancang khusus untuk siswa SMA yang menghadapi dilema pemilihan jurusan kuliah. Dengan menggabungkan profil minat vokasional dan preferensi kepribadian, Path Finder AI menyilangkan data tersebut dengan informasi jurusan, prospek karier, dan universitas Indonesia — menghasilkan rekomendasi yang personal dan berbasis data, bukan intuisi semata.',
-    duration: '20 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['siswa-sma'],
@@ -189,7 +189,7 @@ export const PRODUCTS: Product[] = [
       'Leadership Styles Test menggunakan asesmen kebutuhan & peran kerja tervalidasi untuk mengidentifikasi 4 gaya kepemimpinan situasional Anda. Dapatkan profil kepemimpinan, matriks strength-blind spot, dan Individual Development Plan dalam 20 menit.',
     longDescription:
       'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan inventori kebutuhan & peran kerja yang merupakan standar industri untuk konteks profesional — tes ini mengidentifikasi gaya kepemimpinan dominan Anda dari 4 profil situasional, lengkap dengan matriks kekuatan, blind spot, dan rencana pengembangan yang dapat langsung diimplementasikan.',
-    duration: '20 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['karyawan', 'manager'],
@@ -241,7 +241,7 @@ export const PRODUCTS: Product[] = [
       'EQ Test Sekil.id mengukur 4 dimensi kecerdasan emosional (EQ) menggunakan asesmen tervalidasi akademik yang diadaptasi untuk konteks Indonesia. Dapatkan skor EQ, analisis per dimensi, dan development tips yang dapat langsung diterapkan dalam 20 menit.',
     longDescription:
       'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills. Menggunakan inventori kebutuhan & peran kerja yang diadaptasi oleh tim psikolog UNJANI untuk konteks Indonesia, hasilnya mencakup skor per dimensi, analisis mendalam, dan rencana pengembangan EQ yang konkret dan dapat langsung diterapkan.',
-    duration: '20 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 209000,
     priceDisplay: 'Rp 209.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
@@ -294,7 +294,7 @@ export const PRODUCTS: Product[] = [
       'Self DiscoveryAI mengintegrasikan profil preferensi kepribadian dan inventori kebutuhan kerja untuk menghasilkan peta diri yang holistik. 20 menit untuk memahami kekuatan alami, kebutuhan, dan cara kerja terbaik Anda.',
     longDescription:
       'Self DiscoveryAI dirancang untuk mereka yang ingin memahami dirinya lebih dalam sebelum membuat keputusan karier atau hidup yang signifikan. Dengan mengintegrasikan kerangka preferensi kepribadian dan inventori kebutuhan & peran kerja, Self DiscoveryAI menghasilkan peta diri holistik — mencakup bagaimana Anda memproses informasi, apa yang memotivasi Anda, dan lingkungan seperti apa yang membuat Anda tumbuh paling baik.',
-    duration: '20 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
@@ -338,7 +338,7 @@ export const PRODUCTS: Product[] = [
       'Goal AlignAI membantu Anda menyusun tujuan karier yang benar-benar selaras dengan kebutuhan, motivasi, dan kekuatan kerja Anda — menghasilkan roadmap karier yang realistis dan menggerakkan semangat.',
     longDescription:
       'Banyak orang menetapkan tujuan karier berdasarkan ekspektasi sosial atau tekanan lingkungan — bukan berdasarkan profil diri yang sesungguhnya. Goal AlignAI menggabungkan analisis inventori kebutuhan & peran kerja dengan eksplorasi tujuan karier untuk menghasilkan roadmap yang selaras dengan motivasi intrinsik Anda. Hasilnya: tujuan yang tidak hanya realistis, tapi juga menggerakkan energi dan komitmen jangka panjang.',
-    duration: '20 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
@@ -426,7 +426,7 @@ export const PRODUCTS: Product[] = [
       'Professional Authenticity Test mengukur keselarasan antara nilai-nilai diri, kebutuhan kerja, dan cara Anda berpresentasi di lingkungan profesional. Identifikasi "authenticity gap" yang mungkin menyebabkan kelelahan atau ketidakpuasan karier.',
     longDescription:
       'Ketidakselarasan antara siapa Anda sebenarnya dan bagaimana Anda berperilaku di tempat kerja adalah sumber utama kelelahan dan ketidakpuasan karier jangka panjang. Professional Authenticity Test mengukur gap ini menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks keaslian profesional — menghasilkan profil yang menunjukkan area di mana Anda paling dan paling tidak autentik, beserta strategi untuk mempersempit kesenjangan tersebut.',
-    duration: '20 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
@@ -514,7 +514,7 @@ export const PRODUCTS: Product[] = [
       'Personal Authenticity Test mengukur keselarasan antara nilai-nilai inti, preferensi hidup, dan cara Anda menjalani keseharian. Untuk individu yang ingin hidup lebih bermakna dan selaras dengan siapa diri mereka sebenarnya.',
     longDescription:
       'Keaslian diri bukan tentang sempurna atau tidak berubah — ini tentang menjalani hidup yang selaras dengan nilai dan preferensi terdalam Anda. Personal Authenticity Test mengintegrasikan kerangka preferensi kepribadian dengan inventori kebutuhan personal untuk menghasilkan profil keaslian yang menyeluruh: di area mana Anda sudah autentik, di mana Anda paling sering menekan diri sendiri, dan apa yang perlu diubah untuk hidup yang lebih bermakna.',
-    duration: '20 menit',
+    duration: '25–60 menit, bervariasi per siswa',
     price: 209000,
     priceDisplay: 'Rp 209.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],

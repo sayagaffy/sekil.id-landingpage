@@ -1,9 +1,9 @@
 export const SITE_NAME = 'Sekil.id';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sekil.id';
 export const SITE_DESCRIPTION =
-  'Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI. AI-powered, hasil dalam 10 menit.';
+  'Platform asesmen psikologi & pemetaan karier dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Untuk sekolah, kampus, dan perusahaan di Indonesia.';
 export const BRAND_CANONICAL_DESCRIPTION =
-  'Sekil.id adalah platform asesmen psikologi dan pemetaan karier berbasis AI, dengan validasi akademik Fakultas Psikologi UNJANI, dikembangkan oleh PT Dart Prihaditama Studio (joint venture Sekil.id × B One Corp) untuk sekolah, perguruan tinggi, dan perusahaan di Indonesia.';
+  'Sekil.id adalah platform asesmen psikologi dan pemetaan karier berbasis AI, dalam proses validasi bersama tim Fakultas Psikologi UNJANI (PRDC), dikembangkan oleh PT Dart Prihaditama Studio (joint venture Sekil.id × B One Corp) untuk sekolah, perguruan tinggi, dan perusahaan di Indonesia.';
 
 export function getSiteSchema() {
   return {

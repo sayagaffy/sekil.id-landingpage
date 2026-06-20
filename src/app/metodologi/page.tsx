@@ -2,18 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight, Lock } from 'lucide-react';
 import { Container } from '@/components/layout/Container';
-import { AuthorByline } from '@/components/seo/AuthorByline';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Button } from '@/components/ui/button';
-import { UnjaniTeam } from '@/components/methodology/UnjaniTeam';
 import { AIBoundary } from '@/components/methodology/AIBoundary';
-import { UNJANI_TEAM } from '@/data/methodology';
 import { getMethodologyArticleSchema } from '@/lib/seo/methodology-schema';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 
 const PUBLISHED = '2026-05-16';
-const AUTHOR_NAME = 'Dr. [Placeholder UNJANI Lecturer Name], M.Psi., Psikolog';
-const AUTHOR_AFFILIATION = 'Dosen Psikologi UNJANI · Reviewer Akademik Sekil.id';
 
 export const metadata: Metadata = {
   title: 'Metodologi: Bagaimana Sekil.id Mengukur — dan Apa yang Tidak Kami Klaim | Sekil.id',
@@ -80,12 +75,9 @@ export default function MetodologiPage() {
                 <strong className="text-ink">tidak</strong> kami klaim.
               </p>
               <div className="mt-8 border-2 border-ink bg-peach-300 p-5 shadow-sm">
-                <AuthorByline
-                  name={AUTHOR_NAME}
-                  affiliation={AUTHOR_AFFILIATION}
-                  publishedAt={PUBLISHED}
-                  modifiedAt={PUBLISHED}
-                />
+                <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
+                  Tim Akademik · review UNJANI dalam proses · {PUBLISHED}
+                </p>
               </div>
             </div>
           </Container>
@@ -281,22 +273,22 @@ export default function MetodologiPage() {
           </Container>
         </section>
 
-        {/* 7. Validasi UNJANI (varian a — MoU ditandatangani) */}
+        {/* 7. Validasi UNJANI — proses kolaborasi */}
         <section className="border-b-2 border-ink bg-white py-16">
           <Container>
             <div className="mx-auto max-w-3xl">
               <p className="eyebrow mb-4">VALIDASI AKADEMIK</p>
               <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold text-ink">
-                Divalidasi bersama Fakultas Psikologi UNJANI
+                Dalam proses validasi bersama Fakultas Psikologi UNJANI
               </h2>
               <p className="mt-6 leading-relaxed text-ash-700">
-                Seluruh metodologi, item, dan konten asesmen kami direview oleh tim dosen aktif
-                Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI), Bandung. Review
-                dilakukan berkala untuk menjaga relevansi dan standar akademik.
+                Metodologi, item, dan konten asesmen Sekil.id sedang dalam proses validasi bersama
+                tim Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI), Bandung.
+                Proses ini mencakup review relevansi konteks Indonesia dan standar psikometri.
               </p>
-            </div>
-            <div className="mt-10">
-              <UnjaniTeam members={UNJANI_TEAM} />
+              <p className="mt-4 text-sm text-ash-700">
+                Informasi tim reviewer akan dipublikasikan setelah konfirmasi formal selesai.
+              </p>
             </div>
           </Container>
         </section>
@@ -310,7 +302,7 @@ export default function MetodologiPage() {
                 Coba sendiri
               </h2>
               <p className="mx-auto mt-4 max-w-lg leading-relaxed text-ash-700">
-                Cara terbaik memahami metodologi ini adalah menjalaninya. Mulai dalam 12 menit —
+                Cara terbaik memahami metodologi ini adalah menjalaninya. Mulai asesmen —
                 hasilnya bisa Anda jelaskan ke siapa pun.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

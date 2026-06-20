@@ -13,12 +13,12 @@ import { ABOUT_PAGE_QUERY } from '@/lib/sanity/queries';
 export const metadata: Metadata = {
   title: 'Tentang Sekil.id — Joint Venture untuk Asesmen Psikologi Indonesia',
   description:
-    'Sekil.id adalah JV Sekil.id × B One Corp dengan validasi akademik UNJANI. Tim, partner, dan misi memetakan potensi Indonesia.',
+    'Sekil.id adalah JV Sekil.id × B One Corp dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Tim, partner, dan misi memetakan potensi Indonesia.',
   alternates: { canonical: 'https://sekil.id/tentang' },
   openGraph: {
     title: 'Tentang Sekil.id — Joint Venture untuk Asesmen Psikologi Indonesia',
     description:
-      'Sekil.id adalah JV Sekil.id × B One Corp dengan validasi akademik UNJANI. Tim, partner, dan misi memetakan potensi Indonesia.',
+      'Sekil.id adalah JV Sekil.id × B One Corp dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Tim, partner, dan misi memetakan potensi Indonesia.',
     url: 'https://sekil.id/tentang',
     type: 'website',
   },
@@ -31,7 +31,7 @@ const DEFAULT_PILLARS = [
     label: 'Akademik',
     partner: 'UNJANI',
     description:
-      'Fakultas Psikologi UNJANI memvalidasi metodologi, item bank, dan content. Setiap instrumen dan konten programatik disetujui dosen psikologi tersertifikasi sebelum dipublikasikan.',
+      'Sekil.id sedang dalam proses validasi bersama tim Fakultas Psikologi UNJANI untuk metodologi, item bank, dan konten asesmen — memastikan standar psikometri dan relevansi konteks Indonesia.',
     accentColor: 'peach' as const,
   },
   {
@@ -50,25 +50,17 @@ const DEFAULT_PILLARS = [
   },
 ];
 
-const DEFAULT_TEAM = [
-  { name: '[Founder Name]', role: 'Founder & CEO', bio: 'Memimpin visi dan strategi Sekil.id dari nol hingga launch.' },
-  { name: '[CTO Name]', role: 'Co-Founder & CTO', bio: 'Bertanggung jawab atas arsitektur platform dan AI stack.' },
-  { name: '[Head of Product Name]', role: 'Head of Product', bio: 'Merancang pengalaman asesmen yang berpusat pada pengguna.' },
-  { name: '[B One Liaison]', role: 'B One Corp Partner', bio: 'Jembatan antara jaringan distribusi B One dan Sekil.id.' },
-  { name: '[UNJANI Academic Lead]', role: 'Academic Lead, UNJANI', bio: 'Dosen Fakultas Psikologi UNJANI, pengawas validasi akademik semua instrumen.' },
-  { name: '[Sales Lead]', role: 'Head of Sales', bio: 'Membangun pipeline institusional dari sekolah hingga korporasi.' },
-];
 
 const DEFAULT_MILESTONES = [
   { period: '2024 Q4', event: 'JV Sekil.id × B One Corp signed', description: 'Perjanjian joint venture resmi ditandatangani antara Sekil.id dan B One Corp.' },
-  { period: '2025 Q1', event: 'UNJANI onboard sebagai mitra akademik', description: 'Fakultas Psikologi UNJANI resmi bergabung sebagai mitra validasi akademik instrumen.' },
-  { period: '2025 Q3', event: 'Pilot dengan 3 design partner', description: 'Pilot program bersama Yayasan Pengusaha Pendidikan Jabar, Muhammadiyah, dan Metranet.' },
+  { period: '2025 Q1', event: 'UNJANI bergabung sebagai mitra akademik', description: 'Proses kolaborasi validasi akademik dimulai bersama tim Fakultas Psikologi UNJANI.' },
+  { period: '2025 Q3', event: 'Pilot dengan mitra institusi', description: 'Pilot program bersama beberapa mitra institusi terpilih.' },
   { period: '2026 Q2', event: 'Platform v1.0 live', description: 'sekil.id resmi diluncurkan ke publik dengan 5 produk asesmen tervalidasi.' },
 ];
 
 const DEFAULT_STORY_PARAGRAPHS = [
   'Setiap tahun, ratusan ribu siswa Indonesia memilih jurusan kuliah berdasarkan tekanan teman sebaya, ekspektasi orang tua, atau sekadar tren. Hasilnya: angka mismatch jurusan yang tinggi, mahasiswa yang tidak termotivasi, dan tenaga kerja yang tidak sesuai dengan potensi aslinya. Di sisi korporasi, keputusan rekrutmen dan pengembangan talent masih didominasi intuisi subjektif — bukan data yang dapat dipertanggungjawabkan.',
-  'Asesmen psikologi impor yang ada sering kali mahal, tidak dikalibrasi untuk konteks budaya Indonesia, dan laporan yang dihasilkan sulit dipahami tanpa pendampingan psikolog. Sekil.id hadir sebagai solusi: partnership antara Sekil.id dan B One Corp, didukung validasi akademik dari Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI) — menghasilkan asesmen psikologi tervalidasi, terjangkau, dan relevan untuk konteks Indonesia.',
+  'Asesmen psikologi impor yang ada sering kali mahal, tidak dikalibrasi untuk konteks budaya Indonesia, dan laporan yang dihasilkan sulit dipahami tanpa pendampingan psikolog. Sekil.id hadir sebagai solusi: partnership antara Sekil.id dan B One Corp, dalam proses validasi bersama tim Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI) — menghasilkan asesmen psikologi berbasis akademik, terjangkau, dan relevan untuk konteks Indonesia.',
   'Visi kami adalah mendemokratisasi asesmen psikologi: menjadikan keputusan karier dan pengembangan talent berbasis data yang akurat dan dapat diakses oleh siapa pun — mulai dari siswa di sekolah negeri hingga manajer di perusahaan multinasional. Bukan tebakan. Bukan intuisi. Sains.',
 ];
 
@@ -118,7 +110,8 @@ export default async function TentangPage() {
   const teamNote =
     cms?.teamNote ??
     'Profil lengkap tim akan dipublikasikan bertahap setelah masing-masing anggota menyetujui penggunaan informasi.';
-  const team = cms?.team && cms.team.length > 0 ? cms.team : DEFAULT_TEAM;
+  const hasCmsTeam = !!(cms?.team && cms.team.length > 0);
+  const team = hasCmsTeam ? cms.team : [];
 
   const milestonesEyebrow = cms?.milestonesEyebrow ?? 'PERJALANAN';
   const milestonesHeading = cms?.milestonesHeading ?? 'Milestone kami';
@@ -271,27 +264,28 @@ export default async function TentangPage() {
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-ash-700">{teamNote}</p>
             )}
 
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {team.map((member, i) => (
-                <div key={i} className="border-2 border-ink">
-                  {/* Avatar placeholder */}
-                  <div className="flex h-40 items-center justify-center border-b-2 border-ink bg-ash-300/30">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
-                      Foto menyusul
-                    </span>
+            {hasCmsTeam && (
+              <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {team.map((member, i) => (
+                  <div key={i} className="border-2 border-ink">
+                    <div className="flex h-40 items-center justify-center border-b-2 border-ink bg-ash-300/30">
+                      <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
+                        Foto menyusul
+                      </span>
+                    </div>
+                    <div className="p-4">
+                      <p className="font-display font-bold text-ink">{member.name}</p>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-ash-700">
+                        {member.role}
+                      </p>
+                      {member.bio && (
+                        <p className="mt-2 text-sm leading-relaxed text-ash-700">{member.bio}</p>
+                      )}
+                    </div>
                   </div>
-                  <div className="p-4">
-                    <p className="font-display font-bold text-ink">{member.name}</p>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-ash-700">
-                      {member.role}
-                    </p>
-                    {member.bio && (
-                      <p className="mt-2 text-sm leading-relaxed text-ash-700">{member.bio}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             <p className="mt-8 text-sm text-ash-700">
               Bergabung dengan tim kami?{' '}

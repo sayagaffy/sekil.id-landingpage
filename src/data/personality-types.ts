@@ -548,6 +548,7 @@ export const PERSONALITY_TYPES: PersonalityType[] = [
     seoTitle: 'Minat Vokasional R (Realistic) — Karier dan Jurusan yang Cocok | Sekil.id',
     seoDescription:
       'Panduan tipe Minat Vokasional Realistic (R): ciri-ciri, karier yang cocok, dan jurusan kuliah untuk profil minat Realistic di Indonesia.',
+    // __NEEDS_FOUNDER_CONFIRM__: primaryKeyword masih "holland code ..." — keputusan SEO strategy (brand vs. generic), bukan de-brand otomatis; jangan diubah tanpa konfirmasi
     primaryKeyword: 'holland code realistic',
   },
   {

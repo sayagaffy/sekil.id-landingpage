@@ -84,9 +84,9 @@ export default function DemoPage() {
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 text-sm text-ash-700">
-                <p className="font-semibold text-ink">Dipercaya oleh 340+ institusi</p>
+                <p className="font-semibold text-ink">Untuk sekolah, universitas, dan korporasi</p>
                 <p className="mt-1">
-                  Sekolah, universitas, dan korporasi di seluruh Indonesia menggunakan Sekil.id.
+                  Sekil.id mendukung asesmen psikologi dan pemetaan karier di berbagai institusi Indonesia.
                 </p>
               </div>
             </aside>

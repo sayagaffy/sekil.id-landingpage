@@ -12,7 +12,7 @@ import { HOME_PAGE_QUERY } from '@/lib/sanity/queries';
 export const metadata: Metadata = {
   title: 'Asesmen Psikologi & Pemetaan Karier untuk Indonesia | Sekil.id',
   description:
-    'Platform asesmen psikologi & pemetaan karier dengan validasi akademik UNJANI. AI-powered, hasil dalam 10 menit. Dipakai sekolah, kampus, dan perusahaan.',
+    'Platform asesmen psikologi & pemetaan karier dalam proses validasi bersama tim Fakultas Psikologi UNJANI. Untuk sekolah, kampus, dan perusahaan di Indonesia.',
   alternates: { canonical: '/' },
 };
 
@@ -42,9 +42,7 @@ const DEFAULT_HERO = {
   ctaPrimary: { label: 'Mulai asesmen →', href: '/demo' },
   ctaSecondary: { label: 'Lihat metodologi', href: '/metodologi' },
   meta: [
-    { val: '+62,000', label: 'SISWA' },
-    { val: '340', label: 'SEKOLAH' },
-    { val: '18', label: 'PROVINSI' },
+    { val: '967', label: 'MAHASISWA' },
     { val: 'v2.1', label: 'PSYAI' },
   ],
 };
@@ -54,8 +52,9 @@ const DEFAULT_PRODUCTS = [
     tag: 'PSYAI',
     iconName: 'brain',
     title: 'Asesmen psikologi adaptif.',
-    body: '18 dimensi kepribadian, minat, dan kekuatan. Dipetakan oleh AI dalam 12 menit.',
-    meta: ['12 MIN', '18 DIMENSI', 'EVIDENCE-LED'],
+    // __NEEDS_FOUNDER_CONFIRM__: jumlah dimensi dan deskripsi kanonik PsyAI
+    body: '__NEEDS_FOUNDER_CONFIRM__ dimensi kepribadian, minat, dan kekuatan. Dipetakan oleh AI.',
+    meta: ['__NEEDS_FOUNDER_CONFIRM__', 'EVIDENCE-LED'],
     variant: 'default' as const,
     href: '/produk/psyai',
   },
@@ -80,15 +79,14 @@ const DEFAULT_PRODUCTS = [
 ];
 
 const DEFAULT_STATS: HomePageStat[] = [
-  { label: 'Siswa terverifikasi', value: '62,400', unit: '+' },
-  { label: 'Sekolah mitra', value: '340', unit: '' },
-  { label: 'Dimensi diukur', value: '18', unit: '' },
-  { label: 'Durasi rata-rata', value: '11', unit: ' min' },
+  { label: 'Mahasiswa', value: '967', unit: '' },
+  // __NEEDS_FOUNDER_CONFIRM__: verifikasi jumlah dimensi total yang diukur platform
+  { label: 'Dimensi diukur', value: '__NEEDS_FOUNDER_CONFIRM__', unit: '' },
 ];
 
 const DEFAULT_CTA = {
   eyebrow: 'MULAI HARI INI',
-  heading: '12 menit untuk arah karier yang lebih jelas.',
+  heading: 'Temukan arah karier yang lebih jelas.',
   subheading:
     'Mulai dengan PsyAI. Hasil langsung tersambung ke Path Finder dan Goal Align — tanpa pengulangan, tanpa tebakan.',
   ctaPrimary: { label: 'Mulai asesmen →', href: '/demo' },
@@ -102,11 +100,11 @@ const DEFAULT_FAQ = [
   },
   {
     q: 'Berapa lama waktu asesmen?',
-    a: 'Tergantung produk yang dipilih: PsyAI (12 menit), Path Finder AI (15 menit), Goal Align AI (20 menit). Hasil tersedia langsung setelah asesmen selesai.',
+    a: 'Tergantung produk yang dipilih. Durasi bervariasi antara 25–60 menit per siswa. Hasil tersedia langsung setelah asesmen selesai.',
   },
   {
     q: 'Apakah hasil asesmen tervalidasi ilmiah?',
-    a: 'Ya. Semua instrumen divalidasi oleh Fakultas Psikologi UNJANI menggunakan standar psikometri internasional (validitas & reliabilitas). Ini bukan sekadar kuis — ini asesmen psikologi yang sesungguhnya.',
+    a: 'Ya. Semua instrumen sedang dalam proses validasi bersama tim Fakultas Psikologi UNJANI menggunakan standar psikometri internasional. Ini bukan sekadar kuis — ini asesmen psikologi yang sesungguhnya.',
   },
   {
     q: 'Bagaimana cara mulai untuk institusi?',
@@ -470,7 +468,7 @@ export default async function HomePage() {
               className="hidden border-2 border-ink bg-peach-300 shadow-lg lg:flex lg:flex-col lg:justify-between p-8"
               style={{ aspectRatio: '1/1' }}
             >
-              <p className="eyebrow eyebrow-ink">12 MENIT · GRATIS</p>
+              <p className="eyebrow eyebrow-ink">GRATIS</p>
               <div className="flex justify-center">
                 <Image
                   src="/symbol-dark.png"

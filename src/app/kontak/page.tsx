@@ -191,8 +191,7 @@ export default function KontakPage() {
               <div className="border-b-2 border-ink p-6 lg:border-b-0 lg:border-r-2">
                 <address className="not-italic space-y-2">
                   <p className="font-display text-lg font-bold text-ink">Sekil.id</p>
-                  <p className="text-ash-700">Jl. [Placeholder], Bandung</p>
-                  <p className="text-ash-700">Jawa Barat 40000, Indonesia</p>
+                  <p className="text-ash-700">Bandung, Jawa Barat, Indonesia</p>
                 </address>
                 <div className="mt-6 space-y-1">
                   <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">

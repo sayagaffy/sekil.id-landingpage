@@ -10,7 +10,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight, Lock } from 'lucide-react';
 import { Container } from '@/components/layout/Container';
-import { AuthorByline } from '@/components/seo/AuthorByline';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Button } from '@/components/ui/button';
 import { InstrumentSection } from '@/components/methodology/InstrumentSection';
@@ -21,8 +20,6 @@ import { getBuyerMethodologySchema } from '@/lib/seo/methodology-schema';
 import { getBreadcrumbSchema } from '@/lib/seo/breadcrumb-schema';
 
 const PUBLISHED = '2026-05-16';
-const AUTHOR_NAME = 'Dr. [Placeholder UNJANI Lecturer Name], M.Psi., Psikolog';
-const AUTHOR_AFFILIATION = 'Dosen Psikologi UNJANI · Reviewer Akademik Sekil.id';
 
 export const metadata: Metadata = {
   title: 'Spesifikasi Teknis Instrumen Asesmen | Sekil.id untuk Institusi',
@@ -90,12 +87,9 @@ export default function InstitusiMetodologiPage() {
                   Mencakup nama teknis, sitasi akademik penuh, dimensi, dan adaptasi Indonesia.
                 </p>
                 <div className="mt-8 border-2 border-ink bg-peach-300 p-5 shadow-sm">
-                  <AuthorByline
-                    name={AUTHOR_NAME}
-                    affiliation={AUTHOR_AFFILIATION}
-                    publishedAt={PUBLISHED}
-                    modifiedAt={PUBLISHED}
-                  />
+                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ash-700">
+                    Tim Akademik · review UNJANI dalam proses · {PUBLISHED}
+                  </p>
                 </div>
               </div>
 
@@ -136,8 +130,8 @@ export default function InstitusiMetodologiPage() {
                 <strong className="text-ink">Inventori Kebutuhan &amp; Peran Kerja</strong> untuk profil kebutuhan dan peran dalam konteks profesional.
               </p>
               <p>
-                Ketiga instrumen diadaptasi untuk konteks Indonesia oleh tim Fakultas Psikologi
-                Universitas Jenderal Achmad Yani (UNJANI). Dokumentasi di halaman ini mencakup
+                Ketiga instrumen sedang dalam proses adaptasi untuk konteks Indonesia bersama
+                tim Fakultas Psikologi Universitas Jenderal Achmad Yani (UNJANI). Dokumentasi di halaman ini mencakup
                 asal-usul akademik, sitasi primer, dimensi yang diukur, keterbatasan, dan detail
                 adaptasi lokal — informasi yang relevan untuk proses due diligence institusi.
               </p>

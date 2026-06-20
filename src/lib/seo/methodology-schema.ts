@@ -2,7 +2,12 @@ import { SITE_URL, SITE_NAME } from './site-schema';
 
 const PUBLISHED_DATE = '2026-05-16';
 const MODIFIED_DATE = '2026-05-20';
-const AUTHOR_NAME = 'Dr. [Placeholder UNJANI Lecturer Name], M.Psi., Psikolog';
+// __NEEDS_REAL_VALUE__: ganti ke Person dengan nama dosen asli setelah MoU UNJANI ditandatangani
+const AUTHOR_ORG = {
+  '@type': 'Organization',
+  '@id': `${SITE_URL}/#organization`,
+  name: 'Tim Akademik Sekil.id',
+} as const;
 
 const FULL_CITATIONS = [
   {
@@ -75,16 +80,7 @@ export function getMethodologyArticleSchema() {
     datePublished: PUBLISHED_DATE,
     dateModified: MODIFIED_DATE,
     inLanguage: 'id-ID',
-    author: {
-      '@type': 'Person',
-      name: AUTHOR_NAME,
-      jobTitle: 'Dosen Psikologi',
-      affiliation: {
-        '@type': 'Organization',
-        name: 'Universitas Jenderal Achmad Yani',
-        sameAs: 'https://www.unjani.ac.id',
-      },
-    },
+    author: AUTHOR_ORG,
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
@@ -122,16 +118,7 @@ export function getBuyerMethodologySchema() {
     datePublished: PUBLISHED_DATE,
     dateModified: MODIFIED_DATE,
     inLanguage: 'id-ID',
-    author: {
-      '@type': 'Person',
-      name: AUTHOR_NAME,
-      jobTitle: 'Dosen Psikologi',
-      affiliation: {
-        '@type': 'Organization',
-        name: 'Universitas Jenderal Achmad Yani',
-        sameAs: 'https://www.unjani.ac.id',
-      },
-    },
+    author: AUTHOR_ORG,
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
