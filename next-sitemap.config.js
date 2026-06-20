@@ -23,7 +23,7 @@ module.exports = {
       { userAgent: 'PerplexityBot', allow: '/' },
       { userAgent: 'Google-Extended', allow: '/' },
     ],
-    additionalSitemaps: ['https://sekil.id/sitemap-programmatic.xml'],
+    additionalSitemaps: [],
   },
   transform: async (config, urlPath) => {
     // Programmatic pages (/kepribadian/, /karier/, /jurusan/) are served from

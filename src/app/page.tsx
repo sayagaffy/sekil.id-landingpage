@@ -52,9 +52,8 @@ const DEFAULT_PRODUCTS = [
     tag: 'PSYAI',
     iconName: 'brain',
     title: 'Asesmen psikologi adaptif.',
-    // __NEEDS_FOUNDER_CONFIRM__: jumlah dimensi dan deskripsi kanonik PsyAI
-    body: '__NEEDS_FOUNDER_CONFIRM__ dimensi kepribadian, minat, dan kekuatan. Dipetakan oleh AI.',
-    meta: ['__NEEDS_FOUNDER_CONFIRM__', 'EVIDENCE-LED'],
+    body: 'Memetakan 6 dimensi minat dan 4 preferensi kepribadian — menghasilkan kode minat 3-huruf dan 1 dari 16 tipe kepribadian.',
+    meta: ['6+4 DIMENSI', 'EVIDENCE-LED'],
     variant: 'default' as const,
     href: '/produk/psyai',
   },
@@ -80,8 +79,7 @@ const DEFAULT_PRODUCTS = [
 
 const DEFAULT_STATS: HomePageStat[] = [
   { label: 'Mahasiswa', value: '967', unit: '' },
-  // __NEEDS_FOUNDER_CONFIRM__: verifikasi jumlah dimensi total yang diukur platform
-  { label: 'Dimensi diukur', value: '__NEEDS_FOUNDER_CONFIRM__', unit: '' },
+  { label: 'Dimensi diukur', value: '10', unit: '' },
 ];
 
 const DEFAULT_CTA = {
