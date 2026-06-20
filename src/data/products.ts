@@ -29,10 +29,10 @@ export const PRODUCTS: Product[] = [
     nameDisplay: 'Career Interest — Peta Minat Karier',
     tagline: 'Temukan arah karier yang paling sesuai dengan profil minat vokasional Anda',
     description:
-      'Tes minat karier menggunakan asesmen vokasional tervalidasi akademik untuk siswa SMA dan mahasiswa. Dapatkan profil minat 6 dimensi dan rekomendasi karier yang sesuai dengan profil unik Anda dalam 15 menit.',
+      'Tes minat karier menggunakan asesmen vokasional tervalidasi akademik untuk siswa SMA dan mahasiswa. Dapatkan profil minat 6 dimensi dan rekomendasi karier yang sesuai dengan profil unik Anda.',
     longDescription:
-      'Career Interest menggunakan kerangka minat vokasional yang telah divalidasi akademik selama 60+ tahun untuk memetakan preferensi karier Anda. Dalam 15 menit, Anda mendapatkan profil unik yang mencerminkan kombinasi minat vokasional Anda, beserta rekomendasi karier dan jurusan yang paling sesuai — semuanya dikalibrasi untuk konteks pasar kerja Indonesia menggunakan data LinkedIn 2025.',
-    duration: '15 menit',
+      'Career Interest menggunakan kerangka minat vokasional yang telah divalidasi akademik selama 60+ tahun untuk memetakan preferensi karier Anda. Asesmen ini menghasilkan profil unik yang mencerminkan kombinasi minat vokasional Anda, beserta rekomendasi karier dan jurusan yang paling sesuai — disesuaikan untuk konteks pasar kerja Indonesia menggunakan data LinkedIn 2025.',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 159000,
     priceDisplay: 'Rp 159.000',
     targetPersonas: ['siswa-sma', 'mahasiswa'],
@@ -55,7 +55,7 @@ export const PRODUCTS: Product[] = [
       },
       {
         q: 'Berapa lama tes Career Interest berlangsung?',
-        a: '15 menit. Tes terdiri dari serangkaian pertanyaan preferensi aktivitas yang ringkas dan dapat diselesaikan dalam satu sesi di laptop atau smartphone. Tidak ada jawaban benar atau salah — yang penting Anda menjawab jujur sesuai preferensi asli Anda.',
+        a: 'Mulai dari 15 menit, bervariasi per peserta. Tes terdiri dari serangkaian pertanyaan preferensi aktivitas yang ringkas dan dapat diselesaikan dalam satu sesi di laptop atau smartphone. Tidak ada jawaban benar atau salah — yang penting Anda menjawab jujur sesuai preferensi asli Anda.',
       },
       {
         q: 'Siapa yang paling cocok mengikuti tes ini?',
@@ -72,7 +72,7 @@ export const PRODUCTS: Product[] = [
     ],
     seoTitle: 'Tes Minat Karier Tervalidasi | Career Interest Sekil.id',
     seoDescription:
-      'Temukan minat karier Anda dengan asesmen vokasional tervalidasi akademik. 15 menit, dapatkan profil minat dan rekomendasi karier & jurusan untuk konteks Indonesia.',
+      'Temukan minat karier Anda dengan asesmen vokasional tervalidasi akademik. Dapatkan profil minat 6 dimensi dan rekomendasi karier & jurusan yang relevan untuk konteks Indonesia.',
     primaryKeyword: 'tes minat karier',
   },
   {
@@ -81,10 +81,10 @@ export const PRODUCTS: Product[] = [
     nameDisplay: 'PsyAI — Profil Kepribadian Terintegrasi',
     tagline: 'Asesmen kepribadian terintegrasi: minat vokasional dan preferensi kepribadian dalam satu laporan AI',
     description:
-      'PsyAI menggabungkan asesmen minat vokasional dan profil kepribadian dalam satu asesmen terintegrasi 25 menit. Dapatkan profil kepribadian komprehensif dengan narasi yang dipersonalisasi AI dan action plan pengembangan diri.',
+      'PsyAI menggabungkan asesmen minat vokasional dan profil kepribadian dalam satu asesmen terintegrasi. Dapatkan profil kepribadian komprehensif dengan narasi yang dipersonalisasi AI dan action plan pengembangan diri.',
     longDescription:
       'PsyAI adalah asesmen kepribadian paling komprehensif di Sekil.id. Dengan menggabungkan pemetaan minat vokasional dan preferensi kepribadian berbasis konstruk psikologis Jung, PsyAI menghasilkan satu profil kohesif yang menjelaskan bukan hanya apa yang Anda minati, tapi bagaimana cara Anda bekerja, berkomunikasi, dan berkembang. Narasi laporan dihasilkan AI berbasis template yang divalidasi psikolog UNJANI.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 229000,
     priceDisplay: 'Rp 229.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
@@ -112,7 +112,7 @@ export const PRODUCTS: Product[] = [
       },
       {
         q: 'Berapa lama proses tes hingga laporan tersedia?',
-        a: '25 menit untuk tes, dan laporan tersedia langsung setelah tes selesai. Tidak ada waktu tunggu — sistem menghasilkan laporan secara otomatis. Laporan juga dikirimkan ke email Anda dalam format PDF.',
+        a: 'Waktu pengerjaan mulai dari 15 menit, bervariasi per peserta. Laporan tersedia langsung setelah tes selesai — sistem menghasilkan laporan secara otomatis dan dikirimkan ke email Anda dalam format PDF.',
       },
       {
         q: 'Bisakah laporan PsyAI digunakan untuk proses seleksi karyawan?',
@@ -125,7 +125,7 @@ export const PRODUCTS: Product[] = [
     ],
     seoTitle: 'Tes Kepribadian AI Terintegrasi | PsyAI Sekil.id',
     seoDescription:
-      'PsyAI menggabungkan pemetaan minat vokasional dan profil kepribadian dalam satu asesmen terintegrasi. Dapatkan profil kepribadian komprehensif dan action plan karier dalam 25 menit.',
+      'PsyAI menggabungkan pemetaan minat vokasional dan profil kepribadian dalam satu asesmen terintegrasi. Dapatkan profil kepribadian komprehensif dan action plan karier berbasis psikologi.',
     primaryKeyword: 'tes kepribadian ai',
   },
   {
@@ -137,7 +137,7 @@ export const PRODUCTS: Product[] = [
       'Path Finder AI membantu siswa SMA memilih jurusan kuliah berdasarkan profil minat vokasional dan preferensi kepribadian. Dapatkan rekomendasi 5 jurusan top match dengan prospek karier dan universitas Indonesia.',
     longDescription:
       'Path Finder AI dirancang khusus untuk siswa SMA yang menghadapi dilema pemilihan jurusan kuliah. Dengan menggabungkan profil minat vokasional dan preferensi kepribadian, Path Finder AI menyilangkan data tersebut dengan informasi jurusan, prospek karier, dan universitas Indonesia — menghasilkan rekomendasi yang personal dan berbasis data, bukan intuisi semata.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['siswa-sma'],
@@ -186,10 +186,10 @@ export const PRODUCTS: Product[] = [
     nameDisplay: 'Leadership Styles Test — Gaya Kepemimpinan',
     tagline: 'Identifikasi dan kembangkan gaya kepemimpinan Anda berbasis asesmen tervalidasi',
     description:
-      'Leadership Styles Test menggunakan asesmen kebutuhan & peran kerja tervalidasi untuk mengidentifikasi 4 gaya kepemimpinan situasional Anda. Dapatkan profil kepemimpinan, matriks strength-blind spot, dan Individual Development Plan dalam 20 menit.',
+      'Leadership Styles Test menggunakan asesmen kebutuhan & peran kerja tervalidasi untuk mengidentifikasi 4 gaya kepemimpinan situasional Anda. Dapatkan profil kepemimpinan, matriks strength-blind spot, dan Individual Development Plan yang dapat langsung diimplementasikan.',
     longDescription:
       'Leadership Styles Test dirancang untuk karyawan dan manajer yang ingin memahami dan mengembangkan gaya kepemimpinan mereka secara berbasis data. Menggunakan inventori kebutuhan & peran kerja yang merupakan standar industri untuk konteks profesional — tes ini mengidentifikasi gaya kepemimpinan dominan Anda dari 4 profil situasional, lengkap dengan matriks kekuatan, blind spot, dan rencana pengembangan yang dapat langsung diimplementasikan.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['karyawan', 'manager'],
@@ -216,7 +216,7 @@ export const PRODUCTS: Product[] = [
       },
       {
         q: 'Apa dasar ilmiah tes kepemimpinan ini?',
-        a: 'Leadership Styles Test menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks kepemimpinan. Instrumen ini mengukur dimensi kepemimpinan, dominasi, dan orientasi hubungan yang relevan untuk efektivitas manajerial. Telah digunakan dalam konteks pengembangan manajerial selama 50+ tahun dan divalidasi oleh tim Fakultas Psikologi UNJANI untuk konteks Indonesia.',
+        a: 'Leadership Styles Test menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks kepemimpinan. Instrumen ini mengukur dimensi kepemimpinan, dominasi, dan orientasi hubungan yang relevan untuk efektivitas manajerial. Telah digunakan dalam konteks pengembangan manajerial selama 50+ tahun; adaptasi untuk konteks Indonesia sedang dalam proses bersama tim Fakultas Psikologi UNJANI.',
       },
       {
         q: 'Bisakah hasilnya digunakan untuk program leadership development HRD?',
@@ -238,10 +238,10 @@ export const PRODUCTS: Product[] = [
     nameDisplay: 'EQ Test — Kecerdasan Emosional',
     tagline: 'Ukur dan kembangkan Emotional Intelligence untuk karier dan kehidupan',
     description:
-      'EQ Test Sekil.id mengukur 4 dimensi kecerdasan emosional (EQ) menggunakan asesmen tervalidasi akademik yang diadaptasi untuk konteks Indonesia. Dapatkan skor EQ, analisis per dimensi, dan development tips yang dapat langsung diterapkan dalam 20 menit.',
+      'EQ Test Sekil.id mengukur 4 dimensi kecerdasan emosional (EQ) menggunakan asesmen tervalidasi akademik yang diadaptasi untuk konteks Indonesia. Dapatkan skor EQ, analisis per dimensi, dan development tips yang dapat langsung diterapkan.',
     longDescription:
       'Emotional Intelligence Test mengukur empat dimensi kecerdasan emosional yang paling kritis untuk kesuksesan profesional: Self-Awareness, Self-Regulation, Empathy, dan Social Skills. Menggunakan inventori kebutuhan & peran kerja yang diadaptasi oleh tim psikolog UNJANI untuk konteks Indonesia, hasilnya mencakup skor per dimensi, analisis mendalam, dan rencana pengembangan EQ yang konkret dan dapat langsung diterapkan.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 209000,
     priceDisplay: 'Rp 209.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
@@ -273,16 +273,16 @@ export const PRODUCTS: Product[] = [
       },
       {
         q: 'Apakah EQ Test ini sudah divalidasi secara ilmiah?',
-        a: 'EQ Test Sekil.id menggunakan asesmen tervalidasi akademik yang diadaptasi untuk mengukur dimensi kecerdasan emosional dalam konteks kerja. Adaptasi dilakukan oleh tim Fakultas Psikologi UNJANI dan telah melalui proses pilot testing dengan responden Indonesia. Instrumen bersifat deskriptif dan edukatif — bukan alat diagnostik klinis.',
+        a: 'EQ Test Sekil.id menggunakan asesmen tervalidasi akademik yang diadaptasi untuk mengukur dimensi kecerdasan emosional dalam konteks kerja. Adaptasi untuk konteks Indonesia sedang dalam proses bersama tim Fakultas Psikologi UNJANI. Instrumen bersifat deskriptif dan edukatif — bukan alat diagnostik klinis.',
       },
       {
         q: 'Apa bedanya EQ Test Sekil.id dengan tes EQ lain yang beredar online?',
-        a: 'Sebagian besar tes EQ online tidak memiliki basis akademik yang jelas dan tidak dikalibrasi untuk konteks Indonesia. EQ Test Sekil.id dibangun di atas instrumen yang digunakan dalam konteks profesional selama 50+ tahun, diadaptasi oleh psikolog UNJANI, dan menghasilkan laporan dalam Bahasa Indonesia native dengan rekomendasi yang relevan untuk lingkungan kerja Indonesia.',
+        a: 'Sebagian besar tes EQ online tidak memiliki basis akademik yang jelas dan tidak disesuaikan untuk konteks Indonesia. EQ Test Sekil.id dibangun di atas instrumen yang digunakan dalam konteks profesional selama 50+ tahun, dalam proses adaptasi bersama tim psikolog UNJANI, dan menghasilkan laporan dalam Bahasa Indonesia native dengan rekomendasi yang relevan untuk lingkungan kerja Indonesia.',
       },
     ],
     seoTitle: 'Tes EQ Online Kecerdasan Emosional Tervalidasi | Sekil.id',
     seoDescription:
-      'Ukur 4 dimensi Emotional Intelligence (EQ) dengan tes tervalidasi akademik. Dapatkan skor EQ, analisis mendalam, dan rencana pengembangan dalam 20 menit.',
+      'Ukur 4 dimensi Emotional Intelligence (EQ) dengan tes tervalidasi akademik. Dapatkan skor EQ, analisis mendalam, dan rencana pengembangan berbasis evidence.',
     primaryKeyword: 'tes eq online',
   },
   {
@@ -291,10 +291,10 @@ export const PRODUCTS: Product[] = [
     nameDisplay: 'Self DiscoveryAI — Kenali Dirimu',
     tagline: 'Peta diri komprehensif: siapa Anda, bagaimana Anda bekerja, apa yang paling bermakna bagi Anda',
     description:
-      'Self DiscoveryAI mengintegrasikan profil preferensi kepribadian dan inventori kebutuhan kerja untuk menghasilkan peta diri yang holistik. 20 menit untuk memahami kekuatan alami, kebutuhan, dan cara kerja terbaik Anda.',
+      'Self DiscoveryAI mengintegrasikan profil preferensi kepribadian dan inventori kebutuhan kerja untuk menghasilkan peta diri yang holistik — untuk memahami kekuatan alami, kebutuhan, dan cara kerja terbaik Anda.',
     longDescription:
       'Self DiscoveryAI dirancang untuk mereka yang ingin memahami dirinya lebih dalam sebelum membuat keputusan karier atau hidup yang signifikan. Dengan mengintegrasikan kerangka preferensi kepribadian dan inventori kebutuhan & peran kerja, Self DiscoveryAI menghasilkan peta diri holistik — mencakup bagaimana Anda memproses informasi, apa yang memotivasi Anda, dan lingkungan seperti apa yang membuat Anda tumbuh paling baik.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
@@ -321,12 +321,12 @@ export const PRODUCTS: Product[] = [
       },
       {
         q: 'Berapa lama tes dan bagaimana cara mendapatkan laporan?',
-        a: '20 menit untuk menyelesaikan tes. Laporan tersedia langsung setelah selesai dalam format PDF yang dapat diunduh dan dikirim ke email Anda.',
+        a: 'Mulai dari 15 menit, bervariasi per peserta. Laporan tersedia langsung setelah selesai dalam format PDF yang dapat diunduh dan dikirim ke email Anda.',
       },
     ],
     seoTitle: 'Self Discovery AI — Kenali Dirimu Lebih Dalam | Sekil.id',
     seoDescription:
-      'Self DiscoveryAI mengintegrasikan profil kepribadian dan inventori kebutuhan kerja untuk peta diri yang komprehensif. Kenali kekuatan, kebutuhan, dan cara kerja terbaik Anda dalam 20 menit.',
+      'Self DiscoveryAI mengintegrasikan profil kepribadian dan inventori kebutuhan kerja untuk peta diri yang komprehensif. Kenali kekuatan, kebutuhan, dan cara kerja terbaik Anda.',
     primaryKeyword: 'tes self discovery',
   },
   {
@@ -338,7 +338,7 @@ export const PRODUCTS: Product[] = [
       'Goal AlignAI membantu Anda menyusun tujuan karier yang benar-benar selaras dengan kebutuhan, motivasi, dan kekuatan kerja Anda — menghasilkan roadmap karier yang realistis dan menggerakkan semangat.',
     longDescription:
       'Banyak orang menetapkan tujuan karier berdasarkan ekspektasi sosial atau tekanan lingkungan — bukan berdasarkan profil diri yang sesungguhnya. Goal AlignAI menggabungkan analisis inventori kebutuhan & peran kerja dengan eksplorasi tujuan karier untuk menghasilkan roadmap yang selaras dengan motivasi intrinsik Anda. Hasilnya: tujuan yang tidak hanya realistis, tapi juga menggerakkan energi dan komitmen jangka panjang.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
@@ -370,7 +370,7 @@ export const PRODUCTS: Product[] = [
     ],
     seoTitle: 'Goal AlignAI — Selaraskan Tujuan Karier dengan Profil Anda | Sekil.id',
     seoDescription:
-      'Goal AlignAI membantu menyusun roadmap karier yang selaras dengan motivasi dan kebutuhan kerja asli Anda. 20 menit untuk tujuan karier yang lebih bermakna dan realistis.',
+      'Goal AlignAI membantu menyusun roadmap karier yang selaras dengan motivasi dan kebutuhan kerja asli Anda — untuk tujuan karier yang lebih bermakna dan realistis.',
     primaryKeyword: 'goal alignment karier',
   },
   {
@@ -382,7 +382,7 @@ export const PRODUCTS: Product[] = [
       'Paket premium Goal Orientation Coaching menggabungkan asesmen profil kebutuhan kerja dengan sesi coaching intensif 1-on-1 bersama psikolog karier Sekil.id. Dapatkan action plan karier yang konkret, tervalidasi, dan didampingi profesional.',
     longDescription:
       'Goal Orientation Coaching adalah layanan premium Sekil.id yang menggabungkan rigor asesmen psikologis dengan kedalaman coaching profesional. Sesi dimulai dengan asesmen inventori kebutuhan & peran kerja untuk membangun profil yang objektif, dilanjutkan dengan sesi coaching 1-on-1 bersama psikolog karier. Hasilnya: action plan karier yang tidak hanya diinginkan, tapi dapat dicapai sesuai profil dan kondisi aktual Anda.',
-    duration: '45 menit',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 359000,
     priceDisplay: 'Rp 359.000',
     targetPersonas: ['karyawan', 'manager'],
@@ -426,7 +426,7 @@ export const PRODUCTS: Product[] = [
       'Professional Authenticity Test mengukur keselarasan antara nilai-nilai diri, kebutuhan kerja, dan cara Anda berpresentasi di lingkungan profesional. Identifikasi "authenticity gap" yang mungkin menyebabkan kelelahan atau ketidakpuasan karier.',
     longDescription:
       'Ketidakselarasan antara siapa Anda sebenarnya dan bagaimana Anda berperilaku di tempat kerja adalah sumber utama kelelahan dan ketidakpuasan karier jangka panjang. Professional Authenticity Test mengukur gap ini menggunakan inventori kebutuhan & peran kerja yang diadaptasi untuk konteks keaslian profesional — menghasilkan profil yang menunjukkan area di mana Anda paling dan paling tidak autentik, beserta strategi untuk mempersempit kesenjangan tersebut.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 179000,
     priceDisplay: 'Rp 179.000',
     targetPersonas: ['fresh-grad', 'karyawan', 'manager'],
@@ -467,10 +467,10 @@ export const PRODUCTS: Product[] = [
     nameDisplay: 'Job Burnout Test — Deteksi Risiko Burnout',
     tagline: 'Deteksi dini risiko burnout dan susun strategi pemulihan berbasis data',
     description:
-      'Job Burnout Test mengukur tingkat kelelahan kerja di tiga dimensi: kelelahan emosional, depersonalisasi, dan efektivitas diri. Dapatkan profil risiko burnout yang akurat dan panduan pemulihan yang konkret dalam 15 menit.',
+      'Job Burnout Test mengukur tingkat kelelahan kerja di tiga dimensi: kelelahan emosional, depersonalisasi, dan efektivitas diri. Dapatkan profil risiko burnout yang akurat dan panduan pemulihan yang konkret.',
     longDescription:
       'Burnout bukan sekadar kelelahan biasa — ia adalah kondisi psikologis yang berkembang bertahap dan berdampak serius pada kesehatan, produktivitas, dan hubungan kerja. Job Burnout Test menggunakan asesmen kebutuhan & peran kerja yang diadaptasi untuk mengukur tiga dimensi burnout paling kritis: kelelahan emosional, depersonalisasi, dan efektivitas diri. Hasilnya mencakup profil risiko dan rencana pemulihan berbasis evidence.',
-    duration: '15 menit',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 209000,
     priceDisplay: 'Rp 209.000',
     targetPersonas: ['karyawan', 'manager'],
@@ -502,7 +502,7 @@ export const PRODUCTS: Product[] = [
     ],
     seoTitle: 'Job Burnout Test — Deteksi Risiko Burnout Kerja | Sekil.id',
     seoDescription:
-      'Deteksi dini risiko burnout dengan asesmen tervalidasi. Job Burnout Test mengukur 3 dimensi burnout dan memberikan panduan pemulihan berbasis evidence dalam 15 menit.',
+      'Deteksi dini risiko burnout dengan asesmen tervalidasi. Job Burnout Test mengukur 3 dimensi burnout dan memberikan panduan pemulihan berbasis evidence.',
     primaryKeyword: 'tes burnout kerja',
   },
   {
@@ -514,7 +514,7 @@ export const PRODUCTS: Product[] = [
       'Personal Authenticity Test mengukur keselarasan antara nilai-nilai inti, preferensi hidup, dan cara Anda menjalani keseharian. Untuk individu yang ingin hidup lebih bermakna dan selaras dengan siapa diri mereka sebenarnya.',
     longDescription:
       'Keaslian diri bukan tentang sempurna atau tidak berubah — ini tentang menjalani hidup yang selaras dengan nilai dan preferensi terdalam Anda. Personal Authenticity Test mengintegrasikan kerangka preferensi kepribadian dengan inventori kebutuhan personal untuk menghasilkan profil keaslian yang menyeluruh: di area mana Anda sudah autentik, di mana Anda paling sering menekan diri sendiri, dan apa yang perlu diubah untuk hidup yang lebih bermakna.',
-    duration: '25–60 menit, bervariasi per siswa',
+    duration: 'mulai dari 15 menit, bervariasi per peserta',
     price: 209000,
     priceDisplay: 'Rp 209.000',
     targetPersonas: ['mahasiswa', 'fresh-grad', 'karyawan'],
@@ -546,7 +546,7 @@ export const PRODUCTS: Product[] = [
     ],
     seoTitle: 'Personal Authenticity Test — Keaslian Diri Sejati | Sekil.id',
     seoDescription:
-      'Ukur keselarasan antara nilai inti dan cara hidup Anda sehari-hari. Personal Authenticity Test membantu Anda hidup lebih autentik dan bermakna dalam 20 menit.',
+      'Ukur keselarasan antara nilai inti dan cara hidup Anda sehari-hari. Personal Authenticity Test membantu Anda hidup lebih autentik dan bermakna.',
     primaryKeyword: 'tes keaslian diri',
   },
 ];

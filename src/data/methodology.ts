@@ -49,8 +49,7 @@ export const INSTRUMENTS: Instrument[] = [
     limitations:
       'Validitas konkuren terhadap kepuasan karier baik (Nauta, 2010), tetapi konteks budaya non-Barat perlu kalibrasi. Tidak mengukur kemampuan, kecerdasan, atau kompetensi teknis — hanya minat vokasional. Interpretasi lintas budaya harus dilakukan dengan kehati-hatian. Hasil asesmen ini tidak bersifat permanen dan dapat berubah seiring pengalaman hidup.',
     indonesiaAdaptation: [
-      // step 4: 2.000+ responden → 967 mahasiswa; kata dikalibrasi dihapus per aturan
-      'Item bank telah digunakan oleh 967 mahasiswa Indonesia dari berbagai latar belakang geografis dan sosial-ekonomi',
+      'Item bank telah digunakan oleh 967 mahasiswa Indonesia dari berbagai latar belakang; validasi normatif untuk konteks Indonesia sedang dikembangkan bersama tim Fakultas Psikologi UNJANI.',
       'Mapping pekerjaan ke pasar kerja Indonesia menggunakan data LinkedIn Indonesia (2025) dan BPS',
       // __NEEDS_FOUNDER_CONFIRM__: status review UNJANI — MoU belum signed, jangan klaim "validasi" selesai
       'Dalam proses review bersama tim Fakultas Psikologi UNJANI untuk relevansi konteks dan bahasa lokal',
@@ -79,7 +78,7 @@ export const INSTRUMENTS: Instrument[] = [
     indonesiaAdaptation: [
       'Formulasi item disesuaikan dengan konteks budaya kolektivis Indonesia, menghindari bias individualistis dari item asli',
       // __NEEDS_FOUNDER_CONFIRM__: scope pilot testing (N responden, kota) belum dikonfirmasi founder
-      'Proses review item untuk relevansi konteks mahasiswa dan profesional Indonesia (in progress)',
+      'Studi pilot untuk relevansi konteks mahasiswa dan profesional Indonesia sedang direncanakan bersama tim UNJANI.',
       'Interpretasi karier mengacu pada pola kerja dan struktur organisasi yang relevan di pasar Indonesia',
       'Disclaimer eksplisit disertakan dalam laporan: hasil bersifat eksploratoris, bukan label kepribadian yang definitif',
     ],
@@ -112,7 +111,7 @@ export const INSTRUMENTS: Instrument[] = [
       'Skenario item disesuaikan dengan lingkungan kerja Indonesia: BUMN, startup, korporasi multinasional, dan sektor pendidikan',
       'Deskripsi peran karier mengacu pada struktur jabatan yang lazim di pasar kerja Indonesia',
       // __NEEDS_FOUNDER_CONFIRM__: benchmarking norma belum selesai — N responden dan scope belum dikonfirmasi
-      'Proses benchmarking norma dengan data responden profesional Indonesia dari berbagai industri (in progress)',
+      'Benchmarking norma dengan data responden profesional Indonesia sedang disiapkan.',
       // __NEEDS_FOUNDER_CONFIRM__: review UNJANI in progress — MoU belum signed
       'Dalam proses review bersama tim UNJANI untuk relevansi item dengan nilai, norma kerja, dan ekspektasi karier lokal',
     ],
@@ -182,7 +181,8 @@ export const AI_TASKS: string[] = [
 export const HUMAN_TASKS: string[] = [
   'Desain metodologi, pemilihan instrumen, dan definisi konstruk yang diukur',
   'Pengembangan item: penulisan, review bahasa, dan revisi pertanyaan',
-  'Validation study: pilot testing, kalibrasi norma, dan analisis psikometri',
+  // __NEEDS_FOUNDER_CONFIRM__: validation study belum selesai — pilot, kalibrasi norma, dan psikometri sedang direncanakan
+  'Roadmap validation study: pilot testing, kalibrasi norma, dan analisis psikometri — dalam pengembangan bersama tim UNJANI',
   // __NEEDS_FOUNDER_CONFIRM__: apakah quarterly review agreement sudah ada?
   'Content review oleh tim akademik Fakultas Psikologi UNJANI (proses kolaborasi dalam progres)',
   'Interpretasi edge case dan kasus yang memerlukan konteks mendalam',
